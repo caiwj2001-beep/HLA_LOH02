@@ -1,0 +1,35 @@
+# Large data files (downloaded from cBioPortal)
+msk_impact_50k_2026/
+
+# Manuscript drafts and writing files
+manuscript/
+
+# Generated figure files (large binary)
+results/figures/
+results/figures1/
+
+# R temporary files
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+# OS files
+.DS_Store
+Thumbs.db
+*:Zone.Identifier
+Zone.Identifier
+
+# Python
+__pycache__/
+*.pyc
+
+# renv library (users should run renv::restore())
+renv/library/
+renv/local/
+renv/cellar/
+renv/lock/
+renv/python/
+renv/sandbox/
+renv/staging/
