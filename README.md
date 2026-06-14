@@ -4,7 +4,7 @@ Analysis code for the manuscript:
 
 **"HLA Class I Loss of Heterozygosity Across 66 Cancer Types Reveals Mechanistic Coupling with Whole-Genome Doubling and Independent Prognostic Value"**
 
-Cai W, Lin K. Department of Radiation Oncology, First Hospital of Quanzhou Affiliated to Fujian Medical University.
+Cai W, Li K. Department of Radiation Oncology, First Hospital of Quanzhou Affiliated to Fujian Medical University.
 
 ## Data Source
 
@@ -18,20 +18,12 @@ Data accessed: June 12, 2026. Distributed under Creative Commons BY-NC-ND 4.0 li
 
 ```
 scripts/
-├── 01_explore_data.R          # Initial data exploration and quality checks
-├── 02_master_analysis.R       # Primary pan-cancer HLA LOH analysis
-├── 03_refined_analysis.R      # Refined statistical analyses (Cox, sensitivity)
+
 ├── 04_generate_figures.R      # Main figure generation (Figures 1-8)
 ├── 05_extended_data_figures.R # Extended Data figure generation
-├── 06_format_citations.py     # Citation formatting utility
-└── 07_fix_fig3.R              # Figure 3 refinement
+├── 
 
-results/
-└── tables/                    # Source data for all figures
-    ├── cancer_type_hla_loh.csv
-    ├── cancer_type_hla_loh_v2.csv
-    ├── summary_statistics.csv
-    └── summary_v2.csv
+
 ```
 
 ## Software Requirements
