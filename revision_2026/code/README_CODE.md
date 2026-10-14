@@ -240,7 +240,7 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 
 | Artifact | Bytes | sha256 |
 |---|---:|---|
-| `derived_data.zip` (91 members) | 623,257 | `47fbf03534e3fc9a1ac0ed5d2480ac9d5ecd9eaa50a307d3fde6ff245f4a8bb4` |
+| `derived_data.zip` (91 members) | 623,468 | `55b1ce8de375ed073c66024f08597f43fad85ece5becf77ecf793762a7da6986` |
 | `code.zip` (9 members) | see note | **self-referential** — `code.zip` contains this very file, so recording its digest here would change it. Its digest is recorded in `QC/FINAL_MANIFEST.md` of the submission package and is reproducible only from the archive itself: `sha256sum 06_compliance/deposit/code.zip`. Everything the archive contains is byte-identical to this directory (§6). |
 
 ### Number dictionary
@@ -248,7 +248,7 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 | Artifact | Bytes | sha256 |
 |---|---:|---|
 | `PINNED_PACK.md` (this directory; the copy shipped in both archives) | 15,179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` |
-| `PINNED_PACK_CORRECTIONS.md` (§(v) figure-renumbering record, §(vi) blocker fixes, §(vii) closing-round fixes, §(viii) sentence-split round) | 53,878 | `ebb35b2f6bb54ba905f1313b0442a0605aa51095e8b630295a578d3e0743fca6` |
+| `PINNED_PACK_CORRECTIONS.md` (§(v) figure-renumbering record, §(vi) blocker fixes, §(vii) closing-round fixes, §(viii) sentence-split round) | 54,238 | `8da532085f103251509fc56544fc3c5df9a33fe6f07d0f9402c00ae16f5fb179` |
 | `00_pinned/PINNED_PACK.md` in the submission package (same bytes) | 15,179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` |
 
 ## 8. Notes

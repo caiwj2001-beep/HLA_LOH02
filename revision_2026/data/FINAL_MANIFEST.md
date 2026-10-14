@@ -1,6 +1,6 @@
 # FINAL_MANIFEST — frozen submission package
 
-Manuscript **ISCIENCE-D-26-09416** (iScience revision) · directory `iscience投稿版本/V3` · generated 2026-10-15 01:33:37
+Manuscript **ISCIENCE-D-26-09416** (iScience revision) · directory `iscience投稿版本/V3` · generated 2026-10-15 01:35:38
 
 Every file below is byte-frozen: `sha256` and `bytes` are of the file as it stands on disk at
 generation time. Figure numbers follow the 2026-10-15 renumbering to first-appearance order
@@ -10,7 +10,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 
 - **files listed: 58**
 - **missing on disk: none**
-- **total bytes: 8,318,343 (8.3 MB)**
+- **total bytes: 8,319,183 (8.3 MB)**
 
 ---
 
@@ -19,7 +19,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
 | `00_pinned/PINNED_PACK.md` | 15,179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` | The locked number dictionary: the single permitted source of every reported number |
-| `00_pinned/PINNED_PACK_CORRECTIONS.md` | 53,878 | `ebb35b2f6bb54ba905f1313b0442a0605aa51095e8b630295a578d3e0743fca6` | Corrections and audit record for the locked pack; §(v) is the authoritative figure-renumbering record, §(vi) the pre-submission arm-wording / DOI-placeholder / deposit-dictionary fix, §(vii) the closing-round fixes, §(viii) the sentence-split round, §(vii) the closing-round fixes, §(viii) the sentence-split round |
+| `00_pinned/PINNED_PACK_CORRECTIONS.md` | 54,238 | `8da532085f103251509fc56544fc3c5df9a33fe6f07d0f9402c00ae16f5fb179` | Corrections and audit record for the locked pack; §(v) is the authoritative figure-renumbering record, §(vi) the pre-submission arm-wording / DOI-placeholder / deposit-dictionary fix, §(vii) the closing-round fixes, §(viii) the sentence-split round, §(vii) the closing-round fixes, §(viii) the sentence-split round, §(vii) the closing-round fixes, §(viii) the sentence-split round |
 
 ---
 
@@ -96,7 +96,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 | `05_response/Response_to_Reviewers.docx` | 63,730 | `ac860045b799e89d1f1c11078832c023064c134684dd3fa1f4e0f3aac6a93dfc` | Point-by-point response to all reviewers, anchored to the revised manuscript |
 | `05_response/Response_to_Reviewers.md` | 76,338 | `3ddfdb03c1c6910f71e05b0bec1eaf63c1f3b81ee02cc0af25c40b6acca12adc` | Markdown source of the point-by-point response |
 | `05_response/ANCHOR_MAP.tsv` | 3,180 | `9ea2fdeb874d37cfe0f0e886a50d316ddba30ed5cd57a14126a942f78f444ce4` | Machine-readable map of every response point to its manuscript anchor |
-| `05_response/ANCHOR_INVENTORY.tsv` | 85,776 | `3b6b5a631f72fce0aada6e21946d8aef2421293f20587e1036cc236fcbf123fc` | Inventory of the manuscript sentences the response points cite |
+| `05_response/ANCHOR_INVENTORY.tsv` | 85,834 | `26f2625ea6595f59d15a6c9d6a8b0502f63bcb518010877c0058e974c4a05979` | Inventory of the manuscript sentences the response points cite |
 | `05_response/COVERAGE_CHECK.md` | 37,422 | `18054935cc0fb6b0a3128da9a1273225010873c6e88be64ede94cfb983248a32` | Coverage audit that every reviewer point is answered; header points at CORRECTIONS §(v) |
 
 ---
@@ -107,8 +107,8 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 |---|---:|---|---|
 | `06_compliance/Data_and_Code_Availability.md` | 3,745 | `d0df820fe3d1153f845786739a296a97412c103b3c2aa52ad07ab234cb20d3c9` | Data and Code Availability statement (repository URL filled; single Zenodo DOI still [DOI-PENDING-ZENODO]) |
 | `06_compliance/Key_Resources_Table.docx` | 38,913 | `1beafe5a83b0445e2c56b8d379a58a01b53635e39dc3f9471f10622aaa8b5a5e` | Key Resources Table (Cell Press requirement); contains no figure or table number tokens |
-| `06_compliance/deposit/code.zip` | 77,043 | `4cbb3eff82416a4024e7752d81b83b254978579f34a44a04278eed5dbc12995f` | Code deposit: the R analysis script, the DOCX/PDF rendering scripts, the R environment lock, requirements.txt, README_CODE.md and the number dictionary (PINNED_PACK.md + PINNED_PACK_CORRECTIONS.md) |
-| `06_compliance/deposit/derived_data.zip` | 623,257 | `47fbf03534e3fc9a1ac0ed5d2480ac9d5ecd9eaa50a307d3fde6ff245f4a8bb4` | Derived-data deposit: figure source data, supplementary source data, the table build inputs and the number dictionary |
+| `06_compliance/deposit/code.zip` | 77,254 | `0ed64eb78bd832b04c836bae304a95e0e3cffc34fa9d063e1caa163acecedd58` | Code deposit: the R analysis script, the DOCX/PDF rendering scripts, the R environment lock, requirements.txt, README_CODE.md and the number dictionary (PINNED_PACK.md + PINNED_PACK_CORRECTIONS.md) |
+| `06_compliance/deposit/derived_data.zip` | 623,468 | `55b1ce8de375ed073c66024f08597f43fad85ece5becf77ecf793762a7da6986` | Derived-data deposit: figure source data, supplementary source data, the table build inputs and the number dictionary |
 | `06_compliance/deposit/README_upload_steps.md` | 3,633 | `38f0956b8b39b4f2bf12d57639bd26c5712db0cbb6985ba4cbec74a888786642` | Author-facing upload runbook for the GitHub repository and the Zenodo DOI |
 | `06_compliance/Graphical_Abstract/Graphical_Abstract.tiff` | 463,738 | `4ea81270e6ac7ffe737c7d2ceed01c1604991f97357f890cd3f5dca931f41b16` | Graphical abstract, 300 dpi raster (the file uploaded to EM) |
 | `06_compliance/Graphical_Abstract/Graphical_Abstract.pdf` | 74,540 | `39429eded22087434795a8212e8c7192f2a37fca11002c85fd2c9ee8983e7742` | Graphical abstract, vector PDF |

@@ -567,6 +567,7 @@ Complete model outputs at every step are collected in the supplementary tables a
 | `05_response/Response_to_Reviewers.docx` | 63,770 → **63,730** | `da032f68a5f3c79f71aa04e7c0d5e4cfe0cc29709d5355ed072152bf9abd9223` → `ac860045b799e89d1f1c11078832c023064c134684dd3fa1f4e0f3aac6a93dfc` | docxenv 重建；verify_response.py EXIT=0 |
 | `05_response/COVERAGE_CHECK.md` | 37,311 → **37,422** | `4c861e24d1d7c769030bd3f75299e5f9c176f1833d9603b27f1a7a0269d678f4` → `18054935cc0fb6b0a3128da9a1273225010873c6e88be64ede94cfb983248a32` | 三处 R2-C1 句长数值同步 |
 | `QC/quality_gates_log.md` | 20,109 → **22,066** | `abe235fee0855fdaf0a16cc0dcbcca5bf3740b8f8368d3b705fb94d16748988d` → `e1799e79dfb635b95db1c075cd33e66f5d575e8c60450e62aefb3bcbe46cc3f7` | 追加「拆句轮更新（2026-10-15）」小节（append-only） |
+| `05_response/ANCHOR_INVENTORY.tsv` | 85,776 → **85,834** | `3b6b5a631f72fce0aada6e21946d8aef2421293f20587e1036cc236fcbf123fc` → `26f2625ea6595f59d15a6c9d6a8b0502f63bcb518010877c0058e974c4a05979` | 重生（`anchor_inventory.py`）：176 行中**仅** Results ¶1 的 `full_text` 行变化，cols 1–5（file/section/kind/¶/首8词）**逐行不变** |
 
 > `00_pinned/PINNED_PACK_CORRECTIONS.md`（本文件）与 `QC/FINAL_MANIFEST.md` 为**自指件**：
 > 本文件同时是 `code.zip::code/PINNED_PACK_CORRECTIONS.md` 与
