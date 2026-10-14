@@ -31,12 +31,15 @@ Availability*: the same tree is deposited as `06_compliance/deposit/code.zip` (s
 | `README_CODE.md` | This file (also shipped as `code/README_CODE.md` inside `code.zip`). |
 
 Files that the round-trip needs but that live with the submission package rather than in this
-directory, because they render package deliverables from the manuscript markdown:
-`V3/QC/make_revision_docx.py` (builds `HLA_LOH02_revision_CLEAN.docx` and
+directory, because they render package deliverables from the manuscript markdown or operate on the
+deposit archives: `V3/QC/make_revision_docx.py` (builds `HLA_LOH02_revision_CLEAN.docx` and
 `HLA_LOH02_revision_MARKED.docx` from `V3/01_manuscript/*.md`),
 `V3/05_response/build_response_docx.py` (response letter), `V3/07_cover/build_cover_docx.py`
-(cover letter). They are not members of `code.zip`; §3 records the interpreter they must be run
-with.
+(cover letter), and — as submission-package tooling — `V3/QC/tools/surgical_zip.py` (replace
+individual archive members without recompressing the rest) and `V3/QC/tools/fill_doi.py`
+(one-click, idempotent back-fill of the single `[DOI-PENDING-ZENODO]` placeholder in all nine
+delivery positions, with `--dry-run`; see `V3/QC/DOI_FILLIN_CHECKLIST.md`). None of them is a member
+of `code.zip`; §3 records the interpreter the DOCX builders must be run with.
 
 ## 2. Order of execution
 
