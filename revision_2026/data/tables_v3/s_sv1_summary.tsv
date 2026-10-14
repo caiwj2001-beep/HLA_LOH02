@@ -1,0 +1,9 @@
+item	value
+SV rows (gene-level rearrangement calls)	15811
+Samples with ≥1 SV call	12502
+Cohort fraction with ≥1 SV call (%)	23
+SV calls/sample: median	1
+SV calls/sample: mean	1.26
+SV calls/sample: maximum	6
+Distinct partner-gene combinations	5211
+Rows carrying a numeric SV_Length	15811

@@ -1,0 +1,5 @@
+model	term	OR	lo	hi	P	term_label
+distal (multivariable)	WGDTRUE	2.29503212616247	2.16438676062192	2.43356342588436	7.2705685167243e-170	WGD (distal)
+distal (multivariable)	germ_hom_anyTRUE	0.745519271387365	0.691684430426091	0.803544159100943	1.59474695727617e-14	Germline HLA homozygosity (distal)
+distal (multivariable)	logTMB	1.45430042043694	1.35123744458287	1.56522432187036	1.7417291742686e-23	log10 TMB (distal)
+proximal	arm_6p_loss	18.4780069101268	17.1600932053351	19.897137811847	0	6p arm loss (proximal, near-definitional)

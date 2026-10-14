@@ -1,0 +1,31 @@
+LICENSE-DATA
+============
+
+The DERIVED DATA in this repository — every file under `revision_2026/data/`
+(the derived tables, the figure source data, the number dictionary and the data
+dictionary README_DATA.md) — is released under the
+
+    Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International
+    (CC BY-NC-ND 4.0)
+
+licence:  https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+This is the same licence as the upstream cohort from which the data were derived
+(cBioPortal study `msk_impact_50k_2026`, Bandlamudi et al., Cancer Cell 2026,
+PMID 41895280), and it is applied here so that the Derived Data is passed on
+under terms no more permissive than the source.
+
+You are free to:
+  Share — copy and redistribute the material in any medium or format,
+for non-commercial purposes only, provided that:
+  - you give appropriate credit and link to this licence;
+  - you do NOT use the material for commercial purposes;
+  - if you remix, transform or build upon the material, you may NOT distribute
+    the modified material.
+
+THE CODE IS NOT COVERED BY THIS LICENCE. All scripts (including everything under
+`revision_2026/code/`) are released under the MIT licence — see `LICENSE`.
+
+RAW AND SAMPLE-LEVEL DATA ARE NOT REDISTRIBUTED. Nothing derived at the level of
+an individual tumour sample is included; obtain the raw data directly from
+cBioPortal under the terms stated there.

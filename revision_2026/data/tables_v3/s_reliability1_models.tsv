@@ -1,0 +1,5 @@
+term	OR	lo	hi	P	term_label	OR_CI	P_fmt	PINNED_ref	source
+pur_pct	1.55607127893987	1.49132804542002	1.62362521953352	1.93279194863369e-92	Purity, per −10%	1.56 (1.49–1.62)	<0.001	1.56 (1.50-1.62), P=3.3e-98	independently recomputed in 01_build_tables_V3.R; PINNED reference = V2/r3p4 (same cohort, n=5,805)
+cov	0.767038630092209	0.738350869210911	0.796841020425034	2.40240664612821e-42	Coverage, per +100×	0.77 (0.74–0.80)	<0.001	0.77 (0.74-0.80), P=3.2e-42	independently recomputed in 01_build_tables_V3.R; PINNED reference = V2/r3p4 (same cohort, n=5,805)
+panel_fIMPACT505	0.297905879673742	0.226195650742331	0.392350219170582	6.7456492708544e-18	IMPACT505 vs IMPACT410 panel	0.30 (0.23–0.39)	<0.001	0.30 (0.23-0.40)	independently recomputed in 01_build_tables_V3.R; PINNED reference = V2/r3p4 (same cohort, n=5,805)
+wgd_fTRUE	0.090964663225297	0.076483362102702	0.108187842796197	1.04918885029275e-161	Whole-genome doubling	0.09 (0.08–0.11)	<0.001	0.09 (0.08-0.11), P=1.9e-163	independently recomputed in 01_build_tables_V3.R; PINNED reference = V2/r3p4 (same cohort, n=5,805)

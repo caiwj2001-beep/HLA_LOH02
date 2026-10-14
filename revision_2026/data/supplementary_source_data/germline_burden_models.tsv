@@ -1,0 +1,3 @@
+Model	OR_per_homoz_locus	CI_low	CI_high	P
+Unadjusted	0.812	0.768	0.858	1.94499654326521e-13
+Adjusted (TMB, WGD, age, sex, cancer)	0.79	0.745	0.838	3.75233806425848e-15

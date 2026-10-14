@@ -33,3 +33,40 @@ renv/lock/
 renv/python/
 renv/sandbox/
 renv/staging/
+
+# ---------------------------------------------------------------------------
+# Added for the iScience revision (2026) — revision_2026/
+# ---------------------------------------------------------------------------
+
+# Intermediate R binaries and workspace dumps (never committed)
+*.rds
+*.RData
+*.rda
+*.rda.bak
+.Rhistory
+.RData
+
+# Stray R session plot dump
+Rplots.pdf
+
+# Debug / scratch scripts that must not ship
+revision_2026/code/figures/_p17.R
+revision_2026/code/figures/1960
+
+# Tool staging and intermediate build products
+.tools/
+_stage/
+_stage_code/
+**/_stage/
+**/_stage_code/
+**/_smoke/
+
+# Large binary figure deliverables (TIFF/PDF are produced by the figure scripts, not committed)
+*.tiff
+*.TIFF
+
+# OS / editor noise
+.DS_Store
+._*
+Thumbs.db
+desktop.ini

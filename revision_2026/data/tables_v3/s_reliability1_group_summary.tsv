@@ -1,0 +1,4 @@
+group	n	facets_purity_pct_median	pathologist_purity_pct_median	coverage_median	ploidy_median	aneuploidy_median	wgd_pct	pct_purity_lt30
+No_LOH	22245	46	40	626	2.2	0.27	23.1	26.15
+Arm_independent	1644	34	30	579	2.2	0.351	14.1	41.83
+Arm_dependent	4161	48	40	624	2.5	0.793	54.4	16.23

@@ -1,0 +1,17 @@
+Metric,Value
+Total tumor samples,54331
+Unique patients,48179
+Cancer types,64
+HLA data available,29799
+HLA-A LOH rate,19.1%
+HLA-B LOH rate,16.2%
+HLA-C LOH rate,17.3%
+Any HLA LOH rate,25.3% (n=7554)
+3-locus LOH rate,10.4%
+Median TMB (LOH+),4.39
+Median TMB (LOH-),3.51
+WGD rate (LOH+),43.7%
+WGD rate (LOH-),23.1%
+Cox univariate HR,0.213 [0.153-0.272]
+Cox multivariate HR,1.168 [1.099-1.242]
+MSI-H rate,0.0%

@@ -1,0 +1,16 @@
+netMHCpan-4.2e  (primary neoantigen predictor)
+
+- Tool: netMHCpan-4.2e, DTU Health Tech. Not redistributed (licensed software).
+- Binding call used in the analysis: %Rank_EL <= 2 %.
+- Run environment: VirtualBox virtual machine "netmhcpan", headless, 4 vCPU / 8 GB RAM.
+  The host only orchestrates, mirrors files and monitors progress; the predictor runs in the guest.
+- Scale: 26,092 tumours, 191 HLA alleles, 15,518,931 (allele, peptide) pairs.
+  Every input row produced one output row (zero rows dropped).
+- Drivers in this repository: revision_2026/code/neoantigen/
+    04_build_netmhcpan_input.py      build the per-allele peptide lists
+    05_build_netmhcpan_predictions.py    parse predictions (pilot)
+    07_build_netmhcpan_predictions_full.py   parse predictions (full cohort)
+    run_netmhcpan_full_host.sh       host-side orchestration with resume
+    vm_full_runner.sh                guest-side runner (idempotent; skips completed alleles)
+- Secondary / consistency: MHCflurry 2.3.14 (see python_versions.txt); agreement between the two
+  predictors is documented in neoantigen/09_consistency_full_overlap.py.

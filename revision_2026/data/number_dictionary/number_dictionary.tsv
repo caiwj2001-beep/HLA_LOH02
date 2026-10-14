@@ -1,0 +1,81 @@
+variable_id	locked_value	verification	verified_at
+Table1 N intact	22245	matches recomputation	PINNED_PACK.md section 2
+Table1 N LOH	7554	matches recomputation	PINNED_PACK.md section 2
+Table1 aneuploidy median intact	0.27	matches recomputation	PINNED_PACK.md section 2
+Table1 WGD intact %	23.1	matches recomputation	PINNED_PACK.md section 2
+Table1 WGD LOH %	43.7	matches recomputation	PINNED_PACK.md section 2
+Table1 6p loss LOH %	71.7	matches recomputation	PINNED_PACK.md section 2
+Table1 TMB medians	3.51 4.39	matches recomputation	PINNED_PACK.md section 2
+Table2 WGD distal OR	2.3	matches recomputation	PINNED_PACK.md section 2
+Table2 germline distal OR	0.75	matches recomputation	PINNED_PACK.md section 2
+Table2 logTMB distal OR	1.45	matches recomputation	PINNED_PACK.md section 2
+Table2 6p proximal OR	18.5	matches recomputation	PINNED_PACK.md section 2
+Table2 aneuploidy per-SD OR (PINNED spec)	3.106	matches recomputation	PINNED_PACK.md section 2
+Table2 aneuploidy per-SD OR unadjusted	2.155	matches recomputation	PINNED_PACK.md section 2
+Table3 n	27368	matches recomputation	PINNED_PACK.md section 2
+Table3 deaths	10101	matches recomputation	PINNED_PACK.md section 2
+Table3 unadjusted HR	1.212	matches recomputation	PINNED_PACK.md section 2
+Table3 adjusted HR	1.062	matches recomputation	PINNED_PACK.md section 2
+Table3 +aneuploidy (incl 6p) HR	0.938	matches recomputation	PINNED_PACK.md section 2
+Table3 excl 6p HR	0.946	matches recomputation	PINNED_PACK.md section 2
+Table3 excl 6p6q HR	0.952	matches recomputation	PINNED_PACK.md section 2
+Table3 aneuploidy HR per unit	2.686	matches recomputation	PINNED_PACK.md section 2
+S-aneuploidy1 N	29407	matches recomputation	PINNED_PACK.md section 2
+S-aneuploidy1 M0 OR	1.568	matches recomputation	PINNED_PACK.md section 2
+S-aneuploidy1 +aneu(all) OR	1.238	matches recomputation	PINNED_PACK.md section 2
+S-aneuploidy1 excl6p OR	1.25	matches recomputation	PINNED_PACK.md section 2
+S-aneuploidy1 excl6p6q OR	1.256	matches recomputation	PINNED_PACK.md section 2
+S-aneuploidy1 Q1 OR	1.71	matches recomputation	PINNED_PACK.md section 2
+S-aneuploidy1 Q2 OR	1.187	matches recomputation	PINNED_PACK.md section 2
+S-aneuploidy1 Q3 OR	1.104	matches recomputation	PINNED_PACK.md section 2
+S-aneuploidy1 Q3 P	0.0995	matches recomputation	PINNED_PACK.md section 2
+S-arm1 n arms	41	matches recomputation	PINNED_PACK.md section 2
+S-arm1 first arm	17p	matches recomputation	PINNED_PACK.md section 2
+S-arm1 6p rank	26	matches recomputation	PINNED_PACK.md section 2
+S-reliability1 purity per -10% OR	1.56	matches recomputation	PINNED_PACK.md section 2
+S-reliability1 coverage per +100x OR	0.77	matches recomputation	PINNED_PACK.md section 2
+S-reliability1 IMPACT505 vs 410 OR	0.3	matches recomputation	PINNED_PACK.md section 2
+S-reliability1 decile D1 %	60.3	matches recomputation	PINNED_PACK.md section 2
+S-reliability1 decile D10 %	11.3	matches recomputation	PINNED_PACK.md section 2
+S-neo1 primary count OR	1.064	matches recomputation	PINNED_PACK.md section 2
+S-neo1 per-Mb OR	1.062	matches recomputation	PINNED_PACK.md section 2
+S-neo1 per-mutation OR	1.065	matches recomputation	PINNED_PACK.md section 2
+S-neo1 rho vs TMB	0.705	matches recomputation	PINNED_PACK.md section 2
+S-neo1 median neo LOH-	6	matches recomputation	PINNED_PACK.md section 2
+S-neo1 median neo LOH+	7	matches recomputation	PINNED_PACK.md section 2
+S-neo2 all loci OR	1.0078	matches recomputation	PINNED_PACK.md section 2
+S-neo2 all loci P	0.33	matches recomputation	PINNED_PACK.md section 2
+S-neo2 HLA-A OR	1.016	matches recomputation	PINNED_PACK.md section 2
+S-neo2 HLA-B OR	1.003	matches recomputation	PINNED_PACK.md section 2
+S-neo2 HLA-C OR	1.003	matches recomputation	PINNED_PACK.md section 2
+S-neo2 purity>=50% OR	1.019	matches recomputation	PINNED_PACK.md section 2
+S-neo2 clonal-only OR	1.024	matches recomputation	PINNED_PACK.md section 2
+S-neo2 pairs	14157	matches recomputation	PINNED_PACK.md section 2
+S-neo2 samples	6817	matches recomputation	PINNED_PACK.md section 2
+S-neo2 homozygous excluded	1305	matches recomputation	PINNED_PACK.md section 2
+S-neo2 frac lost>kept all loci	0.506	matches recomputation	PINNED_PACK.md section 2
+S-neo2 frac lost>kept clonal	0.518	matches recomputation	PINNED_PACK.md section 2
+S-neo2 ties clonal	2484	matches recomputation	PINNED_PACK.md section 2
+S-neo2 sign test P	0.247	matches recomputation	PINNED_PACK.md section 2
+S-sv1 rows	15811	matches recomputation	PINNED_PACK.md section 2
+S-sv1 samples	12502	matches recomputation	PINNED_PACK.md section 2
+S-sv1 DELETION	6225	matches recomputation	PINNED_PACK.md section 2
+S-sv1 INVERSION	3738	matches recomputation	PINNED_PACK.md section 2
+S-sv1 TRANSLOCATION	3644	matches recomputation	PINNED_PACK.md section 2
+S-sv1 DUPLICATION	2203	matches recomputation	PINNED_PACK.md section 2
+S-sv1 INSERTION	1	matches recomputation	PINNED_PACK.md section 2
+S-sv1 median calls/sample	1	matches recomputation	PINNED_PACK.md section 2
+S1 cancer types	29	matches recomputation	PINNED_PACK.md section 2
+S1 overall freq (cohort)	25.3	matches recomputation	PINNED_PACK.md section 2
+S2 significant cancer types (FDR<0.05)	11	matches recomputation	PINNED_PACK.md section 2
+S3 APOBEC adj OR	1.035	matches recomputation	PINNED_PACK.md section 2
+S3 smoking adj OR	1.035	matches recomputation	PINNED_PACK.md section 2
+S4 cancer types (n>=100)	21	matches recomputation	PINNED_PACK.md section 2
+S5 restricted cohort %	82.3	matches recomputation	PINNED_PACK.md section 2
+S6 ACME	0.263	matches recomputation	PINNED_PACK.md section 2
+S6 ADE	-0.089	matches recomputation	PINNED_PACK.md section 2
+S7 homozygous evaluable % (all loci)	0	matches recomputation	PINNED_PACK.md section 2
+S7 het evaluable % HLA-A	59.8	matches recomputation	PINNED_PACK.md section 2
+S7 LOH% burden=0	26.2	matches recomputation	PINNED_PACK.md section 2
+S7 LOH% burden=2	19.3	matches recomputation	PINNED_PACK.md section 2
+S7 adjusted OR	0.79	matches recomputation	PINNED_PACK.md section 2

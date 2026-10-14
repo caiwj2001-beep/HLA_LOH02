@@ -1,0 +1,11 @@
+R environment lock (sessionInfo-derived)
+R version 4.6.1 (2026-06-24 ucrt)
+data.table 1.18.4
+survival 3.8-6
+boot 1.3-32
+readxl 1.5.0
+
+Packages used by 01_build_tables_V3.R: data.table, survival
+Also present in the original session: boot, readxl
+
+Figure scripts additionally use ggplot2 (see repository root renv.lock for the v1 dependency set).

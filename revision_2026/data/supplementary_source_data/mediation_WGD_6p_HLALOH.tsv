@@ -1,0 +1,5 @@
+Quantity	Estimate	CI_low	CI_high
+ACME (indirect, via 6p)	0.2627	0.2529	0.2704
+ADE (direct)	-0.0889	-0.0944	-0.081
+Total effect	0.1737	0.1606	0.1866
+Proportion mediated	1.5118	1.4313	1.5849

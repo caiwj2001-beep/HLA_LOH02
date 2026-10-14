@@ -1,0 +1,6 @@
+item	detail
+Annotation granularity	Gene-level rearrangement calls only (Site1_Hugo_Symbol / Site2_Hugo_Symbol + Class); junctions are not reported base-pair-resolved for most rows
+Calls per sample	Median 1 (maximum 6) across the 12502 samples carrying any call; 77.0% of the 50K cohort has no SV call at all
+Distinct partner-gene combinations	5211 combinations across 15811 calls — highly heterogeneous, so per-class counts are dominated by singletons
+Read support reported	Paired-end and split-read support plus confidence class are given, but no copy-number-neutral/double-minute or clustered-junction annotation
+Usable for COSMIC SV signature decomposition?	No. Signature-level SV analysis needs base-pair-resolved junctions and an appreciable number of calls per tumour; with a median of 1 gene-level call per sample and 76.9% of samples empty, COSMIC SV (rearrangement) signature fitting is not identifiable in this table. We therefore report SV class burden only, as evidence of why that analysis is not feasible, and as an association with HLA LOH.

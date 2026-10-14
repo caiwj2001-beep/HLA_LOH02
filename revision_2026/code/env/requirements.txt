@@ -1,0 +1,3 @@
+# Python 3.12.13 (used only to render DOCX/PDF; no statistics)
+python-docx==1.2.0
+pypdf==6.20.1

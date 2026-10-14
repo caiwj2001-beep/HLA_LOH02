@@ -1,0 +1,10 @@
+item	value
+Cohort with neoantigen predictions	26092
+Distinct HLA class I alleles scored	191
+(allele, peptide) pairs scored	15518931
+Median panel size (Mb)	1.14
+Median coding mutations per sample	5
+Spearman rho neoantigen count vs TMB	0.704632150615597
+Spearman rho neoantigen count vs coding mutations	0.708066025309012
+Median neoantigens per sample, HLA-LOH−	6
+Median neoantigens per sample, HLA-LOH+	7

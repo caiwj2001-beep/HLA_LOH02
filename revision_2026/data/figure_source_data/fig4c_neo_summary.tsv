@@ -1,0 +1,8 @@
+item	value	n
+Samples with more binders on the LOST allele (all loci, ties excluded)	0.506329113924051	6817
+Samples with more binders on the LOST allele (clonal only, ties excluded)	0.517655204246481	6817
+Samples with more binders on the KEPT allele (all loci, ties excluded)	0.493670886075949	6817
+median neoantigens, HLA LOH-	6	19275
+median neoantigens, HLA LOH+	7	6817
+ties (all loci)	1524	6817
+ties (clonal only)	2484	6817

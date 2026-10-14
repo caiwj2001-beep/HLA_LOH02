@@ -1,0 +1,7 @@
+item	value	n	source
+Samples with more binders on the LOST allele (all loci, ties excluded)	2680	6817	B_sample_level_fraction.json
+Samples with more binders on the KEPT allele (all loci, ties excluded)	2613	6817	B_sample_level_fraction.json
+Ties (all loci)	1524	6817	B_sample_level_fraction.json
+Ties (clonal only)	2484	6817	C_pairs_clonal_only.tsv
+Fraction lost>kept, ties excluded (all loci)	0.506329113924051	6817	B_sample_level_fraction.json
+Fraction lost>kept, ties excluded (clonal only)	0.517655204246481	6817	C_pairs_clonal_only.tsv

@@ -1,0 +1,4 @@
+model	McFadden_R2	AUC	source
+Technical only (purity + coverage + panel)	0.0926	0.706	V2/r3p4_step3.log
+Full (+ cancer type + WGD)	0.2668	0.8367	V2/r3p4_step3.log
+Biological only (cancer type + WGD)	0.192	0.7668	V2/r3p4_step3.log
