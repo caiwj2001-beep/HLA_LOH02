@@ -405,3 +405,104 @@ Results **+5**（`chromosome-6`、`6p`、`6q`、`chromosome-6p`×2）、Discussi
    依"统计量零改动"约束**未重生该表**（其数值为脚本实测、重生会使表内数字变动）。如需一致，
    在 `01_manuscript/` 内依次运行 `python sentence_stats.py after` 与 `python make_sentence_stats_md.py`
    即可，但**会改动该交付物内的统计数字**，故留待作者决定。
+
+---
+
+## (vii) 收尾四项瑕疵的整改与终稿重验 —— 2026-10-15（终稿状态 v2）
+
+**授权**：本任务「四个收尾瑕疵」。**范围硬约束**：不改任何科学数字/结论/图表；不增删段落
+（`05_response/verify_anchors.py` 复验 28/28 锚点命中 md 与两版 DOCX）；只做**字词**与
+**QC 度量/报告**层面的修正。
+
+### (vii.1) 均句长与回复信 R2-C1 对齐（A）
+
+`01_manuscript/SENTENCE_STATS.md` 在 §(vi) 之前即已陈旧（其 "after" Results = 2077 词，而现行
+`06_Results.md` 为 2205 词）。本轮按「以脚本对**现行字节**重测为准」重生该表，并把回复信 R2-C1
+段内引用的数字逐项改为实测值。实测（`01_manuscript/sentence_stats.py after`）：
+
+| 节 | total_words (`wc -w`) | prose_words | 句数 | 平均句长 | 最长句 | >45 词句数 | >40 词句数 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Introduction | 763 → **669** | 761 → **667** | 21 → **32** | 36.24 → **20.84** | 79 → **38** | 8 → **0** | 10 → **0** |
+| Results | 2205 → **2205** | 2117 → **2117** | 64 → **85** | 33.08 → **24.91** | 71 → **98** | 14 → **1** | 21 → **4** |
+| Discussion | 1676 → **1448** | 1674 → **1446** | 55 → **65** | 30.44 → **22.25** | 63 → **44** | 8 → **0** | 14 → **2** |
+| **合计** | **4644 → 4322** | 4552 → **4230** | 140 → **182** | 32.51 → **23.24** | — | **30 → 1** | — |
+
+回复信 `R2-C1` 的改动（**仅改数字 token，加一处为保真所需的定语**）：Discussion 平均句长
+**22.28 → 22.25**；三节合计 **22.67 → 23.24**；句数 **181 → 182**；三节总词数
+**4,196 → 4,322**；>45 词句数 **0 → 1**（见下）。重生后的 `SENTENCE_STATS.md` 首行标注
+「数值口径：基于 v2 终稿重测（含本次词级修正）」。
+
+**两条如实说明的偏差（不美化）**：
+
+1. **>45 词句数实测为 1，不是 0。** 唯一残留句是 Results 首段的补充表索引句（98 词：
+   *"Complete model outputs at every step are collected in the supplementary tables and are indexed
+   as follows: … (Table S13)."*）。该句是拆句轮之后为回填 Table S1–S13 引用而新增的（+128 词），
+   它同时是 Results 回到 2205 词、三节总词数 4,322 词**高于 4,200 目标 122 词**的唯一原因。
+   因本轮**禁止改动正文**（保 28 锚点、不增删段落、不动任何数字），故**未拆此句**，而是把回复信该句
+   由 `No sentence … exceeds 45 words` 改为如实表述 `One sentence … exceeds 45 words — the 98-word
+   sentence that indexes the supplementary tables in the first Results paragraph`，并在
+   `SENTENCE_STATS.md` §1 的达标判定中对两项未达标判据**如实标 ✘ 并注明原因**（原生成器对这两项
+   恒打 ✔）。**是否拆句留待作者决定**：拆该句是纯字词操作（不改任何数字、结论、图），拆后 >45 词句数
+   归 0、三节总词数不变，但需同步重建两版 manuscript DOCX 并重跑门禁。
+2. **`verify_sentence_edit.py` 的数值白名单已扩充**（属 QC 度量层修正，非放宽统计量校验）：新增
+   token `1…13`（Table S1–S13 的**表号标签**）与 `6`（chromosome-6 / 6p / 6q **染色体标识符**）
+   来自 §(vi) 的臂口径修正与补充表引用回填。扩充后该脚本
+   `=== RESULT: ALL CONSERVED ===`（EXIT=0，原始输出 `01_manuscript/_verify_out.txt`）；
+   对统计量仍**零删除**（`number tokens REMOVED = {}`），C1/C2/C3 判定逻辑未动。
+
+### (vii.2) 存交包与仓库的 `README_CODE.md` 统一（B）
+
+| | 路径 | 字节 | sha256 | 行尾 |
+|---|---|---:|---|---|
+| 旧（存交包） | `code.zip → code/README_CODE.md` | 1,882 | `6a2d3b0a98919ec616a0290193871035862e96bff621513e18333a3d7f6f9845` | CRLF |
+| 旧（仓库） | `revision_2026/code/README_CODE.md` | 9,194 | `63c11a3ec0b44111cf82dcfbd5ba1a7a2d734b6bb6ad57a8c5328fc870f82591` | LF |
+| **新（两处同字节）** | 同上两处 | **18,377** | **`ff6f297465426e569db5e3b1fb42cb0d6f9d345c43ccf5470579c83901b89875`** | LF |
+
+新版是**一份囊括两者**的完整版：运行顺序、依赖、解释器与版本、**docxenv DOCX 构建器与证据**、
+固定抖动种子、图号重编指引、**字节保真事实与验证命令**、产物 sha256 索引（14 图件 + 两版
+manuscript DOCX + 回复信/封面/KRT/三表/补充 PDF/GA + `derived_data.zip` + 数字字典；`code.zip`
+自指，故其摘要记录在 `QC/FINAL_MANIFEST.md`）。
+
+- **生成源同改**：`.tools/assemble_deposit.py` 内的模板字面量已替换为同一份内容，并把该文件的
+  `open(…, "w", encoding="utf-8")` 改为 `newline=""`（否则渲染成 CRLF，与仓库件不同字节）。
+  已用 `ast` 取出模板字面量并与仓库件逐字节比对：`generator literal == repo bytes : True`。
+- **成员一致性（机械核验）**：`code.zip` 9 + `derived_data.zip` 91 = **100 成员，100/100** 与仓库树中
+  某个文件**逐字节相同**（新增 `revision_2026/code/tools/check_repo_vs_zip.py`，EXIT=0，原始输出
+  `QC/_b4_repo_vs_zip.txt`）。修复前为 99/100，唯一例外即本文件。
+- `code.zip`：**62,088 B / `86e6adb8074f4c4ba4600fef269de556cfdad5a0be456fb6b2773c51c35bbe6a`**
+  → **（见 `QC/FINAL_MANIFEST.md` 的最终值）**；外科式重建（其余成员原始局部记录逐字节搬运，
+  成员表与顺序不变），明细 `QC/_b4_zip_swaps.json`，算法与验收在 `QC/tools/surgical_zip.py`。
+
+### (vii.3) DOCX 解释器依赖的复证（C）
+
+以**现行** `01_manuscript/*.md` 分别用两个解释器重建两版 manuscript（`QC/make_revision_docx.py`；
+高亮/行号逻辑未改，`highlighted paragraphs 118/174`、`marked highlight runs 218`、`clean 0` 三值
+两解释器完全一致）：
+
+| 构建解释器 | CLEAN | MARKED |
+|---|---:|---:|
+| **`.tools/docxenv/Scripts/python.exe`，CPython 3.12.13 + python-docx 1.2.0**（正确） | **62,632 B**（== 交付件） | **62,934 B**（== 交付件） |
+| 系统 CPython 3.14.7 | 61,381 B | 61,678 B |
+
+**并如实修正 §(vi.6) 第 1 条的一处表述**：该条写「用 docxenv 从改动前 markdown 重跑可得到
+**逐字节**等于旧件的结果」。实测**不成立**——`python-docx` 会给每个 zip 成员写入构建时刻的本地
+时间戳，因此同一解释器连续两次构建得到的是**成员内容完全相同、文件大小相同、整文件 sha256 不同**
+的 DOCX（已实测两次构建 D1 ≠ D2，而两者逐成员 CRC 与解压后 sha256 全等，也与交付件全等）。
+正确的可复现口径是：**成员级内容可复现 + 文件大小可复现；整文件 sha256 不可复现**。
+方法与逐成员比对脚本见 `revision_2026/code/README_CODE.md` §3（并已同步进根 README 的 v2 节）。
+
+### (vii.4) 一键 DOI 回填工具（D，本轮只交付工具、未填 DOI）
+
+新增 `QC/tools/fill_doi.py`（幂等、支持 `--dry-run`、遇到槽位不是 `[DOI-PENDING-ZENODO]` 时
+非 0 退出）。按 `QC/DOI_FILLIN_CHECKLIST.md` 的 **9 个真回填位**逐位替换，随后自动：用 docxenv
+重建两版 manuscript DOCX 与 KRT/Cover/回复信 DOCX → 外科式重建两个 zip → 重跑验证电池
+（锚点 28/28、markdown 残留 0、G2 首现序、回复信校验）→ 打印逐位 diff 与新 sha256 →
+重生 `QC/FINAL_MANIFEST.md`。**本轮只跑 `--dry-run`**（未写入任何交付物），完整输出见
+`QC/_fill_doi_dryrun.out`。真实 DOI 待用户在 Zenodo 发布后提供。
+
+### (vii.5) 终稿重验与清单重生（E）
+
+`QC/FINAL_MANIFEST.md` 已按本轮终稿状态重生。四项独立复验的原始输出：
+锚点与回复信 `05_response/_rerun_verify_anchors_out.txt`、`05_response/_rerun_verify_response_out.txt`；
+markdown 残留与 G2 首现序 `QC/_final_rerun_all.log`；句数守恒 `01_manuscript/_verify_out.txt`；
+仓库↔存交包成员一致性 `QC/_b4_repo_vs_zip.txt`。

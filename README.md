@@ -130,3 +130,48 @@ Until the article is published, please cite the manuscript number together with 
    `revision_2026/code/requirements.txt`; `revision_2026/env/` lists the prediction-tool versions.
 3. Run `revision_2026/code/build_tables/01_build_tables_V3.R`; it recomputes every reported number
    and asserts each against the locked number dictionary, exiting non-zero on any mismatch.
+4. Render the deliverables with the pinned DOCX interpreter (step 3 below); `python` and
+   `.tools/docxenv/Scripts/python.exe` are **not** interchangeable for DOCX output.
+
+### Environment, determinism and byte fidelity
+
+**Interpreters.** All statistical analysis and every figure: **R 4.6.1** (locks in
+`revision_2026/code/env/env_lock_R.txt`). Every DOCX delivered with this revision (both manuscripts,
+the response letter, the cover letter, the Key Resources Table, Tables 1–3 and the supplementary
+tables) must be rendered with **`<ROOT>/.tools/docxenv/Scripts/python.exe` — CPython 3.12.13,
+`python-docx` 1.2.0**. `python-docx` writes a different OOXML container under other CPython builds,
+so the same markdown rendered with system CPython 3.14.7 gives *the same text in different bytes*
+(61,381 B / 61,678 B for the two manuscripts, against the shipped 62,632 B / 62,934 B). Rendered
+with 3.12.13, all 17 OOXML members of each manuscript DOCX are content-identical to the shipped
+file. Whole-file sha256 is still not reproducible because `python-docx` stamps each zip entry with
+the build's wall-clock time — compare member content, not the file hash. Details and the comparison
+snippet: `revision_2026/code/README_CODE.md` §3.
+
+**Deterministic figures.** `geom_jitter()` is now seeded: `JITTER_SEED_FIG3 = 20261015L`
+(`code/figures/30_fig3.R`) and `JITTER_SEED_FIGS1 = 20261016L` (`code/figures/60_figS1.R`), applied
+immediately before the jittered layer. They pin only the sub-pixel scatter offset: two consecutive
+runs give byte-identical TIFFs, and the PDFs differ only in `/CreationDate` (0 pixels after
+rasterisation). Evidence: the submission package's `QC/seed_determinism/`.
+
+**Byte fidelity — repository bytes == deposit bytes.** The package advertises this repository as a
+byte-reproducible snapshot of `code.zip` / `derived_data.zip`, so the repository must store the same
+**bytes**, not just the same text. `.gitattributes` therefore contains `* -text`, which disables all
+text/EOL conversion for every path, present and future. Verified: **all 100 archive members**
+(`code.zip` 9 + `derived_data.zip` 91) are byte-identical to a file in this repository.
+
+```bash
+# the two bytes sources must agree, member by member
+git cat-file blob HEAD:revision_2026/data/tables_v3/table3_survival.tsv | sha256sum
+unzip -p 06_compliance/deposit/derived_data.zip derived_data/tables_v3/table3_survival.tsv | sha256sum
+
+# or check every member of both archives at once (exit 0 iff 100/100 match)
+python revision_2026/code/tools/check_repo_vs_zip.py --repo revision_2026 \
+    <package>/06_compliance/deposit/code.zip \
+    <package>/06_compliance/deposit/derived_data.zip
+```
+
+**Digest index.** sha256 for the seven figure files (TIFF and PDF), the two manuscript DOCX, the
+response/cover/KRT DOCX, the supplementary PDF, the graphical abstract, `derived_data.zip` and the
+number dictionary live in `revision_2026/code/README_CODE.md` §7. `code.zip`'s own digest is
+deliberately not listed there — the archive contains that file, so the value is recorded in the
+submission package's `QC/FINAL_MANIFEST.md` instead.
