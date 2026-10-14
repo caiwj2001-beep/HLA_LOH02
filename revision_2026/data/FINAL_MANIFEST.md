@@ -1,6 +1,6 @@
 # FINAL_MANIFEST — frozen submission package
 
-Manuscript **ISCIENCE-D-26-09416** (iScience revision) · directory `iscience投稿版本/V3` · generated 2026-10-15 00:47:13
+Manuscript **ISCIENCE-D-26-09416** (iScience revision) · directory `iscience投稿版本/V3` · generated 2026-10-15 01:04:35
 
 Every file below is byte-frozen: `sha256` and `bytes` are of the file as it stands on disk at
 generation time. Figure numbers follow the 2026-10-15 renumbering to first-appearance order
@@ -10,7 +10,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 
 - **files listed: 58**
 - **missing on disk: none**
-- **total bytes: 8229045 (8.2 MB)**
+- **total bytes: 8272604 (8.3 MB)**
 
 ---
 
@@ -19,7 +19,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
 | `00_pinned/PINNED_PACK.md` | 15179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` | The locked number dictionary: the single permitted source of every reported number |
-| `00_pinned/PINNED_PACK_CORRECTIONS.md` | 24969 | `177fb79c10728c8f0a233d879a8dc633ff1535f418621ad8662b8be71afa151b` | Corrections and audit record for the locked pack; §(v) is the authoritative figure-renumbering record |
+| `00_pinned/PINNED_PACK_CORRECTIONS.md` | 34880 | `764b54a3d51ceddf5b6c8643db2859ae9356436d4051ae1edc25fb7de097d53d` | Corrections and audit record for the locked pack; §(v) is the authoritative figure-renumbering record, §(vi) the pre-submission arm-wording / DOI-placeholder / deposit-dictionary fix |
 
 ---
 
@@ -32,18 +32,18 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 | `01_manuscript/03_Highlights.md` | 339 | `df220e033cbaeb61ce57621c6c334ceeaf8e532a19c2dc902a4c2cf4dad6116a` | Highlights (4 bullets, <=85 characters each) |
 | `01_manuscript/04_eTOC.md` | 460 | `d7014957caf6768dafbe8239918f6a25f7348d703614ab9d6d32ecc51f4703c5` | eTOC blurb (one-sentence teaser) |
 | `01_manuscript/05_Introduction.md` | 4729 | `23ba9e85ac73ccede2f2bb830b91941f1a6fcb6422806185cab2ba15b3b9dbfe` | Introduction |
-| `01_manuscript/06_Results.md` | 15088 | `05457ea2d2c5ae6fc2870c80de226c48dbafcdead85145ecd17545fd299916ab` | Results (figure numbers renumbered to first-appearance order) |
-| `01_manuscript/07_Discussion.md` | 9833 | `97de5b2f69f58414eecd5157f8c913a02f4dffb016fb4795391a52e62d9d169a` | Discussion |
-| `01_manuscript/08_StarMethods.md` | 16409 | `118ac396de67248f7771f2e7001c79113beafe9b847c214c7a3d3706536882dd` | STAR Methods (incl. Data and code availability) |
-| `01_manuscript/09_BackMatter.md` | 2410 | `50b6f3676f6c63fa6046111875bbf3af5a5eddc6843308f9ff64758dcaa8f79f` | Back matter (author contributions, declarations, acknowledgements) |
+| `01_manuscript/06_Results.md` | 15081 | `9cae2ebd43b1ade0da5ae292cbdb675759ecc5df80137edcfe72aa867ceac5a7` | Results (figure numbers renumbered to first-appearance order) |
+| `01_manuscript/07_Discussion.md` | 9822 | `4ea1cdbfd6c598ab7d7e9978528509bbd0325fc18d2d5055abe1b8af072f5ec1` | Discussion |
+| `01_manuscript/08_StarMethods.md` | 16381 | `786b074aec19df7982fe0218ea63c4a896f821ced497801b6de680862b3be4cd` | STAR Methods (incl. Data and code availability) |
+| `01_manuscript/09_BackMatter.md` | 2396 | `651f1527d391b26e6d316c3369cdb5b2db52500278520a9cbc94156a85cc3d8e` | Back matter (author contributions, declarations, acknowledgements) |
 | `01_manuscript/10_FigureLegends.md` | 8560 | `80d1c98ef5aa3bdee5a4b2330478eaceba0955d0f71c287062b88c4a3940b713` | Figure legends, Figures 1-5 and S1-S2 (renumbered) |
 | `01_manuscript/11_References.md` | 10482 | `e4da6ae142ee07dfbe0151ae95ac335ce768b4801dff93db8e51bdfb703d8b46` | Reference list |
 | `01_manuscript/11b_FigS2_addition_note.md` | 7382 | `d9ad070318824d6cfcae7f3456fdc45ad054c9784317194200183a32f191859c` | Working note: how Supplementary Figure S2 (now S1, APOBEC) was brought into the reference list; carries a header pointing at CORRECTIONS §(v) |
 | `01_manuscript/REF_VERIFICATION.md` | 13042 | `fd96b89e08d6c1147c85a568363cec4ff5662fdeaf2760d0b4ef09a269963c9d` | Reference verification report (every reference checked against PubMed/Crossref) |
 | `01_manuscript/SENTENCE_STATS.md` | 11073 | `30f3c88bcbfc6222158bd9c3ddce10d9713be0b7586dbe087db27327c3084395` | Sentence-length / readability statistics of the revised manuscript; carries a header pointing at CORRECTIONS §(v) |
 | `01_manuscript/HLA_LOH02_revision_HIGHLIGHT_SUMMARY.md` | 13341 | `aebb09601105df76b2839261c5faa63747718caf1c7391392012ffbd92248b59` | Revision highlight summary (what changed between the reviewed and revised manuscript); header points at CORRECTIONS §(v) |
-| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 62928 | `f77a57180916f353c2052188b432d635279ac54805dd03c8fc75492a58ee47b9` | Revised manuscript with all changes recorded as Word Track Changes |
-| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62624 | `dd786e2185d83153cf619329315410398bff32d0a8b34ab9d40ac5848fdabb8c` | Revised manuscript, clean copy (no markup) — the file the editor typesets from |
+| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 62934 | `7b9e2a691e85971f06826842ee53fcd49a48b90836a66442cf05138631012e42` | Revised manuscript with all changes recorded as Word Track Changes |
+| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62632 | `2f71ddaecf4dd235cd603ae71816f7c33e4ef12e27bd38b6a0e878c52ccc5d2a` | Revised manuscript, clean copy (no markup) — the file the editor typesets from |
 
 ---
 
@@ -93,10 +93,10 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `05_response/Response_to_Reviewers.docx` | 63729 | `c38c0d4030581ea7f03b34ac96d0cf3aba1e8605bcc7716d4938f6fc1f991a7c` | Point-by-point response to all reviewers, anchored to the revised manuscript |
-| `05_response/Response_to_Reviewers.md` | 76332 | `15594abbae25ece9c8d3c3bae6cd533f2394de8d6e16588a8073fba77cef25e3` | Markdown source of the point-by-point response |
+| `05_response/Response_to_Reviewers.docx` | 63730 | `feb64264701916e22cbdcbd30d4245794f97ff601daedc58d681f29e9fa12d71` | Point-by-point response to all reviewers, anchored to the revised manuscript |
+| `05_response/Response_to_Reviewers.md` | 76338 | `431f8d6016de8e21d1c9cc128b7eb46c5af5a1ff6a41775299b489e1863c326e` | Markdown source of the point-by-point response |
 | `05_response/ANCHOR_MAP.tsv` | 3180 | `9ea2fdeb874d37cfe0f0e886a50d316ddba30ed5cd57a14126a942f78f444ce4` | Machine-readable map of every response point to its manuscript anchor |
-| `05_response/ANCHOR_INVENTORY.tsv` | 84849 | `86ff68ac6e87bedcfe1e2513111e363f68effe060f2ee678db9a086b7afb3805` | Inventory of the manuscript sentences the response points cite |
+| `05_response/ANCHOR_INVENTORY.tsv` | 85776 | `3b6b5a631f72fce0aada6e21946d8aef2421293f20587e1036cc236fcbf123fc` | Inventory of the manuscript sentences the response points cite |
 | `05_response/COVERAGE_CHECK.md` | 37311 | `4c861e24d1d7c769030bd3f75299e5f9c176f1833d9603b27f1a7a0269d678f4` | Coverage audit that every reviewer point is answered; header points at CORRECTIONS §(v) |
 
 ---
@@ -107,8 +107,8 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 |---|---:|---|---|
 | `06_compliance/Data_and_Code_Availability.md` | 3745 | `d0df820fe3d1153f845786739a296a97412c103b3c2aa52ad07ab234cb20d3c9` | Data and Code Availability statement (repository URL filled; single Zenodo DOI still [DOI-PENDING-ZENODO]) |
 | `06_compliance/Key_Resources_Table.docx` | 38913 | `abc768438298c6e468ce6c419f7492f9856125b6f65d520d869d7af2beab9c4e` | Key Resources Table (Cell Press requirement); contains no figure or table number tokens |
-| `06_compliance/deposit/code.zip` | 45734 | `8a5d74383337fe58f0d2f7573b750f8956e7406feb7f7f4bb417b20e80c61d8a` | Code deposit: the R analysis script, the DOCX/PDF rendering scripts, the R environment lock and README_CODE.md |
-| `06_compliance/deposit/derived_data.zip` | 599271 | `f23793abd68c12955c23a6bd70a8ba2b5f1243799729c58d220b033f34d48759` | Derived-data deposit: figure source data, supplementary source data, the table build inputs and the number dictionary |
+| `06_compliance/deposit/code.zip` | 62088 | `86e6adb8074f4c4ba4600fef269de556cfdad5a0be456fb6b2773c51c35bbe6a` | Code deposit: the R analysis script, the DOCX/PDF rendering scripts, the R environment lock, requirements.txt, README_CODE.md and the number dictionary (PINNED_PACK.md + PINNED_PACK_CORRECTIONS.md) |
+| `06_compliance/deposit/derived_data.zip` | 615677 | `2d51b6bf980172f922eabca63f0265948534bf176ec0a7f5917f5ce344c731cc` | Derived-data deposit: figure source data, supplementary source data, the table build inputs and the number dictionary |
 | `06_compliance/deposit/README_upload_steps.md` | 3633 | `38f0956b8b39b4f2bf12d57639bd26c5712db0cbb6985ba4cbec74a888786642` | Author-facing upload runbook for the GitHub repository and the Zenodo DOI |
 | `06_compliance/Graphical_Abstract/Graphical_Abstract.tiff` | 463738 | `4ea81270e6ac7ffe737c7d2ceed01c1604991f97357f890cd3f5dca931f41b16` | Graphical abstract, 300 dpi raster (the file uploaded to EM) |
 | `06_compliance/Graphical_Abstract/Graphical_Abstract.pdf` | 74540 | `39429eded22087434795a8212e8c7192f2a37fca11002c85fd2c9ee8983e7742` | Graphical abstract, vector PDF |

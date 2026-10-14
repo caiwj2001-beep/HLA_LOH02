@@ -291,3 +291,117 @@ A 面板散点的平移，图内文字层、图内全部数字、面板 bbox 与
 `docx_media_diff.py` 输出）。同时把此前滞后的 `06_compliance/deposit/code.zip → code/build_tables_docx.py`
 外科式替换为现行版本（只改该 1 个成员，`derived_data.zip` 未重建）；
 见 `QC/_unify_zip_rebuild.json → update_2026-10-15_jitter_seed`。
+
+---
+
+## (vi) 提交前终检三项阻塞的整改（B1 臂口径 / B2 DOI 占位符 / B3 数字字典）—— 2026-10-15
+
+**授权**：`QC/SUBMIT_READINESS_REPORT.md` §0「不可直接投稿：3 项阻塞」。
+**范围硬约束**：本轮**只改字词与占位符字串**——数字、统计量、结论、图表内容**零改动**；段落结构不变
+（`05_response/verify_anchors.py` 28 个锚点未动，见 (vi.5)）。
+
+### (vi.1) 代码事实（全部逐条回读源文件，非引用任何既有报告）
+
+`06_compliance/deposit/code/01_build_tables_V3.R` L56–68：
+
+```
+mkfrac(rep(TRUE, length(arms)), "all")                       # all      = 39 臂
+mkfrac(arms != "6p",            "ex6p")                      # ex6p     = 38 臂（仅排 6p）
+mkfrac(arms != "6q",            "ex6q")                      # ex6q     = 38 臂（仅排 6q）
+mkfrac(!arms %in% c("6p","6q"), "ex6")                       # ex6      = 37 臂（排 6p 与 6q）
+```
+
+原始输出 `QC/build_tables.log` L8–11：`[mkfrac all] arms=39` / `[mkfrac ex6p] arms=38` /
+`[mkfrac ex6q] arms=38` / `[mkfrac ex6] arms=37`。
+数值与规格的对应（`V2/r3p3_step2.log` L62–64；`QC/build_tables.log` L106/108/152–155）：
+
+| 规格 | ρ（Spearman） | 每 SD OR | 其他 |
+|---|---|---|---|
+| `frac_all`（39 臂，含 6p） | 0.3312 | 2.155 | 校正 3.106 |
+| `frac_ex6p`（**仅排 6p**） | 0.3193 | 2.093 | Table 3 排 6p HR **0.946**；S-aneuploidy1 **1.250** |
+| `frac_ex6`（**排 6p 与 6q**） | 0.3117 | **2.055** | Table 3 排 6p&6q HR **0.952**；S-aneuploidy1 **1.256** |
+
+→ 正文原写 "the six arms around the class I locus" 与代码直接冲突（实为**两条臂**，6p 与 6q）；
+另有 5 处把 \"仅排 6p\"（ex6p）的模型写成复数 "the class I arms" / "the arms around the class I locus"。
+
+### (vi.2) 逐处修改（文件 / 行 / 旧 → 新；**每处仅改字词**）
+
+| # | 文件 | 行 | 旧 | 新 |
+|---|---|---|---|---|
+| B1-A | `01_manuscript/06_Results.md` | 15 | after excluding the **six arms around the class I locus** left ρ=0.312 | after excluding the **two chromosome-6 arms (6p and 6q)** left ρ=0.312 |
+| B1′-B | `01_manuscript/06_Results.md` | 23 | 1.250 excluding the **arms around the class I locus**, and 1.256 additionally excluding 6q | 1.250 excluding the **chromosome-6p arm**, and 1.256 additionally excluding 6q |
+| B1′-C | `01_manuscript/06_Results.md` | 43 | with the **class I arms** excluded (0.946) | with the **chromosome-6p arm** excluded (0.946) |
+| B1-D | `01_manuscript/07_Discussion.md` | 9 | Excluding the **six chromosome arms around the class I locus** barely changes the association | Excluding the **two chromosome-6 arms (6p and 6q)** barely changes the association |
+| B1′-E | `05_response/Response_to_Reviewers.md` | 20 | (0.946 with the **class I arms** excluded; 0.952 with 6p and 6q excluded) | (0.946 with the **chromosome-6p arm** excluded; 0.952 with 6p and 6q excluded) |
+| B1-F | `05_response/Response_to_Reviewers.md` | 144 | …0.312 when the **six arms flanking the class I locus** are removed from the score; … and 2.055 in the **6p-excluded** specification | …0.312 when the **two chromosome-6 arms (6p and 6q)** are removed from the score; … and 2.055 in the same **two-arm-excluded** specification |
+| B1′-G | `05_response/Response_to_Reviewers.md` | 245 | 1.250 with the **arms around the class I locus** excluded (P=7.4×10⁻⁰⁹) | 1.250 with the **chromosome-6p arm** excluded (P=7.4×10⁻⁰⁹) |
+| B1′-H | `05_response/Response_to_Reviewers.md` | 297 | with the **class I arms** excluded from the score (0.946) | with the **chromosome-6p arm** excluded from the score (0.946) |
+
+**B1″（同一句内新发现的同类错，同轮一并修正）**：B1-F 所在括号原本把 ρ=0.312/OR 2.055 描述为
+"the 6p-excluded specification"，但 `frac_ex6p` 的对应值是 0.3193/2.093，**2.055 属 `frac_ex6`（排 6p 与 6q）**。
+若不改，B1-F 的新措辞会与同句内的旧标签**自相矛盾**，故改写为 "in the same two-arm-excluded specification"
+（仅换词，未增删任何数字；如作者认为该标签另有他指，回退该 1 个字串即可）。
+
+**数值零改动证明（机器口径，非目测）**：本轮改动脚本对 11 个替换逐条断言
+(a) 旧字串在文件中**恰好出现 1 次**；(b) **统计数字多重集相等**（染色体名计为**名称**、臂标签 6p/6q 单列一类）；
+(c) **引文标记多重集相等**（`[n]` 与上标）。原始输出 `QC/_b1_b2_edits.json`。
+该口径下 11 处**全部** `statistical-numeral delta = {}`、`citation-marker delta = {}`；
+新增 token 仅 `6p`/`6q`/染色体名中的 `6`。
+**独立脚本交叉印证**：`01_manuscript/verify_sentence_edit.py`（非本轮编写）对三节逐文件报
+`number tokens REMOVED (must be empty) = {}`（**零删除**）；本轮改动归因的新增数值 token 恰为
+Results **+5**（`chromosome-6`、`6p`、`6q`、`chromosome-6p`×2）、Discussion **+3**（`chromosome-6`、`6p`、`6q`），
+即全部为染色体/臂标识符本身（原始输出 `QC/_b1_b2_verify_sentence_edit_PRE/POST.out`）。
+
+### (vi.3) B2 —— DOI 占位符统一为唯一许可字串 `[DOI-PENDING-ZENODO]`
+
+| 文件 | 行 | 旧 | 新 |
+|---|---|---|---|
+| `01_manuscript/08_StarMethods.md` | 12 | …a single Zenodo DOI **(DOI to be inserted at submission)**. | …a single Zenodo DOI **[DOI-PENDING-ZENODO]**. |
+| `01_manuscript/08_StarMethods.md` | 13 | …the same single Zenodo DOI as the derived data **(DOI to be inserted at submission)**. | …the same single Zenodo DOI as the derived data **[DOI-PENDING-ZENODO]**. |
+| `01_manuscript/09_BackMatter.md` | 29 | …and archived under a single Zenodo DOI **(DOI to be inserted at submission)**. | …and archived under a single Zenodo DOI **[DOI-PENDING-ZENODO]**. |
+
+两个 manuscript DOCX 各 1 处（源自 `09_BackMatter.md` ¶3，即 Back matter「Resource availability」；
+`08_StarMethods.md` 的 2 处在 `## Resource availability` 块内，按既定构建口径**不进入** DOCX）随 DOCX 重建一并统一。
+全包**唯一许可占位符**仍为 `[DOI-PENDING-ZENODO]`；**无 DOI 被编造**。待回填位清单见同目录
+`QC/DOI_FILLIN_CHECKLIST.md`。
+
+### (vi.4) B3 —— 两个存交包数字字典同步（外科式重建）
+
+- `deposit/code.zip → code/PINNED_PACK.md`：14607 B / `3f27f3d7…`（旧）→ **15179 B / `96063bb8…`**（冻结版）。
+- `deposit/derived_data.zip → derived_data/number_dictionary/PINNED_PACK.md`：同上一并替换为冻结版。
+- **新增成员**：`code/PINNED_PACK_CORRECTIONS.md` 与
+  `derived_data/number_dictionary/PINNED_PACK_CORRECTIONS.md`（即本文件，含 §(v) 图号重编指引与本节 §(vi)）。
+- 其余成员**逐字节不变**：重建采用"原始局部记录整段拷贝"（local header + 压缩流原样搬运），
+  只对被替换/新增成员重写记录；非改动成员的 raw local record 与解压后 sha256 双重比对一致。
+  新旧 sha256、变更成员清单见 `QC/_b3_zip_rebuild.json`。
+
+### (vi.5) 复验原始输出（改动后实跑，退出码与关键行原文）
+
+- `QC/make_revision_docx.py` → `manuscript paragraphs written: 174`；MARKED 高亮 **218 run**、CLEAN **0**；EXIT=**0**（`QC/_b1_b2_make_revision_docx.out`）
+- `05_response/verify_anchors.py` → **`anchors: 28   matched in md AND both DOCX: 28   mismatched: 0`**；EXIT=**0**
+- `05_response/build_response_docx.py` → `paragraphs=194 tables=1`；EXIT=**0**
+- `05_response/verify_response.py` → `UNFLAGGED CLAIM OCCURRENCES: 0`；`[LINE-REF-TBD]`=0；假行号=0；`ANCHOR_MAP.tsv rows 28`；`'**Anchor:**' 28`；EXIT=**0**
+- `QC/scan_markdown_residue.py` → 两版 **TOTAL residue = 0**、行号域存在、subscript 38 / superscript 9；**GATE G5 PASS**；EXIT=**0**
+- `QC/g2_independent_crosscheck.py` → 主表 `[1,2,3]`、补充表 `[1..13]`、主图 `[1,2,3,4,5]`、补充图 `[1,2]`；
+  `T3 ORPHAN / REF-NO-FILE / FILE-ORPHAN / ORDER differences: 0`；EXIT=**0**
+
+### (vi.6) 本轮改动/重建文件与已知偏差声明（不美化）
+
+**改动文件 sha256（旧 → 新）**：见 `QC/_b1_b2_edits.json` 与 `QC/FINAL_MANIFEST.md`（已按本轮状态重生）。
+
+**三条必须如实说明的偏差**：
+
+1. **构建 DOCX 必须用 `.tools/docxenv` 解释器**（python 3.12.13 + python-docx 1.2.0）。用 Hermes 侧
+   python 3.14.7 构建得到的是**同样文本、不同字节**的 DOCX（61,371 B vs 62,624 B）。本轮已用 docxenv
+   重建，并以前置状态回放验证：**用 docxenv + 改动前 markdown 重建，得到逐字节等于改动前 62624/62928 B 的结果**，
+   即 DOCX 在正确解释器下是字节可复现的；此条对第三方复现是必要的。
+2. **`05_response/ANCHOR_INVENTORY.tsv` 在本轮之前已滞后**：其 `10_FigureLegends.md` 共 12 行的
+   (节 / 段序 / 首 8 词) 仍是图号重编**前**的旧制；本轮因 B2 需同步该文件，**已一并重生**，现已与现行
+   markdown 一致（全文 175 行，`first8` 列与旧件逐行一致，仅 `10_FigureLegends.md` 的图注块顺序与
+   图号 token 归位）。
+3. **`01_manuscript/SENTENCE_STATS.md` 未重算，且其在本轮之前即已滞后**：该表"after"列为 R2-C1 拆句轮
+   的实测值（Results 2077 词），而现行 `06_Results.md` 实测 **2205 词**（差 128 词，来自其后各轮新增，
+   主要为 Table S1–S13 索引句）；本轮字词修正使 Discussion 实测词数 **1450 → 1448**（−2）。
+   依"统计量零改动"约束**未重生该表**（其数值为脚本实测、重生会使表内数字变动）。如需一致，
+   在 `01_manuscript/` 内依次运行 `python sentence_stats.py after` 与 `python make_sentence_stats_md.py`
+   即可，但**会改动该交付物内的统计数字**，故留待作者决定。

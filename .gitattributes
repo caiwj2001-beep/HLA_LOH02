@@ -1,0 +1,21 @@
+# Store every file exactly as it is on disk: no text / EOL normalisation anywhere.
+#
+# Why: core.autocrlf=true was silently LF-normalising text blobs, so the repository copy of
+# a file could be "same content, different bytes" from the byte-frozen deposit member
+# (e.g. derived_data/figure_source_data/fig2a_tmb_dist.tsv: 1,299,133 B on disk vs a
+# 1,269,355 B blob).  The public snapshot is advertised as byte-reproducible against the
+# deposit, so the repository must store the same bytes.
+#
+# `* -text` disables conversion for every path (including future ones).
+* -text
+
+# ...but keep text diffing/merging for the file types we actually read and review.
+*.R     diff
+*.py    diff
+*.md    diff
+*.tsv   diff
+*.csv   diff
+*.txt   diff
+*.json  diff
+*.sh    diff
+*.lock  diff
