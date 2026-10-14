@@ -507,3 +507,109 @@ manuscript DOCX + 回复信/封面/KRT/三表/补充 PDF/GA + `derived_data.zip`
 锚点与回复信 `05_response/_rerun_verify_anchors_out.txt`、`05_response/_rerun_verify_response_out.txt`；
 markdown 残留与 G2 首现序 `QC/_final_rerun_all.log`；句数守恒 `01_manuscript/_verify_out.txt`；
 仓库↔存交包成员一致性 `QC/_b4_repo_vs_zip.txt`。
+
+---
+
+## (viii) 拆句轮：Results 首段补充表索引句拆句 + 回复信/统计同步 + 全门禁重跑 —— 2026-10-15
+
+**授权**：把 `06_Results.md` 首段的补充表索引句（原 **1 句 98 词**）拆为 **3 个短句**，
+使三节 **>45 词句数归 0**（≈Reviewer #2 "long, multi-clause sentences" 的直接诉求）。
+**范围硬约束**：只改**句子边界与连接词**；数字 / 表号 / 图号 / 引文编号 / 限制与撤回语句
+**零增删**；不增删段落（两版 DOCX 仍 **174 段**、`verify_anchors.py` 仍 **28/28**）。
+
+### (viii.1) 拆句前后逐字对照
+
+**拆前（1 句，98 词）**
+
+```text
+Complete model outputs at every step are collected in the supplementary tables and are indexed as follows: the pan-cancer HLA-LOH atlas by cancer type (Table S1); the within-cancer-type tumour-mutational-burden association (Table S2); the mutational-signature models (Table S3); overall survival by cancer type (Table S4); the panel-restricted sensitivity analysis (Table S5); the whole-genome-doubling mediation (Table S6); the germline-zygosity evaluability analysis (Table S7); the tumour-mutational-burden association across aneuploidy specifications (Table S8); the arm-level mutational-burden ranking (Table S9); the calling-reliability models (Table S10); the neoantigen-burden models (Table S11); the allele-paired neoantigen test (Table S12); and the structural-variant class burden (Table S13).
+```
+
+**拆后（3 句，38 / 37 / 33 词）**
+
+```text
+Complete model outputs at every step are collected in the supplementary tables and are indexed as follows: the pan-cancer HLA-LOH atlas by cancer type (Table S1); the within-cancer-type tumour-mutational-burden association (Table S2); and the mutational-signature models (Table S3). The remaining tables index overall survival by cancer type (Table S4); the panel-restricted sensitivity analysis (Table S5); the whole-genome-doubling mediation (Table S6); the germline-zygosity evaluability analysis (Table S7); and the tumour-mutational-burden association across aneuploidy specifications (Table S8). The last group indexes the arm-level mutational-burden ranking (Table S9); the calling-reliability models (Table S10); the neoantigen-burden models (Table S11); the allele-paired neoantigen test (Table S12); and the structural-variant class burden (Table S13).
+```
+
+- Table S1→S13 的**首现升序**不变；13 个表号仍**各出现一次**；分隔符与全文一致
+  （`;` 分项 + 末项 `and`，句间用 `.` + 大写起句）。新增词仅为连接成分：
+  `and`（第 1 句末项）、`The remaining tables index`、`and`（第 2 句末项）、`The last group indexes`，共 **+10 词**。
+- **逐处守恒**（`01_manuscript/verify_split_conservation.py`，EXIT=**0**）：该片段数字 token **13→13**、
+  表号 **13→13**、图号 **0→0**、引文标记 **0→0**，**删除集全部为空**、新增集亦为空；
+  全文件口径（含既有的授权改动）四类**删除集同样为空**、新增数字 token 全部在白名单内。
+
+### (viii.2) 句长实测（同一脚本口径，拆前 → 拆后）
+
+| 节 | 词数 (`wc -w`) | 句数 | 平均句长 | 最长句 | >45 词句数 | >40 词句数 |
+|---|---:|---:|---:|---:|---:|---:|
+| Introduction | 669 → 669 | 32 → 32 | 20.84 → 20.84 | 38 → 38 | 0 → **0** | 0 → 0 |
+| Results | 2205 → **2215** | 85 → **87** | 24.91 → **24.45** | 98 → **44** | 1 → **0** | 4 → **3** |
+| Discussion | 1448 → 1448 | 65 → 65 | 22.25 → 22.25 | 44 → 44 | 0 → **0** | 2 → 2 |
+| **合计** | **4322 → 4332** | **182 → 184** | **23.24 → 23.04** | — | **1 → 0** | **6 → 5** |
+
+- 三节 **>45 词句数 = 0**（原 1）；**>40 词句数 = 5**（原 6——被拆的 98 词句移出该档，3 个新句
+  38/37/33 词**均未**进入该档）。
+- 三节总词数 4322 → **4332**（+10 全部为新连接词）；高于自设 4,200 目标 132 词——**期刊无此硬限**，
+  回复信与 `SENTENCE_STATS.md` 均已如实标注 ✘。
+
+### (viii.3) 受影响文件与哈希（拆前 → 拆后）
+
+| 文件 | bytes 拆前 → 拆后 | sha256 拆前 → 拆后 | 说明 |
+|---|---|---|---|
+| `01_manuscript/06_Results.md` | 15,081 → **15,139** | `9cae2ebd43b1ade0da5ae292cbdb675759ecc5df80137edcfe72aa867ceac5a7` → `06d4dc26c4b6afd9ecb5e55be72bc7f50cdcdd45ef34ef24e960ce3b051919d0` | 拆句所在文件（唯一正文改动） |
+| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62,632 → **62,652** | `2f71ddaecf4dd235cd603ae71816f7c33e4ef12e27bd38b6a0e878c52ccc5d2a` → `66c2dca47169458ddda4bd42c98dff14fa62ed7142eff85aed120b7a2e0db1b2` | docxenv 重建；仍 174 段、高亮 0 run |
+| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 62,934 → **62,954** | `7b9e2a691e85971f06826842ee53fcd49a48b90836a66442cf05138631012e42` → `a2987113faffe43e4fc45a70b963efa802c365fea8542740b0343c11ba88c1c9` | docxenv 重建；仍 174 段、高亮 118/174 段、218 run |
+| `01_manuscript/SENTENCE_STATS.md` | 13,287 → **15,070** | `6e7a430831f86dfa6a09cd567c11d9076e1d62b66f15f8f81420479ee3ddc83d` → `7aa8ad1a53bcaa6de79616df321fc399ce9fce9128317784de0300eeaa42605e` | 重生（含 §1b 拆前/拆后对照表 + 逐字对照） |
+| `01_manuscript/make_sentence_stats_md.py` | 10,843 → **12,649** | n/a → `9e4667a7301b78d62e4551528ed7c19e2da8655dbd537e622c13630534c23d8c` | 表生成器：口径说明/达标判定/§1b 同步（非清单件，旧 sha 未记录） |
+| `01_manuscript/verify_split_conservation.py` | 0 → **5,587** | n/a → `c04daaadb0202b5fd8a5000a1e19d84d581f57d49f3bf42fc4dd7a4d7fd8531e` | **新增**：拆句逐处守恒 + >45=0 校验（EXIT=0） |
+| `01_manuscript/_verify_out.txt` | 2,451 → **2,451** | n/a → `9cb05aa2b851c4300b01c116d724deda9bdf5714c9deabdb5ceb50ea3f646c3a` | verify_sentence_edit.py 现行原始输出（RESULT: ALL CONSERVED / EXIT=0） |
+| `05_response/Response_to_Reviewers.md` | 76,436 → **76,338** | `b55f66e4c04a429edd79a17bd6783d47e3acb13ea76413b575db64a6ea9f7cee` → `3ddfdb03c1c6910f71e05b0bec1eaf63c1f3b81ee02cc0af25c40b6acca12adc` | R2-C1 数值改实测值 + 旧披露句删除 |
+| `05_response/Response_to_Reviewers.docx` | 63,770 → **63,730** | `da032f68a5f3c79f71aa04e7c0d5e4cfe0cc29709d5355ed072152bf9abd9223` → `ac860045b799e89d1f1c11078832c023064c134684dd3fa1f4e0f3aac6a93dfc` | docxenv 重建；verify_response.py EXIT=0 |
+| `05_response/COVERAGE_CHECK.md` | 37,311 → **37,422** | `4c861e24d1d7c769030bd3f75299e5f9c176f1833d9603b27f1a7a0269d678f4` → `18054935cc0fb6b0a3128da9a1273225010873c6e88be64ede94cfb983248a32` | 三处 R2-C1 句长数值同步 |
+| `QC/quality_gates_log.md` | 20,109 → **22,066** | `abe235fee0855fdaf0a16cc0dcbcca5bf3740b8f8368d3b705fb94d16748988d` → `e1799e79dfb635b95db1c075cd33e66f5d575e8c60450e62aefb3bcbe46cc3f7` | 追加「拆句轮更新（2026-10-15）」小节（append-only） |
+
+> `00_pinned/PINNED_PACK_CORRECTIONS.md`（本文件）与 `QC/FINAL_MANIFEST.md` 为**自指件**：
+> 本文件同时是 `code.zip::code/PINNED_PACK_CORRECTIONS.md` 与
+> `derived_data.zip::derived_data/number_dictionary/PINNED_PACK_CORRECTIONS.md` 的成员，
+> 故其自身摘要由 `QC/FINAL_MANIFEST.md` 记录；两个 zip 的新摘要同样见该清单
+> （§`06_compliance/`）。两处成员以**外科式重建**替换（`QC/tools/surgical_zip.py`，
+> 其余成员原始 local record 逐字节搬运、成员表与顺序不变）。
+> 本轮**未新增也未删除任何段落**：`md items total = 174`、两版 DOCX 均 **174 段**
+> （`verify_anchors.py` / `scan_markdown_residue.py` 原始输出）。
+
+### (viii.4) 回复信 R2-C1 同步（只改数字 token + 删旧披露）
+
+- 均句长（三节合计）**32.51 → 23.04** 词/句；句数 **140 → 184**；总词数（`wc -w`）
+  **4,644 → 4,332**；Discussion 均句长 **30.44 → 22.25**（不变）。
+- **删除**原披露句 `**One sentence in the three sections now exceeds 45 words** — the 98-word
+  sentence that indexes the supplementary tables in the first Results paragraph —`
+  （已达标，**不得保留旧披露**），改为 `**No sentence in the three sections now exceeds 45 words**`。
+- 同源表述一并同步：`01_manuscript/SENTENCE_STATS.md`（重生，含 §1b 拆前/拆后对照）、
+  `05_response/COVERAGE_CHECK.md`（3 处）、`QC/quality_gates_log.md`（追加小节）。
+  `10_FigureLegends.md` 及其余文件**无相关表述**，未改。
+
+### (viii.5) 全门禁重跑（逐项原始输出，`QC/_split_rerun_all.log`）
+
+| 门禁 | 命令 | 结果 |
+|---|---|---|
+| 1 DOCX 重建 | `QC/make_revision_docx.py`（docxenv 3.12.13） | `manuscript paragraphs written: 174`；高亮 118/174 段、218 run；CLEAN 62,652 B / MARKED 62,954 B；EXIT=0 |
+| 2 锚点 | `05_response/verify_anchors.py` | `anchors: 28   matched in md AND both DOCX: 28   mismatched: 0`；EXIT=0 |
+| 3 回复信 | `build_response_docx.py` + `verify_response.py` | docx 194 段 / 1 表；`anchors checked: 49 verbatim-present: 49 MISSING: 0`、`UNFLAGGED CLAIM OCCURRENCES: 0`；EXIT=0 |
+| 4 残留 | `QC/scan_markdown_residue.py` | 两版 `TOTAL_residue 0`、`paragraphs 174`、行号域存在；GATE G5 PASS；EXIT=0 |
+| 5 图表首现序 | `QC/g2_independent_crosscheck.py` | Figure `[1,2,3,4,5]` / FigureS `[1,2]` / Table `[1,2,3]` / TableS `[1..13]` 全 OK；`T3 … differences: 0`；EXIT=0 |
+| 6 内容守恒 | `01_manuscript/verify_sentence_edit.py` | `=== RESULT: ALL CONSERVED ===`；EXIT=0 |
+| 7 拆句守恒 | `01_manuscript/verify_split_conservation.py` | 局部/全文件四类多重集**删除集为空**；`ASSERT >45 == 0 : True`；EXIT=0 |
+| 8 清单 | `QC/tools/verify_manifest.py` | `manifest rows parsed 58`、`sha256+bytes OK 58 MISMATCH 0 MISSING 0`；EXIT=0 |
+| 9 入仓成员一致性 | `revision_2026/code/tools/check_repo_vs_zip.py` | `members: 100  byte-identical to a repository file: 100  mismatches: 0`；EXIT=0 |
+| 10 DOI 回填演练 | `QC/tools/fill_doi.py 10.5281/zenodo.9999999 --dry-run` | `total: 12 slot(s); placeholder present 18; DOI present 0`；`DRY RUN complete: nothing was written`；EXIT=0 |
+
+### (viii.6) 补充 PDF 与图件：**未受影响，无需重建**
+
+`04_supplement/Supplemental_Information.pdf` = **1,510,270 B /
+`a17d21b9f45de59f7e83b4adb9746c2c790596444792a595e2475a6d6d8f4f7a`**（与 §(vii) 逐个字节相同）；
+`02_figures/` 14 个图件全部与 `QC/FINAL_MANIFEST.md` 的记录逐字节相同。核验命令：
+
+```bash
+sha256sum 04_supplement/Supplemental_Information.pdf      # a17d21b9…（不变）
+python QC/g2_independent_crosscheck.py                    # 补充 PDF 页序 S1,S2,Table S1..S13 = OK
+```

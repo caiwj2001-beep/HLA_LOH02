@@ -224,9 +224,9 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 
 | Artifact | Bytes | sha256 (frozen bytes as shipped) |
 |---|---:|---|
-| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62,632 | `2f71ddaecf4dd235cd603ae71816f7c33e4ef12e27bd38b6a0e878c52ccc5d2a` |
-| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 62,934 | `7b9e2a691e85971f06826842ee53fcd49a48b90836a66442cf05138631012e42` |
-| `05_response/Response_to_Reviewers.docx` | 63,770 | `da032f68a5f3c79f71aa04e7c0d5e4cfe0cc29709d5355ed072152bf9abd9223` |
+| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62,652 | `66c2dca47169458ddda4bd42c98dff14fa62ed7142eff85aed120b7a2e0db1b2` |
+| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 62,954 | `a2987113faffe43e4fc45a70b963efa802c365fea8542740b0343c11ba88c1c9` |
+| `05_response/Response_to_Reviewers.docx` | 63,730 | `ac860045b799e89d1f1c11078832c023064c134684dd3fa1f4e0f3aac6a93dfc` |
 | `07_cover/Cover_Letter.docx` | 40,860 | `9a64a7e2606687dfedc88c5e8aa6402c3d314028cc351a7f63d474d221c173f9` |
 | `06_compliance/Key_Resources_Table.docx` | 38,913 | `1beafe5a83b0445e2c56b8d379a58a01b53635e39dc3f9471f10622aaa8b5a5e` |
 | `03_tables/Table1_baseline.docx` | 38,735 | `84971fc8a7821c5f369cae14b5c29ee0b841e4fef933e32edadd64002cc6c4b0` |
@@ -240,7 +240,7 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 
 | Artifact | Bytes | sha256 |
 |---|---:|---|
-| `derived_data.zip` (91 members) | 619,232 | `520ccf04f6829bc2398172cbd056a751125f1b640bdb2036bc22b11e99129a1f` |
+| `derived_data.zip` (91 members) | 623,257 | `47fbf03534e3fc9a1ac0ed5d2480ac9d5ecd9eaa50a307d3fde6ff245f4a8bb4` |
 | `code.zip` (9 members) | see note | **self-referential** — `code.zip` contains this very file, so recording its digest here would change it. Its digest is recorded in `QC/FINAL_MANIFEST.md` of the submission package and is reproducible only from the archive itself: `sha256sum 06_compliance/deposit/code.zip`. Everything the archive contains is byte-identical to this directory (§6). |
 
 ### Number dictionary
@@ -248,7 +248,7 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 | Artifact | Bytes | sha256 |
 |---|---:|---|
 | `PINNED_PACK.md` (this directory; the copy shipped in both archives) | 15,179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` |
-| `PINNED_PACK_CORRECTIONS.md` (§(v) figure-renumbering record, §(vi) blocker fixes, §(vii) closing-round fixes) | 43,167 | `24ceed98b3c51ae2044f72ac06dfbd26c581a02a2fa9e3e79ba641030446ac26` |
+| `PINNED_PACK_CORRECTIONS.md` (§(v) figure-renumbering record, §(vi) blocker fixes, §(vii) closing-round fixes, §(viii) sentence-split round) | 53,878 | `ebb35b2f6bb54ba905f1313b0442a0605aa51095e8b630295a578d3e0743fca6` |
 | `00_pinned/PINNED_PACK.md` in the submission package (same bytes) | 15,179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` |
 
 ## 8. Notes
