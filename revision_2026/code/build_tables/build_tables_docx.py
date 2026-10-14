@@ -217,8 +217,8 @@ def build_supplement(log, page_map=None):
               "footnoted with their source table.", size=9.5)
     heading(doc, "Contents", 12)
     toc_rows = [
-        ("Supplementary Figure S1", "Germline HLA zygosity and locus-level evaluability", "S1"),
-        ("Supplementary Figure S2", "High-APOBEC tail: HLA intact versus HLA LOH", "S2"),
+        ("Supplementary Figure S1", "High-APOBEC tail: HLA intact versus HLA LOH", "S1"),
+        ("Supplementary Figure S2", "Germline HLA zygosity and locus-level evaluability", "S2"),
         ("Supplementary Table S1", "Pan-cancer HLA LOH atlas by cancer type (n>=100)", "S1"),
         ("Supplementary Table S2", "TMB association with HLA LOH by cancer type", "S2"),
         ("Supplementary Table S3", "Mutational-signature associations (revised)", "S3"),
@@ -240,57 +240,19 @@ def build_supplement(log, page_map=None):
                 "point-by-point response letter and map to S8 to S13 respectively.", size=9)
     doc.add_page_break()
 
-    # ---- Figure S1
-    heading(doc, "Supplementary Figure S1. Germline HLA zygosity and locus-level evaluability.", 12)
+    # 图目录：必须在任何 figure-page 块之前**无条件**赋值——2026-10-15 换号后
+    # APOBEC 块（现 Figure S1）成为第一个 figure 块，原先只在胚系块内赋值的 figdir
+    # 会在 os.path.join(figdir, p) 处触发 UnboundLocalError。
     figdir = os.path.join(V3, "02_figures")
-    pats = ["FigS1*", "*FigS1*", "SupplementaryFigureS1*", "*SupplementaryFigureS1*"]
-    fig_candidates = []
-    for p in pats:
-        fig_candidates += glob.glob(os.path.join(figdir, p))
-    fig_candidates = sorted({f for f in fig_candidates
-                             if f.lower().endswith((".tiff", ".tif", ".png", ".jpeg", ".jpg"))})
-    embedded = None
-    for f in fig_candidates:
-        try:
-            doc.add_picture(f, width=Inches(6.3))
-            embedded = f
-            break
-        except Exception as e:
-            continue
-    if embedded:
-        legend(doc, f"Source figure file: {os.path.basename(embedded)} (300 dpi TIFF, rendered by the figure "
-                    "pipeline; the PDF twin is deposited alongside).", size=9)
-        legend(doc, "Panel A. Frequency of somatic HLA LOH as a function of germline HLA class I homozygosity "
-                    "burden (0, 1 or 2 homozygous loci): 26.2%, 22.1% and 19.3%, with Wilson 95% confidence "
-                    "intervals and per-group sample sizes. Panel B. Proportion of loci evaluable for LOH by "
-                    "germline zygosity for HLA-A, HLA-B and HLA-C: germline-homozygous loci are structurally "
-                    "non-evaluable (0%; none of 5,233 HLA-A, 3,125 HLA-B and 4,400 HLA-C homozygous loci "
-                    "yielded a call), whereas heterozygous loci are evaluable in approximately 60% of "
-                    "genotyped tumours (HLA-A 59.8%, HLA-B 60.0%, HLA-C 60.3%). Panel C. Unadjusted and "
-                    "adjusted odds ratios for HLA LOH by homozygous-locus burden (adjusted 0.79, 95% CI 0.75 "
-                    "to 0.84; from V3/02_figures/intermediate/figs1_models.tsv). Panels A and B are presented "
-                    "as a definitional, methodological statement about the evaluability ceiling of the assay, "
-                    "and not as evidence of a germline constraint on somatic evolution.", size=9)
-    else:
-        para(doc, "[FIGURE PLACEHOLDER]", bold=True, align=WD_ALIGN_PARAGRAPH.CENTER)
-        para(doc, "No rendered Supplementary Figure S1 file was found in 02_figures/ at the time this "
-                  "supplement was built, so this placeholder page is inserted; the page count and the table "
-                  "numbering below are unaffected.", align=WD_ALIGN_PARAGRAPH.CENTER, size=9.5)
-        legend(doc, "Figure content (source data: 02_figures/intermediate/figs1_evaluability.tsv, "
-                    "figs1_burden_dose.tsv, figs1_models.tsv): panel A, observed HLA LOH frequency by number "
-                    "of germline-homozygous loci (0 loci 26.2%, 1 locus 22.1%, 2 loci 19.3%); panel B, "
-                    "germline-homozygous class I loci are structurally non-evaluable (0% at all three loci) "
-                    "whereas heterozygous loci are evaluable in about 60% of tumours (HLA-A 59.8%, HLA-B "
-                    "60.0%, HLA-C 60.3%); panel C, unadjusted and adjusted odds ratios (adjusted 0.79, 95% "
-                    "CI 0.75 to 0.84). This is a methodological statement, not an evolutionary-pressure "
-                    "test.", size=9)
-    doc.add_page_break()
+    assert os.path.isdir(figdir), f"figure directory not found: {figdir}"
+    _seen_figfiles = []
 
-    # ---- Figure S2 (added in this revision; answers Reviewer #3 minor point 1)
-    heading(doc, "Supplementary Figure S2. The high-APOBEC tail does not separate HLA-intact from "
+    # ---- Figure S1 (APOBEC block; added in this revision, answers Reviewer #3 minor
+    #      point 1; renumbered from Supplementary Figure S2)
+    heading(doc, "Supplementary Figure S1. The high-APOBEC tail does not separate HLA-intact from "
                  "HLA-LOH tumours.", 12)
     s2_cand = []
-    for p in ["FigS2*", "*FigS2*", "SupplementaryFigureS2*", "*SupplementaryFigureS2*"]:
+    for p in ["FigS1*", "*FigS1*", "SupplementaryFigureS1*", "*SupplementaryFigureS1*"]:
         s2_cand += glob.glob(os.path.join(figdir, p))
     s2_cand = sorted({f for f in s2_cand
                       if f.lower().endswith((".tiff", ".tif", ".png", ".jpeg", ".jpg"))})
@@ -303,6 +265,8 @@ def build_supplement(log, page_map=None):
         except Exception:
             continue
     if emb2:
+        assert "SupplementaryFigureS1_" in os.path.basename(emb2), \
+            f"Figure S1 page embedded the wrong file: {emb2}"
         legend(doc, f"Source figure file: {os.path.basename(emb2)} (300 dpi TIFF, rendered by the figure "
                     "pipeline; the PDF twin is deposited alongside).", size=9)
     else:
@@ -326,6 +290,54 @@ def build_supplement(log, page_map=None):
                 "tumours; both thresholds are shown so that the sign reversal between the extreme tail and "
                 "the 0.50 threshold is visible. Source data: V3/02_figures/intermediate/"
                 "figs2_tail_comparison.tsv, figs2_effect_sizes.tsv, figs2_apobec_summary.tsv.", size=9)
+    doc.add_page_break()
+
+    # ---- Figure S2 (germline block; renumbered from Supplementary Figure S1)
+    heading(doc, "Supplementary Figure S2. Germline HLA zygosity and locus-level evaluability.", 12)
+    assert isinstance(figdir, str) and os.path.isdir(figdir), "figdir must be assigned before use"
+    pats = ["FigS2*", "*FigS2*", "SupplementaryFigureS2*", "*SupplementaryFigureS2*"]
+    fig_candidates = []
+    for p in pats:
+        fig_candidates += glob.glob(os.path.join(figdir, p))
+    fig_candidates = sorted({f for f in fig_candidates
+                             if f.lower().endswith((".tiff", ".tif", ".png", ".jpeg", ".jpg"))})
+    embedded = None
+    for f in fig_candidates:
+        try:
+            doc.add_picture(f, width=Inches(6.3))
+            embedded = f
+            break
+        except Exception as e:
+            continue
+    if embedded:
+        assert "SupplementaryFigureS2_" in os.path.basename(embedded), \
+            f"Figure S2 page embedded the wrong file: {embedded}"
+        legend(doc, f"Source figure file: {os.path.basename(embedded)} (300 dpi TIFF, rendered by the figure "
+                    "pipeline; the PDF twin is deposited alongside).", size=9)
+        legend(doc, "Panel A. Frequency of somatic HLA LOH as a function of germline HLA class I homozygosity "
+                    "burden (0, 1 or 2 homozygous loci): 26.2%, 22.1% and 19.3%, with Wilson 95% confidence "
+                    "intervals and per-group sample sizes. Panel B. Proportion of loci evaluable for LOH by "
+                    "germline zygosity for HLA-A, HLA-B and HLA-C: germline-homozygous loci are structurally "
+                    "non-evaluable (0%; none of 5,233 HLA-A, 3,125 HLA-B and 4,400 HLA-C homozygous loci "
+                    "yielded a call), whereas heterozygous loci are evaluable in approximately 60% of "
+                    "genotyped tumours (HLA-A 59.8%, HLA-B 60.0%, HLA-C 60.3%). Panel C. Unadjusted and "
+                    "adjusted odds ratios for HLA LOH by homozygous-locus burden (adjusted 0.79, 95% CI 0.75 "
+                    "to 0.84; from V3/02_figures/intermediate/figs1_models.tsv). Panels A and B are presented "
+                    "as a definitional, methodological statement about the evaluability ceiling of the assay, "
+                    "and not as evidence of a germline constraint on somatic evolution.", size=9)
+    else:
+        para(doc, "[FIGURE PLACEHOLDER]", bold=True, align=WD_ALIGN_PARAGRAPH.CENTER)
+        para(doc, "No rendered Supplementary Figure S2 file was found in 02_figures/ at the time this "
+                  "supplement was built, so this placeholder page is inserted; the page count and the table "
+                  "numbering below are unaffected.", align=WD_ALIGN_PARAGRAPH.CENTER, size=9.5)
+        legend(doc, "Figure content (source data: 02_figures/intermediate/figs1_evaluability.tsv, "
+                    "figs1_burden_dose.tsv, figs1_models.tsv): panel A, observed HLA LOH frequency by number "
+                    "of germline-homozygous loci (0 loci 26.2%, 1 locus 22.1%, 2 loci 19.3%); panel B, "
+                    "germline-homozygous class I loci are structurally non-evaluable (0% at all three loci) "
+                    "whereas heterozygous loci are evaluable in about 60% of tumours (HLA-A 59.8%, HLA-B "
+                    "60.0%, HLA-C 60.3%); panel C, unadjusted and adjusted odds ratios (adjusted 0.79, 95% "
+                    "CI 0.75 to 0.84). This is a methodological statement, not an evolutionary-pressure "
+                    "test.", size=9)
     doc.add_page_break()
 
     # ---- S1
@@ -654,10 +666,16 @@ def build_krt(log):
         ["Software - FACETS", "Provided by the data source",
          "facets-suite (version recorded by the data source)", "Arm-level calls and purity/ploidy were provided; "
          "FACETS was not re-run"],
-        ["Derived data", "This study; deposited to Mendeley Data",
-         "[DOI-PENDING-DATA]", "Placeholder; the DOI will be inserted by the authors after upload"],
-        ["Code", "This study; deposited to GitHub and archived on Zenodo",
-         "[DOI-PENDING-CODE]", "Placeholder; the DOI will be inserted by the authors after upload"],
+        ["Derived data", "This study; public GitHub repository, archived on Zenodo",
+         "https://github.com/caiwj2001-beep/HLA_LOH02; DOI [DOI-PENDING-ZENODO]",
+         "Licence CC BY-NC-ND 4.0. The repository is public; the single Zenodo DOI that covers "
+         "the derived data and the code is inserted by the authors once the archived release "
+         "is published"],
+        ["Code", "This study; the same public GitHub repository, archived on Zenodo",
+         "https://github.com/caiwj2001-beep/HLA_LOH02; DOI [DOI-PENDING-ZENODO]",
+         "Licence MIT. Shares the single Zenodo DOI that also covers the derived data; the "
+         "repository is public and only the DOI is inserted by the authors once the archived "
+         "release is published"],
     ]
     mk_table(doc, hdr, rows, widths=[1.5, 1.9, 1.85, 1.85], font=8)
     legend(doc, "Antibodies, chemical reagents and other laboratory materials: none used. There is no "
@@ -686,35 +704,42 @@ Because the licence does not permit redistribution of modified copies, **no raw 
 sample-level data from this cohort are included in the deposits below**. Readers must obtain
 the raw data directly from cBioPortal. This study is a secondary analysis of those data.
 
-## Step 2 - Derived data tables (Mendeley Data)
+## Step 2 - Derived data tables (public GitHub repository)
 
 All derived tables produced by this study - the per-tumour analysis frame, the per-arm
 aneuploidy and arm-loss summaries, the neoantigen prediction summaries, the structural-variant
 class summaries, the figure source data, and the number dictionary that maps every reported
-figure to its source table - are deposited as a single archive:
+figure to its source table - are deposited in the public repository that also holds the
+analysis code (Step 3):
 
-- Repository: **Mendeley Data**
-- DOI: **[DOI-PENDING-DATA]**
+- Repository: **GitHub** - `https://github.com/caiwj2001-beep/HLA_LOH02`
 - Archive: `derived_data.zip` (see `deposit/` in this package)
-- Licence: CC BY 4.0 (derived tables only; no CC BY-NC-ND material is included)
+- Licence: **CC BY-NC-ND 4.0**
 
-The DOI field is a placeholder. The authors will register the dataset and replace
-`[DOI-PENDING-DATA]` here, in the Key Resources Table, and in the manuscript once the record
-has been published. **The DOI is intentionally left as a placeholder; no DOI has been
-invented or reserved.**
+Sample-level derived files (the per-tumour analysis frame, the per-sample aneuploidy score files
+and the per-sample structural-variant counts) are deliberately not distributed: they carry the
+sample identifiers of the source cohort, which is distributed under CC BY-NC-ND 4.0, and they
+are regenerated verbatim from the cBioPortal source files by the deposited code.
+
+The repository URL is final and the repository is public. The one remaining identifier field is
+the archival DOI: the authors will publish the archived release and replace `[DOI-PENDING-ZENODO]`
+here, in the Key Resources Table, and in the manuscript once the record has been published.
+**No DOI has been invented or reserved.**
 
 ## Step 3 - Code (GitHub plus Zenodo)
 
-All analysis and table-generation code is deposited as `code.zip` (see `deposit/`):
+All analysis and table-generation code is deposited as `code.zip` (see `deposit/`) in the same
+public repository:
 
-- Repository: **GitHub** - `[REPO-URL-PENDING]`
-- Archived release: **Zenodo** - DOI **[DOI-PENDING-CODE]**
+- Repository: **GitHub** - `https://github.com/caiwj2001-beep/HLA_LOH02`
+- Archived release: **Zenodo** - DOI **[DOI-PENDING-ZENODO]** (the single DOI that also covers the derived data)
 - Contents: the R analysis script that recomputes every reported number from the raw data, the
   Python scripts that render the tables and the supplementary PDF, the environment lock files
   (R package versions and Python requirements), and a step-by-step upload README.
 
-The code is released under the MIT licence. As above, the Zenodo DOI is a placeholder and will
-be filled in after archival; no DOI has been invented.
+The code is released under the MIT licence and is archived under the same single Zenodo DOI as
+the derived data. As above, that DOI is a placeholder and will be filled in after archival; no
+DOI has been invented.
 
 ## Reproducibility notes
 

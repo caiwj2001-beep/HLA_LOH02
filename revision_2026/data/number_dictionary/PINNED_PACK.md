@@ -136,7 +136,7 @@ V3/
 1. 回复信：**逐条**、含每位审稿人 "Reviewer's Responses to Questions" 四板块 + "Comments to author"；先 R1→R2→R3；每条三段式（原话引用 → 我们做了什么（给数字） → 正文改动（给行号））；开头即承认 R3 部分批评成立并列出撤回项。
 2. 修订稿：**行号（Word 行号域 `w:lnNumType`）+ 全部改动黄色高亮**（新增/修改的图、面板、引用、文字）。
 3. **STAR Methods** 保持，并补 **Key Resources Table**（现缺）；STAR Methods 内不放编号图表。
-4. 数据/代码：**取 DOI**（衍生数据 → Mendeley Data；代码 → GitHub+Zenodo）；原始数据只给 cBioPortal accession（许可限制）。
+4. 数据/代码：**代码与衍生数据同存于一个公开仓库**（`https://github.com/caiwj2001-beep/HLA_LOH02`，URL 已确为事实），**并归档为单个 Zenodo DOI**（`[DOI-PENDING-ZENODO]`，待用户在 Zenodo 开启后回填；不得编造 DOI）；原始数据只给 cBioPortal accession（许可限制，不可再分发）；逐样本中间文件不分发（可由 cBioPortal 重建）。代码许可 MIT，衍生数据许可 CC BY-NC-ND 4.0。
 5. 补充材料：**单一 Supplemental PDF**，编号连续且与正文双向对应。
 6. Highlights：**3–4 条、每条 ≤85 字符**；GA：≥1200×1200 px、避免缩写；两者按 §1 新叙事。
 7. 作者块不变（8 位作者，Lumao Huang 通讯 + Lead Contact）→ 无需 authorship change form。

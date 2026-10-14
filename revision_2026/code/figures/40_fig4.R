@@ -38,32 +38,35 @@ p4b <- forest_panel(dtB, xlim = c(0.97, 1.065), vline = 1, logx = FALSE, txt_cex
 ## ---------- C ----------
 c4 <- fread(file.path(IMD, "fig4c_neo_summary.tsv"))
 g <- function(i) c4$value[i]
+# 字号下限 6 pt（修回：原 Fig4C 文字为 4.8–5.6 pt，低于 6 pt 下限）
+C6 <- 6.0 / 2.845
 dc1 <- data.table(
   item = factor(c("All loci", "Clonal mutations only"), levels = c("All loci", "Clonal mutations only")),
   frac = c(g(1), g(2)), n = c(c4$n[1], c4$n[2]))
 p4c1 <- ggplot(dc1, aes(x = item, y = 100 * frac)) +
   geom_col(fill = c(PAL[["teal"]], PAL[["grey"]]), width = 0.5) +
   geom_hline(yintercept = 50, linetype = "dashed", colour = PAL[["red"]], linewidth = 0.4) +
-  annotate("text", x = 0.72, y = 54, hjust = 0, size = 4.9 / 2.845, colour = PAL[["red"]],
+  # 参考线标签置于面板上方空白带（原 x=0.72/y=54 与柱顶 "50.6%" 真实墨迹相撞）
+  annotate("text", x = 0.55, y = 58.8, hjust = 0, vjust = 0.5, size = C6, colour = PAL[["red"]],
            label = "50% = no asymmetry") +
-  geom_text(aes(label = sprintf("%.1f%%", 100 * frac)), vjust = -0.7, size = 5.0 / 2.845,
+  geom_text(aes(label = sprintf("%.1f%%", 100 * frac)), vjust = -0.7, size = C6,
             colour = "grey10") +
   geom_text(aes(y = 2, label = sprintf("n = %s", format(n, big.mark = ","))), vjust = 0,
-            size = 4.8 / 2.845, colour = "white") +
+            size = C6, colour = "white") +
   scale_y_continuous(limits = c(0, 62), breaks = seq(0, 60, 20)) +
   labs(title = "C  Direction of the paired comparison (ties excluded)",
        subtitle = "Samples with more predicted binders on the lost allele",
        x = NULL, y = "% of samples with a direction") +
-  theme_pub() + theme(axis.text.x = element_text(size = 5.6))
+  theme_pub() + theme(axis.text.x = element_text(size = 6))
 
 dc2 <- data.table(
   grp = factor(c("HLA LOH\u2212", "HLA LOH+"), levels = c("HLA LOH\u2212", "HLA LOH+")),
   med = c(g(4), g(5)), n = c(c4$n[4], c4$n[5]))
 p4c2 <- ggplot(dc2, aes(x = grp, y = med, fill = grp)) +
   geom_col(width = 0.5) +
-  geom_text(aes(label = sprintf("%.0f", med)), vjust = -0.7, size = 5.2 / 2.845, colour = "grey10") +
+  geom_text(aes(label = sprintf("%.0f", med)), vjust = -0.7, size = C6, colour = "grey10") +
   geom_text(aes(y = 0.3, label = sprintf("n = %s", format(n, big.mark = ","))), vjust = 0,
-            size = 4.8 / 2.845, colour = "white") +
+            size = C6, colour = "white") +
   scale_fill_manual(values = c("HLA LOH\u2212" = PAL[["grey"]], "HLA LOH+" = PAL[["navy"]]),
                     guide = "none") +
   scale_y_continuous(limits = c(0, 9), breaks = seq(0, 8, 2)) +

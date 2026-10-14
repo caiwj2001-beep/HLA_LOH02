@@ -7,8 +7,8 @@
 source(file.path(dirname(sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE)[1])),
                  "fig_common.R"))
 
-F1W <- 6.85; F1H <- 9.0
-AXT <- 5.4
+F1W <- 6.85; F1H <- 9.45
+AXT <- 6.0
 d <- fread(file.path(IMD, "fig1a_cancer_freq.tsv"))
 d[, CANCER_TYPE := factor(CANCER_TYPE, levels = CANCER_TYPE[order(freq_LOH)])]
 ov <- d[1]
@@ -95,11 +95,20 @@ p1a <- wrap_headers(p1a, F1W)
 p1b <- wrap_headers(p1b, F1W)
 p1c <- wrap_headers(p1c, F1W)
 
-fig1 <- p1a / p1b / p1c + plot_layout(heights = c(1, 0.78, 0.66))
+fig1 <- p1a / p1b / p1c + plot_layout(heights = c(1, 1.00, 0.55))
+# 说明（修回）：
+#  ① Fig1A/Fig1B 各 29 个癌种 y 轴标签。原字号 5.4 pt，且原 heights 下相邻标签基线间距
+#     Fig1B 仅 4.51 pt < 「上行降部 + 下行升部」所需 0.941×5.4 = 5.08 pt，分层几何实测
+#     **6/28 对**相邻标签字形墨迹连成同一连通域（真碰撞，非 bbox 伪影）——例如
+#     "Esophagogastric Cancer" 的 g 降部 与 "Head and Neck Cancer" 的 d 升部。
+#  ② 同时把 29 条标签字号由 5.4 pt 提升到 **6.0 pt**（≥6 pt 底线），所需间距升至 0.941×6.0 = 5.65 pt。
+#  修法：画布高度 9.0 → 9.45 in（= 240 mm，Cell Press 图高上限），面板比例 1 : 0.78 : 0.66
+#        → 1 : 1.00 : 0.55，把 A/B 面板的标签间距提到 ≈5.8 pt；不改变任何数据、标签文字、
+#        轴范围或数值标注。
 cat("Figure 1 note-box layout (flow_layout):\n"); print(nb$layout)
 cat(sprintf("  note fontsize = %.2f pt\n", nb$fontsize))
 
-qa_emit("Figure1", p1a, F1W, F1H * 1 / 2.44, tag = "Fig1A", fs = AXT)
-qa_emit("Figure1", p1b, F1W, F1H * 0.78 / 2.44, tag = "Fig1B", fs = AXT)
-qa_emit("Figure1", p1c, F1W, F1H * 0.66 / 2.44, tag = "Fig1C", fs = 5.2)
-save_pub2(fig1, "Figure1_pancancer_and_reliability", F1W, F1H)
+qa_emit("Figure1", p1a, F1W, F1H * 1 / 2.55, tag = "Fig1A", fs = AXT)
+qa_emit("Figure1", p1b, F1W, F1H * 1.00 / 2.55, tag = "Fig1B", fs = AXT)
+qa_emit("Figure1", p1c, F1W, F1H * 0.55 / 2.55, tag = "Fig1C", fs = 5.2)
+save_pub2(fig1, "Figure1_pancancer_and_reliability", F1W, F1H, margin_in = 0.02)
