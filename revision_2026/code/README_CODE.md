@@ -228,7 +228,7 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 | `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 62,934 | `7b9e2a691e85971f06826842ee53fcd49a48b90836a66442cf05138631012e42` |
 | `05_response/Response_to_Reviewers.docx` | 63,770 | `da032f68a5f3c79f71aa04e7c0d5e4cfe0cc29709d5355ed072152bf9abd9223` |
 | `07_cover/Cover_Letter.docx` | 40,860 | `9a64a7e2606687dfedc88c5e8aa6402c3d314028cc351a7f63d474d221c173f9` |
-| `06_compliance/Key_Resources_Table.docx` | 38,913 | `abc768438298c6e468ce6c419f7492f9856125b6f65d520d869d7af2beab9c4e` |
+| `06_compliance/Key_Resources_Table.docx` | 38,913 | `1beafe5a83b0445e2c56b8d379a58a01b53635e39dc3f9471f10622aaa8b5a5e` |
 | `03_tables/Table1_baseline.docx` | 38,735 | `84971fc8a7821c5f369cae14b5c29ee0b841e4fef933e32edadd64002cc6c4b0` |
 | `03_tables/Table2_drivers.docx` | 38,330 | `4bea5e52838547b09992035150e603fda343b977596376eee834495c17b558b9` |
 | `03_tables/Table3_survival.docx` | 38,478 | `98029ae48b2e0dd2cb722a2550ca879a58d51f88474e2c2f9857886390b2272b` |
