@@ -248,7 +248,7 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 | Artifact | Bytes | sha256 |
 |---|---:|---|
 | `PINNED_PACK.md` (this directory; the copy shipped in both archives) | 15,179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` |
-| `PINNED_PACK_CORRECTIONS.md` (§(v) figure-renumbering record, §(vi) blocker fixes, §(vii) closing-round fixes) | 42,910 | `3c3568d1cabb9a540822ef9bb76b8b44b0bbcb187fe599b5590a1d4397ebfd67` |
+| `PINNED_PACK_CORRECTIONS.md` (§(v) figure-renumbering record, §(vi) blocker fixes, §(vii) closing-round fixes) | 43,167 | `24ceed98b3c51ae2044f72ac06dfbd26c581a02a2fa9e3e79ba641030446ac26` |
 | `00_pinned/PINNED_PACK.md` in the submission package (same bytes) | 15,179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` |
 
 ## 8. Notes
