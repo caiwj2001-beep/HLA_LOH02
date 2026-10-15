@@ -1,6 +1,6 @@
 # FINAL_MANIFEST — frozen submission package
 
-Manuscript **ISCIENCE-D-26-09416** (iScience revision) · directory `iscience投稿版本/V3` · generated 2026-10-15 23:23:12
+Manuscript **ISCIENCE-D-26-09416** (iScience revision) · directory `iscience投稿版本/V3` · generated 2026-10-15 23:24:30
 
 Every file below is byte-frozen: `sha256` and `bytes` are of the file as it stands on disk at
 generation time. Figure numbers follow the 2026-10-15 renumbering to first-appearance order
@@ -10,7 +10,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 
 - **files listed: 74**
 - **missing on disk: none**
-- **total bytes: 8892771 (8.9 MB)**
+- **total bytes: 8893005 (8.9 MB)**
 
 ---
 
@@ -19,7 +19,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
 | `00_pinned/PINNED_PACK.md` | 15179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` | The locked number dictionary: the single permitted source of every reported number |
-| `00_pinned/PINNED_PACK_CORRECTIONS.md` | 100829 | `59bf4b42174053a1e637b92a0d56c83026626c5f99ef35d21be250491ce66f9a` | Corrections and audit record for the locked pack; §(v) is the authoritative figure-renumbering record, §(vi) the pre-submission arm-wording / DOI-placeholder / deposit-dictionary fix, §(vii) the closing-round fixes, §(viii) the sentence-split round, §(ix) the sentence-level revision-highlighting round, §(x) the three-tier minimal-unit round, §(xi) the Mode C substantive-change round, §(xii) the integration round (user figure micro-adjustments, the two figure defect fixes, the supplement-PDF rebuild and the freeze/commit) |
+| `00_pinned/PINNED_PACK_CORRECTIONS.md` | 100943 | `8ee662bf0e71a1e45e874fc320adcf878c8687c1cc3c876986a9039d4fe7b01e` | Corrections and audit record for the locked pack; §(v) is the authoritative figure-renumbering record, §(vi) the pre-submission arm-wording / DOI-placeholder / deposit-dictionary fix, §(vii) the closing-round fixes, §(viii) the sentence-split round, §(ix) the sentence-level revision-highlighting round, §(x) the three-tier minimal-unit round, §(xi) the Mode C substantive-change round, §(xii) the integration round (user figure micro-adjustments, the two figure defect fixes, the supplement-PDF rebuild and the freeze/commit) |
 
 ---
 
@@ -111,8 +111,8 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 |---|---:|---|---|
 | `06_compliance/Data_and_Code_Availability.md` | 3745 | `d0df820fe3d1153f845786739a296a97412c103b3c2aa52ad07ab234cb20d3c9` | Data and Code Availability statement (repository URL filled; single Zenodo DOI still [DOI-PENDING-ZENODO]) |
 | `06_compliance/Key_Resources_Table.docx` | 38913 | `1beafe5a83b0445e2c56b8d379a58a01b53635e39dc3f9471f10622aaa8b5a5e` | Key Resources Table (Cell Press requirement); contains no figure or table number tokens |
-| `06_compliance/deposit/code.zip` | 95075 | `0158e407d3ebf110ef7cd95f1b5d75f8c4e7d6a9c52cb294a08c2412b96cc90e` | Code deposit: the R analysis script, the DOCX/PDF rendering scripts, the R environment lock, requirements.txt, README_CODE.md and the number dictionary (PINNED_PACK.md + PINNED_PACK_CORRECTIONS.md) |
-| `06_compliance/deposit/derived_data.zip` | 640473 | `557f638a8cd06312eef05a325ee260f397f788ea229fe6d88b577cf29c997c5d` | Derived-data deposit: figure source data, supplementary source data, the table build inputs and the number dictionary |
+| `06_compliance/deposit/code.zip` | 95135 | `b9f8cc50a4c1e1a38dba38e200bb69bb927bef09e0195666c7c934af0b136f0d` | Code deposit: the R analysis script, the DOCX/PDF rendering scripts, the R environment lock, requirements.txt, README_CODE.md and the number dictionary (PINNED_PACK.md + PINNED_PACK_CORRECTIONS.md) |
+| `06_compliance/deposit/derived_data.zip` | 640533 | `cb08859690c3bb8a0704046d9fac9bd168d3b80b8cf5346f0fc9b91a89347720` | Derived-data deposit: figure source data, supplementary source data, the table build inputs and the number dictionary |
 | `06_compliance/deposit/README_upload_steps.md` | 3633 | `38f0956b8b39b4f2bf12d57639bd26c5712db0cbb6985ba4cbec74a888786642` | Author-facing upload runbook for the GitHub repository and the Zenodo DOI |
 | `06_compliance/Graphical_Abstract/Graphical_Abstract.tiff` | 463738 | `4ea81270e6ac7ffe737c7d2ceed01c1604991f97357f890cd3f5dca931f41b16` | Graphical abstract, 300 dpi raster (the file uploaded to EM) |
 | `06_compliance/Graphical_Abstract/Graphical_Abstract.pdf` | 74540 | `39429eded22087434795a8212e8c7192f2a37fca11002c85fd2c9ee8983e7742` | Graphical abstract, vector PDF |

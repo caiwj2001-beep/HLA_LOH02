@@ -1084,14 +1084,14 @@ Figure legends 66.6%、References 26.7%。
 | 3 | 图表双向核对 | `QC/g2_independent_crosscheck.py`（pdfenv，含 fitz） | `T1 in-text 23  T2 files 19  T3 …: 0`；`PASS - T3 empty`；补充 PDF 页序 `OK` | 0 |
 | 4 | 回复信 | `05_response/verify_response.py`（docxenv） | `[LINE-REF-TBD] in letter 0`、`fabricated 'line N' 0`、`ANCHOR_MAP rows 28`、`'**Anchor:**' 28` | 0 |
 | 5 | Mode C 高亮 | `QC/verify_highlight_mode_c.py`（docxenv） | `ASSERT A observed = 0 -> PASS`；`ASSERT B instances = 849 uncovered = 0 -> PASS`；`CLEAN highlight runs 0 -> PASS`；`RESULT: ALL GATES PASS` | 0 |
-| 6 | 清单自校验 | `QC/tools/verify_manifest.py` | 见 §(xii.10) | 0 |
+| 6 | 清单自校验 | `QC/tools/verify_manifest.py` | `manifest rows parsed : 74`；`sha256+bytes OK : 74   MISMATCH: 0   MISSING: 0` | 0 |
 | 7 | 仓库 ↔ 存交包 | `revision_2026/code/tools/check_repo_vs_zip.py` | `members: 100   byte-identical to a repository file: 100   mismatches: 0` | 0 |
 
 > 说明：门禁 3 必须在**装了 pymupdf（fitz）**的解释器下运行；用 `docxenv` 运行会打印 `supplement PDF check skipped: No module named 'fitz'` 并把该项记成 1 条差异（非真实差异）。
 
 ### (xii.10) 仓库同步、清单与冻结
 
-- `QC/FINAL_MANIFEST.md` 重生（含图件新哈希、Mode C 两份 DOCX、`_alternative` 备选件、`Change_Summary`×2、`QC_user_adjust_round1/` 关键产物）；`verify_manifest.py` 全部行通过。
+- `QC/FINAL_MANIFEST.md` 重生：**74 行**（含图件新哈希、Mode C 两份 DOCX、`_alternative` 备选件、`Change_Summary`×2、`QC_user_adjust_round1/` 关键产物 12 条）；`verify_manifest.py` **74/74 全过**（MISMATCH 0 / MISSING 0）。
 - 仓库 `revision_2026/code/README_CODE.md` 的图件摘要表更新为新哈希；`revision_2026/code/figures/` 同步本轮脚本（`10…70`、`fig_common.R`、`fig_shift.R`）并新增 `measured_constants.tsv`（第三方重跑否则即 `stop()`）；`revision_2026/data/FINAL_MANIFEST.md` 与 `QC/FINAL_MANIFEST.md` 同字节。
 - `PINNED_PACK_CORRECTIONS.md` 的四处副本（`V3/00_pinned/`、仓库 `code/`、仓库 `data/number_dictionary/`、两个存交包内各一）统一为本文件的字节。
 - 两个存交包用**外科式重建**（逐成员 raw local record 复制）替换改动成员，其余成员字节不变 → `check_repo_vs_zip.py` **100/100**。
