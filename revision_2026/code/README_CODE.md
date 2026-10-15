@@ -27,7 +27,7 @@ Availability*: the same tree is deposited as `06_compliance/deposit/code.zip` (s
 | `tools/` | Deposit-package build scripts (from the project's `.tools/`): `assemble_deposit.py` builds `code.zip` / `derived_data.zip` and their READMEs, `surgical_zip_rebuild_one.py` / `surgical_zip_rebuild_raw.py` replace individual zip members without rebuilding the archive (copying each untouched member's raw local record byte-for-byte), `_sync_readme_template.py` syncs the upload-steps README into the deposit. |
 | `env/` | `env_lock_R.txt` (R 4.6.1 session, package-by-package), `requirements.txt` (Python rendering deps), `renv.lock` (v1, R 4.3.3; also kept at the repository root). |
 | `PINNED_PACK.md` | The locked number dictionary — the only permitted source of reported numbers; byte-identical to the copy inside both deposit archives. |
-| `PINNED_PACK_CORRECTIONS.md` | Corrections and audit record for the locked pack; **§(v) is the authoritative figure-renumbering record**, §(vi) the pre-submission blocker fixes, §(vii) the closing-round fixes and their honest deviations. |
+| `PINNED_PACK_CORRECTIONS.md` | Corrections and audit record for the locked pack; **§(v) is the authoritative figure-renumbering record**, §(vi) the pre-submission blocker fixes, §(vii) the closing-round fixes and their honest deviations, §(viii) the sentence-split round, §(ix) the sentence-level revision-highlighting round. |
 | `README_CODE.md` | This file (also shipped as `code/README_CODE.md` inside `code.zip`). |
 
 Files that the round-trip needs but that live with the submission package rather than in this
@@ -240,7 +240,7 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 
 | Artifact | Bytes | sha256 |
 |---|---:|---|
-| `derived_data.zip` (91 members) | 623,468 | `55b1ce8de375ed073c66024f08597f43fad85ece5becf77ecf793762a7da6986` |
+| `derived_data.zip` (91 members) | 626,302 | `e44a1ecf63ffe0a41262c06bd442e5b27dca1a7545ef659331a6ca0149da7efa` |
 | `code.zip` (9 members) | see note | **self-referential** — `code.zip` contains this very file, so recording its digest here would change it. Its digest is recorded in `QC/FINAL_MANIFEST.md` of the submission package and is reproducible only from the archive itself: `sha256sum 06_compliance/deposit/code.zip`. Everything the archive contains is byte-identical to this directory (§6). |
 
 ### Number dictionary
@@ -248,7 +248,7 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 | Artifact | Bytes | sha256 |
 |---|---:|---|
 | `PINNED_PACK.md` (this directory; the copy shipped in both archives) | 15,179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` |
-| `PINNED_PACK_CORRECTIONS.md` (§(v) figure-renumbering record, §(vi) blocker fixes, §(vii) closing-round fixes, §(viii) sentence-split round) | 54,238 | `8da532085f103251509fc56544fc3c5df9a33fe6f07d0f9402c00ae16f5fb179` |
+| `PINNED_PACK_CORRECTIONS.md` (§(v) figure-renumbering record, §(vi) blocker fixes, §(vii) closing-round fixes, §(viii) sentence-split round, §(ix) sentence-level revision-highlighting round) | 63,516 | `b5e9af952179f504298cfbd0a81fdffebd31082fefaa3c253c632e5dfdf2a2f9` |
 | `00_pinned/PINNED_PACK.md` in the submission package (same bytes) | 15,179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` |
 
 ## 8. Notes
