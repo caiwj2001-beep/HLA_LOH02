@@ -1,6 +1,6 @@
 # FINAL_MANIFEST — frozen submission package
 
-Manuscript **ISCIENCE-D-26-09416** (iScience revision) · directory `iscience投稿版本/V3` · generated 2026-10-15 22:41:59
+Manuscript **ISCIENCE-D-26-09416** (iScience revision) · directory `iscience投稿版本/V3` · generated 2026-10-15 22:43:09
 
 Every file below is byte-frozen: `sha256` and `bytes` are of the file as it stands on disk at
 generation time. Figure numbers follow the 2026-10-15 renumbering to first-appearance order
@@ -10,7 +10,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 
 - **files listed: 60**
 - **missing on disk: none**
-- **total bytes: 8394105 (8.4 MB)**
+- **total bytes: 8391017 (8.4 MB)**
 
 ---
 
@@ -56,14 +56,14 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 | `02_figures/Figure1_pancancer_and_reliability.pdf` | 61868 | `9e193fc2faef2aa0d3b4a126436a9aadbc1fb55ef79cf68b799dfd0fc9494511` | Figure 1 — vector PDF twin of the same render |
 | `02_figures/Figure2_mechanism_armlandscape.tiff` | 322046 | `2457009fb739bb76558cd1efbf5007274e38245d1eda6fa231edcd1d08372d6f` | Figure 2 — 300 dpi TIFF, white background, the print-grade figure file |
 | `02_figures/Figure2_mechanism_armlandscape.pdf` | 58138 | `7163a590dcde6573cdf14aabfc0d74f00705f6affef0b019ebfe07868ab26857` | Figure 2 — vector PDF twin of the same render |
-| `02_figures/Figure3_TMB_aneuploidy.tiff` | 430952 | `34e73bf01c84cd7ca4f38066c671007c98017c82228feb5e92d48d4d2baa1328` | Figure 3 — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/Figure3_TMB_aneuploidy.pdf` | 922032 | `be31a2c852ad140a3501c319ae58ab899ba19c6f512a395ab241efb57c797a09` | Figure 3 — vector PDF twin of the same render |
-| `02_figures/Figure4_neoantigen.tiff` | 292246 | `9798967b5ac9b1b1a135229e2017d97c02d18042c4d57238207246759b7fb180` | Figure 4 — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/Figure4_neoantigen.pdf` | 55406 | `dd1ffb32d9169e6417db509a48ff2777e3fb820df446a3a28a20c4418d01009f` | Figure 4 — vector PDF twin of the same render |
-| `02_figures/Figure5_survival.tiff` | 202986 | `df12972b30e236b0a36b34d43306de73f2db2e61ab50cd01bf9356fc7b5ef817` | Figure 5 — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/Figure5_survival.pdf` | 46563 | `4764a8bfa6d14a46a875e71492e431197c8afc8dd0363c7c75ccea7123563738` | Figure 5 — vector PDF twin of the same render |
-| `02_figures/SupplementaryFigureS1_apobec.tiff` | 392574 | `0058dc0f2b1771da98d46534f4c4391772ac18516411e7888d2573b10bd2cc29` | Supplementary Figure c — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/SupplementaryFigureS1_apobec.pdf` | 391732 | `66efd10f3309085f6f27ab1ca08c116e12466a6b6dde4d9424113d9c38b05c74` | Supplementary Figure c — vector PDF twin of the same render |
+| `02_figures/Figure3_TMB_aneuploidy.tiff` | 430792 | `60935ae13037d5e00db871e8be482c30521627dfb9af8d0ee5d90c757c4e1e48` | Figure 3 — 300 dpi TIFF, white background, the print-grade figure file |
+| `02_figures/Figure3_TMB_aneuploidy.pdf` | 922047 | `dcb8c575beb1c5f435ce56f105c0c55991678700a5d6125515bb7f6bbfa98e6b` | Figure 3 — vector PDF twin of the same render |
+| `02_figures/Figure4_neoantigen.tiff` | 291004 | `17606ab091f0bdae160f6c4223c99a84909bb3e159b8ea3676356ff699d71b79` | Figure 4 — 300 dpi TIFF, white background, the print-grade figure file |
+| `02_figures/Figure4_neoantigen.pdf` | 55414 | `a8de712305b0639614fa4acba94d6626ab5aa2d5bae41c97f2ba868e823051f0` | Figure 4 — vector PDF twin of the same render |
+| `02_figures/Figure5_survival.tiff` | 202572 | `2d26e9a90417d19ae3a5c196c5e5943212a2bf6122fd18a28487fe977433f92f` | Figure 5 — 300 dpi TIFF, white background, the print-grade figure file |
+| `02_figures/Figure5_survival.pdf` | 46580 | `fc3481727317cce3a38643e60c87f1580b718acaab92ae0a7e709b264c0c4007` | Figure 5 — vector PDF twin of the same render |
+| `02_figures/SupplementaryFigureS1_apobec.tiff` | 391582 | `a0b43ab03ddbed09a9ffca4e4d13292997ea74a4a04057bbde121efde5c245b2` | Supplementary Figure c — 300 dpi TIFF, white background, the print-grade figure file |
+| `02_figures/SupplementaryFigureS1_apobec.pdf` | 391412 | `a11b773bb56376137efc362f0b81c40983fdf30171254a7dd34e594f98563c8b` | Supplementary Figure c — vector PDF twin of the same render |
 | `02_figures/SupplementaryFigureS2_germline.tiff` | 179822 | `01f4c16c79c5dc2abcdbe549835670de01ab7e2a9dcb5489c9dfa4d8925b5d32` | Supplementary Figure e — 300 dpi TIFF, white background, the print-grade figure file |
 | `02_figures/SupplementaryFigureS2_germline.pdf` | 44310 | `af7cb68da76198e0038433f58c8208c696e34607c01ee68dc588bb8e70e008fa` | Supplementary Figure e — vector PDF twin of the same render |
 | `02_figures/QA_figure_check.md` | 19539 | `b14947a7ff5e92236e9f2e020b9f24d1124b5905cb526dd5e486ecd8616291b0` | Programmatic figure QA (per-panel text overlap / out-of-frame / axis-label squeeze / raster edge and white-background gates); all gates 0 |
