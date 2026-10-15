@@ -733,3 +733,120 @@ RESULT: ALL GATES PASS
 | `QC/_highlight_round/old/make_revision_docx.OLD.py`（旧建档器） | 15,435 | `978af1b6ec2736cf0fae979105c444152345b5bb5aebb406b75b3e11b16da986` |
 
 旧口径产物的"未变句子带高亮"基线（复核脚本产出）= **58 句**；新口径 = **0 句**。
+
+---
+
+## (x) 高亮口径第三轮：**三层最小单位**（Tier 1 整块 / Tier 2 不染色 / Tier 3 只染变动的词串）—— 2026-10-15
+
+### (x.1) 为什么再改一轮
+
+第 (ix) 轮的"句级"口径已保证"逐字相同的句子带高亮 = 0"，但**重写句仍是整句涂黄**。
+本次修订是**叙事重建**而非句级润色，故整句染色的面积必然很大（71.2% 字符、111/174 段），
+从编辑视角读起来仍近似"几乎全篇高亮"。第 (x) 轮把最小单位从"句"下沉到"**变动的词串**"：
+重写句内**只染真正改动或新增的词**，其余词保持白色；整块黄只保留在**确实新增**的内容上。
+
+修订规模的客观量度（与投稿版 `iscience投稿版本/投稿版本/manuscript.docx` 逐段比对）：
+
+- 投稿版 **6,161 个实词 / 115 个非空段落 / 372 句**；修回稿 **11,177 个实词 / 174 段 / 574 句**（实词 ＋81%）。
+- 修回稿 574 句中仅 **154 句（26.8%）**与投稿版逐字相同；其余 420 句为改写或新增。
+- 差异最大的若干段落（如 Results 的等位基因配对段、STAR Methods 的新抗原方法段）与投稿版**任何**
+  单段的词级相似度均 < 0.15，说明其为**新写内容**而非旧句重排。
+
+### (x.2) 现行规则（三层，`QC/make_revision_docx.py`，参数全部显式）
+
+| 层 | 含义 | 判定 |
+|---|---|---|
+| **Tier 1a** | 整段黄：新增段落/新增章节 | 无可信配对段（最佳词级相似度 < NEW_PARA=0.15）**且**强复用（≥MINRUN=2 连续词的对齐块）占该段词数 < NEW_FRAC=0.15 |
+| **Tier 1b** | 整句黄：新增句子 | 句级序列对齐判为 `insert`，且与投稿版任一句的词级相似度均 < MOD_SENT=0.40 |
+| **Tier 1c** | 整条黄：新增参考文献 | PMID 不在投稿版 28 条中（本轮 9 条） |
+| **Tier 1d** | 整条黄：新增/实质改写图注 | 无对应图注，或词级改动面积 ≥ LEG_WHOLE=0.60 |
+| **Tier 2** | 不染色 | 归一化后与投稿版某段/某句逐字相同（含反证守卫强制清零） |
+| **Tier 3** | 只染变动的词串 | 段落级词对齐中只高亮新稿侧未对齐的词串；`replace` 块再做字符级回退（公共前后缀 ≥ CHARMIN=6 字符留白） |
+| scaffold | 不染色 | 标题页字段标签 / 文章类型取值 / 字数行 / 分块标题（转排脚手架） |
+
+对齐与归一化沿用既有逻辑（`norm()`），并将词对齐的"词"做 token 级归一化 `tn()`，使
+`tumours,`/`tumours`、`(LOH)`/`LOH`、`allele-specific`/`allele specific` 不被误判为改动；
+孤立单字对齐块仅当该词是实词（非 the/of/we/not 一类功能词）时才计为复用，避免句中"单字白洞"。
+**本轮不再整句涂黄。**
+
+### (x.3) 三套口径对照（同一修回稿、同一投稿版基准）
+
+| 指标 | ① 段落级（<0.75 整段高亮） | ② 句级（整句高亮） | ③ **本轮三层最小单位** |
+|---|---:|---:|---:|
+| 高亮字符覆盖率 | 87.2% (59,084/67,799) | 71.2% (48,263/67,799) | **61.2% (41,524/67,799)** |
+| 高亮段落数 | 118 / 174 = 67.8% | 111 / 174 = 63.8% | **109 / 174 = 62.6%** |
+| 高亮 run 数 | 218 | 464 | **655** |
+| 逐字相同句带高亮（硬断言，要求 0） | 58 | 0 | **0** |
+
+本轮档位构成：
+
+| 档位 | 段落 | 高亮段 | 字符 | 高亮字符 |
+|---|---:|---:|---:|---:|
+| Tier 3（只染变动的词串） | 83 | 78 | 45,647 | 28,576 |
+| Tier 1a（整段黄：新增段/章节） | 16 | 16 | 9,799 | 9,711 |
+| Tier 1c（整条黄：新增文献） | 9 | 9 | 2,760 | 2,736 |
+| Tier 1d（整条黄：新增/改写图注） | 6 | 6 | 537 | 501 |
+| scaffold（转排脚手架） | 11 | 0 | 185 | 0 |
+| Tier 2（逐字相同，不染色） | 49 | 0 | 8,871 | 0 |
+
+逐节覆盖率（本轮）：Title page 33.7%、Summary 66.2%、Highlights 44.8%、eTOC 79.2%、
+Introduction 68.7%、Results 79.5%、Discussion 81.2%、STAR Methods 49.0%、Back matter 40.1%、
+Figure legends 73.5%、References 26.5%。
+
+> **为什么仍是 61.2% 而不是更低**：整块黄（Tier 1）只占 9,711+2,736+501 = 12,948 字符（19.1%），
+> 其余 28,576 字符（42.2%）是 Tier 3 的**逐词串**染色——这些词在投稿版中确实没有对应（或只在
+> 不同语境中出现）。若改为"**无序**词表口径"（只要该词在投稿版出现过就不染色），覆盖率可降到
+> 24.5%，但那会把"同一批词被重新组织成相反结论"的改写**隐藏掉**（例如极性反转、
+> 关联方向反转），对审稿人反而是危险的不透明，故不采用。
+> 另附一份**逐节改动清单** `05_response/Change_Summary.md`（并在 `01_manuscript/` 放同目录副本），
+> 逐节列出新增分析、新图新表、数字改动、否证/下调语气的句子与新增文献，便于只看要点。
+
+### (x.4) 本轮改动 / 新增文件（bytes + sha256，取值时刻见 `QC/FINAL_MANIFEST.md`）
+
+| 文件 | bytes | sha256 | 说明 |
+|---|---:|---|---|
+| `QC/make_revision_docx.py` | 34,052 | `bb6ea0fb7a30e264074589b9bb7fdb1478b9d4660d7dba3387f8466a30a933ab` | 高亮判定重写为**三层最小单位**；新增 token 归一化 `tn()`、`PAIR_OK/NEW_FRAC/MINRUN/CHARMIN` 参数与档位记录 |
+| `QC/verify_highlight_three_tier.py` | 23,723 | `934015e0f488d69bad70231cbda34bb0527640f5ae83cc0e0abd626cdd4a85cf` | **新增**：独立复核脚本（三口径对照 / 反证断言 / 逐节覆盖率 / 10 段抽查表 / CLEAN 与两版一致性） |
+| `QC/gen_change_summary.py` | 11,113 | `f58ed417455b78ee8d8ead83ebb27a59248ef4d7e8787436ce1038d2bc911646` | **新增**：逐节改动清单生成器（新交付物 `Change_Summary.md` 的两份副本由它写出） |
+| `QC/gen_highlight_summary.py` | 12,921 | `ac688ed3fdbad2f8074a16e93b94407ac5f8383d0c158b94d9584eadb53c189a` | 改写叙述为三层口径（数值仍全部程序化取自两个 JSON） |
+| `QC/verify_highlight_sentence_level.py` | 19,644 | `869def3e606f00abc6cb0aa43b58ac3406f23512234dd2b034d8f50ec4af0d07` | 第二轮复核脚本保留为历史件，输出改到 `QC/_highlight_round/sentence/`，不再覆盖现行报告 |
+| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 68,500 | `d21308a29dfd0ac1e9fc0fb2867300384fc83df5a242095a0ccfac0811e2bc2c` | 重建：174 段、行号域在、655 高亮 run、109/174 段有染色 |
+| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62,888 | `ab67e4435690e625ae4b3f9fdbfd1aed590997104e4abcffeca8cc75cec3956c` | 重建：174 段、0 高亮 run |
+| `01_manuscript/HLA_LOH02_revision_HIGHLIGHT_SUMMARY.md` | 10,408 | `afadf0cb0b45b926a9109610a6b47b5d996bbdac2405b010f43ae36a79450310` | 重生：文首注明段落级与句级两轮口径均已废弃 |
+| `05_response/Change_Summary.md` | 18,045 | `3f35c32d21763b55fd2e9a4023ce3e0ccc7e669fa3a084801d119d3bc2d6b6e1` | **新增交付物**：逐节改动清单（给编辑） |
+| `01_manuscript/Change_Summary.md` | 18,045 | `3f35c32d21763b55fd2e9a4023ce3e0ccc7e669fa3a084801d119d3bc2d6b6e1` | 同上文件的同目录副本（与两份 DOCX 放在一起） |
+| `QC/HIGHLIGHT_VERIFY.md` | 6,358 | `f8d04d9b01fbdd070019e7372135f321214e354c0bb5abd55e1f0491f8ea3066` | 本轮复核报告（三口径对照 / 断言原始输出 / 逐节表 / 抽查表） |
+
+> **提交清单由 58 → 60 项**：`FINAL_MANIFEST.md` 新增两行——`05_response/Change_Summary.md`（新交付物，可随回复信附给编辑）与`01_manuscript/Change_Summary.md`（同目录副本）。除此两行外清单构成不变。
+
+> **DOCX 字节稳定性（不美化，同 §(ix)）**：`python-docx` 写 zip 时对成员使用当前时刻作为 DOS
+> 时间戳，故两版 DOCX 的 **sha256 每次重建都会变**（逐段文本、run 切分与高亮掩码不变）。
+> `FINAL_MANIFEST.md` 记录的是生成时刻的哈希。本文件亦为两个 zip 的成员，成员以
+> `QC/tools/surgical_zip.py` 外科式替换，其余成员逐字节搬运。
+
+### (x.5) 门禁重跑（原始输出见 `QC/_highlight_round/GATES.md`）
+
+| 门禁 | 命令 | 结果 |
+|---|---|---|
+| 1 DOCX 重建 | `QC/make_revision_docx.py` | `manuscript paragraphs written: 174`；高亮 109/174 段、41,524/67,799 字符 = 61.20%、655 run；CLEAN 0 run；EXIT=0 |
+| 2 三层高亮复核 | `QC/verify_highlight_three_tier.py` | `ASSERT verbatim-identical sentence carrying ANY highlight -> observed = 0 -> PASS`；三口径 87.2% / 71.2% / 61.2%；`RESULT: ALL GATES PASS`；EXIT=0 |
+| 3 高亮汇总重生 | `QC/gen_highlight_summary.py` | `wrote …HIGHLIGHT_SUMMARY.md`；EXIT=0 |
+| 4 逐节改动清单 | `QC/gen_change_summary.py` | `wrote 05_response/Change_Summary.md` + `01_manuscript/Change_Summary.md`；EXIT=0 |
+| 5 锚点 | `05_response/verify_anchors.py` | `anchors: 28   matched in md AND both DOCX: 28   mismatched: 0`；EXIT=0 |
+| 6 残留标记 | `QC/scan_markdown_residue.py` | 两版 `TOTAL_residue 0`、`paragraphs 174`、行号域存在；`GATE G5 … PASS`；EXIT=0 |
+| 7 清单 | `QC/tools/verify_manifest.py` | 见该命令的原始输出（清单行数 58 → 60） |
+
+### (x.6) 回滚点（第二轮"句级整句高亮"产物，按字节保存）
+
+| 回滚文件 | bytes | sha256 |
+|---|---:|---|
+| `QC/_highlight_round/sentence/make_revision_docx.SENTENCE.py`（第二轮建构器） | 28,098 | `8b015a4d4e21e8d7727f0e6621554ef934f7ed97e8aff9a9aa1163cb98df8604` |
+| `QC/_highlight_round/sentence/MARKED.sentence.docx`（第二轮 MARKED（71.2% 口径）） | 66,154 | `defefe4b5b7953f8a65889fc0e6f559646383b2404614a50363f0fd4438c2226` |
+| `QC/_highlight_round/sentence/CLEAN.sentence.docx`（第二轮 CLEAN） | 62,887 | `b30a9ca26ff4de4198268a10e93c3ffc3c9f3cf89852f91c1d556c5ba4965c43` |
+| `QC/_highlight_round/sentence/HIGHLIGHT_VERIFY.md`（第二轮复核报告） | 5,745 | `e7f14a670f1e5ff712f6b49950f642b11b3f2e47ff736f5d96be02b5bc1106e0` |
+| `QC/_highlight_round/sentence/HLA_LOH02_revision_HIGHLIGHT_SUMMARY.md`（第二轮高亮汇总） | 10,565 | `b5ecbad4ad0819aae938b5f24265e774b4361256c18b71cbdaba6ad385a31839` |
+| `QC/_highlight_round/old/HLA_LOH02_revision_MARKED.docx`（第一轮 MARKED（段落级 87.2% 口径）） | 62,954 | `a2987113faffe43e4fc45a70b963efa802c365fea8542740b0343c11ba88c1c9` |
+
+三段口径的"未变句子带高亮"基线依次为 **58 → 0 → 0**；本轮在保持该硬断言为 0 的前提下，
+把覆盖率由 71.2% 降到 61.2%，并**取消了重写句的整句涂黄**。
+

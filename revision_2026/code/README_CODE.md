@@ -224,8 +224,8 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 
 | Artifact | Bytes | sha256 (frozen bytes as shipped) |
 |---|---:|---|
-| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62,652 | `66c2dca47169458ddda4bd42c98dff14fa62ed7142eff85aed120b7a2e0db1b2` |
-| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 62,954 | `a2987113faffe43e4fc45a70b963efa802c365fea8542740b0343c11ba88c1c9` |
+| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62,888 | `ab67e4435690e625ae4b3f9fdbfd1aed590997104e4abcffeca8cc75cec3956c` |
+| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 68,500 | `d21308a29dfd0ac1e9fc0fb2867300384fc83df5a242095a0ccfac0811e2bc2c` |
 | `05_response/Response_to_Reviewers.docx` | 63,730 | `ac860045b799e89d1f1c11078832c023064c134684dd3fa1f4e0f3aac6a93dfc` |
 | `07_cover/Cover_Letter.docx` | 40,860 | `9a64a7e2606687dfedc88c5e8aa6402c3d314028cc351a7f63d474d221c173f9` |
 | `06_compliance/Key_Resources_Table.docx` | 38,913 | `1beafe5a83b0445e2c56b8d379a58a01b53635e39dc3f9471f10622aaa8b5a5e` |
@@ -240,7 +240,7 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 
 | Artifact | Bytes | sha256 |
 |---|---:|---|
-| `derived_data.zip` (91 members) | 626,302 | `e44a1ecf63ffe0a41262c06bd442e5b27dca1a7545ef659331a6ca0149da7efa` |
+| `derived_data.zip` (91 members) | 629,772 | `6b68d446588d8c1e3588a8e08246fb55f8c89667c9a238858c8d6baf10066967` |
 | `code.zip` (9 members) | see note | **self-referential** — `code.zip` contains this very file, so recording its digest here would change it. Its digest is recorded in `QC/FINAL_MANIFEST.md` of the submission package and is reproducible only from the archive itself: `sha256sum 06_compliance/deposit/code.zip`. Everything the archive contains is byte-identical to this directory (§6). |
 
 ### Number dictionary
@@ -248,7 +248,7 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 | Artifact | Bytes | sha256 |
 |---|---:|---|
 | `PINNED_PACK.md` (this directory; the copy shipped in both archives) | 15,179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` |
-| `PINNED_PACK_CORRECTIONS.md` (§(v) figure-renumbering record, §(vi) blocker fixes, §(vii) closing-round fixes, §(viii) sentence-split round, §(ix) sentence-level revision-highlighting round) | 63,516 | `b5e9af952179f504298cfbd0a81fdffebd31082fefaa3c253c632e5dfdf2a2f9` |
+| `PINNED_PACK_CORRECTIONS.md` (§(v) figure-renumbering record, §(vi) blocker fixes, §(vii) closing-round fixes, §(viii) sentence-split round, §(ix) sentence-level revision-highlighting round, §(x) three-tier minimal-unit revision-highlighting round) | 73,906 | `358631fd7ad8049e0281b2eef5f93e0d1b2b70ea2870070dca262563c609af08` |
 | `00_pinned/PINNED_PACK.md` in the submission package (same bytes) | 15,179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` |
 
 ## 8. Notes
@@ -268,3 +268,18 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 - The manuscript-rendering scripts listed at the end of §1 are **not** members of `code.zip`; they
   live in the submission package (`V3/QC/`, `V3/05_response/`, `V3/07_cover/`) because they consume
   the manuscript markdown rather than the derived tables.
+- **Revision-highlighting rule (2026-10-15, third round — §(x) of `PINNED_PACK_CORRECTIONS.md`).**
+  The marked manuscript `01_manuscript/HLA_LOH02_revision_MARKED.docx` is produced by
+  `V3/QC/make_revision_docx.py` under a **three-tier minimal-unit rule**: Tier 1 = whole-block
+  yellow for genuinely new paragraphs / sections / sentences / figure legends / references;
+  Tier 2 = never highlighted when the text is verbatim-identical to the submitted manuscript
+  (hard assertion: 0 counter-examples); Tier 3 = inside rewritten text only the **changed word
+  strings** are highlighted (`replace` runs are further trimmed at character level). Whole-sentence
+  highlighting is no longer used. Coverage went 87.2% (paragraph-level rule) → 71.2%
+  (sentence-level rule) → **61.2%**, always with the "verbatim-identical sentence carrying any
+  highlight = 0" assertion holding. Verification lives in `V3/QC/HIGHLIGHT_VERIFY.md`, produced by
+  the independent verifier `V3/QC/verify_highlight_three_tier.py`. A new editor-facing
+  **section-by-section change list** ships with the submission package as
+  `05_response/Change_Summary.md` (a second copy sits next to the two manuscript DOCX as
+  `01_manuscript/Change_Summary.md`). Neither the change list nor the rendering touches the
+  manuscript text, numbers or figure/table numbers.
