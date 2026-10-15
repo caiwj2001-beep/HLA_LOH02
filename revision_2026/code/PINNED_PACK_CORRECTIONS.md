@@ -807,14 +807,14 @@ Figure legends 73.5%、References 26.5%。
 |---|---:|---|---|
 | `QC/make_revision_docx.py` | 34,052 | `bb6ea0fb7a30e264074589b9bb7fdb1478b9d4660d7dba3387f8466a30a933ab` | 高亮判定重写为**三层最小单位**；新增 token 归一化 `tn()`、`PAIR_OK/NEW_FRAC/MINRUN/CHARMIN` 参数与档位记录 |
 | `QC/verify_highlight_three_tier.py` | 23,723 | `934015e0f488d69bad70231cbda34bb0527640f5ae83cc0e0abd626cdd4a85cf` | **新增**：独立复核脚本（三口径对照 / 反证断言 / 逐节覆盖率 / 10 段抽查表 / CLEAN 与两版一致性） |
-| `QC/gen_change_summary.py` | 11,113 | `f58ed417455b78ee8d8ead83ebb27a59248ef4d7e8787436ce1038d2bc911646` | **新增**：逐节改动清单生成器（新交付物 `Change_Summary.md` 的两份副本由它写出） |
+| `QC/gen_change_summary.py` | 13,163 | `ae95ea66750c38fe0aca5ab300925d7efd3f563e70dcf1dd965b0e118e98d350` | **新增**：逐节改动清单生成器（新交付物 `Change_Summary.md` 的两份副本由它写出） |
 | `QC/gen_highlight_summary.py` | 12,921 | `ac688ed3fdbad2f8074a16e93b94407ac5f8383d0c158b94d9584eadb53c189a` | 改写叙述为三层口径（数值仍全部程序化取自两个 JSON） |
 | `QC/verify_highlight_sentence_level.py` | 19,644 | `869def3e606f00abc6cb0aa43b58ac3406f23512234dd2b034d8f50ec4af0d07` | 第二轮复核脚本保留为历史件，输出改到 `QC/_highlight_round/sentence/`，不再覆盖现行报告 |
 | `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 68,500 | `d21308a29dfd0ac1e9fc0fb2867300384fc83df5a242095a0ccfac0811e2bc2c` | 重建：174 段、行号域在、655 高亮 run、109/174 段有染色 |
 | `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62,888 | `ab67e4435690e625ae4b3f9fdbfd1aed590997104e4abcffeca8cc75cec3956c` | 重建：174 段、0 高亮 run |
 | `01_manuscript/HLA_LOH02_revision_HIGHLIGHT_SUMMARY.md` | 10,408 | `afadf0cb0b45b926a9109610a6b47b5d996bbdac2405b010f43ae36a79450310` | 重生：文首注明段落级与句级两轮口径均已废弃 |
-| `05_response/Change_Summary.md` | 18,045 | `3f35c32d21763b55fd2e9a4023ce3e0ccc7e669fa3a084801d119d3bc2d6b6e1` | **新增交付物**：逐节改动清单（给编辑） |
-| `01_manuscript/Change_Summary.md` | 18,045 | `3f35c32d21763b55fd2e9a4023ce3e0ccc7e669fa3a084801d119d3bc2d6b6e1` | 同上文件的同目录副本（与两份 DOCX 放在一起） |
+| `05_response/Change_Summary.md` | 18,539 | `b6988c236475b14a2f5208824e274261f00a01332cdb6a10075a85d6552bc218` | **新增交付物**：逐节改动清单（给编辑） |
+| `01_manuscript/Change_Summary.md` | 18,539 | `b6988c236475b14a2f5208824e274261f00a01332cdb6a10075a85d6552bc218` | 同上文件的同目录副本（与两份 DOCX 放在一起） |
 | `QC/HIGHLIGHT_VERIFY.md` | 6,358 | `f8d04d9b01fbdd070019e7372135f321214e354c0bb5abd55e1f0491f8ea3066` | 本轮复核报告（三口径对照 / 断言原始输出 / 逐节表 / 抽查表） |
 
 > **提交清单由 58 → 60 项**：`FINAL_MANIFEST.md` 新增两行——`05_response/Change_Summary.md`（新交付物，可随回复信附给编辑）与`01_manuscript/Change_Summary.md`（同目录副本）。除此两行外清单构成不变。

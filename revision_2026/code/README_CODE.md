@@ -240,7 +240,7 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 
 | Artifact | Bytes | sha256 |
 |---|---:|---|
-| `derived_data.zip` (91 members) | 629,772 | `6b68d446588d8c1e3588a8e08246fb55f8c89667c9a238858c8d6baf10066967` |
+| `derived_data.zip` (91 members) | 629,767 | `b080aa482408df6b642a1c4dc84ce62edd69c2cc2c389d7c9c38c70f34ee9341` |
 | `code.zip` (9 members) | see note | **self-referential** — `code.zip` contains this very file, so recording its digest here would change it. Its digest is recorded in `QC/FINAL_MANIFEST.md` of the submission package and is reproducible only from the archive itself: `sha256sum 06_compliance/deposit/code.zip`. Everything the archive contains is byte-identical to this directory (§6). |
 
 ### Number dictionary
