@@ -1,6 +1,6 @@
 # FINAL_MANIFEST — frozen submission package
 
-Manuscript **ISCIENCE-D-26-09416** (iScience revision) · directory `iscience投稿版本/V3` · generated 2026-10-15 22:38:34
+Manuscript **ISCIENCE-D-26-09416** (iScience revision) · directory `iscience投稿版本/V3` · generated 2026-10-15 22:40:38
 
 Every file below is byte-frozen: `sha256` and `bytes` are of the file as it stands on disk at
 generation time. Figure numbers follow the 2026-10-15 renumbering to first-appearance order
@@ -10,7 +10,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 
 - **files listed: 60**
 - **missing on disk: none**
-- **total bytes: 8390873 (8.4 MB)**
+- **total bytes: 8394114 (8.4 MB)**
 
 ---
 
@@ -42,7 +42,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 | `01_manuscript/REF_VERIFICATION.md` | 13042 | `fd96b89e08d6c1147c85a568363cec4ff5662fdeaf2760d0b4ef09a269963c9d` | Reference verification report (every reference checked against PubMed/Crossref) |
 | `01_manuscript/SENTENCE_STATS.md` | 15070 | `7aa8ad1a53bcaa6de79616df321fc399ce9fce9128317784de0300eeaa42605e` | Sentence-length / readability statistics of the revised manuscript; carries a header pointing at CORRECTIONS §(v) |
 | `01_manuscript/HLA_LOH02_revision_HIGHLIGHT_SUMMARY.md` | 10408 | `afadf0cb0b45b926a9109610a6b47b5d996bbdac2405b010f43ae36a79450310` | Revision highlight summary (three-tier minimal-unit rule: Tier 1 whole blocks only for genuinely new text, Tier 2 never highlighted, Tier 3 only the changed word strings of rewritten text; the superseded paragraph-level and sentence-level rules are marked obsolete at the head); header points at CORRECTIONS §(x) |
-| `01_manuscript/Change_Summary.md` | 18045 | `3f35c32d21763b55fd2e9a4023ce3e0ccc7e669fa3a084801d119d3bc2d6b6e1` | Editor-facing section-by-section change list (copy of 05_response/Change_Summary.md, kept next to the two manuscript DOCX) |
+| `01_manuscript/Change_Summary.md` | 18539 | `b6988c236475b14a2f5208824e274261f00a01332cdb6a10075a85d6552bc218` | Editor-facing section-by-section change list (copy of 05_response/Change_Summary.md, kept next to the two manuscript DOCX) |
 | `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 68500 | `d21308a29dfd0ac1e9fc0fb2867300384fc83df5a242095a0ccfac0811e2bc2c` | Revised manuscript with line numbering and every change highlighted in yellow (three-tier minimal-unit rule; CORRECTIONS §(x)) |
 | `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62888 | `ab67e4435690e625ae4b3f9fdbfd1aed590997104e4abcffeca8cc75cec3956c` | Revised manuscript, clean copy (no markup) — the file the editor typesets from |
 
@@ -52,10 +52,10 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `02_figures/Figure1_pancancer_and_reliability.tiff` | 605148 | `53e2ad70038bf7653343387ebeedc89657cf897f9b6ff338ab5c19c44d6c4bf8` | Figure 1 — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/Figure1_pancancer_and_reliability.pdf` | 61844 | `c1a32e8d2c507f98741d3a05d8bfb1be6c5413d2dc5c9cf20d5d0527c594a52f` | Figure 1 — vector PDF twin of the same render |
-| `02_figures/Figure2_mechanism_armlandscape.tiff` | 321874 | `998dc8def28fd6181a8aef9a9895e52128df6e3f6fa82c14c5cb5e484ed48593` | Figure 2 — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/Figure2_mechanism_armlandscape.pdf` | 58135 | `8c67f4d93e80f83019db0ae8e1d9a942e651d5e0113dd2155522f61417acb97a` | Figure 2 — vector PDF twin of the same render |
+| `02_figures/Figure1_pancancer_and_reliability.tiff` | 607202 | `0befdeecbdabc95760c6154702c4425cad487f25e54cfd94ad10ef628a32bcd7` | Figure 1 — 300 dpi TIFF, white background, the print-grade figure file |
+| `02_figures/Figure1_pancancer_and_reliability.pdf` | 61868 | `9e193fc2faef2aa0d3b4a126436a9aadbc1fb55ef79cf68b799dfd0fc9494511` | Figure 1 — vector PDF twin of the same render |
+| `02_figures/Figure2_mechanism_armlandscape.tiff` | 322046 | `2457009fb739bb76558cd1efbf5007274e38245d1eda6fa231edcd1d08372d6f` | Figure 2 — 300 dpi TIFF, white background, the print-grade figure file |
+| `02_figures/Figure2_mechanism_armlandscape.pdf` | 58138 | `7163a590dcde6573cdf14aabfc0d74f00705f6affef0b019ebfe07868ab26857` | Figure 2 — vector PDF twin of the same render |
 | `02_figures/Figure3_TMB_aneuploidy.tiff` | 430952 | `34e73bf01c84cd7ca4f38066c671007c98017c82228feb5e92d48d4d2baa1328` | Figure 3 — 300 dpi TIFF, white background, the print-grade figure file |
 | `02_figures/Figure3_TMB_aneuploidy.pdf` | 922032 | `be31a2c852ad140a3501c319ae58ab899ba19c6f512a395ab241efb57c797a09` | Figure 3 — vector PDF twin of the same render |
 | `02_figures/Figure4_neoantigen.tiff` | 292246 | `9798967b5ac9b1b1a135229e2017d97c02d18042c4d57238207246759b7fb180` | Figure 4 — 300 dpi TIFF, white background, the print-grade figure file |
@@ -99,7 +99,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 | `05_response/ANCHOR_MAP.tsv` | 3180 | `9ea2fdeb874d37cfe0f0e886a50d316ddba30ed5cd57a14126a942f78f444ce4` | Machine-readable map of every response point to its manuscript anchor |
 | `05_response/ANCHOR_INVENTORY.tsv` | 85834 | `26f2625ea6595f59d15a6c9d6a8b0502f63bcb518010877c0058e974c4a05979` | Inventory of the manuscript sentences the response points cite |
 | `05_response/COVERAGE_CHECK.md` | 37422 | `18054935cc0fb6b0a3128da9a1273225010873c6e88be64ede94cfb983248a32` | Coverage audit that every reviewer point is answered; header points at CORRECTIONS §(v) |
-| `05_response/Change_Summary.md` | 18045 | `3f35c32d21763b55fd2e9a4023ce3e0ccc7e669fa3a084801d119d3bc2d6b6e1` | Editor-facing section-by-section change list for the revised manuscript (newly added this round): per section — new analyses, new figures/tables, numeric changes, counter-claims / re-toned statements, new references; header points at CORRECTIONS §(x) |
+| `05_response/Change_Summary.md` | 18539 | `b6988c236475b14a2f5208824e274261f00a01332cdb6a10075a85d6552bc218` | Editor-facing section-by-section change list for the revised manuscript (newly added this round): per section — new analyses, new figures/tables, numeric changes, counter-claims / re-toned statements, new references; header points at CORRECTIONS §(x) |
 
 ---
 
