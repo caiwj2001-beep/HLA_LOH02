@@ -201,21 +201,21 @@ delivery tree `iscience投稿版本/V3/`.
 
 | Artifact | Bytes | sha256 |
 |---|---:|---|
-| `Figure1_pancancer_and_reliability.tiff` | 605,148 | `53e2ad70038bf7653343387ebeedc89657cf897f9b6ff338ab5c19c44d6c4bf8` |
-| `Figure1_pancancer_and_reliability.pdf` | 61,844 | `c1a32e8d2c507f98741d3a05d8bfb1be6c5413d2dc5c9cf20d5d0527c594a52f` |
-| `Figure2_mechanism_armlandscape.tiff` | 321,874 | `998dc8def28fd6181a8aef9a9895e52128df6e3f6fa82c14c5cb5e484ed48593` |
-| `Figure2_mechanism_armlandscape.pdf` | 58,135 | `8c67f4d93e80f83019db0ae8e1d9a942e651d5e0113dd2155522f61417acb97a` |
-| `Figure3_TMB_aneuploidy.tiff` | 430,952 | `34e73bf01c84cd7ca4f38066c671007c98017c82228feb5e92d48d4d2baa1328` |
-| `Figure3_TMB_aneuploidy.pdf` | 922,032 | `be31a2c852ad140a3501c319ae58ab899ba19c6f512a395ab241efb57c797a09` |
-| `Figure4_neoantigen.tiff` | 292,246 | `9798967b5ac9b1b1a135229e2017d97c02d18042c4d57238207246759b7fb180` |
-| `Figure4_neoantigen.pdf` | 55,406 | `dd1ffb32d9169e6417db509a48ff2777e3fb820df446a3a28a20c4418d01009f` |
-| `Figure5_survival.tiff` | 202,986 | `df12972b30e236b0a36b34d43306de73f2db2e61ab50cd01bf9356fc7b5ef817` |
-| `Figure5_survival.pdf` | 46,563 | `4764a8bfa6d14a46a875e71492e431197c8afc8dd0363c7c75ccea7123563738` |
-| `SupplementaryFigureS1_apobec.tiff` | 392,574 | `0058dc0f2b1771da98d46534f4c4391772ac18516411e7888d2573b10bd2cc29` |
-| `SupplementaryFigureS1_apobec.pdf` | 391,731 | `9bf3ae8766823007fc44dfe8793b28cdbbbed316d3c5401b622d453ad91285c0` |
-| `SupplementaryFigureS2_germline.tiff` | 179,822 | `01f4c16c79c5dc2abcdbe549835670de01ab7e2a9dcb5489c9dfa4d8925b5d32` |
-| `SupplementaryFigureS2_germline.pdf` | 44,310 | `af7cb68da76198e0038433f58c8208c696e34607c01ee68dc588bb8e70e008fa` |
-| `QA_figure_check.md` (programmatic QA; all gates 0) | 19,539 | `b14947a7ff5e92236e9f2e020b9f24d1124b5905cb526dd5e486ecd8616291b0` |
+| `Figure1_pancancer_and_reliability.tiff` | 605,964 | `4a9bf25ee99a2a092e4c47524fc2fa19b3427cec24518d95407c9441d287703a` |
+| `Figure1_pancancer_and_reliability.pdf` | 61,869 | `7d736c598299b90a34ee23ed38556f29710b9412ad73896e3cda70ee3643566d` |
+| `Figure2_mechanism_armlandscape.tiff` | 327,454 | `8af788faacc687d26531c4144e3a70d86b9f9740a76996afc2550725fe68d9ec` |
+| `Figure2_mechanism_armlandscape.pdf` | 58,468 | `70b2b1605b513a0d9339361e0a1d8f9bd9d11ba4e357c6521a8afc89b5a5a0b7` |
+| `Figure3_TMB_aneuploidy.tiff` | 430,792 | `60935ae13037d5e00db871e8be482c30521627dfb9af8d0ee5d90c757c4e1e48` |
+| `Figure3_TMB_aneuploidy.pdf` | 922,047 | `dc508c6d8557cd689e630b5855c6e4f06a841cff4640abcb42f5efba55c6f8b1` |
+| `Figure4_neoantigen.tiff` | 291,004 | `17606ab091f0bdae160f6c4223c99a84909bb3e159b8ea3676356ff699d71b79` |
+| `Figure4_neoantigen.pdf` | 55,416 | `147d58ed83c4f3d732fb7737fda466108b2c9759ff9a843e91376811df0bd5b3` |
+| `Figure5_survival.tiff` | 202,070 | `7ece4183dee2de95bac1e494b21fc6fda4aca078e5ae232a1bfc39134ebe6500` |
+| `Figure5_survival.pdf` | 46,576 | `c7257f42c291b6f0ec9d878a2fcb65a2de5970b8ae03a6b368724a45ac380a40` |
+| `SupplementaryFigureS1_apobec.tiff` | 391,582 | `a0b43ab03ddbed09a9ffca4e4d13292997ea74a4a04057bbde121efde5c245b2` |
+| `SupplementaryFigureS1_apobec.pdf` | 391,411 | `3814e8501c644bc075327e5b85ad3dc3c7bff0c124d6023b3e7bc9d2134d586f` |
+| `SupplementaryFigureS2_germline.tiff` | 178,352 | `92f2f27b1238277f90fe3e5e75c84fa4758a8f64187309ede25410002088bf24` |
+| `SupplementaryFigureS2_germline.pdf` | 44,301 | `297b012d8c2c85ad941fd909392abcd707e576b371a3ad2e8e4a69d908c66130` |
+| `QA_figure_check.md` (programmatic QA; all gates 0) | 19,552 | `9332f835b2750e5c6c1f17727bfb63e693539d3eb6b6daa2c86ce4b2e1b85cf3` |
 
 ### Manuscript and submission DOCX
 
@@ -224,16 +224,16 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 
 | Artifact | Bytes | sha256 (frozen bytes as shipped) |
 |---|---:|---|
-| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62,888 | `ab67e4435690e625ae4b3f9fdbfd1aed590997104e4abcffeca8cc75cec3956c` |
-| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 68,500 | `d21308a29dfd0ac1e9fc0fb2867300384fc83df5a242095a0ccfac0811e2bc2c` |
+| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62,888 | `308510748c72591af40856163bcef0c7f602f17899f9b9e7c159afad3183709e` |
+| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 67,509 | `d38c9536655ea34b32ff65728ef9bd590aa053c81888030addb63efcd1cc6bdb` |
 | `05_response/Response_to_Reviewers.docx` | 63,730 | `ac860045b799e89d1f1c11078832c023064c134684dd3fa1f4e0f3aac6a93dfc` |
 | `07_cover/Cover_Letter.docx` | 40,860 | `9a64a7e2606687dfedc88c5e8aa6402c3d314028cc351a7f63d474d221c173f9` |
 | `06_compliance/Key_Resources_Table.docx` | 38,913 | `1beafe5a83b0445e2c56b8d379a58a01b53635e39dc3f9471f10622aaa8b5a5e` |
 | `03_tables/Table1_baseline.docx` | 38,735 | `84971fc8a7821c5f369cae14b5c29ee0b841e4fef933e32edadd64002cc6c4b0` |
 | `03_tables/Table2_drivers.docx` | 38,330 | `4bea5e52838547b09992035150e603fda343b977596376eee834495c17b558b9` |
 | `03_tables/Table3_survival.docx` | 38,478 | `98029ae48b2e0dd2cb722a2550ca879a58d51f88474e2c2f9857886390b2272b` |
-| `03_tables/Supplementary_Tables.docx` | 629,929 | `1d23636643c1a3e0690117f71ba063f3bf6660e85b486b1ab102bba8a760b300` |
-| `04_supplement/Supplemental_Information.pdf` | 1,510,270 | `a17d21b9f45de59f7e83b4adb9746c2c790596444792a595e2475a6d6d8f4f7a` |
+| `03_tables/Supplementary_Tables.docx` | 624,779 | `613c23dda25951b73bd3dafcbc7487023efcfba81fdf63e18d5f82f74711261c` |
+| `04_supplement/Supplemental_Information.pdf` | 1,510,708 | `82acb6364f3d4eebbf447b965479e96d79582186f37fb99e53203e373eaed72c` |
 | `06_compliance/Graphical_Abstract/Graphical_Abstract.tiff` | 463,738 | `4ea81270e6ac7ffe737c7d2ceed01c1604991f97357f890cd3f5dca931f41b16` |
 
 ### Deposit archives — `06_compliance/deposit/`
@@ -248,7 +248,7 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 | Artifact | Bytes | sha256 |
 |---|---:|---|
 | `PINNED_PACK.md` (this directory; the copy shipped in both archives) | 15,179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` |
-| `PINNED_PACK_CORRECTIONS.md` (§(v) figure-renumbering record, §(vi) blocker fixes, §(vii) closing-round fixes, §(viii) sentence-split round, §(ix) sentence-level revision-highlighting round, §(x) three-tier minimal-unit revision-highlighting round) | 73,906 | `358631fd7ad8049e0281b2eef5f93e0d1b2b70ea2870070dca262563c609af08` |
+| `PINNED_PACK_CORRECTIONS.md` (\u00a7(v) figure-renumbering record, \u00a7(vi) blocker fixes, \u00a7(vii) closing-round fixes, \u00a7(viii) sentence-split round, \u00a7(ix) sentence-level revision-highlighting round, \u00a7(x) three-tier minimal-unit round, \u00a7(xi) Mode C substantive-change round, \u00a7(xii) integration round: user figure micro-adjustments, the two figure defect fixes, the supplement-PDF rebuild and the freeze) | 100,829 | `59bf4b42174053a1e637b92a0d56c83026626c5f99ef35d21be250491ce66f9a` |
 | `00_pinned/PINNED_PACK.md` in the submission package (same bytes) | 15,179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` |
 
 ## 8. Notes
@@ -277,7 +277,15 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
   strings** are highlighted (`replace` runs are further trimmed at character level). Whole-sentence
   highlighting is no longer used. Coverage went 87.2% (paragraph-level rule) → 71.2%
   (sentence-level rule) → **61.2%**, always with the "verbatim-identical sentence carrying any
-  highlight = 0" assertion holding. Verification lives in `V3/QC/HIGHLIGHT_VERIFY.md`, produced by
+  highlight = 0" assertion holding.
+  **Superseded:** the delivered revision markup is now the **Mode C** substantive-change
+  rule (28.8% coverage — 19,537/67,799 characters, 589 highlight runs, 101 of 174 paragraphs),
+  verified independently by `V3/QC/verify_highlight_mode_c.py` → `V3/QC/HIGHLIGHT_VERIFY_MODE_C.md`
+  (`ASSERT A observed = 0 -> PASS`; `ASSERT B instances = 849 uncovered = 0 -> PASS`; `RESULT: ALL
+  GATES PASS`). The three-tier full-mode build (61.2%) is kept as the rollback pair
+  `01_manuscript/_alternative/HLA_LOH02_revision_{MARKED,CLEAN}_full.docx`; see
+  `PINNED_PACK_CORRECTIONS.md` §(xi)–§(xii).
+ Verification lives in `V3/QC/HIGHLIGHT_VERIFY.md`, produced by
   the independent verifier `V3/QC/verify_highlight_three_tier.py`. A new editor-facing
   **section-by-section change list** ships with the submission package as
   `05_response/Change_Summary.md` (a second copy sits next to the two manuscript DOCX as

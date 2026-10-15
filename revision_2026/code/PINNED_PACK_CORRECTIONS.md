@@ -850,3 +850,255 @@ Figure legends 73.5%、References 26.5%。
 三段口径的"未变句子带高亮"基线依次为 **58 → 0 → 0**；本轮在保持该硬断言为 0 的前提下，
 把覆盖率由 71.2% 降到 61.2%，并**取消了重写句的整句涂黄**。
 
+---
+
+## (xi) 高亮口径第四轮：**Mode C 实质改动口径**（Tier 3 内只染数字 / 图表号 / 文献号 / 主张限定词）—— 2026-10-15
+
+### (xi.1) 为什么再改一轮
+
+第 (x) 轮把最小单位下沉到"变动的词串"后，字符覆盖率降到 **61.2%**、且"逐字相同句带高亮 = 0"
+成立。但事实底数是：修回稿与投稿版**逐句比对**只有 154/574 句（26.8%）逐字相同，
+其余 420 句确为改写或新增；**逐句标黄必然面积大**。编辑视角下 61.2% 仍近似"基本全是黄的"。
+
+因此第 (xi) 轮改为**"实质改动口径"（Mode C）**：Tier 1（真正新增的整段/整句/图注/文献）
+保持整块黄不变；Tier 3 内部**再加一层语义筛选**，只把标记落在**有意义的改动**上，
+纯文体性改写（同义替换 / 词序 / 连接词 / 单复数）**不再染色**，但逐条记入
+`05_response/Change_Summary.md`（§15 全量、§16 代表例）——即"**不染色 ≠ 不交代**"。
+
+### (xi.2) Mode C 规则（`QC/make_revision_docx.py`，`--mode substantive` 为默认值）
+
+在 Tier 3 得到"新稿侧未对齐词串"（= 第三轮全口径结果）之后，**只保留**下列四类：
+
+| 类别 | 内容 | 实现 |
+|---|---|---|
+| **(a) 数字 token** | 数字、百分比、CI、P 值、n、区间 | 改动区内 `\d` 命中的 token 即染；向右吃进 `%`，向左吃进 `=` `<` `>` `≈` `≤` `≥` `±` |
+| **(b) 图表号 / 参考文献号** | `Figure S1`、`Fig. 3B`、`Table 2`、`Data S4`、`PMID: 26806129` | 正则 `\b(?:fig(?:ure)?s?\.?\|tables?\|data)\s*S?\d+[A-Za-z]?\b` 与 `\bpmid:?\s*\d+`，命中即染所在 token |
+| **(c) 主张与限定词的新增/删除** | withdraw / no longer / do not claim / not independent / must not be read / attenuated / over-adjusted / descriptive / reliability / callable / arm-independent / aneuploidy / global / reversed / negative / null / constraint / limitation 等 | **51 个单 token**（`tn()` 归一化，故 `arm-independent`/`arm independent` 等价，含中文对应）＋**31 条多词短语**；改动块**新旧任一侧**命中即染新侧对应 token |
+| **(d) 整段/整句新增** | 走 Tier 1，与全口径判定**完全一致**（不因 Mode 变化） | Tier 1a / 1b / 1c / 1d 判定逻辑逐字未改；图注 Tier 1d 的面积阈值仍按**全口径**改动面积算 |
+
+另加**句级数字补丁**：对每一句取投稿版最相似句（≥0.30）重做词对齐，凡数字/图表号不同的 token
+一律补染，使"数字/图表号/文献号变更覆盖率 = 100%"在句级口径下也成立。
+
+**反证守卫的一处界定修订（本轮唯一的口径外修订）**：句子 = 归一化后 **≥4 字符且含字母**的句段
+（新增 `is_real_sentence()`）。`1.` `2.` 之类**编号残片**（参考文献条目号，norm 后是纯数字）
+不再视为"句子"，因此不再被投稿版同号条目"逐字相同"清掉 —— 否则 9 条新增文献的**条目号全部漏染**
+（本轮实测：修订前新增文献整条染色 283/285，修订后 285/285）。
+
+### (xi.3) 四套口径对照（同一修回稿、同一投稿版基准、同一归一化）
+
+| 指标 | ① 段落级 | ② 句级 | ③ 词/字符级全口径（**备选**） | ④ **Mode C 实质改动（正式交付）** |
+|---|---:|---:|---:|---:|
+| 高亮字符覆盖率 | 87.2% (59,084/67,799) | 71.2% (48,263/67,799) | 61.2% (41,524/67,799) | **28.8% (19,537/67,799)** |
+| 高亮段落数 | 118 / 174 = 67.8% | 111 / 174 = 63.8% | 109 / 174 = 62.6% | **101 / 174 = 58.0%** |
+| 高亮 run 数 | 218 | 464 | 655 | **589** |
+| 逐字相同句带高亮（硬断言，要求 0） | 58 → **42**（见下） | 0 | 0 | **0** |
+| 数字/图表号/文献号变更覆盖率（硬断言，要求 100%） | 未测 | 未测 | 未测 | **100.0%（821 实例，0 漏染）** |
+
+> ① 列的 58 → 42 是 §(xi.2) 末尾那处界定修订所致（同一条断言现在只在**真句子**上判定，
+> 排除了段落级口径下被整段染色的编号残片），**不是口径变化**。
+
+Mode C 档位构成：
+
+| 档位 | 段落 | 高亮段 | 字符 | 高亮字符 |
+|---|---:|---:|---:|---:|
+| Tier 1a（整段黄：新增段/章节） | 16 | 16 | 9,799 | 9,711 |
+| Tier 3（只染实质改动 token/短语） | 83 | 70 | 45,647 | 6,565 |
+| Tier 1c（整条黄：新增文献） | 9 | 9 | 2,760 | 2,760 |
+| Tier 1d（整条黄：新增/改写图注） | 6 | 6 | 537 | 501 |
+| scaffold（转排脚手架） | 11 | 0 | 185 | 0 |
+| Tier 2（逐字相同，不染色） | 49 | 0 | 8,871 | 0 |
+
+字符分解（分母 67,799）：**Mode C 实质改动 19,537（28.8%）**
+＝ Tier 1 整块黄 12,972（19.1%）＋ Tier 3 实质改动 token 6,565（9.7%）；
+**纯文体改写（不染色）22,210（32.8%）**（独立量算：直接比较两份 DOCX 高亮掩码，全口径有而 Mode C 无）；
+Mode C 有而全口径无 223 字符（句级数字补丁 ＋ 新增文献条目号）；逐字未变/脚手架 9,056（13.4%）。
+**整块无任何实质改动 token 的纯文体改写块：600 块 / 11,542 字符**（逐节列于 `Change_Summary.md` §15）。
+
+实质改动标记（token/短语级 span）**954 处**；句级数字补丁用的最相似句相似度下限 `SEG_NUM_MIN_SIM=0.30`。
+
+逐节覆盖率（Mode C）：Title page 9.8%、Summary 17.0%、Highlights 15.1%、eTOC 10.7%、
+Introduction 6.5%、Results 33.6%、Discussion 29.0%、STAR Methods 16.8%、Back matter 9.7%、
+Figure legends 66.6%、References 26.7%。
+
+### (xi.4) 备选文件位置与口径切换（一条命令 / 一个参数）
+
+| 口径 | 文件 | 说明 |
+|---|---|---|
+| **Mode C（正式交付）** | `01_manuscript/HLA_LOH02_revision_MARKED.docx` / `HLA_LOH02_revision_CLEAN.docx` | 默认 `python QC/make_revision_docx.py` |
+| **全口径（备选，不用于投稿）** | `01_manuscript/_alternative/HLA_LOH02_revision_MARKED_full.docx`（68,500 B，sha256 `d21308a2…`）＋ `HLA_LOH02_revision_CLEAN_full.docx`（62,888 B，`ab67e443…`） | `python QC/make_revision_docx.py --mode full`（或 `HLA_HL_MODE=full`）；判据记录在 `_alternative/_docx_decisions_full.json`，第三轮独立复核 JSON 为 `_alternative/_highlight_verify_full.json` |
+
+切换方式：`make_revision_docx.py --mode full|substantive`（默认 `substantive`）；
+两模式共用同一套 Tier 1/Tier 2 判定与全部参数（`QC/_docx_decisions.json` 的 `params` 中记录 `MODE`）。
+备选文件为**第三轮构建快照**（61.2%）；因 (xi.2) 的守卫界定修订，同一脚本重跑 `--mode full`
+现得 **41,550 字符 = 61.3%**（差 26 字符 = 9 条新增文献的条目号），Mode C 重跑得 19,537 = 28.8%。
+
+### (xi.5) 本轮改动 / 新增文件（bytes + sha256，取值时刻为本节生成时）
+
+| 文件 | bytes | sha256 | 说明 |
+|---|---:|---|---|
+| `QC/make_revision_docx.py` | 49,004 | `f6e3e0414b175d5b70387a7c57e46a0e5e3dc23138a61f93fd6e76b189c771e2` | 新增 `MODE`（full/substantive）、`QUAL_TOKENS/QUAL_PHRASES/FIGTAB_RE/REF_PMID_RE`、`_substantive_spans()`、`_mode_c_filter()`、`_sentence_numeric_spans()`、`is_real_sentence()`、`resolve_outputs()`；`--mode full` 产物落 `_alternative/`，并输出全口径对照与纯文体改写块记录 |
+| `QC/verify_highlight_mode_c.py` | 44,278 | `cc9359fd06082691dd64a9040c6550715a8409817915a1e48098a0989c8902c8` | **新增**：Mode C 独立复核（四口径对照 / 两个硬断言 / 四套独立覆盖率审计 / 逐节表 / 10 段抽查 / 纯文体改写代表例 / 两模式掩码集合差） |
+| `QC/HIGHLIGHT_VERIFY_MODE_C.md` | 13,132 | `125b8bcba20386c839b42edfd97a175f8a9c3d2b21bc799aa3bca02223bed303` | **新增**：复核报告（含两个硬断言的原始输出） |
+| `QC/_highlight_verify_mode_c.json` | — | `712aad07bae155ba53c7e70e1422f9a3e053291408fa2069b8e2816d756d00cd` | **新增**：机器可读复核结果 |
+| `QC/_docx_decisions.json` | — | `29e6d9a098309f2733777ca2d94af9d26a649e3b35d20c058ecf42229ba58562` | 重生：新增 `hl_chars_full_mode` / `stylistic_chars` / `subst_reasons` / `stylistic_blocks` 等字段；`params.MODE=substantive` |
+| `QC/gen_change_summary.py` | 19,291 | `f7abf0c67f8aacb9180e6a1bc69fc7631aaf459cdb65f506486a86d154967bb6` | 扩展：四口径表 ＋ 逐节"纯文体改写（不染色）"清单 ＋ **§15 全量清单（600 块）**＋ §16 代表例；数据源改为 Mode C 复核 JSON |
+| `QC/gen_highlight_summary.py` | 21,696 | `b9e85bc4bd884932c6eb6268c96752e6133dbeb3715b471571fe3c569e0cfc25` | 改写：文首给出四口径数字与**切换命令**，§2 增 Mode C 规则，§7 增纯文体改写代表例 |
+| `QC/HIGHLIGHT_VERIFY.md` | 6,975 | `e1f32a6995ff58647aeda790a78e48c453599b0b5bd31da90969ce4cb83187f1` | 文首加横幅：本文件为**第三轮全口径（备选）** 报告，正式口径见 `HIGHLIGHT_VERIFY_MODE_C.md` |
+| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 67,509 | `d38c9536655ea34b32ff65728ef9bd590aa053c81888030addb63efcd1cc6bdb` | 重建（Mode C）：174 段、行号域在、589 高亮 run、101/174 段有染色、28.8% |
+| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62,888 | `308510748c72591af40856163bcef0c7f602f17899f9b9e7c159afad3183709e` | 重建：174 段、0 高亮 run（逐段文本与 MARKED 全等） |
+| `01_manuscript/HLA_LOH02_revision_HIGHLIGHT_SUMMARY.md` | 17,596 | `4d0ca8ccf5e4eba3afdff09292efc1f514b652e3a7d0db57958d132dd2fa2a88` | 重生：文首四口径表 ＋ 切换方法；§7 纯文体改写 |
+| `05_response/Change_Summary.md` | 118,705 | `cef3cdaf071251de3049868a04f45e3dcf18ddaaceabfe76a640901ea2929f83` | 重生：四口径 ＋ 逐节纯文体清单 ＋ §15 全量（600 块 / 11,542 字符）＋ §16 代表例 |
+| `01_manuscript/Change_Summary.md` | 118,705 | `cef3cdaf071251de3049868a04f45e3dcf18ddaaceabfe76a640901ea2929f83` | 同目录副本 |
+
+### (xi.6) 门禁重跑（原始输出）
+
+| 门禁 | 命令 | 结果 |
+|---|---|---|
+| 1 DOCX 重建（Mode C） | `QC/make_revision_docx.py` | 174 段；`highlighted characters 19,537 / 67,799 = 28.80%`；`full-mode reference 41,550 = 61.30%`；`stylistic-only 22,210 = 32.80% (600 blocks)`；`substantive marks 954`；`marked highlight runs 589`；`clean highlight runs 0`；EXIT=0（`QC/_modec_build.out`） |
+| 2 Mode C 复核 | `QC/verify_highlight_mode_c.py` | `ASSERT A ... observed = 0 -> PASS`；`ASSERT B instances = 849 (excluded as Tier-2 sentence = 28) uncovered = 0 -> PASS`；审计 A 552/552、B0.30 184/184、B0.55 51/51、C 34/34 全部 100.0%；`CLEAN highlight runs 0 -> PASS`；`MARKED vs CLEAN text equal per para PASS (0 diffs)`；`paragraphs 174 / 174 / 174`；`RESULT: ALL GATES PASS`；EXIT=0（`QC/_modec_verify.out`） |
+| 3 高亮汇总重生 | `QC/gen_highlight_summary.py` | `wrote …HIGHLIGHT_SUMMARY.md (17596 bytes)`；EXIT=0 |
+| 4 逐节改动清单 | `QC/gen_change_summary.py` | `wrote 05_response/Change_Summary.md (118705 bytes)` ＋ 同目录副本；EXIT=0 |
+| 5 锚点 | `05_response/verify_anchors.py` | `anchors: 28   matched in md AND both DOCX: 28   mismatched: 0`；EXIT=0（`QC/_modec_verify_anchors.out`） |
+| 6 残留标记 | `QC/scan_markdown_residue.py` | 两版 `TOTAL_residue 0`、`paragraphs 174`、行号域存在、MARKED `highlight_runs 589`、CLEAN `0`；`GATE G5 … PASS`；EXIT=0（`QC/_modec_scan_residue.out`） |
+| 7 全口径回归 | `QC/make_revision_docx.py --mode full` | 与第三轮结果**逐项一致**：109/174 段、41,524 字符按备选快照计（当前脚本重跑 41,550）、655 run、档位构成相同；EXIT=0（`QC/_fullmode_regress.out`） |
+
+> **未做（按本轮约束）**：未重生 `QC/FINAL_MANIFEST.md`、未推送仓库、未重建补充 PDF 与
+> `Supplementary_Tables.docx` —— 留给图形微调轮结束后的整合步骤统一处理。
+> 本轮亦**未改动任何正文文字/数字/图表号**，段落数仍为 174；CLEAN 仍零高亮。
+
+### (xi.7) 回滚点
+
+| 回滚文件 | 位置 | 说明 |
+|---|---|---|
+| 第三轮全口径 MARKED/CLEAN（61.2%） | `01_manuscript/_alternative/*_full.docx`（sha256 `d21308a2…` / `ab67e443…`） | 由 `--mode full` 或直接复制使用；不用于投稿 |
+| 第三轮 `_docx_decisions.json`（改前快照） | `QC/_highlight_round/mode_c_backup/_docx_decisions.json` | 本轮改前的判据记录 |
+| 第三轮两份 DOCX 字节快照 | `QC/_highlight_round/mode_c_backup/`（`HLA_LOH02_revision_MARKED.docx` / `_CLEAN.docx`） | 与上表 sha256 一致 |
+| 改前的 `gen_highlight_summary.py` | `QC/_highlight_round/mode_c_backup/gen_highlight_summary.OLD.py` | 第三轮汇总生成器 |
+| 第一/二轮产物 | `QC/_highlight_round/old/`、`QC/_highlight_round/sentence/` | 同 §(x.6) |
+
+四段口径的"未变句子带高亮"基线依次为 **58 → 0 → 0 → 0**；
+本轮在把覆盖率由 61.2% 降到 **28.8%** 的同时，新增并满足第二个硬断言
+（**数字/图表号/文献号变更覆盖率 = 100%**，821 个实例全部覆盖）。
+
+
+
+---
+
+## (xii) 整合轮：用户图形微调落地 + 两处既有图缺陷修复 + 补充 PDF 重建 + Mode C 高亮定稿 + 冻结入仓 —— 2026-10-15
+
+### (xii.1) 本轮范围与铁律
+
+- 范围：`02_figures/`（7 图）、`04_supplement/Supplemental_Information.pdf`、`QC/`、仓库 `revision_2026/`、两个存交包；`03_tables/Supplementary_Tables.docx`（只读，未改）、`01_manuscript/`、`05_response/` 正文与表格**未改**。
+- **三条铁律**（用户明令）：① 不改任何数字/结论；② 不改变已确认的位移量（所有微调读数一律取自 `02_figures/QC_user_adjust_round1/measured_constants.tsv`，脚本缺该文件即 `stop()`）；③ 图件只允许「两处既有缺陷的修复」与必要重绘。
+- 本轮**唯一**触碰图件绘制逻辑的两处改动见 §(xii.3)；Fig3/4/5/S1/S2 五张图、两份高亮 DOCX、正文 md、表格、投稿信**均未改动**。
+
+### (xii.2) 用户 10 项图形位移 —— 逐项实测值（容差 ±0.25 字符）
+
+量测对象 = **重出后成品 PDF 的真实文本层/矢量层**（`QC_user_adjust_round1/m6_verify.py`、`verify_after.py`、`m7_qa_ink2.py`），非目测、非脚本自报。
+
+| 用户项 | 面板 | 用户要求 | 实测位移（pt） | 实测（字符） | 残差（字符） | 判定 |
+|---|---|---|---|---|---|---|
+| 1 | Fig1A | 最后两行数字（`217/1958`、`11.1`、`34/354`、`9.6`）整体右移 10 字符宽 | +29.7144…+29.7147 | +10.0001…+10.0002 | ≤ +0.0002 | PASS |
+| 2 | Fig1C | 注释框（含文字）整体上移 3 字符高；每行重排 ≤54 字符 | +17.7977（文字块）/ +17.8549（框） | 3.0021 / 3.012 | +0.0021 / +0.012 | PASS |
+| 3 | Fig2A | HR(OR) 估计值列整体左移 14 字符宽（4 行） | −34.7145（4 行同值，极差 0.0000） | 14.0002 | +0.0002 | PASS |
+| 4 | Fig2B | 注释框左右各扩 5 字符宽（总 +10） | 10.9046 / 10.9046 / 21.8091 | 5.001 / 5.001 / 10.002 | +0.001 / +0.001 / +0.002 | PASS |
+| 5 | Fig3C | 第 1、5 个 OR 值左移 20 字符宽 | −49.301 | −20.000 | −0.000 | PASS |
+| 6 | Fig4A | 全部 6 个 OR 值上移 1 字符高 | −5.801 | 0.999 | −0.001 | PASS |
+| 6 | Fig4B | 全部 6 个 OR 值上移 1 字符高 | −5.797…−5.801 | 0.999 | −0.001 | PASS |
+| 7 | Fig5A | 全部 10 个 HR 值（未校正+校正两系列）右移 25 字符宽 | +59.254 | +25.000 | −0.000 | PASS |
+| 8 | Fig5B | 第 2 个 HR 值右移 32 字符宽 | +75.844 | +31.999 | −0.001 | PASS |
+| 9 | FigS1C | 第 1 个数值标签上移 3 字符高；文本框 10 字符高 × 26 字符宽（每行 ≤26） | −16.875 / 57.398 / 60.086 | 2.994 / 9.981 / 26.00 | ≤ 0.019 | PASS |
+| 10 | FigS2B、FigS2C | 第 2、3 列数字上移 3 字符高；OR 数值列右移 25 字符宽 | −16.527…−16.531 / +56.883 | 2.994–2.995 / 24.999 | ≤ 0.006 / 0.001 | PASS |
+
+> 源报告把 Fig4A 与 Fig4B 同标为第 6 项、FigS1/FigS2 分别标为第 9/10 项，故 10 个用户项对应上表 11 个面板行。
+> 全部 11 行均在容差内（最大残差 +0.012 字符）。未点名标签的位移恒为 0.000 pt（逐字表见 `QC_user_adjust_round1/TABLES_index_to_value.md`）。
+> 正效应证据：位移前 Fig3C/Fig4A/Fig4B/Fig5A/Fig5B 共 19/32 个数值标签与误差棒真实墨迹融合，位移后 0/32。
+
+### (xii.3) 两处既有图缺陷的修复（本轮唯一两处图件改动）
+
+#### (a) Fig2B 注释框第 1 行「Proportion mediated = 1.51 (>1 indicates suppression:」从未渲染（既有缺陷）
+
+- 症状：成品该框只有 1 行；文本层搜 `Proportion`/`mediated`/`suppression` 全为空；600 dpi 栅格在 y 196.2–205.1 pt 无任何字形墨迹；框高 22.3 pt = 单行框高。
+- 根因（代码级）：`20_fig2.R` 先 `md <- md[!is.na(ord)]`（只留 ACME/ADE/Total 三行）**再**取 `md[Quantity == "Proportion mediated"]$Estimate` → `numeric(0)` → `sprintf()` 返回 `character(0)` → `c(character(0), "the direct…")` 只剩 1 个元素。
+- 修法（只改取数顺序，**未改任何数字**）：过滤前先取 `ua_pmd <- md[Quantity == "Proportion mediated"]$Estimate` 并 `stopifnot(length(ua_pmd) == 1L, is.finite(ua_pmd))`；注释框第 1 行改用 `ua_pmd`（`fig3b_mediation.tsv` 原值 1.5118 → `%.2f` → `1.51`，与既有意图一致）。
+- 几何后果（`flow_layout` 语义自动发生，无手填坐标）：框由 1 行→2 行，`h_norm` **25% → 35%**（0.40→0.56 in）；框顶锚定 y=195.87 pt **不动**，框底 218.17 → **227.08 pt**（向下增高 8.91 pt），与 ACME 行数值标签 y0=228.56 余量 1.48 pt；两行文字均在框内（左/右余量 2.231/2.247 与 2.524/2.536 pt）。
+
+#### (b) Fig1C 注释框比正文窄（既有缺陷；本轮「越框 3 处」全部来自此）
+
+- 症状：框宽 99.85 pt，而正文最长行 120.41 pt → 每侧越出 9.3–10.3 pt（pre-round1 基线 17.25/17.24 pt）。
+- 根因：`note_box(plot_w_in = 5.4)` 用的是**名义**面板宽；Figure1C 面板**实测宽** = 317.68 pt = **4.4122 in**。
+- 修法：`plot_w_in = ua_get("Fig1C", "panel_w_in")`；实测常数 4.4122 in 写入 `measured_constants.tsv`（键 `Fig1C/panel_w_in`，来源 = 成品 PDF 面板边框反解 `m2_probe_geom.out`）。**未改任何文字/数字，未改竖向位移量。**
+- 结果：框宽 99.85 → **122.199 pt** ≥ 最长行 120.402 pt（余量 0.898 pt/侧）→ **越框 = 0（三处归零）**。
+- 如实记录的副作用：框变宽后其左缘由 297.50 → 286.32 pt，遮住 D6 上侧 CI 帽 **5.78 pt**（pre-round1 基线 23.10 pt；位移轮 0.00 pt；D6 数据点本身不再被遮）。该遮盖不在本轮四项硬门槛内（重叠/越框/四边非白/融合仍全 0），但如实报出。
+
+### (xii.4) 补充 PDF 两遍法重建（拾取新 FigS1/S2）
+
+- 源 = `03_tables/Supplementary_Tables.docx`（**未改动**，sha256 `613c23dd…`，624,779 B）；其 `word/media/image1.tiff` / `image2.tiff` 与交付 TIFF `a0b43ab0…` / `92f2f27b…` **逐字节相同**。
+- pass1：20 页、anchored **15/15**；docx 目录页码（2,4,5,7,9,10,11,12,13,14,15,16,17,18,19）与 pass1 实际页码 **IDENTICAL**（= 已收敛，故无需重写目录）。
+- pass2：同页码表，且两次渲染的 PDF **逐字节相同**（本机 soffice 确定）。
+- 交付：`04_supplement/Supplemental_Information.pdf`，**20 页**，1,510,708 B，sha256 `82acb636…`（上一版 `a17d21b9…`，1,510,270 B）。
+- 目录页码随条目严格递增 = True；补充 PDF 页序 Figure S1(2) → S2(4) → Table S1(5) … S13(19) 由 G2 独立脚本复核 OK。
+- 图页内容为新图：LibreOffice 会把内嵌 TIFF 重编码为 JPEG（不能按字节比），故按内容比对 —— 第 2 页绘制图与 S1 TIFF 相关系数 **0.99980**、第 4 页与 S2 **0.99995**（MAE 0.10 灰度）。
+
+### (xii.5) 重渲染可复现性（交付件 = 当前脚本可复现）
+
+- 用**最终共享** `fig_common.R`（`90af8744…`）重跑 `02_recompute_apobec.R` + `10…70_fig*.R`，再 `99_run_all.R` 全链。
+- **7 张 TIFF 全部逐字节相同**（两轮重跑均如此）。
+- 7 张 PDF 非逐字节相同（cairo 写入 `/CreationDate`，并连带 `/ID` 与 XRef 流）；但**文本层逐词+坐标+字号全同、矢量层逐条绘图指令全同、@300 dpi 栅格差异像素 = 0**。
+
+### (xii.6) 项目级重叠 QA（`90_qa_overlap.R`，先清空累计 `qa_rows.csv` 以避开并发冲突）
+
+- `QA_figure_check.md`：**总判定 PASS** —— `overlap = 0  clip = 0  squeeze = 0  raster_nonwhite = 0`。
+- 逐图 7 行全 PASS（`edge_nonwhite_px = 0` / `modal_colour = 255`）；21 个面板行的 overlap/clip/squeeze 全 0。
+
+### (xii.7) 高亮定稿：Mode C（28.8%）为正式交付
+
+- 正式交付 = **Mode C 实质改动口径**：`HLA_LOH02_revision_MARKED.docx`（67,509 B，`d38c9536…`；174 段 / **589** 高亮 run / 101 段染色 / 19,537 字符 = **28.80%**）与 `HLA_LOH02_revision_CLEAN.docx`（62,888 B，`30851074…`；0 高亮 run，逐段文本与 MARKED 全等）。
+- 备选（第三轮**全口径 61.2%**）：`01_manuscript/_alternative/HLA_LOH02_revision_MARKED_full.docx`（68,500 B，`d21308a2…`）/ `_CLEAN_full.docx`（62,888 B，`ab67e443…`）；本轮**未改动**，仅随清单归档。
+- `Change_Summary.md` ×2（`01_manuscript/` 与 `05_response/` 同字节 `cef3cdaf…`，118,705 B）。
+
+### (xii.8) 本轮改动 / 新增文件（bytes + sha256）
+
+| 文件 | bytes | sha256 | 说明 |
+|---|---:|---|---|
+| `02_figures/scripts/10_fig1.R` | 14,244 | `098bfb3432509cf2f916f029b8db7d352de9b86656e7df6832b9334a869d9b01` | 缺陷修复 (b)：`plot_w_in` 5.4 → 实测面板宽 `ua_get("Fig1C","panel_w_in")`；旧 `13fb26be…`（13,695 B） |
+| `02_figures/scripts/20_fig2.R` | 12,151 | `7c31079dceabf5f17c3b7f3bf7bd6552727e54c60dad2ca04e7bf720172a7f0e` | 缺陷修复 (a)：过滤前先取 `Proportion mediated` 的 Estimate；旧 `cfaf01d2…`（11,100 B） |
+| `02_figures/QC_user_adjust_round1/measured_constants.tsv` | 1,681 | `8b9148b538abc07b46ca2c0b473579204308f0bae7fec73e11335b610234e735` | 新增键 `Fig1C/panel_w_in = 4.4122`（in）；其余键值一字未改 |
+| `02_figures/QC_user_adjust_round1/m6_verify.py` | 18,626 | `1697796f43555983149d9db3f93c2fbcac88b99f74a310e5d41aa33596d1443d` | 复测脚本：④ 的参考框由 pre-round1 基线框改为「加宽前 snug 基准框（2 行）」 |
+| `02_figures/QC_user_adjust_round1/REPORT_round2_defectfix.md` | 9,611 | `f8ea2ddba9d27f1eebaa7281ab3f6f021075a85f55acab9643478f2de8b8b082` | 本报告 §(xii) 的图件侧原始输出汇编（新增） |
+| `02_figures/Figure1_pancancer_and_reliability.tiff` | 605,964 | `4a9bf25ee99a2a092e4c47524fc2fa19b3427cec24518d95407c9441d287703a` | 重出（白底 300 dpi）；旧 `0befdeec…`（605,148 B） |
+| `02_figures/Figure1_pancancer_and_reliability.pdf` | 61,869 | `7d736c598299b90a34ee23ed38556f29710b9412ad73896e3cda70ee3643566d` | 重出（矢量）；旧 `ba549b81…`（61,844 B） |
+| `02_figures/Figure2_mechanism_armlandscape.tiff` | 327,454 | `8af788faacc687d26531c4144e3a70d86b9f9740a76996afc2550725fe68d9ec` | 重出；旧 `2457009f…`（321,874 B） |
+| `02_figures/Figure2_mechanism_armlandscape.pdf` | 58,468 | `70b2b1605b513a0d9339361e0a1d8f9bd9d11ba4e357c6521a8afc89b5a5a0b7` | 重出；旧 `b8217a90…`（58,135 B） |
+| `02_figures/QA_figure_check.md` | 19,552 | `9332f835b2750e5c6c1f17727bfb63e693539d3eb6b6daa2c86ce4b2e1b85cf3` | 重生（`90_qa_overlap.R`）；旧 `b14947a7…`（19,539 B） |
+| `04_supplement/Supplemental_Information.pdf` | 1,510,708 | `82acb6364f3d4eebbf447b965479e96d79582186f37fb99e53203e373eaed72c` | 两遍法重建；旧 `a17d21b9…`（1,510,270 B） |
+
+> `03_tables/Supplementary_Tables.docx`（`613c23dd…`）、`01_manuscript/*.docx`、`05_response/*`、`03_tables/Table*.docx`、`06_compliance/**`、Fig3/4/5/S1/S2 的 TIFF+PDF **本轮未改动**。
+
+### (xii.9) 门禁重跑（原始输出，`QC/_final_round2/`）
+
+| # | 门禁 | 命令（解释器） | 原始结果 | 退出码 |
+|---|---|---|---|---|
+| 1 | 锚点 | `05_response/verify_anchors.py`（docxenv） | `anchors: 28   matched in md AND both DOCX: 28   mismatched: 0` | 0 |
+| 2 | 残留标记 | `QC/scan_markdown_residue.py`（docxenv） | MARKED/CLEAN `TOTAL residue 0`、`paras 174`、行号域在；`GATE G5 … PASS` | 0 |
+| 3 | 图表双向核对 | `QC/g2_independent_crosscheck.py`（pdfenv，含 fitz） | `T1 in-text 23  T2 files 19  T3 …: 0`；`PASS - T3 empty`；补充 PDF 页序 `OK` | 0 |
+| 4 | 回复信 | `05_response/verify_response.py`（docxenv） | `[LINE-REF-TBD] in letter 0`、`fabricated 'line N' 0`、`ANCHOR_MAP rows 28`、`'**Anchor:**' 28` | 0 |
+| 5 | Mode C 高亮 | `QC/verify_highlight_mode_c.py`（docxenv） | `ASSERT A observed = 0 -> PASS`；`ASSERT B instances = 849 uncovered = 0 -> PASS`；`CLEAN highlight runs 0 -> PASS`；`RESULT: ALL GATES PASS` | 0 |
+| 6 | 清单自校验 | `QC/tools/verify_manifest.py` | 见 §(xii.10) | 0 |
+| 7 | 仓库 ↔ 存交包 | `revision_2026/code/tools/check_repo_vs_zip.py` | `members: 100   byte-identical to a repository file: 100   mismatches: 0` | 0 |
+
+> 说明：门禁 3 必须在**装了 pymupdf（fitz）**的解释器下运行；用 `docxenv` 运行会打印 `supplement PDF check skipped: No module named 'fitz'` 并把该项记成 1 条差异（非真实差异）。
+
+### (xii.10) 仓库同步、清单与冻结
+
+- `QC/FINAL_MANIFEST.md` 重生（含图件新哈希、Mode C 两份 DOCX、`_alternative` 备选件、`Change_Summary`×2、`QC_user_adjust_round1/` 关键产物）；`verify_manifest.py` 全部行通过。
+- 仓库 `revision_2026/code/README_CODE.md` 的图件摘要表更新为新哈希；`revision_2026/code/figures/` 同步本轮脚本（`10…70`、`fig_common.R`、`fig_shift.R`）并新增 `measured_constants.tsv`（第三方重跑否则即 `stop()`）；`revision_2026/data/FINAL_MANIFEST.md` 与 `QC/FINAL_MANIFEST.md` 同字节。
+- `PINNED_PACK_CORRECTIONS.md` 的四处副本（`V3/00_pinned/`、仓库 `code/`、仓库 `data/number_dictionary/`、两个存交包内各一）统一为本文件的字节。
+- 两个存交包用**外科式重建**（逐成员 raw local record 复制）替换改动成员，其余成员字节不变 → `check_repo_vs_zip.py` **100/100**。
+
+### (xii.11) 未做与已知偏差（如实）
+
+- **未打 git tag**（按用户要求）。
+- Fig1C 注释框加宽后遮住 D6 上侧 CI 帽 5.78 pt（§(xii.3b)）——四项硬门槛不受影响，如实报出。
+- 补充 PDF 的两遍法在本轮表现为「源 docx 目录页码已 = 实际页码」，故**未重写 docx**（保持其字节不变）；两遍渲染的页码表与 PDF 字节均一致。
+- 四张本应交由第三方复算的输入（`msk_impact_50k_2026/*.txt` 等）不在包内，重跑 `00_recompute_inputs.R` 不可行；本轮可复现性证明的是**从现有中间结果到交付图件**这一段。

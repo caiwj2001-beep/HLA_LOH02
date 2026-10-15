@@ -1,6 +1,6 @@
 # FINAL_MANIFEST — frozen submission package
 
-Manuscript **ISCIENCE-D-26-09416** (iScience revision) · directory `iscience投稿版本/V3` · generated 2026-10-15 22:43:09
+Manuscript **ISCIENCE-D-26-09416** (iScience revision) · directory `iscience投稿版本/V3` · generated 2026-10-15 23:23:12
 
 Every file below is byte-frozen: `sha256` and `bytes` are of the file as it stands on disk at
 generation time. Figure numbers follow the 2026-10-15 renumbering to first-appearance order
@@ -8,9 +8,9 @@ generation time. Figure numbers follow the 2026-10-15 renumbering to first-appea
 arm landscape, Figure 3 = TMB × HLA LOH, Figure 4 = neoantigen, Figure 5 = survival,
 Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline zygosity.
 
-- **files listed: 60**
+- **files listed: 74**
 - **missing on disk: none**
-- **total bytes: 8391017 (8.4 MB)**
+- **total bytes: 8892771 (8.9 MB)**
 
 ---
 
@@ -19,7 +19,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
 | `00_pinned/PINNED_PACK.md` | 15179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` | The locked number dictionary: the single permitted source of every reported number |
-| `00_pinned/PINNED_PACK_CORRECTIONS.md` | 73906 | `dd64091b1de708385a9dd7a2ef537e95515781b7167aa3a7f87446eb829ae19c` | Corrections and audit record for the locked pack; §(v) is the authoritative figure-renumbering record, §(vi) the pre-submission arm-wording / DOI-placeholder / deposit-dictionary fix, §(vii) the closing-round fixes, §(viii) the sentence-split round, §(ix) the sentence-level revision-highlighting round |
+| `00_pinned/PINNED_PACK_CORRECTIONS.md` | 100829 | `59bf4b42174053a1e637b92a0d56c83026626c5f99ef35d21be250491ce66f9a` | Corrections and audit record for the locked pack; §(v) is the authoritative figure-renumbering record, §(vi) the pre-submission arm-wording / DOI-placeholder / deposit-dictionary fix, §(vii) the closing-round fixes, §(viii) the sentence-split round, §(ix) the sentence-level revision-highlighting round, §(x) the three-tier minimal-unit round, §(xi) the Mode C substantive-change round, §(xii) the integration round (user figure micro-adjustments, the two figure defect fixes, the supplement-PDF rebuild and the freeze/commit) |
 
 ---
 
@@ -41,10 +41,12 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 | `01_manuscript/11b_FigS2_addition_note.md` | 7382 | `d9ad070318824d6cfcae7f3456fdc45ad054c9784317194200183a32f191859c` | Working note: how Supplementary Figure S2 (now S1, APOBEC) was brought into the reference list; carries a header pointing at CORRECTIONS §(v) |
 | `01_manuscript/REF_VERIFICATION.md` | 13042 | `fd96b89e08d6c1147c85a568363cec4ff5662fdeaf2760d0b4ef09a269963c9d` | Reference verification report (every reference checked against PubMed/Crossref) |
 | `01_manuscript/SENTENCE_STATS.md` | 15070 | `7aa8ad1a53bcaa6de79616df321fc399ce9fce9128317784de0300eeaa42605e` | Sentence-length / readability statistics of the revised manuscript; carries a header pointing at CORRECTIONS §(v) |
-| `01_manuscript/HLA_LOH02_revision_HIGHLIGHT_SUMMARY.md` | 10408 | `afadf0cb0b45b926a9109610a6b47b5d996bbdac2405b010f43ae36a79450310` | Revision highlight summary (three-tier minimal-unit rule: Tier 1 whole blocks only for genuinely new text, Tier 2 never highlighted, Tier 3 only the changed word strings of rewritten text; the superseded paragraph-level and sentence-level rules are marked obsolete at the head); header points at CORRECTIONS §(x) |
-| `01_manuscript/Change_Summary.md` | 18539 | `b6988c236475b14a2f5208824e274261f00a01332cdb6a10075a85d6552bc218` | Editor-facing section-by-section change list (copy of 05_response/Change_Summary.md, kept next to the two manuscript DOCX) |
-| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 68500 | `d21308a29dfd0ac1e9fc0fb2867300384fc83df5a242095a0ccfac0811e2bc2c` | Revised manuscript with line numbering and every change highlighted in yellow (three-tier minimal-unit rule; CORRECTIONS §(x)) |
-| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62888 | `ab67e4435690e625ae4b3f9fdbfd1aed590997104e4abcffeca8cc75cec3956c` | Revised manuscript, clean copy (no markup) — the file the editor typesets from |
+| `01_manuscript/HLA_LOH02_revision_HIGHLIGHT_SUMMARY.md` | 17596 | `4d0ca8ccf5e4eba3afdff09292efc1f514b652e3a7d0db57958d132dd2fa2a88` | Revision highlight summary (three-tier minimal-unit rule: Tier 1 whole blocks only for genuinely new text, Tier 2 never highlighted, Tier 3 only the changed word strings of rewritten text; the superseded paragraph-level and sentence-level rules are marked obsolete at the head); header points at CORRECTIONS §(x) |
+| `01_manuscript/Change_Summary.md` | 118705 | `cef3cdaf071251de3049868a04f45e3dcf18ddaaceabfe76a640901ea2929f83` | Editor-facing section-by-section change list (copy of 05_response/Change_Summary.md, kept next to the two manuscript DOCX) |
+| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 67509 | `d38c9536655ea34b32ff65728ef9bd590aa053c81888030addb63efcd1cc6bdb` | Revised manuscript with line numbering and every change highlighted in yellow (three-tier minimal-unit rule; CORRECTIONS §(x)) |
+| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62888 | `308510748c72591af40856163bcef0c7f602f17899f9b9e7c159afad3183709e` | Revised manuscript, clean copy (no markup) — the file the editor typesets from |
+| `01_manuscript/_alternative/HLA_LOH02_revision_MARKED_full.docx` | 68500 | `d21308a29dfd0ac1e9fc0fb2867300384fc83df5a242095a0ccfac0811e2bc2c` | Alternative (superseded) revision-highlighting build: full-mode markup at 61.2% coverage; kept as the rollback pair for the delivered Mode C build (CORRECTIONS §(xi)/(xii)) |
+| `01_manuscript/_alternative/HLA_LOH02_revision_CLEAN_full.docx` | 62888 | `ab67e4435690e625ae4b3f9fdbfd1aed590997104e4abcffeca8cc75cec3956c` | Clean twin of the alternative full-mode build (rollback pair) |
 
 ---
 
@@ -52,21 +54,21 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `02_figures/Figure1_pancancer_and_reliability.tiff` | 607202 | `0befdeecbdabc95760c6154702c4425cad487f25e54cfd94ad10ef628a32bcd7` | Figure 1 — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/Figure1_pancancer_and_reliability.pdf` | 61868 | `9e193fc2faef2aa0d3b4a126436a9aadbc1fb55ef79cf68b799dfd0fc9494511` | Figure 1 — vector PDF twin of the same render |
-| `02_figures/Figure2_mechanism_armlandscape.tiff` | 322046 | `2457009fb739bb76558cd1efbf5007274e38245d1eda6fa231edcd1d08372d6f` | Figure 2 — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/Figure2_mechanism_armlandscape.pdf` | 58138 | `7163a590dcde6573cdf14aabfc0d74f00705f6affef0b019ebfe07868ab26857` | Figure 2 — vector PDF twin of the same render |
+| `02_figures/Figure1_pancancer_and_reliability.tiff` | 605964 | `4a9bf25ee99a2a092e4c47524fc2fa19b3427cec24518d95407c9441d287703a` | Figure 1 — 300 dpi TIFF, white background, the print-grade figure file |
+| `02_figures/Figure1_pancancer_and_reliability.pdf` | 61869 | `7d736c598299b90a34ee23ed38556f29710b9412ad73896e3cda70ee3643566d` | Figure 1 — vector PDF twin of the same render |
+| `02_figures/Figure2_mechanism_armlandscape.tiff` | 327454 | `8af788faacc687d26531c4144e3a70d86b9f9740a76996afc2550725fe68d9ec` | Figure 2 — 300 dpi TIFF, white background, the print-grade figure file |
+| `02_figures/Figure2_mechanism_armlandscape.pdf` | 58468 | `70b2b1605b513a0d9339361e0a1d8f9bd9d11ba4e357c6521a8afc89b5a5a0b7` | Figure 2 — vector PDF twin of the same render |
 | `02_figures/Figure3_TMB_aneuploidy.tiff` | 430792 | `60935ae13037d5e00db871e8be482c30521627dfb9af8d0ee5d90c757c4e1e48` | Figure 3 — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/Figure3_TMB_aneuploidy.pdf` | 922047 | `dcb8c575beb1c5f435ce56f105c0c55991678700a5d6125515bb7f6bbfa98e6b` | Figure 3 — vector PDF twin of the same render |
+| `02_figures/Figure3_TMB_aneuploidy.pdf` | 922047 | `dc508c6d8557cd689e630b5855c6e4f06a841cff4640abcb42f5efba55c6f8b1` | Figure 3 — vector PDF twin of the same render |
 | `02_figures/Figure4_neoantigen.tiff` | 291004 | `17606ab091f0bdae160f6c4223c99a84909bb3e159b8ea3676356ff699d71b79` | Figure 4 — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/Figure4_neoantigen.pdf` | 55414 | `a8de712305b0639614fa4acba94d6626ab5aa2d5bae41c97f2ba868e823051f0` | Figure 4 — vector PDF twin of the same render |
-| `02_figures/Figure5_survival.tiff` | 202572 | `2d26e9a90417d19ae3a5c196c5e5943212a2bf6122fd18a28487fe977433f92f` | Figure 5 — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/Figure5_survival.pdf` | 46580 | `fc3481727317cce3a38643e60c87f1580b718acaab92ae0a7e709b264c0c4007` | Figure 5 — vector PDF twin of the same render |
+| `02_figures/Figure4_neoantigen.pdf` | 55416 | `147d58ed83c4f3d732fb7737fda466108b2c9759ff9a843e91376811df0bd5b3` | Figure 4 — vector PDF twin of the same render |
+| `02_figures/Figure5_survival.tiff` | 202070 | `7ece4183dee2de95bac1e494b21fc6fda4aca078e5ae232a1bfc39134ebe6500` | Figure 5 — 300 dpi TIFF, white background, the print-grade figure file |
+| `02_figures/Figure5_survival.pdf` | 46576 | `c7257f42c291b6f0ec9d878a2fcb65a2de5970b8ae03a6b368724a45ac380a40` | Figure 5 — vector PDF twin of the same render |
 | `02_figures/SupplementaryFigureS1_apobec.tiff` | 391582 | `a0b43ab03ddbed09a9ffca4e4d13292997ea74a4a04057bbde121efde5c245b2` | Supplementary Figure c — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/SupplementaryFigureS1_apobec.pdf` | 391412 | `a11b773bb56376137efc362f0b81c40983fdf30171254a7dd34e594f98563c8b` | Supplementary Figure c — vector PDF twin of the same render |
-| `02_figures/SupplementaryFigureS2_germline.tiff` | 179822 | `01f4c16c79c5dc2abcdbe549835670de01ab7e2a9dcb5489c9dfa4d8925b5d32` | Supplementary Figure e — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/SupplementaryFigureS2_germline.pdf` | 44310 | `af7cb68da76198e0038433f58c8208c696e34607c01ee68dc588bb8e70e008fa` | Supplementary Figure e — vector PDF twin of the same render |
-| `02_figures/QA_figure_check.md` | 19539 | `b14947a7ff5e92236e9f2e020b9f24d1124b5905cb526dd5e486ecd8616291b0` | Programmatic figure QA (per-panel text overlap / out-of-frame / axis-label squeeze / raster edge and white-background gates); all gates 0 |
+| `02_figures/SupplementaryFigureS1_apobec.pdf` | 391411 | `3814e8501c644bc075327e5b85ad3dc3c7bff0c124d6023b3e7bc9d2134d586f` | Supplementary Figure c — vector PDF twin of the same render |
+| `02_figures/SupplementaryFigureS2_germline.tiff` | 178352 | `92f2f27b1238277f90fe3e5e75c84fa4758a8f64187309ede25410002088bf24` | Supplementary Figure e — 300 dpi TIFF, white background, the print-grade figure file |
+| `02_figures/SupplementaryFigureS2_germline.pdf` | 44301 | `297b012d8c2c85ad941fd909392abcd707e576b371a3ad2e8e4a69d908c66130` | Supplementary Figure e — vector PDF twin of the same render |
+| `02_figures/QA_figure_check.md` | 19552 | `9332f835b2750e5c6c1f17727bfb63e693539d3eb6b6daa2c86ce4b2e1b85cf3` | Programmatic figure QA (per-panel text overlap / out-of-frame / axis-label squeeze / raster edge and white-background gates); all gates 0 |
 
 ---
 
@@ -77,7 +79,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 | `03_tables/Table1_baseline.docx` | 38735 | `84971fc8a7821c5f369cae14b5c29ee0b841e4fef933e32edadd64002cc6c4b0` | Table 1 — cohort baseline characteristics |
 | `03_tables/Table2_drivers.docx` | 38330 | `4bea5e52838547b09992035150e603fda343b977596376eee834495c17b558b9` | Table 2 — multivariable drivers of HLA LOH (odds ratios) |
 | `03_tables/Table3_survival.docx` | 38478 | `98029ae48b2e0dd2cb722a2550ca879a58d51f88474e2c2f9857886390b2272b` | Table 3 — HLA LOH and overall survival (hazard ratios) |
-| `03_tables/Supplementary_Tables.docx` | 629929 | `1d23636643c1a3e0690117f71ba063f3bf6660e85b486b1ab102bba8a760b300` | Supplementary Tables S1–S13 as one DOCX, with the contents table page-mapped to the supplement PDF |
+| `03_tables/Supplementary_Tables.docx` | 624779 | `613c23dda25951b73bd3dafcbc7487023efcfba81fdf63e18d5f82f74711261c` | Supplementary Tables S1–S13 as one DOCX, with the contents table page-mapped to the supplement PDF |
 | `03_tables/SV_class_analysis.md` | 4551 | `14b805eef8b444adb125c11f5d8f43648df342e904917ed21b386a4a1878b71c` | Structural-variant class analysis against HLA LOH (source narrative for Supplementary Table S13) |
 
 ---
@@ -86,7 +88,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `04_supplement/Supplemental_Information.pdf` | 1510270 | `a17d21b9f45de59f7e83b4adb9746c2c790596444792a595e2475a6d6d8f4f7a` | The single supplementary PDF: Figures S1–S2 (S1 = APOBEC, S2 = germline) followed by Tables S1–S13; 20 pages, 15/15 contents anchors resolved |
+| `04_supplement/Supplemental_Information.pdf` | 1510708 | `82acb6364f3d4eebbf447b965479e96d79582186f37fb99e53203e373eaed72c` | The single supplementary PDF: Figures S1–S2 (S1 = APOBEC, S2 = germline) followed by Tables S1–S13; 20 pages, 15/15 contents anchors resolved |
 
 ---
 
@@ -99,7 +101,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 | `05_response/ANCHOR_MAP.tsv` | 3180 | `9ea2fdeb874d37cfe0f0e886a50d316ddba30ed5cd57a14126a942f78f444ce4` | Machine-readable map of every response point to its manuscript anchor |
 | `05_response/ANCHOR_INVENTORY.tsv` | 85834 | `26f2625ea6595f59d15a6c9d6a8b0502f63bcb518010877c0058e974c4a05979` | Inventory of the manuscript sentences the response points cite |
 | `05_response/COVERAGE_CHECK.md` | 37422 | `18054935cc0fb6b0a3128da9a1273225010873c6e88be64ede94cfb983248a32` | Coverage audit that every reviewer point is answered; header points at CORRECTIONS §(v) |
-| `05_response/Change_Summary.md` | 18539 | `b6988c236475b14a2f5208824e274261f00a01332cdb6a10075a85d6552bc218` | Editor-facing section-by-section change list for the revised manuscript (newly added this round): per section — new analyses, new figures/tables, numeric changes, counter-claims / re-toned statements, new references; header points at CORRECTIONS §(x) |
+| `05_response/Change_Summary.md` | 118705 | `cef3cdaf071251de3049868a04f45e3dcf18ddaaceabfe76a640901ea2929f83` | Editor-facing section-by-section change list for the revised manuscript (newly added this round): per section — new analyses, new figures/tables, numeric changes, counter-claims / re-toned statements, new references; header points at CORRECTIONS §(x) |
 
 ---
 
@@ -109,8 +111,8 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 |---|---:|---|---|
 | `06_compliance/Data_and_Code_Availability.md` | 3745 | `d0df820fe3d1153f845786739a296a97412c103b3c2aa52ad07ab234cb20d3c9` | Data and Code Availability statement (repository URL filled; single Zenodo DOI still [DOI-PENDING-ZENODO]) |
 | `06_compliance/Key_Resources_Table.docx` | 38913 | `1beafe5a83b0445e2c56b8d379a58a01b53635e39dc3f9471f10622aaa8b5a5e` | Key Resources Table (Cell Press requirement); contains no figure or table number tokens |
-| `06_compliance/deposit/code.zip` | 84028 | `35b313754ee324f73b33f8a28e8e68c45b8fa53ab9264b7362cd6cbbebbc569a` | Code deposit: the R analysis script, the DOCX/PDF rendering scripts, the R environment lock, requirements.txt, README_CODE.md and the number dictionary (PINNED_PACK.md + PINNED_PACK_CORRECTIONS.md) |
-| `06_compliance/deposit/derived_data.zip` | 629767 | `b080aa482408df6b642a1c4dc84ce62edd69c2cc2c389d7c9c38c70f34ee9341` | Derived-data deposit: figure source data, supplementary source data, the table build inputs and the number dictionary |
+| `06_compliance/deposit/code.zip` | 95075 | `0158e407d3ebf110ef7cd95f1b5d75f8c4e7d6a9c52cb294a08c2412b96cc90e` | Code deposit: the R analysis script, the DOCX/PDF rendering scripts, the R environment lock, requirements.txt, README_CODE.md and the number dictionary (PINNED_PACK.md + PINNED_PACK_CORRECTIONS.md) |
+| `06_compliance/deposit/derived_data.zip` | 640473 | `557f638a8cd06312eef05a325ee260f397f788ea229fe6d88b577cf29c997c5d` | Derived-data deposit: figure source data, supplementary source data, the table build inputs and the number dictionary |
 | `06_compliance/deposit/README_upload_steps.md` | 3633 | `38f0956b8b39b4f2bf12d57639bd26c5712db0cbb6985ba4cbec74a888786642` | Author-facing upload runbook for the GitHub repository and the Zenodo DOI |
 | `06_compliance/Graphical_Abstract/Graphical_Abstract.tiff` | 463738 | `4ea81270e6ac7ffe737c7d2ceed01c1604991f97357f890cd3f5dca931f41b16` | Graphical abstract, 300 dpi raster (the file uploaded to EM) |
 | `06_compliance/Graphical_Abstract/Graphical_Abstract.pdf` | 74540 | `39429eded22087434795a8212e8c7192f2a37fca11002c85fd2c9ee8983e7742` | Graphical abstract, vector PDF |
@@ -127,6 +129,25 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 |---|---:|---|---|
 | `07_cover/Cover_Letter.docx` | 40860 | `9a64a7e2606687dfedc88c5e8aa6402c3d314028cc351a7f63d474d221c173f9` | Cover letter to the editor (lists the figure-number change) |
 | `07_cover/Cover_Letter.md` | 7986 | `9cc56167e887330a38e8966cf0f9ff17b40a5f4d337deebbb28cb90f8ba05181` | Markdown source of the cover letter |
+
+---
+
+## 02_figures/QC_user_adjust_round1/ — figure micro-adjustment and defect-fix evidence (CORRECTIONS §(xii))
+
+| file | bytes | sha256 | purpose |
+|---|---:|---|---|
+| `02_figures/QC_user_adjust_round1/measured_constants.tsv` | 1681 | `8b9148b538abc07b46ca2c0b473579204308f0bae7fec73e11335b610234e735` | The measured constants the figure scripts read (char widths/heights, pt-per-unit, and Fig1C panel width); the scripts stop() without it |
+| `02_figures/QC_user_adjust_round1/REPORT_round1_Fig1_Fig2.md` | 20465 | `e921174f9557cbdc4fae2f8565dc16faf09f05169447e84a2da1b3915166db72` | Round-1 report for Figures 1-2: measurement, unit conversion, application to the real artists, re-measurement, ink QA |
+| `02_figures/QC_user_adjust_round1/REPORT_round1_Fig345.md` | 12597 | `865f9e4a47629b6b51493d67de92431b1d751e6ab48f8f103ea0cb563ec6a812` | Round-1 report for Figures 3-5 (items 5-8 of the user's ten displacement requests) |
+| `02_figures/QC_user_adjust_round1/USER_ADJUST_ROUND1_REPORT_FigS1_FigS2.md` | 23609 | `d0099a8b718d8b516b8cda23bb52603e2b6a30a24280f0dca7db89b76a5c3863` | Round-1 report for Supplementary Figures S1/S2 (items 9-10) |
+| `02_figures/QC_user_adjust_round1/TABLES_index_to_value.md` | 8243 | `3f91b75a1e3cf24e2c2cbd24427503c1afb17f5b39209bbc6681b8f0ee918f16` | Index-to-value table for every displaced label of Figures 3-5, with measured displacement and tolerance verdict |
+| `02_figures/QC_user_adjust_round1/realized_displacement.tsv` | 1809 | `b70e8d820cc133c03d9ade2107280bfb0e2369340f6a88cda9c2aba8ea8b27b4` | Machine-readable per-item realised displacement for Figures 1-2 (requested chars, measured pt, residual, within_tol) |
+| `02_figures/QC_user_adjust_round1/QA_ink_round1.md` | 2161 | `4161ed164aec8cbe8bb05f1c19aa64c56bdbe2f5e01aac972739974f09d1bcf8` | Ink connected-component QA after the displacements (fusion/overlap 0, out-of-box 0, non-white edge 0) |
+| `02_figures/QC_user_adjust_round1/shift_offsets_pt.tsv` | 4277 | `7579e07a609aec32d6fe1213448f8c9b2096aea065439c5ff835084d4916260f` | The pt offsets applied to Figures 3-5 |
+| `02_figures/QC_user_adjust_round1/REPORT_round2_defectfix.md` | 9611 | `f8ea2ddba9d27f1eebaa7281ab3f6f021075a85f55acab9643478f2de8b8b082` | Round-2 report: the two figure defect fixes, the supplement-PDF rebuild and the re-render reproducibility proof |
+| `02_figures/QC_user_adjust_round1/m6_verify.py` | 18626 | `1697796f43555983149d9db3f93c2fbcac88b99f74a310e5d41aa33596d1443d` | Verifier that re-measures every displacement on the delivered PDF (reference box for item 4 is the snug 2-line base box) |
+| `02_figures/QC_user_adjust_round1/m7_qa_ink2.py` | 12682 | `02b7d2cbe250430c146bad950fb8b7f6f0a5acaeba40beea6b6c0178679f7b9b` | Ink connected-component QA used as the acceptance gate (overlap / out-of-box / four-edge / fusion) |
+| `02_figures/QC_user_adjust_round1/m8_qa_tiff.py` | 1582 | `014b577058bb8b96dfadd0941c901f817a8777866dedd2d76c9dc48525de53b5` | TIFF raster gate (300 dpi, white background, non-white border, corner whiteness, modal colour) |
 
 ---
 

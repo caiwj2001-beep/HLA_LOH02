@@ -5,6 +5,9 @@
 ###############################################################################
 source(file.path(dirname(sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE)[1])),
                  "fig_common.R"))
+## 用户指定「字符宽度/高度」级精确位移工具（量测 → 换算 → 施加到真实 artist）
+source(file.path(dirname(sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE)[1])),
+                 "fig_shift.R"))
 
 F5W <- 6.85; F5H <- 6.4
 
@@ -41,6 +44,15 @@ p5a <- ggplot(a5, aes(y = ypos)) +
         legend.key.size = unit(0.24, "cm"), axis.text.y = element_text(size = 5.6),
         panel.grid.major.y = element_blank())
 
+## ---- 用户指定精确位移（QC_user_adjust_round1 item 7）------------------------
+##  Fig5A 的 HR 数值标签**整体向右移动 25 个字符宽度**。
+##  字符宽 char_w = 标签 bbox 宽 / 可见字符数（PDF 文本层实测）；面板实际尺寸取自
+##  PDF 矢量层实测。偏移改写该 geom_text 图层映射里的常数 x（原 1.72），
+##  未手填坐标、未改动误差棒/数据点/轴等任何其它图层。
+stopifnot(nrow(shift_labels("Fig5A")) == 10)
+shift_model_check(p5a, "Fig5A", const_x = 1.72, logx = TRUE)
+p5a <- shift_text_const_x(p5a, "Fig5A", const_x = 1.72, d_chars = 25, logx = TRUE)
+
 ## ---------- B ----------
 b5 <- fread(file.path(IMD, "fig5b_hr_pancancer.tsv"))
 b5[, ord := match(model, c("fitU", "fit0", "fit1"))]
@@ -67,6 +79,17 @@ p5b <- forest_panel(dtB, xlim = XL5B, vline = 1, logx = FALSE, txt_cex = 5.0, la
                     xlab = "Hazard ratio for overall survival") +
   scale_y_continuous(breaks = dtB$y, labels = dtB$label, limits = YL5B) +
   nbB$rect + nbB$text
+
+## ---- 用户指定精确位移（QC_user_adjust_round1 item 8）------------------------
+##  Fig5B 的 HR 数值标签**第 2 个（自上而下）向右移动 32 个字符宽度**。
+##  序号与逐字文本见 QC_user_adjust_round1/target_labels_report_before.md：
+##    第 1 个 = `1.212 (1.161–1.266)`（Unadjusted）
+##    第 2 个 = `1.062 (1.015–1.112)`（Adjusted (age, sex, TMB, WGD, cancer type)）← 本次移动对象
+##    第 3 个 = `0.938 (0.895–0.984)`（+ aneuploidy fraction (over-adjusted)）
+##  偏移经 pt → 数据单位换算后写入驱动该 geom_text 图层的映射列 tx_pos（线性 x 轴）。
+stopifnot(nrow(dtB) == nrow(shift_labels("Fig5B")))
+shift_model_check(p5b, "Fig5B", x_col = "tx_pos", logx = FALSE)
+p5b <- shift_text_x(p5b, "Fig5B", col = "tx_pos", rows = 2, d_chars = 32, logx = FALSE)
 
 
 # 标题/副标题按可用宽度自动折行（防溢出画布）

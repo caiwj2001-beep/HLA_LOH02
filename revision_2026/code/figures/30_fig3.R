@@ -14,6 +14,9 @@ JITTER_SEED_FIG3 <- 20261015L
 ###############################################################################
 source(file.path(dirname(sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE)[1])),
                  "fig_common.R"))
+## 用户指定「字符宽度/高度」级精确位移工具（量测 → 换算 → 施加到真实 artist）
+source(file.path(dirname(sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE)[1])),
+                 "fig_shift.R"))
 
 F2W <- 6.85; F2H <- 8.6
 AXT <- 5.4; ANNT <- 5.2
@@ -87,6 +90,16 @@ p2c <- forest_panel(dtc, xlim = c(1.0, 2.3), vline = 1, logx = TRUE, txt_cex = 5
                     title = "C  TMB\u2013HLA LOH association after adjusting for global aneuploidy",
                     xlab = "Odds ratio for HLA LOH per log10 TMB (log scale)") +
   theme(legend.position = "none")
+
+## ---- 用户指定精确位移（QC_user_adjust_round1 item 5）------------------------
+##  Fig3C 森林图右侧 OR 数值标签：第 1 个（Unadjusted …）与第 5 个（Aneuploidy tertile Q1 …）
+##  各向左移动 20 个字符宽度。
+##  字符宽 char_w = 标签 bbox 宽 / 可见字符数，面板实际尺寸取自投稿 PDF 矢量层实测
+##  （qc_shift_measure.py，见 fig_shift.R 头注）；偏移经 pt → 对数十年换算后写入
+##  驱动该 geom_text 图层的映射列 tx_pos，未手填任何坐标、未改动其它图层。
+stopifnot(nrow(dtc) == nrow(shift_labels("Fig3C")))
+shift_model_check(p2c, "Fig3C", x_col = "tx_pos", logx = TRUE)   # 换算基准自检（< 0.5 pt）
+p2c <- shift_text_x(p2c, "Fig3C", col = "tx_pos", rows = c(1, 5), d_chars = -20, logx = TRUE)
 
 
 # 标题/副标题按可用宽度自动折行（防溢出画布）

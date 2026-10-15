@@ -1,0 +1,23 @@
+item	key	value	unit	note
+Fig1A	pt_per_data	4.65805	pt/unit	LSQ on x-label centres of ticks 0..50 (max|resid| 0.0015 pt)
+Fig1A	char_w_pt	2.97142	pt	mean char_w of the 4 moved labels (2 rows x [events/n, freq%%])
+Fig1A	n_chars_requested	10	char	user request
+Fig1A	char_w_nlab_217/1958	3.12781	pt	own char_w of row28 Prostate Cancer
+Fig1A	char_w_plab_11.1	2.91929	pt	own char_w of row28 Prostate Cancer
+Fig1A	char_w_nlab_34/354	3.0583	pt	own char_w of row29 Gastrointestinal Stromal Tumor
+Fig1A	char_w_plab_9.6	2.78027	pt	own char_w of row29 Gastrointestinal Stromal Tumor
+Fig1C	pt_per_data_y	-1.15664	pt/unit	LSQ on y-label centres of ticks 0/20/40/60 (max|resid| 0.0000 pt)
+Fig1C	char_h_pt	5.92839	pt	measured baseline advance of the note-box multi-line text (lineheight 0.95, fs 5.2)
+Fig1C	n_chars_requested	3	char	user request
+Fig1C	max_chars_per_line	54	char	user request (rewrap)
+Fig1C	panel_w_in	4.4122	in	panel C border-rect width 317.68 pt back-solved from the delivered Figure1 PDF (m2_probe_geom.out)
+Fig2A	char_w_pt	2.47958	pt	mean char_w of the 4 annotation (OR/HR) labels
+Fig2A	n_chars_requested	14	char	user request
+Fig2A	char_w_2.295 (2.164–2.434)	2.46504	pt	own char_w
+Fig2A	char_w_0.746 (0.692–0.804)	2.46504	pt	own char_w
+Fig2A	char_w_1.454 (1.351–1.565)	2.46504	pt	own char_w
+Fig2A	char_w_18.478 (17.160–19.897)	2.52319	pt	own char_w
+Fig2A	pt_per_lnunit	42.1095	pt/lnunit	back-solved from rendered anchors of ann(hjust=0) and pann(hjust=1)
+Fig2B	pt_per_data_x	586.42715	pt/unit	LSQ on x-label centres -0.1..0.3 (max|resid| 0.0042 pt)
+Fig2B	char_w_pt	2.18056	pt	char_w of longest note line (57 chars)
+Fig2B	n_chars_requested	5	char	user request (each side)

@@ -6,6 +6,9 @@
 ###############################################################################
 source(file.path(dirname(sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE)[1])),
                  "fig_common.R"))
+## 用户指定「字符宽度/高度」级精确位移工具（量测 → 换算 → 施加到真实 artist）
+source(file.path(dirname(sub("^--file=", "", grep("^--file=", commandArgs(FALSE), value = TRUE)[1])),
+                 "fig_shift.R"))
 
 F4W <- 6.85; F4H <- 7.8
 
@@ -22,6 +25,14 @@ p4a <- forest_panel(dtA, xlim = c(0.95, 1.20), vline = 1, logx = TRUE, txt_cex =
                     title = "A  Predicted neoantigen load versus HLA LOH (n = 25,954; HLA LOH+ 6,804)",
                     xlab = "Odds ratio for HLA LOH per +1 SD of neoantigen load (log scale)")
 
+## ---- 用户指定精确位移（QC_user_adjust_round1 item 6）------------------------
+##  Fig4A 森林图右侧 OR 数值标签整体向上移动 1 个字符高度。
+##  char_h = 单行文本 bbox 高（PDF 文本层实测）；偏移经 pt → 数据单位换算后写入
+##  该 geom_text 图层独有的 y 映射列 y_ann（误差棒/数据点等其它图层 y 不变）。
+stopifnot(nrow(dtA) == nrow(shift_labels("Fig4A")))
+shift_model_check(p4a, "Fig4A", x_col = "tx_pos", logx = TRUE)
+p4a <- shift_text_y(p4a, "Fig4A", rows = seq_len(nrow(dtA)), d_chars = 1)
+
 ## ---------- B ----------
 b4 <- fread(file.path(IMD, "fig4b_neo_pair_or.tsv"))
 setorder(b4, -OR)
@@ -34,6 +45,12 @@ p4b <- forest_panel(dtB, xlim = c(0.97, 1.065), vline = 1, logx = FALSE, txt_cex
                                 "Locus-specific / sensitivity analyses" = PAL[["teal"]]),
                     title = "B  Allele-resolved, internally paired conditional logistic models (6,817 tumours / 14,157 locus pairs)",
                     xlab = "Odds ratio: binders on the LOST versus the KEPT allele (95% CI)")
+
+## ---- 用户指定精确位移（QC_user_adjust_round1 item 6）------------------------
+##  Fig4B 森林图右侧 OR 数值标签整体向上移动 1 个字符高度（换算同上）。
+stopifnot(nrow(dtB) == nrow(shift_labels("Fig4B")))
+shift_model_check(p4b, "Fig4B", x_col = "tx_pos", logx = FALSE)
+p4b <- shift_text_y(p4b, "Fig4B", rows = seq_len(nrow(dtB)), d_chars = 1)
 
 ## ---------- C ----------
 c4 <- fread(file.path(IMD, "fig4c_neo_summary.tsv"))
