@@ -146,6 +146,30 @@ ua_rec("Fig1C", "n_lines_before_after", sprintf("%d -> %d", length(ua_nb_orig), 
 cat(sprintf("[UA-2] Fig1C: char_h=%.5f pt, |pt_per_data_y|=%.5f pt/unit -> dy=%.5f data units = %.4f pt up\n",
             ua_get("Fig1C", "char_h_pt"), abs(ua_get("Fig1C", "pt_per_data_y")), ua_dyC,
             3 * ua_get("Fig1C", "char_h_pt")))
+## ---- ③ Fig1C（Round2 追加）：在 Round1 的 3 字符高之上再整体上移 1 个字符高 ----------
+##   用户第二轮裁定：注释框（含文字）再向上整体移动 1 个字符高度。
+##   口径与 Round1 完全一致：位移 = 字符数 × 实测字高 ÷ 实测 |pt-per-data|（无手填坐标），
+##   施加到同一批真实 artist（rect 的 ymin/ymax 与 text 的 y）；Round1 的 +3 字符高原值保留。
+ua_dyC2 <- ua_get("Fig1C", "n_chars_requested_round2") * ua_get("Fig1C", "char_h_pt") /
+           abs(ua_get("Fig1C", "pt_per_data_y"))
+nb$rect$data$ymin <- nb$rect$data$ymin + ua_dyC2
+nb$rect$data$ymax <- nb$rect$data$ymax + ua_dyC2
+nb$text$data$y    <- nb$text$data$y + ua_dyC2
+ua_dyC_tot <- ua_dyC + ua_dyC2
+ua_rec("Fig1C", "dy_data_units_round2", ua_dyC2, "data-unit",
+       sprintf("1 x char_h(%.5f pt) / |pt_per_data_y|(%.5f pt/unit)", ua_get("Fig1C", "char_h_pt"),
+               abs(ua_get("Fig1C", "pt_per_data_y"))))
+ua_rec("Fig1C", "dy_pt_round2", 1 * ua_get("Fig1C", "char_h_pt"), "pt",
+       "round2: further 1 line height, on top of round1")
+ua_rec("Fig1C", "dy_data_units_total", ua_dyC_tot, "data-unit",
+       "round1 3 + round2 1 line heights (cumulative vs the original baseline)")
+ua_rec("Fig1C", "dy_pt_total", 4 * ua_get("Fig1C", "char_h_pt"), "pt",
+       "cumulative 4 line heights vs the original baseline")
+ua_rec("Fig1C", "n_chars_requested_total", ua_get("Fig1C", "n_chars_requested_total"), "char",
+       "cumulative request 3 + 1")
+cat(sprintf("[UA-3] Fig1C round2: +%.5f data units = %.4f pt up (cumulative %.5f data units = %.4f pt = 4 line heights)\n",
+            ua_dyC2, 1 * ua_get("Fig1C", "char_h_pt"), ua_dyC_tot,
+            4 * ua_get("Fig1C", "char_h_pt")))
 p1c <- ggplot(dc, aes(x = dec, y = pct_armind)) +
   geom_line(colour = PAL[["grey"]], linewidth = 0.45) +
   geom_errorbar(aes(ymin = lo, ymax = hi), width = 0.2, colour = "grey45", linewidth = 0.32) +
@@ -200,8 +224,8 @@ fwrite(data.table(kind = c("rect_xmin", "rect_xmax", "rect_ymin", "rect_ymax", "
                            "dy_units", "dy_pt", "panel_xlim_lo", "panel_xlim_hi",
                            "panel_ylim_lo", "panel_ylim_hi"),
                   value = c(nb$rect$data$xmin, nb$rect$data$xmax, nb$rect$data$ymin,
-                            nb$rect$data$ymax, nb$text$data$x, nb$text$data$y, ua_dyC,
-                            3 * ua_get("Fig1C", "char_h_pt"), XL[1], XL[2], YL[1], YL[2])),
+                            nb$rect$data$ymax, nb$text$data$x, nb$text$data$y, ua_dyC_tot,
+                            4 * ua_get("Fig1C", "char_h_pt"), XL[1], XL[2], YL[1], YL[2])),
        file.path(UA_DIR, "note_box_geometry_after_Figure1.tsv"), sep = "\t")
 fwrite(d[ua_last2 == TRUE, .(CANCER_TYPE, level = ua_level, nlab, plab,
                              y_nlab = ua_y_nlab, y_plab = ua_y_plab)],

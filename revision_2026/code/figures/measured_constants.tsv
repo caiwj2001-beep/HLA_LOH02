@@ -10,6 +10,8 @@ Fig1C	pt_per_data_y	-1.15664	pt/unit	LSQ on y-label centres of ticks 0/20/40/60 
 Fig1C	char_h_pt	5.92839	pt	measured baseline advance of the note-box multi-line text (lineheight 0.95, fs 5.2)
 Fig1C	n_chars_requested	3	char	user request
 Fig1C	max_chars_per_line	54	char	user request (rewrap)
+Fig1C	n_chars_requested_round2	1	char	user request (round2: one further line height on top of round1)
+Fig1C	n_chars_requested_total	4	char	round1 3 + round2 1 = 4 line heights above the original baseline
 Fig1C	panel_w_in	4.4122	in	panel C border-rect width 317.68 pt back-solved from the delivered Figure1 PDF (m2_probe_geom.out)
 Fig2A	char_w_pt	2.47958	pt	mean char_w of the 4 annotation (OR/HR) labels
 Fig2A	n_chars_requested	14	char	user request

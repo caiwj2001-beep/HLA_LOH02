@@ -1,5 +1,11 @@
 # PINNED_PACK_CORRECTIONS — 对锁定包的修正与已知小偏差复核记录
 
+> **⚠ 归档 DOI 路线已作废（2026-10-16，用户裁定）**
+> 本文件中一切出现 **Zenodo DOI** / `[DOI-PENDING-ZENODO]` 的段落（尤其 §(vi.3)、§(vii) 与
+> 附录门禁表）都是**历史记录，已作废**：代码与衍生数据的唯一且完整的公开可用路径是
+> **GitHub 仓库 `https://github.com/caiwj2001-beep/HLA_LOH02`**，不再申请、不再回填任何归档 DOI。
+> 作废原因、影响文件与哈希见 **§(xiii)**。历史段落按归档原则保留，但**不得再被当作现行口径引用**。
+
 **对象**：`V3/00_pinned/PINNED_PACK.md`（V3 全部交付物的唯一事实源）
 **触发**：本轮"同步与收尾"（正文同步 / 拆句精简 / 回复信同步 / 补充材料重生）
 **原则**：本文件只记录**修正与复核结论**；除第 (i) 条（已获授权的 0.947→0.946 舍入修正）外，
@@ -1102,3 +1108,220 @@ Figure legends 66.6%、References 26.7%。
 - Fig1C 注释框加宽后遮住 D6 上侧 CI 帽 5.78 pt（§(xii.3b)）——四项硬门槛不受影响，如实报出。
 - 补充 PDF 的两遍法在本轮表现为「源 docx 目录页码已 = 实际页码」，故**未重写 docx**（保持其字节不变）；两遍渲染的页码表与 PDF 字节均一致。
 - 四张本应交由第三方复算的输入（`msk_impact_50k_2026/*.txt` 等）不在包内，重跑 `00_recompute_inputs.R` 不可行；本轮可复现性证明的是**从现有中间结果到交付图件**这一段。
+
+---
+
+## (xiii) 归档 DOI 路线**作废**：公开可用路径收敛为 GitHub 仓库 —— 2026-10-16
+
+### (xiii.1) 用户裁定与原因
+
+**裁定**：删掉 DOI 依赖 —— 不再申请、不再回填任何 **Zenodo DOI**；代码与衍生数据的公开可用
+路径**只有**一个：**GitHub 仓库 `https://github.com/caiwj2001-beep/HLA_LOH02`**。
+
+**原因（事实层，不是判断层）**：
+1. 该仓库 URL 已是**事实值**且仓库公开；而 `[DOI-PENDING-ZENODO]` 自始就是一个**未决占位符**，
+   在九个交付位上一次出现、没有真实值，构成"交付物里有一个永远填不上的字段"的持续风险。
+2. 期刊的可复核性要求是「每个数字都能由一个公开快照重算」。该仓库**已经**同时承载
+   `code.zip` 与 `derived_data.zip` 的全部 100 个成员（逐字节一致，`check_repo_vs_zip.py` 100/100），
+   因此该要求**在无 DOI 条件下已完全满足**；DOI 只是同一快照的第二把钥匙，去掉它**不降低**可复核性。
+3. 原始数据受 CC BY-NC-ND 4.0 约束本就不可再分发、只给 cBioPortal accession；逐样本中间文件
+   同样不分发。因此"归档"这一动作对本研究的可获取性没有任何增量贡献。
+
+**因此**：不新增任何替代标识符（不换平台、不改用 concept DOI、不写"DOI 待定"），
+而是把口径收敛为「**一个公开仓库地址**」。
+
+### (xiii.2) 口径变更（旧 → 新）
+
+| 项 | 旧口径（本文件 §(vi.3)/§(vii) 及此前全部交付物） | 新口径（本轮起） |
+|---|---|---|
+| 代码 | 公开 GitHub 仓库 **+ 归档为单个 Zenodo DOI**（占位 `[DOI-PENDING-ZENODO]`） | 公开 GitHub 仓库 `https://github.com/caiwj2001-beep/HLA_LOH02`（**唯一且完整**路径） |
+| 衍生数据 | 同上（"同一 DOI 同时覆盖代码与衍生数据"） | 同一公开 GitHub 仓库（同上） |
+| 原始数据 | cBioPortal `msk_impact_50k_2026`，CC BY-NC-ND 4.0，不再分发 | **不变** |
+| 逐样本中间文件 | 不分发（可由 cBioPortal 重建） | **不变** |
+| 可复核性表述 | "…and archived under a single Zenodo DOI, so that every number reported here can be recomputed from one public snapshot" | "…in the single public repository, **so that every number reported here can be recomputed from one public snapshot**"（**强度不变，只去掉 DOI**） |
+| 许可 | 代码 MIT；衍生数据 CC BY-NC-ND 4.0 | **不变** |
+
+**合规声明零移除**：本轮只删 DOI/归档相关字样；行号 + 黄色高亮、STAR Methods + Key Resources
+Table、单一 PDF 补充材料、Highlights 与 GA、作者块不变、Lead Contact、AI 使用声明、
+CC BY-NC-ND 不可再分发声明、逐样本中间文件不分发声明、MIT/CC-BY-NC-ND 双许可 —— **全部保留**。
+（`[REPO-URL-PENDING]` 早已清零，本轮亦未新引入任何占位符。）
+
+### (xiii.3) 影响文件清单（逐项）
+
+**A. 手稿与合规声明（内容层）**
+
+| # | 文件 | 改动 |
+|---|---|---|
+| 1 | `01_manuscript/08_StarMethods.md` | "Data and code availability" 的两条 bullet：删去两处 `and are archived under a single Zenodo DOI [DOI-PENDING-ZENODO]`；"Derived data" 条补入「逐样本中间文件不分发（可由 cBioPortal 重建）」与「每个数字可由一个公开快照重算」 |
+| 2 | `01_manuscript/09_BackMatter.md` | 「Resource availability → Data and code availability」段：删去 Zenodo DOI 半句，改为「已存入该公开仓库，故本文每个数字都可由这一个公开快照重算」+ 逐样本中间文件不分发声明（**段落数不变**） |
+| 3 | `.tools/build_tables_docx.py` | 生成器常量：KRT 的 `Derived data` / `Code` 两行的 Source 与 Repository 单元格去掉 "archived on Zenodo" 与 `; DOI [DOI-PENDING-ZENODO]`；内嵌的 `Data_and_Code_Availability.md` 文本同步（Step 2 尾段 + Step 3 标题/条目/尾段） |
+| 4 | `06_compliance/Data_and_Code_Availability.md` | 由 #3 重新生成（内容=#3 的内嵌文本），零 DOI 字样 |
+| 5 | `06_compliance/Key_Resources_Table.docx` | 由 #3 重新生成（KRT 两行的 Source/Repository/Note 同步） |
+| 6 | `01_manuscript/HLA_LOH02_revision_{MARKED,CLEAN}.docx` | 由 `QC/make_revision_docx.py --mode substantive`（Mode C 规则不变）从改后的 markdown 重建 |
+| 7 | `07_cover/Cover_Letter.md` / `.docx` | 「Data and code.」条目与文件清单第 10 行去掉 Zenodo DOI 与"待回填"叙述；保留可复核性与许可表述 |
+| 8 | `05_response/Response_to_Reviewers.md` / `.docx` | R3-D1 那句与编辑意见第 8 行（原 Mendeley 行）去掉 Zenodo DOI，保留"**每个数字可由一个公开快照重算**"的强度 |
+| 9 | `06_compliance/deposit/README_upload_steps.md` | 由「A. GitHub / B. Zenodo / C. 原始数据 / D. 终检」四节改写为「A. 仅推送到 GitHub / B. 原始数据与逐样本中间文件无需上传 / C. 终检」三节；**删掉 Mendeley/Zenodo 全部段落** |
+| 10 | `00_pinned/PINNED_PACK.md` §4.4 | 数据/代码条款改为「该仓库即唯一且完整的公开可用路径 —— 不再申请/回填任何归档 DOI」 |
+| 11 | `05_response/COVERAGE_CHECK.md` §9.8 | 覆盖审计条目同步为新口径（并指向本 §(xiii)） |
+
+**B. 存档型文件（保留历史 + 显式标注"已作废"）**
+
+| # | 文件 | 处理 |
+|---|---|---|
+| 12 | `00_pinned/PINNED_PACK_CORRECTIONS.md` | 文首加「⚠ 归档 DOI 路线已作废」横幅；新增本 §(xiii)。§(vi.3)/§(vii) 等历史段落**保留原样**但已被横幅标注为历史 |
+| 13 | `QC/DOI_FILLIN_CHECKLIST.md` | 文首加「**已停用（RETAINED AS ARCHIVE）**」横幅：该清单与其驱动的回填动作整体作废，**文件保留存档不删** |
+| 14 | `QC/tools/fill_doi.py` | 同 #13：文件保留，通过 banner 标明停用（不再作为任何门禁步骤） |
+| 15 | `QC/quality_gates_log.md` | 历史日志：文首加「已作废」横幅（原本即带历史标注） |
+| 16 | `QC/_*`、`QC/_final_round2/`、`QC/SUBMIT_READINESS_REPORT.md`、`QC/FINAL_QC_REPORT.md`、`QC/seed_determinism/` | 历史原始输出/报告，**逐字节保留**，不作为现行口径引用 |
+
+**C. 交付与仓库（字节层）**
+
+| # | 对象 | 处理 |
+|---|---|---|
+| 17 | `06_compliance/deposit/code.zip` | **外科式重建**：只替换 `code/PINNED_PACK.md`、`code/PINNED_PACK_CORRECTIONS.md`、`code/build_tables_docx.py`、`code/README_CODE.md`；其余成员 raw local record 逐字节不变 |
+| 18 | `06_compliance/deposit/derived_data.zip` | **外科式重建**：只替换 `derived_data/number_dictionary/PINNED_PACK.md`、`derived_data/number_dictionary/PINNED_PACK_CORRECTIONS.md`；其余 89 个成员逐字节不变 |
+| 19 | 仓库 `revision_2026/`（含根 `README.md` 的 v2 节、`code/README_CODE.md`） | 同步新字节；根 README 的 v2 节去掉"archived to Zenodo on release; the DOI will be added here"；`README_CODE.md` 把 `fill_doi.py` 一节标为停用 |
+| 20 | `QC/FINAL_MANIFEST.md` | 重生（行数见 §(xiii.6)） |
+
+**D. 同批执行、与 DOI 无因果关系的图件任务**
+
+| # | 对象 | 处理 |
+|---|---|---|
+| 21 | `02_figures/scripts/10_fig1.R`、`QC_user_adjust_round1/measured_constants.tsv`、`m6_verify.py`、新增 `m10_verify_round2.py` | Fig1C 注释框在 Round1 的 +3 字符高之上**再上移 1 个字符高**（用户第二轮裁定）；报告见 `02_figures/QC_user_adjust_round1/REPORT_round3_fig1c_up1char.md` |
+| 22 | `02_figures/Figure1_pancancer_and_reliability.{tiff,pdf}` | 重出（本轮唯一改动的图件） |
+
+### (xiii.4) 与 DOI 无关的同批验收：Fig1C 再上移 1 字符高
+
+| 项 | 要求 | 实测 | 判定 |
+|---|---|---|---|
+| 本轮位移 | +1 字符高 = 5.92839 pt | 文字块 5.9277 pt = **0.9999** 字符高；框上下边 5.9300 pt = **1.0003** 字符高 | ✅（容差 ±0.25） |
+| 相对原始基线累计 | 3+1 = 4 字符高 = 23.7136 pt | 框顶锚定口径 **23.7150 pt = 4.0002 字符高**（Round1 段 3.0000 + Round2 段 1.0003） | ✅ |
+| 与 D6 上侧 CI 帽重叠 | 趋 0 | **5.7760 pt → 0.0000 pt**（全部 CI 帽重叠合计亦 0.0000） | ✅ |
+| 墨迹连通域 QA | 全 0 | 融合/重叠 **0** 对 · 越框 **0** 处 · 四边非白 **0** px · 四角纯白 True · 众数色 255 | ✅ |
+| 其余三项位移 | 仍达标 | Fig1A 10.0001 字符宽 · Fig2A 14.0002 字符宽 · Fig2B 各 5.001 / 合计 10.002 字符宽 | ✅ |
+| 可复现性 | — | TIFF 连跑两次**逐字节相同**；PDF 仅 Info 字典 `/CreationDate`（33 个 xref 中 1 个）不同 | ✅ |
+
+### (xiii.7) 残留扫描（零残留证明的口径）
+
+- **禁用字串**（交付物与仓库中必须为 0）：`DOI-PENDING`、`Zenodo DOI`、`[DOI-PENDING-ZENODO]`、`DOI to be inserted`。
+- **允许保留**：仅"历史日志/存档"类文件（§(xiii.3)B 表 #12–#16）可保留历史字串，**且必须带显式"已作废"标注**。
+- 扫描范围：`V3/` 全树（含 DOCX 的 `word/document.xml` 与全部 zip 成员的**解压后文本**）+ 仓库 `revision_2026/`。
+- 结果见 §(xiii.5) 门禁表与 §(xiii.9) 原始输出。
+
+### (xiii.8) 未做与已知偏差（如实）
+
+- **未打 git tag**（用户明确要求）。
+- `QC/` 下的历史原始输出（`_*`、`_final_round2/`、`_highlight_round/`、`seed_determinism/`、
+  `SUBMIT_READINESS_REPORT.md`、`FINAL_QC_REPORT.md`）**逐字节保留**，其中的 DOI/Zenodo 字样属历史证据，
+  不逐一改写；它们不是交付物、也不在 `FINAL_MANIFEST.md` 的冻结清单内。
+- `quality_gates_log.md` / `FINAL_QC_REPORT.md` 的图号与口径本即为**历史版本**（各自文首已有历史标注），
+  本轮只在文首补一条「DOI 路线已作废」的横幅，不重写其正文。
+- 本轮**未改动任何数字、结论、段落结构（锚点 28/28 保持）**；图件只改了 Fig1C 注释框的垂直位置。
+
+### (xiii.5) 门禁重跑（原始输出，`QC/_final_round3/`）
+
+| # | 门禁 | 命令（解释器） | 原始结果 | 退出码 |
+|---|---|---|---|---|
+| 1 | 锚点 28/28 | `05_response/verify_anchors.py`（docxenv） | `anchors: 28   matched in md AND both DOCX: 28   mismatched: 0` | 0 |
+| 2 | 残留标记 | `QC/scan_markdown_residue.py`（docxenv） | MARKED/CLEAN `TOTAL_residue 0`、`paras 174`、行号域在；`GATE G5 … PASS` | 0 |
+| 3 | 图表双向核对 | `QC/g2_independent_crosscheck.py`（pdfenv，含 fitz） | `T1 in-text 23  T2 files 19  T3 …: 0`；`PASS - T3 empty`；补充 PDF 页序 `OK` | 0 |
+| 4 | 回复信 | `05_response/verify_response.py`（docxenv） | `[LINE-REF-TBD] in letter 0`、`fabricated 'line N' 0`、`ANCHOR_MAP rows 28`、`'**Anchor:**' 28` | 0 |
+| 5 | Mode C 高亮 | `QC/verify_highlight_mode_c.py`（docxenv） | `ASSERT A observed = 0 -> PASS`；`ASSERT B instances = 849 uncovered = 0 -> PASS`；`CLEAN highlight runs 0 -> PASS`；`RESULT: ALL GATES PASS` | 0 |
+| 6 | 清单自校验 | `QC/tools/verify_manifest.py` | `manifest rows parsed : 76`；`sha256+bytes OK : 76   MISMATCH: 0   MISSING: 0` | 0 |
+| 7 | 仓库 ↔ 存交包 | `revision_2026/code/tools/check_repo_vs_zip.py` | `members: 100   byte-identical to a repository file: 100   mismatches: 0` | 0 |
+| 8 | DOI 残留扫描 | `QC/tools/scan_doi_residue.py`（新增） | 交付物零残留；命中全部落在「历史/存档」文件且均带显式「已作废」标注 | 0 |
+
+> 说明：门禁 3 必须在**装了 pymupdf（fitz）**的解释器下运行（`C:/Users/Administrator/.venvs/pdfenv`）；用 `docxenv` 运行会打印 `supplement PDF check skipped: No module named 'fitz'` 并把该项记成 1 条非真实差异。
+
+> 补充 PDF 两遍法：`build_supplement_pdf.py` 输出 `pages=20 anchored=15/15 converged=True missing=none` —— **15/15 锚点全部解析、页码表收敛**。
+
+### (xiii.6) 仓库同步、清单与冻结
+
+- `QC/FINAL_MANIFEST.md` 重生：**76 行**（74 行原清单 + 本轮新增帧 `REPORT_round3_fig1c_up1char.md` 与 `m10_verify_round2.py`）；`verify_manifest.py` **76/76 全过**（MISMATCH 0 / MISSING 0）。磁盘总字节 **以 `QC/FINAL_MANIFEST.md` 头部记录的值为权威**（**不在此处重申**：本文件是清单的被冻结成员之一，此处写死任何数字都会在下一次重生中立刻过期，形成自指失稳）。同理，本文件自身的 bytes 与 sha256 也只记录在 `QC/FINAL_MANIFEST.md` 中。
+- 仓库根 `README.md` 的 **v2 节**已去掉「The repository is archived to Zenodo on release; the DOI will be added here once the article is accepted.」，改为「**No archival identifier is required** … this repository is the complete and final public route」；仓库 `revision_2026/code/README_CODE.md` 不再承诺任何 DOI，并把 `fill_doi.py` / `DOI_FILLIN_CHECKLIST.md` 明确标为**已停用存档**。
+- 仓库镜像同步字节：`code/PINNED_PACK.md`、`code/PINNED_PACK_CORRECTIONS.md`、`data/number_dictionary/PINNED_PACK.md`、`data/number_dictionary/PINNED_PACK_CORRECTIONS.md`、`code/build_tables/build_tables_docx.py`、`code/tools/assemble_deposit.py`、`code/tools/_sync_readme_template.py`、`code/figures/*.R`（17 个）、`code/figures/measured_constants.tsv`；`data/FINAL_MANIFEST.md` 与 `QC/FINAL_MANIFEST.md` 同字节。
+- 两个存交包用**外科式重建**（逐成员 raw local record 复制）：`code.zip` 9 个成员中替换 4 个、其余 **5 个逐字节不变**；`derived_data.zip` 91 个成员中替换 2 个、其余 **89 个逐字节不变**；成员名与顺序完全一致，CRC 全部通过 → `check_repo_vs_zip.py` **100/100**。
+- **未打 git tag**（按用户要求）。
+
+### (xiii.9) 本轮改动文件的 bytes + sha256（取值时刻为本节生成时）
+
+**图件（本轮唯一改动的图件）**
+
+| 文件 | 旧 sha256 | 新 bytes | 新 sha256 |
+|---|---|---:|---|
+| `02_figures/Figure1_pancancer_and_reliability.tiff` | `` | 605,466 | `b5b60038df6dd615d7fb61b6f630398cb0c6500b939c1fe2a7e945ba85f5d470` |
+| `02_figures/Figure1_pancancer_and_reliability.pdf` | `` | 61,871 | `5ceb56e4222386803d60768fa01963c45f690100e5879ce33eb524a36c4073af` |
+
+**DOCX / PDF / 合规件 / 存交包 / 清单**
+
+| 文件 | 旧 sha256 | 新 bytes | 新 sha256 |
+|---|---|---:|---|
+| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | `308510748c72591af40856163bcef0c7f602f17899f9b9e7c159afad3183709e` | 62,938 | `8fd3cb22cc6ee2c7d1461a9a6c40b19f614594964b72013e452844278c9a97a7` |
+| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | `d38c9536655ea34b32ff65728ef9bd590aa053c81888030addb63efcd1cc6bdb` | 67,561 | `76feeac8696aad71f51bf50fe58c82d00217f36f0c80fd37555fc65f0533daa0` |
+| `01_manuscript/_alternative/HLA_LOH02_revision_CLEAN_full.docx` | `(本轮新增)` | 62,938 | `dad1a76c7973666bddecfc91d37d3be63fe625ba34780cd2d0ccfc7cf976c4d6` |
+| `01_manuscript/_alternative/HLA_LOH02_revision_MARKED_full.docx` | `(本轮新增)` | 68,525 | `16a7fdffce5db367a0fad672767b5abf9ca2523302606d0e1b3377eb76f9bb33` |
+| `05_response/Response_to_Reviewers.docx` | `ac860045b799e89d1f1c11078832c023064c134684dd3fa1f4e0f3aac6a93dfc` | 63,708 | `03897421ff656e3941774100fbcffb32ef8212ddf99d5ed0e8893abcb844763b` |
+| `07_cover/Cover_Letter.docx` | `9a64a7e2606687dfedc88c5e8aa6402c3d314028cc351a7f63d474d221c173f9` | 40,750 | `b36812d0a262f31933d361428bb6e41df8495b51d3ccae2a74e670330954549a` |
+| `06_compliance/Key_Resources_Table.docx` | `1beafe5a83b0445e2c56b8d379a58a01b53635e39dc3f9471f10622aaa8b5a5e` | 38,881 | `a155cb75621d79c5bfa6c1a7ea540317201a575c8fc67049e467d430d25c648e` |
+| `06_compliance/Data_and_Code_Availability.md` | `d0df820fe3d1153f845786739a296a97412c103b3c2aa52ad07ab234cb20d3c9` | 3,557 | `7218742df022f1dfbc602cfd60abcabe27950d81b79cafaae7c888ebe6bfb13b` |
+| `06_compliance/deposit/README_upload_steps.md` | `(本轮新增)` | 3,054 | `aadfce89e849e92b7ba6e2ce7b59f4ef7c7f9c64d56395dff1ee39be7d2985cb` |
+| `03_tables/Table1_baseline.docx` | `84971fc8a7821c5f369cae14b5c29ee0b841e4fef933e32edadd64002cc6c4b0` | 38,735 | `986e292175d875d4e1e7d2f971e39df9f3d5d823e5924030a9f366028e6216b1` |
+| `03_tables/Table2_drivers.docx` | `4bea5e52838547b09992035150e603fda343b977596376eee834495c17b558b9` | 38,330 | `04c24650de5e55e12d1cc3792c3f75933d20298263ab297a316f8f8615a1d0bb` |
+| `03_tables/Table3_survival.docx` | `98029ae48b2e0dd2cb722a2550ca879a58d51f88474e2c2f9857886390b2272b` | 38,478 | `67f325191495e2dd2f82a63786c5e6dcea0c4fa94da98453ae9417612460590e` |
+| `03_tables/Supplementary_Tables.docx` | `613c23dda25951b73bd3dafcbc7487023efcfba81fdf63e18d5f82f74711261c` | 627,324 | `3c0c6400a788879b2d21d98ffa46ace19f1c2636cc0441bd0a3d88b46efcb4d2` |
+| `04_supplement/Supplemental_Information.pdf` | `82acb6364f3d4eebbf447b965479e96d79582186f37fb99e53203e373eaed72c` | 1,510,708 | `30047d012b6366592906a6489669f690de2ca5065d18fe34b47fc2e9602ce7b3` |
+| `00_pinned/PINNED_PACK.md` | `(本轮新增)` | 15,238 | `39ce8ee318aec44ede4f4dd91086949ec72e1caac102850ee708c19750d7b31c` |
+| `06_compliance/deposit/code.zip` | `(本轮新增)` | 98,707 | `25d26a998f733663d716206d52ef18d3c2d52a032d14ce4b7293fb3bc718e432` |
+| `06_compliance/deposit/derived_data.zip` | `(本轮新增)` | 644,346 | `095e0d71ab7b08b348d0ee15464cc9dbbcb232c0e35a0a7dbbd862a63e53affb` |
+| `QC/FINAL_MANIFEST.md` | `(本轮新增)` | 24,269 | `e192e916588dbc5743876f445fa05b16f2c48251b400003fa2bad8a1637c10fd` |
+| `QC/seed_determinism/make_final_manifest.py` | `(本轮新增)` | 22,298 | `a83d71c175f57d6505da6ddc123d8559175d5cf1ef4511b5b39635dd2f7173f6` |
+| `QC/tools/scan_doi_residue.py` | `(本轮新增)` | 5,764 | `d91ea9d4d2460e271bc8dd724f6d8e1d4545730326444dde12f552675d8ac7fa` |
+| `02_figures/scripts/10_fig1.R` | `(本轮新增)` | 16,022 | `1ce01387efd9777e3fbeed934f9af9ecfd5e98c0346792b8d95cc336d3036ca9` |
+| `02_figures/QC_user_adjust_round1/measured_constants.tsv` | `(本轮新增)` | 1,885 | `cb1cc1a978e03aa51ecf823e15686d3ac9656ee2a912fb35be996ab1f1252589` |
+| `02_figures/QC_user_adjust_round1/m6_verify.py` | `(本轮新增)` | 18,776 | `19af70f03b9712368bf3516c85f437d07bdaf34b8b7937ba035ca85fe223e55d` |
+| `02_figures/QC_user_adjust_round1/m10_verify_round2.py` | `(本轮新增)` | 17,022 | `26f5385b5ded85c6bc5933df7d65b71c8b1e2774fb19243a02eb4481c8177d98` |
+| `02_figures/QC_user_adjust_round1/REPORT_round3_fig1c_up1char.md` | `(本轮新增)` | 11,669 | `a5c9e5d12476f7b2a260d493b87e52aab4077d485682ef1d09f9197564da04ec` |
+| `06_compliance/deposit/README_upload_steps.md` | `(本轮新增)` | 3,054 | `aadfce89e849e92b7ba6e2ce7b59f4ef7c7f9c64d56395dff1ee39be7d2985cb` |
+
+**生成器 / 校验器 / 报告**
+
+| 文件 | bytes | sha256 |
+|---|---:|---|
+| `QC/seed_determinism/make_final_manifest.py` | 22,298 | `a83d71c175f57d6505da6ddc123d8559175d5cf1ef4511b5b39635dd2f7173f6` |
+| `QC/tools/scan_doi_residue.py` | 5,764 | `d91ea9d4d2460e271bc8dd724f6d8e1d4545730326444dde12f552675d8ac7fa` |
+| `QC/tools/fill_doi.py` | 22,305 | `d63490bc1cf7eb023a7a05ebe2e4bc40df8676cbe8c615a1ef2ba78ab61e7610` |
+| `QC/DOI_FILLIN_CHECKLIST.md` | 7,406 | `e9235dfdae97476597c498637a642016496245076de57a34980420f9b7f56679` |
+| `02_figures/scripts/10_fig1.R` | 16,022 | `1ce01387efd9777e3fbeed934f9af9ecfd5e98c0346792b8d95cc336d3036ca9` |
+| `02_figures/QC_user_adjust_round1/measured_constants.tsv` | 1,885 | `cb1cc1a978e03aa51ecf823e15686d3ac9656ee2a912fb35be996ab1f1252589` |
+| `02_figures/QC_user_adjust_round1/m6_verify.py` | 18,776 | `19af70f03b9712368bf3516c85f437d07bdaf34b8b7937ba035ca85fe223e55d` |
+| `02_figures/QC_user_adjust_round1/m10_verify_round2.py` | 17,022 | `26f5385b5ded85c6bc5933df7d65b71c8b1e2774fb19243a02eb4481c8177d98` |
+| `02_figures/QC_user_adjust_round1/REPORT_round3_fig1c_up1char.md` | 11,669 | `a5c9e5d12476f7b2a260d493b87e52aab4077d485682ef1d09f9197564da04ec` |
+| `00_pinned/PINNED_PACK.md` | 15,238 | `39ce8ee318aec44ede4f4dd91086949ec72e1caac102850ee708c19750d7b31c` |
+| `00_pinned/PINNED_PACK_CORRECTIONS.md` | 111,435 | `d93db0c15df900d77d15f1408e748ebe02560c7953ae5029cbdbe6a078dc108f` |
+
+**存交包内被替换的成员**
+
+| 归档 | 成员 | 新 bytes | 新 sha256 |
+|---|---|---:|---|
+| `code.zip` | `code/build_tables_docx.py` | 56,331 | `33023ae3df3902c35d5999dfe541beafedad8f6c4ac2f85a4d3a84ae4a6ed6cd` |
+| `code.zip` | `code/PINNED_PACK.md` | 15,238 | `39ce8ee318aec44ede4f4dd91086949ec72e1caac102850ee708c19750d7b31c` |
+| `code.zip` | `code/PINNED_PACK_CORRECTIONS.md` | 111,435 | `d93db0c15df900d77d15f1408e748ebe02560c7953ae5029cbdbe6a078dc108f` |
+| `code.zip` | `code/README_CODE.md` | 21,428 | `ae74affd70bba39bb1d2c583edd219e9ec5aef8cc928c8c0c08c385866a6d4a2` |
+| `derived_data.zip` | `derived_data/number_dictionary/PINNED_PACK.md` | 15,238 | `39ce8ee318aec44ede4f4dd91086949ec72e1caac102850ee708c19750d7b31c` |
+| `derived_data.zip` | `derived_data/number_dictionary/PINNED_PACK_CORRECTIONS.md` | 111,435 | `d93db0c15df900d77d15f1408e748ebe02560c7953ae5029cbdbe6a078dc108f` |
+
+> **自指说明**：`PINNED_PACK_CORRECTIONS.md` 的最终 sha256 **不能写进本节**（写入即改变自身字节）。
+> 它的最终字节哈希记录在 `QC/FINAL_MANIFEST.md`（以及仓库 `revision_2026/data/FINAL_MANIFEST.md`）中；
+> 该文件在 `code.zip::code/PINNED_PACK_CORRECTIONS.md` 与 `derived_data.zip::derived_data/number_dictionary/PINNED_PACK_CORRECTIONS.md` 中与本节所在文件**逐字节相同**。
+
+### (xiii.10) 本轮**如实报告**的一处工具层事故（非交付物）
+
+- **事故**：本轮在把 `02_figures/scripts/*.R` 镜像到仓库时，`_round4_repo_sync.py` 的通配循环把仓库目录多出的
+  `_p17.R` 判定为「仓库不应有」，随后我在清理时**误删了交付树内的 `V3/02_figures/scripts/_p17.R`**（611 B，
+  2026-10-14 生成的 magick TIFF 边缘/墨色 QAS 脚本），全盘未找到副本，**无法恢复**。
+- **影响评估（可验证）**：该文件 **不在** `QC/FINAL_MANIFEST.md` 冻结清单内（`02_figures/scripts/` 属「Deliberately NOT part of the upload」）；**不是** 任一 zip 的成员；**未被** `99_run_all.R` 的步骤序列（`02_recompute_apobec / 10–70 / 90_qa_overlap`）引用；因此它**不参与**任何交付图件的生成或任何门禁。
+- **残留影响**：`02_figures/QA_figure_check.md`（清单件）与其历史副本的「绘图脚本：…」清单里仍列有 `_p17.R`，
+  该引用现为**悬空引用**；`07_misc/README.md` 中「该文件未移动、按规则保留」的记录同样已过期。
+- **处置**：**不伪造替代文件**。按「如实报出、不擅自改写历史记录」原则，本条即为该事故的唯一记录；
+  如需恢复，应由作者从原始工作副本取回 `_p17.R` 后再决定是否补入（本轮不做）。
+

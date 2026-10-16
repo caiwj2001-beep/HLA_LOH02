@@ -401,45 +401,32 @@ Two archives are staged next to this file and are ready to upload:
 - `derived_data.zip` — all derived tables, figure source data and the number dictionary
 - `code.zip` — the analysis script, the rendering scripts, the environment lock and `README_CODE.md`
 
-**The authors must log in themselves at every step below. The repository URL is final; the DOI
-is not yet real:** the single remaining placeholder is `[DOI-PENDING-ZENODO]`, and it must be
-replaced only after the archived record exists. Do not invent or reserve a DOI.
+**The authors must log in themselves at every step below.** The repository URL is final and the
+repository is public, and it is the **only** distribution route for the code and the derived data
+— there is no archival DOI to apply for and no identifier left to fill in.
 
 ---
 
-## A. Code and derived data → one public GitHub repository (three steps)
+## A. Code and derived data → the public GitHub repository (three steps)
 
 1. The public repository already exists at
    `https://github.com/caiwj2001-beep/HLA_LOH02`; sign in at https://github.com and confirm you
-   can push to it. This exact URL is already written into the three places listed in section D.
+   can push to it. This exact URL is already written into the three places listed in section C.
 2. Push the contents of both archives to that repository — `code.zip` as the code root and
    `derived_data.zip` extracted under `derived_data/` — committed as a single initial commit
    with a tag such as `v1.0`. The derived tables are released under **CC BY-NC-ND 4.0** and the
    code under **MIT**; state both licences in the repository `README`.
 3. Confirm that **no file from the cBioPortal cohort** and **no sample-level intermediate file**
-   has been pushed: only the aggregate/table-level derived tables are distributed (see section C).
+   has been pushed: only the aggregate/table-level derived tables are distributed (see section B).
 
 ---
 
-## B. Archive → Zenodo, one DOI for code and data (three steps)
-
-1. In the repository's **Settings → Integrations → Zenodo**, sign in with GitHub and enable
-   archiving for this repository. Zenodo will mint a DOI on the next release.
-2. On GitHub, create a release from tag `v1.0`; Zenodo mints the version DOI and a
-   concept DOI.
-3. Copy the version DOI into `[DOI-PENDING-ZENODO]` — it is the **single** DOI covering both the
-   code and the derived data — in `Data_and_Code_Availability.md`, in the Key Resources Table and
-   in the STAR Methods "Data and code availability" section of the manuscript. The repository URL
-   is already filled in at those same three places, so no URL edit remains.
-
----
-
-## C. Raw data and per-sample intermediates — nothing to upload (one step)
+## B. Raw data and per-sample intermediates — nothing to upload (one step)
 
 1. Confirm that the Data and Code Availability statement points readers to the cBioPortal study
    `msk_impact_50k_2026` (CC BY-NC-ND 4.0) and states that no raw or sample-level data are
-   redistributed. **Do not upload any file from the cBioPortal cohort** to the GitHub repository
-   or to Zenodo — the NoDerivatives clause forbids redistributing modified copies.
+   redistributed. **Do not upload any file from the cBioPortal cohort** to the GitHub repository —
+   the NoDerivatives clause forbids redistributing modified copies.
 2. Per-sample intermediate files (the per-tumour analysis frame, the per-sample aneuploidy score
    files and the per-sample structural-variant counts) are likewise not distributed: they carry
    the cohort's sample identifiers and are CC BY-NC-ND material, and they are regenerated
@@ -447,13 +434,15 @@ replaced only after the archived record exists. Do not invent or reserve a DOI.
 
 ---
 
-## D. Final check before submission
+## C. Final check before submission
 
 - [x] `https://github.com/caiwj2001-beep/HLA_LOH02` written into `Data_and_Code_Availability.md`,
       the Key Resources Table and the manuscript (no repository-URL placeholder remains anywhere)
-- [ ] `[DOI-PENDING-ZENODO]` replaced with the single Zenodo DOI in the same three places
-- [ ] The repository and the Zenodo record are **public** (not private or embargoed) before
-      responding to the journal
+- [x] No archival identifier is pending anywhere in the package: the availability statement, the
+      Key Resources Table, the cover letter and the response letter all name the public repository
+      and nothing else (`00_pinned/PINNED_PACK_CORRECTIONS.md` §(xiii) records the withdrawal of
+      the earlier archival-DOI route)
+- [ ] The repository is **public** (not private or embargoed) before responding to the journal
 - [ ] The manuscript's Data and Code Availability section matches this file word for word in
       the three-step structure (raw / derived / code)
 """)

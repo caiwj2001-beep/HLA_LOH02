@@ -666,16 +666,15 @@ def build_krt(log):
         ["Software - FACETS", "Provided by the data source",
          "facets-suite (version recorded by the data source)", "Arm-level calls and purity/ploidy were provided; "
          "FACETS was not re-run"],
-        ["Derived data", "This study; public GitHub repository, archived on Zenodo",
-         "https://github.com/caiwj2001-beep/HLA_LOH02; DOI [DOI-PENDING-ZENODO]",
-         "Licence CC BY-NC-ND 4.0. The repository is public; the single Zenodo DOI that covers "
-         "the derived data and the code is inserted by the authors once the archived release "
-         "is published"],
-        ["Code", "This study; the same public GitHub repository, archived on Zenodo",
-         "https://github.com/caiwj2001-beep/HLA_LOH02; DOI [DOI-PENDING-ZENODO]",
-         "Licence MIT. Shares the single Zenodo DOI that also covers the derived data; the "
-         "repository is public and only the DOI is inserted by the authors once the archived "
-         "release is published"],
+        ["Derived data", "This study; public GitHub repository",
+         "https://github.com/caiwj2001-beep/HLA_LOH02",
+         "Licence CC BY-NC-ND 4.0. The repository is public and is the complete and final "
+         "availability route for the derived data and the code; no archival identifier is "
+         "required to retrieve them"],
+        ["Code", "This study; the same public GitHub repository",
+         "https://github.com/caiwj2001-beep/HLA_LOH02",
+         "Licence MIT. The same public repository also carries the derived data; no archival "
+         "identifier is required to retrieve either"],
     ]
     mk_table(doc, hdr, rows, widths=[1.5, 1.9, 1.85, 1.85], font=8)
     legend(doc, "Antibodies, chemical reagents and other laboratory materials: none used. There is no "
@@ -721,25 +720,22 @@ and the per-sample structural-variant counts) are deliberately not distributed: 
 sample identifiers of the source cohort, which is distributed under CC BY-NC-ND 4.0, and they
 are regenerated verbatim from the cBioPortal source files by the deposited code.
 
-The repository URL is final and the repository is public. The one remaining identifier field is
-the archival DOI: the authors will publish the archived release and replace `[DOI-PENDING-ZENODO]`
-here, in the Key Resources Table, and in the manuscript once the record has been published.
-**No DOI has been invented or reserved.**
+The repository URL above is final and the repository is public: the code and the derived data are
+both available from that one address, and every number reported in the manuscript can be
+recomputed from it. No archival identifier is required to retrieve either.
 
-## Step 3 - Code (GitHub plus Zenodo)
+## Step 3 - Code (the same public GitHub repository)
 
 All analysis and table-generation code is deposited as `code.zip` (see `deposit/`) in the same
 public repository:
 
 - Repository: **GitHub** - `https://github.com/caiwj2001-beep/HLA_LOH02`
-- Archived release: **Zenodo** - DOI **[DOI-PENDING-ZENODO]** (the single DOI that also covers the derived data)
 - Contents: the R analysis script that recomputes every reported number from the raw data, the
   Python scripts that render the tables and the supplementary PDF, the environment lock files
   (R package versions and Python requirements), and a step-by-step upload README.
 
-The code is released under the MIT licence and is archived under the same single Zenodo DOI as
-the derived data. As above, that DOI is a placeholder and will be filled in after archival; no
-DOI has been invented.
+The code is released under the MIT licence and the derived data under CC BY-NC-ND 4.0; both are
+retrieved from the same public repository, which is their complete and final availability route.
 
 ## Reproducibility notes
 

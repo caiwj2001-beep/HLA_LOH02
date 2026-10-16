@@ -112,8 +112,10 @@ revision_2026/
   sample-level derived file is included here; download them from cBioPortal and regenerate
   everything with `revision_2026/code/`. Sample-level files deliberately excluded are listed in
   the data dictionary.
-- The repository is archived to Zenodo on release; the DOI will be added here once the article is
-  accepted.
+- **No archival identifier is required.** This repository is the complete and final public route for
+  both the code and the derived data: every reported number can be recomputed from this one public
+  snapshot, and there is no DOI to wait for (the earlier archival-DOI plan was withdrawn — see
+  `revision_2026/code/PINNED_PACK_CORRECTIONS.md` §(xiii)).
 
 ### How to cite
 

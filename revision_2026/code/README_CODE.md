@@ -36,9 +36,11 @@ deposit archives: `V3/QC/make_revision_docx.py` (builds `HLA_LOH02_revision_CLEA
 `HLA_LOH02_revision_MARKED.docx` from `V3/01_manuscript/*.md`),
 `V3/05_response/build_response_docx.py` (response letter), `V3/07_cover/build_cover_docx.py`
 (cover letter), and — as submission-package tooling — `V3/QC/tools/surgical_zip.py` (replace
-individual archive members without recompressing the rest) and `V3/QC/tools/fill_doi.py`
-(one-click, idempotent back-fill of the single `[DOI-PENDING-ZENODO]` placeholder in all nine
-delivery positions, with `--dry-run`; see `V3/QC/DOI_FILLIN_CHECKLIST.md`). None of them is a member
+individual archive members without recompressing the rest). The earlier archival-DOI tooling
+(`V3/QC/tools/fill_doi.py` and `V3/QC/DOI_FILLIN_CHECKLIST.md`) is **retained as an archive only
+and is deprecated**: the archival-DOI route has been withdrawn and the single and complete public
+route for the code and the derived data is the GitHub repository named in the manuscript (see
+`PINNED_PACK_CORRECTIONS.md` \u00a7(xiii)). None of them is a member
 of `code.zip`; §3 records the interpreter the DOCX builders must be run with.
 
 ## 2. Order of execution
@@ -201,8 +203,8 @@ delivery tree `iscience投稿版本/V3/`.
 
 | Artifact | Bytes | sha256 |
 |---|---:|---|
-| `Figure1_pancancer_and_reliability.tiff` | 605,964 | `4a9bf25ee99a2a092e4c47524fc2fa19b3427cec24518d95407c9441d287703a` |
-| `Figure1_pancancer_and_reliability.pdf` | 61,869 | `7d736c598299b90a34ee23ed38556f29710b9412ad73896e3cda70ee3643566d` |
+| `Figure1_pancancer_and_reliability.tiff` | 605,466 | `b5b60038df6dd615d7fb61b6f630398cb0c6500b939c1fe2a7e945ba85f5d470` |
+| `Figure1_pancancer_and_reliability.pdf` | 61,871 | `5ceb56e4222386803d60768fa01963c45f690100e5879ce33eb524a36c4073af` |
 | `Figure2_mechanism_armlandscape.tiff` | 327,454 | `8af788faacc687d26531c4144e3a70d86b9f9740a76996afc2550725fe68d9ec` |
 | `Figure2_mechanism_armlandscape.pdf` | 58,468 | `70b2b1605b513a0d9339361e0a1d8f9bd9d11ba4e357c6521a8afc89b5a5a0b7` |
 | `Figure3_TMB_aneuploidy.tiff` | 430,792 | `60935ae13037d5e00db871e8be482c30521627dfb9af8d0ee5d90c757c4e1e48` |
@@ -224,16 +226,16 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 
 | Artifact | Bytes | sha256 (frozen bytes as shipped) |
 |---|---:|---|
-| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62,888 | `308510748c72591af40856163bcef0c7f602f17899f9b9e7c159afad3183709e` |
-| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 67,509 | `d38c9536655ea34b32ff65728ef9bd590aa053c81888030addb63efcd1cc6bdb` |
-| `05_response/Response_to_Reviewers.docx` | 63,730 | `ac860045b799e89d1f1c11078832c023064c134684dd3fa1f4e0f3aac6a93dfc` |
-| `07_cover/Cover_Letter.docx` | 40,860 | `9a64a7e2606687dfedc88c5e8aa6402c3d314028cc351a7f63d474d221c173f9` |
-| `06_compliance/Key_Resources_Table.docx` | 38,913 | `1beafe5a83b0445e2c56b8d379a58a01b53635e39dc3f9471f10622aaa8b5a5e` |
-| `03_tables/Table1_baseline.docx` | 38,735 | `84971fc8a7821c5f369cae14b5c29ee0b841e4fef933e32edadd64002cc6c4b0` |
-| `03_tables/Table2_drivers.docx` | 38,330 | `4bea5e52838547b09992035150e603fda343b977596376eee834495c17b558b9` |
-| `03_tables/Table3_survival.docx` | 38,478 | `98029ae48b2e0dd2cb722a2550ca879a58d51f88474e2c2f9857886390b2272b` |
-| `03_tables/Supplementary_Tables.docx` | 624,779 | `613c23dda25951b73bd3dafcbc7487023efcfba81fdf63e18d5f82f74711261c` |
-| `04_supplement/Supplemental_Information.pdf` | 1,510,708 | `82acb6364f3d4eebbf447b965479e96d79582186f37fb99e53203e373eaed72c` |
+| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62,938 | `8fd3cb22cc6ee2c7d1461a9a6c40b19f614594964b72013e452844278c9a97a7` |
+| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 67,561 | `76feeac8696aad71f51bf50fe58c82d00217f36f0c80fd37555fc65f0533daa0` |
+| `05_response/Response_to_Reviewers.docx` | 63,708 | `03897421ff656e3941774100fbcffb32ef8212ddf99d5ed0e8893abcb844763b` |
+| `07_cover/Cover_Letter.docx` | 40,750 | `b36812d0a262f31933d361428bb6e41df8495b51d3ccae2a74e670330954549a` |
+| `06_compliance/Key_Resources_Table.docx` | 38,881 | `a155cb75621d79c5bfa6c1a7ea540317201a575c8fc67049e467d430d25c648e` |
+| `03_tables/Table1_baseline.docx` | 38,735 | `986e292175d875d4e1e7d2f971e39df9f3d5d823e5924030a9f366028e6216b1` |
+| `03_tables/Table2_drivers.docx` | 38,330 | `04c24650de5e55e12d1cc3792c3f75933d20298263ab297a316f8f8615a1d0bb` |
+| `03_tables/Table3_survival.docx` | 38,478 | `67f325191495e2dd2f82a63786c5e6dcea0c4fa94da98453ae9417612460590e` |
+| `03_tables/Supplementary_Tables.docx` | 627,324 | `3c0c6400a788879b2d21d98ffa46ace19f1c2636cc0441bd0a3d88b46efcb4d2` |
+| `04_supplement/Supplemental_Information.pdf` | 1,510,708 | `30047d012b6366592906a6489669f690de2ca5065d18fe34b47fc2e9602ce7b3` |
 | `06_compliance/Graphical_Abstract/Graphical_Abstract.tiff` | 463,738 | `4ea81270e6ac7ffe737c7d2ceed01c1604991f97357f890cd3f5dca931f41b16` |
 
 ### Deposit archives — `06_compliance/deposit/`
@@ -247,9 +249,9 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 
 | Artifact | Bytes | sha256 |
 |---|---:|---|
-| `PINNED_PACK.md` (this directory; the copy shipped in both archives) | 15,179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` |
-| `PINNED_PACK_CORRECTIONS.md` (\u00a7(v) figure-renumbering record, \u00a7(vi) blocker fixes, \u00a7(vii) closing-round fixes, \u00a7(viii) sentence-split round, \u00a7(ix) sentence-level revision-highlighting round, \u00a7(x) three-tier minimal-unit round, \u00a7(xi) Mode C substantive-change round, \u00a7(xii) integration round: user figure micro-adjustments, the two figure defect fixes, the supplement-PDF rebuild and the freeze) | 100,829 | `59bf4b42174053a1e637b92a0d56c83026626c5f99ef35d21be250491ce66f9a` |
-| `00_pinned/PINNED_PACK.md` in the submission package (same bytes) | 15,179 | `96063bb8d84f9e3c2ece3df406bd0f28fa76c493851661e0b483f64a0a3de6f5` |
+| `PINNED_PACK.md` (this directory; the copy shipped in both archives) | 15,238 | `39ce8ee318aec44ede4f4dd91086949ec72e1caac102850ee708c19750d7b31c` |
+| `PINNED_PACK_CORRECTIONS.md` (\u00a7(v) figure-renumbering record, \u00a7(vi) blocker fixes, \u00a7(vii) closing-round fixes, \u00a7(viii) sentence-split round, \u00a7(ix) sentence-level revision-highlighting round, \u00a7(x) three-tier minimal-unit round, \u00a7(xi) Mode C substantive-change round, \u00a7(xii) integration round, \u00a7(xiii) **withdrawal of the archival-DOI route**: the single and complete public route for the code and the derived data is the GitHub repository) | 111,435 | `d93db0c15df900d77d15f1408e748ebe02560c7953ae5029cbdbe6a078dc108f` |
+| `00_pinned/PINNED_PACK.md` in the submission package (same bytes) | 15,238 | `39ce8ee318aec44ede4f4dd91086949ec72e1caac102850ee708c19750d7b31c` |
 
 ## 8. Notes
 
