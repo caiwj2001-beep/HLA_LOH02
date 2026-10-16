@@ -1,6 +1,6 @@
 # FINAL_MANIFEST — frozen submission package
 
-Manuscript **ISCIENCE-D-26-09416** (iScience revision) · directory `iscience投稿版本/V3` · generated 2026-10-16 22:40:55
+Manuscript **ISCIENCE-D-26-09416** (iScience revision) · directory `iscience投稿版本/V3` · generated 2026-10-16 22:52:28
 
 Every file below is byte-frozen: `sha256` and `bytes` are of the file as it stands on disk at
 generation time. Figure numbers follow the 2026-10-15 renumbering to first-appearance order
@@ -10,7 +10,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 
 - **files listed: 76**
 - **missing on disk: none**
-- **total bytes: 8962526 (9.0 MB)**
+- **total bytes: 8973232 (9.0 MB)**
 
 ---
 
@@ -19,7 +19,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
 | `00_pinned/PINNED_PACK.md` | 15238 | `39ce8ee318aec44ede4f4dd91086949ec72e1caac102850ee708c19750d7b31c` | The locked number dictionary: the single permitted source of every reported number |
-| `00_pinned/PINNED_PACK_CORRECTIONS.md` | 124207 | `cb373bdcd96831c4c426c57ab485b9c3f68b79c7ad58698fa16a98b07cc76fb3` | Corrections and audit record for the locked pack; §(v) is the authoritative figure-renumbering record, §(vi) the pre-submission arm-wording / DOI-placeholder / deposit-dictionary fix, §(vii) the closing-round fixes, §(viii) the sentence-split round, §(ix) the sentence-level revision-highlighting round, §(x) the three-tier minimal-unit round, §(xi) the Mode C substantive-change round, §(xii) the integration round (user figure micro-adjustments, the two figure defect fixes, the supplement-PDF rebuild and the freeze/commit), §(xiii) the archival-DOI withdrawal and the Fig1C +1-character-height round |
+| `00_pinned/PINNED_PACK_CORRECTIONS.md` | 127738 | `e3f9473fd3c8ffc5313339dacb37e0321a8924bfd04837b105335b2591ffc4d3` | Corrections and audit record for the locked pack; §(v) is the authoritative figure-renumbering record, §(vi) the pre-submission arm-wording / DOI-placeholder / deposit-dictionary fix, §(vii) the closing-round fixes, §(viii) the sentence-split round, §(ix) the sentence-level revision-highlighting round, §(x) the three-tier minimal-unit round, §(xi) the Mode C substantive-change round, §(xii) the integration round (user figure micro-adjustments, the two figure defect fixes, the supplement-PDF rebuild and the freeze/commit), §(xiii) the archival-DOI withdrawal and the Fig1C +1-character-height round |
 
 ---
 
@@ -68,7 +68,7 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 | `02_figures/SupplementaryFigureS1_apobec.pdf` | 391411 | `3814e8501c644bc075327e5b85ad3dc3c7bff0c124d6023b3e7bc9d2134d586f` | Supplementary Figure c — vector PDF twin of the same render |
 | `02_figures/SupplementaryFigureS2_germline.tiff` | 178352 | `92f2f27b1238277f90fe3e5e75c84fa4758a8f64187309ede25410002088bf24` | Supplementary Figure e — 300 dpi TIFF, white background, the print-grade figure file |
 | `02_figures/SupplementaryFigureS2_germline.pdf` | 44301 | `297b012d8c2c85ad941fd909392abcd707e576b371a3ad2e8e4a69d908c66130` | Supplementary Figure e — vector PDF twin of the same render |
-| `02_figures/QA_figure_check.md` | 19552 | `9332f835b2750e5c6c1f17727bfb63e693539d3eb6b6daa2c86ce4b2e1b85cf3` | Programmatic figure QA (per-panel text overlap / out-of-frame / axis-label squeeze / raster edge and white-background gates); all gates 0 |
+| `02_figures/QA_figure_check.md` | 20282 | `0d1e32929b311e00c366681fe0fe1b7aaeecd034cf2d3c0291ddcadfa5e7ca16` | Programmatic figure QA (per-panel text overlap / out-of-frame / axis-label squeeze / raster edge and white-background gates); all gates 0 |
 
 ---
 
@@ -111,8 +111,8 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 |---|---:|---|---|
 | `06_compliance/Data_and_Code_Availability.md` | 3557 | `7218742df022f1dfbc602cfd60abcabe27950d81b79cafaae7c888ebe6bfb13b` | Data and Code Availability statement (public GitHub repository is the single and complete availability route; no archival identifier — CORRECTIONS §(xiii)) |
 | `06_compliance/Key_Resources_Table.docx` | 38881 | `a155cb75621d79c5bfa6c1a7ea540317201a575c8fc67049e467d430d25c648e` | Key Resources Table (Cell Press requirement); contains no figure or table number tokens |
-| `06_compliance/deposit/code.zip` | 102759 | `e3410fe0ba1600c7f734ef013d832535104ca9f82a7f5b03ba97ee89aeb0f8fd` | Code deposit: the R analysis script, the DOCX/PDF rendering scripts, the R environment lock, requirements.txt, README_CODE.md and the number dictionary (PINNED_PACK.md + PINNED_PACK_CORRECTIONS.md) |
-| `06_compliance/deposit/derived_data.zip` | 648398 | `886b6275ea61aa83c4682d8864c7d99c719ede734fc3412658a6355946a3bc23` | Derived-data deposit: figure source data, supplementary source data, the table build inputs and the number dictionary |
+| `06_compliance/deposit/code.zip` | 106311 | `b93f96fd31e291bfa2d9163e9098de82ba0010efd3348ef85c1fffd48971e4a2` | Code deposit: the R analysis script, the DOCX/PDF rendering scripts, the R environment lock, requirements.txt, README_CODE.md and the number dictionary (PINNED_PACK.md + PINNED_PACK_CORRECTIONS.md) |
+| `06_compliance/deposit/derived_data.zip` | 651291 | `88341f93749dfbb60041d745223781db7ee0fb3b7b8ea6abe5e7a9e427865679` | Derived-data deposit: figure source data, supplementary source data, the table build inputs and the number dictionary |
 | `06_compliance/deposit/README_upload_steps.md` | 3054 | `aadfce89e849e92b7ba6e2ce7b59f4ef7c7f9c64d56395dff1ee39be7d2985cb` | Author-facing upload runbook: push to the public GitHub repository only (GitHub-only, no archival identifier) |
 | `06_compliance/Graphical_Abstract/Graphical_Abstract.tiff` | 463738 | `4ea81270e6ac7ffe737c7d2ceed01c1604991f97357f890cd3f5dca931f41b16` | Graphical abstract, 300 dpi raster (the file uploaded to EM) |
 | `06_compliance/Graphical_Abstract/Graphical_Abstract.pdf` | 74540 | `39429eded22087434795a8212e8c7192f2a37fca11002c85fd2c9ee8983e7742` | Graphical abstract, vector PDF |

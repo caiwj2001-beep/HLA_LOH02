@@ -1325,3 +1325,23 @@ CC BY-NC-ND 不可再分发声明、逐样本中间文件不分发声明、MIT/C
 - **处置**：**不伪造替代文件**。按「如实报出、不擅自改写历史记录」原则，本条即为该事故的唯一记录；
   如需恢复，应由作者从原始工作副本取回 `_p17.R` 后再决定是否补入（本轮不做）。
 
+### (xiii.11) §(xiii.10) 的**后续处置**（2026-10-16，同轮）：悬空引用已处置 —— 已指向等价物 / 已建重建件
+
+- **原处置更正**：§(xiii.10) 原写「不伪造替代文件……应由作者取回」。经复核，`02_figures/` 内**已存在等价物**，故本轮按「**优先指向已有等价物**」处理，并**另建**一个**明确标注的重建件**（**不冒充原文**）：
+  - **既有等价物（指向，优先）**：`02_figures/QC_user_adjust_round1/m8_qa_tiff.py`（PIL；判据 300 dpi / 白底 / 四边 3 px 非白 = 0 / 四角 50×50 纯白 / 全图众数色 255）。已实测 7 张 TIFF → 不合格 **0**、**PASS**。
+  - **明确标注的重建件（新建并实际运行）**：`02_figures/scripts/qa_tiff_edges_reconstructed.R`（用 R 的 `magick` 包复现同类检查；文件头注明「**重建件、非原文、原 `_p17.R` 不可恢复**」）。实测 7 张 TIFF：四边 3 px 非白 = **0**、四角 50×50 纯白 = **TRUE**、众数色 = **255**、dpi = **300** → 不合格 **0**、**PASS**；输出落盘 `02_figures/scripts/qa_tiff_edges_reconstructed.{out,tsv}`。其逐图墨量（15.42 / 5.46 / 5.27 / 7.77 / 3.45 / 4.86 / 9.21 %）与本节 §(xiii) 及 `02_figures/QA_figure_check.md` §0/§3 的口径一致（仅 Fig5 因灰度化取整差 0.01%）。
+- **悬空引用处置（逐文件）**：
+
+  | 文件（行） | 原引用 | 处置 |
+  |---|---|---|
+  | `02_figures/QA_figure_check.md:176`（清单件） | `绘图脚本：_p17.R, …` | **已改**为 `qa_tiff_edges_reconstructed.R（重建件，非原文）` 并加历史说明；说明中同时指向既有等价物 `m8_qa_tiff.py` |
+  | `07_misc/README.md`（「未移动的文件」节 → 改为「已误删的文件」节） | 「`_p17.R` 未移动、按规则保留」 | **已改**为「已于 2026-10-16 误删、不可恢复」的事故记录，并指向等价物 / 重建件；核查命令一并更正 |
+  | `02_figures/QC_user_adjust_round1/QA_figure_check_round1.md:176`、`QC/fix_round2/_fig_backup/QA_figure_check.md:127`、`QC/seed_determinism/backup/QA_figure_check.md:176` | `_p17.R` | **保留原样**（历史副本 / 备份，属对当时状态的快照；此处登记其悬空状态，不改写存档） |
+  | `QC/RENUMBER_TO_FIGURE_ORDER_REPORT.md:91` | `_p17.R` | **保留原样**（历史报告快照，同上） |
+  | `QC/SUBMIT_READINESS_REPORT.md`（§5 风险行 **S3**、§6 复现命令第 [2] 行） | 「`_p17.R` 实际存在…两 zip 内均无」 | **保留原样**（就绪度审计快照；事实已由本条更正：该文件**已不存在**，其等价 / 重建物亦**不入**任何 deposit） |
+  | `QC/_round4_pin_xiii.py`（§(xiii.10) 生成器） | 同上 | **保留原样**（一次性生成器，为历史记录） |
+
+- **恢复三分类如实标注**：(1) **完整恢复 = 否**；(2) **明确标注的重建件 = `02_figures/scripts/qa_tiff_edges_reconstructed.R`**；(3) **无法重建 = 原 `_p17.R` 本身**。
+- **影响边界**：不涉及任何图件字节、数字或结论；`02_figures/scripts/` 属「Deliberately NOT part of the upload」，重建件与等价物**均不入**任何交付件、zip、冻结清单或门禁。
+- **教训**（已并入技能 `computational-manuscript-integrity` §8）：清理 / 同步镜像副本时，**禁止删除任何未入冻结清单的脚本或中间件**——先移入 `07_misc/_quarantine/` 再评估；本次误删 QA 脚本即反面案例（引用悬空、原文不可恢复）。
+

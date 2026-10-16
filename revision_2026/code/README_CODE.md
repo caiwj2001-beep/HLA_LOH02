@@ -22,7 +22,7 @@ Availability*: the same tree is deposited as `06_compliance/deposit/code.zip` (s
 | `analysis/v1_scripts/` | Original v1 pipeline (`01`–`07`), kept for provenance. |
 | `analysis/v6_scripts/` | Cohort build and core analysis (`03_build_cohort.R`, `04_core_analysis.R`, `06_table_data.R`, `13_sensitivity_mediation.R`, `15_germline_zygosity.R`, …). |
 | `analysis/revision_r3/` | Reviewer-3 revision analyses: aneuploidy-score construction and modelling (`r3p2_*`), arm-independent mechanism and 41-arm ranking (`r3p3_*`), purity/coverage/panel reliability models (`r3p4_*`). |
-| `figures/` | Figure script set: `00_recompute_inputs.R` builds every input table, `10_fig1.R`…`70_figS2.R` draw Figures 1–5, S1 and S2, `90_qa_overlap.R` programmatically checks label overlap/clipping, `99_run_all.R` runs the set, `fig_common.R` holds shared helpers; `01_mediation_boot.R` and `02_recompute_apobec.R` recompute the mediated effect and the APOBEC tail statistics used in Figures 2 and S1. |
+| `figures/` | Figure script set: `00_recompute_inputs.R` builds every input table, `10_fig1.R`…`70_figS2.R` draw Figures 1–5, S1 and S2, `90_qa_overlap.R` programmatically checks label overlap/clipping, `99_run_all.R` runs the set, `fig_common.R` holds shared helpers; `01_mediation_boot.R` and `02_recompute_apobec.R` recompute the mediated effect and the APOBEC tail statistics used in Figures 2 and S1. `qa_tiff_edges_reconstructed.R` is a **clearly-labelled reconstruction** (2026-10-16) of the lost `_p17.R` magick TIFF edge/ink QA: it re-reads the seven `02_figures/*.tiff` and re-checks the raster gates (300 dpi / white background / 0 non-white border pixels / pure-white corners / modal colour 255); it is *not* the original file and produces no deliverable (`PINNED_PACK_CORRECTIONS.md` §(xiii.10)–§(xiii.11)). |
 | `neoantigen/` | netMHCpan-4.2e (primary) and MHCflurry (secondary) pipelines: peptide construction, prediction, statistics and consistency checks. `run_netmhcpan_*_host.sh` and `vm_full_runner.sh` drive the Linux guest that runs netMHCpan. |
 | `tools/` | Deposit-package build scripts (from the project's `.tools/`): `assemble_deposit.py` builds `code.zip` / `derived_data.zip` and their READMEs, `surgical_zip_rebuild_one.py` / `surgical_zip_rebuild_raw.py` replace individual zip members without rebuilding the archive (copying each untouched member's raw local record byte-for-byte), `_sync_readme_template.py` syncs the upload-steps README into the deposit. |
 | `env/` | `env_lock_R.txt` (R 4.6.1 session, package-by-package), `requirements.txt` (Python rendering deps), `renv.lock` (v1, R 4.3.3; also kept at the repository root). |
@@ -217,7 +217,7 @@ delivery tree `iscience投稿版本/V3/`.
 | `SupplementaryFigureS1_apobec.pdf` | 391,411 | `3814e8501c644bc075327e5b85ad3dc3c7bff0c124d6023b3e7bc9d2134d586f` |
 | `SupplementaryFigureS2_germline.tiff` | 178,352 | `92f2f27b1238277f90fe3e5e75c84fa4758a8f64187309ede25410002088bf24` |
 | `SupplementaryFigureS2_germline.pdf` | 44,301 | `297b012d8c2c85ad941fd909392abcd707e576b371a3ad2e8e4a69d908c66130` |
-| `QA_figure_check.md` (programmatic QA; all gates 0) | 19,552 | `9332f835b2750e5c6c1f17727bfb63e693539d3eb6b6daa2c86ce4b2e1b85cf3` |
+| `QA_figure_check.md` (programmatic QA; all gates 0) | 20,282 | `0d1e32929b311e00c366681fe0fe1b7aaeecd034cf2d3c0291ddcadfa5e7ca16` |
 
 ### Manuscript and submission DOCX
 
@@ -250,7 +250,7 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
 | Artifact | Bytes | sha256 |
 |---|---:|---|
 | `PINNED_PACK.md` (this directory; the copy shipped in both archives) | 15,238 | `39ce8ee318aec44ede4f4dd91086949ec72e1caac102850ee708c19750d7b31c` |
-| `PINNED_PACK_CORRECTIONS.md` (\u00a7(v) figure-renumbering record, \u00a7(vi) blocker fixes, \u00a7(vii) closing-round fixes, \u00a7(viii) sentence-split round, \u00a7(ix) sentence-level revision-highlighting round, \u00a7(x) three-tier minimal-unit round, \u00a7(xi) Mode C substantive-change round, \u00a7(xii) integration round, \u00a7(xiii) **withdrawal of the archival-DOI route**: the single and complete public route for the code and the derived data is the GitHub repository) | 111,435 | `d93db0c15df900d77d15f1408e748ebe02560c7953ae5029cbdbe6a078dc108f` |
+| `PINNED_PACK_CORRECTIONS.md` (\u00a7(v) figure-renumbering record, \u00a7(vi) blocker fixes, \u00a7(vii) closing-round fixes, \u00a7(viii) sentence-split round, \u00a7(ix) sentence-level revision-highlighting round, \u00a7(x) three-tier minimal-unit round, \u00a7(xi) Mode C substantive-change round, \u00a7(xii) integration round, \u00a7(xiii) **withdrawal of the archival-DOI route**: the single and complete public route for the code and the derived data is the GitHub repository) | 127,738 | `e3f9473fd3c8ffc5313339dacb37e0321a8924bfd04837b105335b2591ffc4d3` |
 | `00_pinned/PINNED_PACK.md` in the submission package (same bytes) | 15,238 | `39ce8ee318aec44ede4f4dd91086949ec72e1caac102850ee708c19750d7b31c` |
 
 ## 8. Notes
@@ -293,3 +293,4 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
   `05_response/Change_Summary.md` (a second copy sits next to the two manuscript DOCX as
   `01_manuscript/Change_Summary.md`). Neither the change list nor the rendering touches the
   manuscript text, numbers or figure/table numbers.
+- **Lost figure-QA script and its reconstruction (2026-10-16).** The magick TIFF edge/ink QA script `_p17.R` was accidentally deleted during a repository-mirror cleanup and is unrecoverable; it was never part of any deliverable, archive or gate. Its dangling references now point to `02_figures/scripts/qa_tiff_edges_reconstructed.R` — a **clearly-labelled reconstruction** that is *not* the original — and to the pre-existing PIL equivalent `V3/02_figures/QC_user_adjust_round1/m8_qa_tiff.py`. Both were run against the seven TIFFs: 0 non-white border pixels, pure-white corners, modal colour 255, 300 dpi, PASS. Record: `PINNED_PACK_CORRECTIONS.md` §(xiii.10)–§(xiii.11).
