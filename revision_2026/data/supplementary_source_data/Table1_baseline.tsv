@@ -1,11 +1,17 @@
 Characteristic	HLA intact	HLA LOH	P
-N	22,245	7,554	""
+N	22,245	7,554	
 Age at diagnosis, median (IQR)	59.0 (48.0-67.0)	59.0 (49.0-68.0)	<0.001
-Female sex	12031 (54.4%)	4146 (55.2%)	0.279
+Female sex	12031 (54.1%)	4146 (54.9%)	0.233
 Metastatic sample	7054 (31.7%)	2826 (37.4%)	<0.001
 TMB (mut/Mb), median (IQR)	3.5 (1.8-5.9)	4.4 (2.6-7.0)	<0.001
-TMB-high (>=10)	1785 (8.0%)	876 (11.6%)	""
+TMB-high (≥10 mut/Mb)	1785 (8.0%)	876 (11.6%)	<0.001
 Whole-genome doubling	5112 (23.1%)	3295 (43.7%)	<0.001
+Global aneuploidy score, median (IQR)	0.3 (0.1-0.6)	0.7 (0.4-0.9)	<0.001
+Aneuploidy score excluding 6p, median (IQR)	0.3 (0.1-0.6)	0.7 (0.3-0.9)	<0.001
+Aneuploidy score excluding 6q, median (IQR)	0.3 (0.1-0.6)	0.7 (0.3-0.9)	<0.001
 6p arm loss	2332 (11.7%)	4161 (71.7%)	<0.001
-Germline HLA homozygosity (any)	4092 (18.4%)	1116 (14.8%)	""
-FACETS purity, median (IQR)	0.5 (0.3-0.7)	0.4 (0.3-0.6)	""
+Germline HLA class I homozygosity (any locus)	4092 (18.4%)	1116 (14.8%)	<0.001
+FACETS tumour purity, median (IQR)	0.5 (0.3-0.7)	0.4 (0.3-0.6)	0.093
+FACETS ploidy, median (IQR)	2.2 (2.0-2.6)	2.4 (2.0-3.0)	<0.001
+Sample coverage, median (IQR)	626.0 (509.0-755.0)	609.0 (484.0-741.0)	<0.001
+Gene panel — IMPACT468	14827 (66.7%)	5173 (68.5%)	0.004

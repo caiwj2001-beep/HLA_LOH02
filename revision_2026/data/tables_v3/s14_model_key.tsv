@@ -1,0 +1,8 @@
+code	definition
+M1	Adjusted for age, sex, log10 TMB, whole-genome doubling and cancer type.
+M2	M1 plus the global aneuploidy score over all 39 evaluable autosomal arms (6p included).
+M3	M1 plus the aneuploidy score recomputed with chromosome 6p removed.
+M4	M1 plus the aneuploidy score recomputed with chromosome 6q removed.
+M5	M1 plus the aneuploidy score recomputed with 6p and 6q both removed.
+M6	Diagnostic refit of M2 with the whole-genome-doubling term removed.
+M7	Diagnostic model containing HLA LOH and the global aneuploidy score only.

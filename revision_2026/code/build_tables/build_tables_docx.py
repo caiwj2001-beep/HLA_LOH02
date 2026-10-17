@@ -40,6 +40,28 @@ def num(x, nd=3):
     except Exception:
         return str(x)
 
+def p_disp(s):
+    """P 值展示归一（只改呈现、不改数值）。
+
+    上游 R 侧用 sprintf("%.3f") 输出 P，阈值判据是 p < 1e-4，于是 1e-4 <= p < 5e-4
+    的 P 会打印成 "0.000"。0.000 既不是合法 P 值也不是可读写法，故在 DOCX 模板层统一
+    归一为 "<0.001"（与该列其它小 P 的写法一致）。放在模板层而非手改 DOCX，保证任何一次
+    重生 Table1/2/3 都不会再把 "0.000" 带进交付物。
+    """
+    t = "" if s is None else str(s).strip()
+    return "<0.001" if t == "0.000" else t
+
+# ---- 全局零 P 归一（P2-C）--------------------------------------------------
+# 同一个缺陷在补充表里有三种写法：S4 的 FDR×2 = "0.000"、S7 的 P = "0.0000"、
+# S10 的区间端点 "0.000-0.207"。在 cell_text()/para() 这一层统一按 token 归一，
+# 任何一次重生都不可能把 0.000 带回交付物（比逐调用点打补丁更强，不会漏）。
+# 只匹配“整个 token 就是 0.000…0”的情形：后面紧跟数字的（0.000608、0.0001）
+# 是合法 P 值，绝不改；带负号的（-0.000）不是 P 值，也不改。
+ZERO_P = re.compile(r"(?<![\d.])0\.0{3,}(?![\d])")
+def zdisp(s):
+    t = "" if s is None else str(s)
+    return ZERO_P.sub("<0.001", t)
+
 # ------------------------------------------------------------- docx primitives
 def set_base_style(doc):
     st = doc.styles["Normal"]
@@ -67,7 +89,7 @@ def para(doc, text="", bold=False, italic=False, size=None, align=None, space_af
         p.alignment = align
     p.paragraph_format.space_after = Pt(space_after)
     if text:
-        r = p.add_run(text)
+        r = p.add_run(zdisp(text))
         r.bold = bold; r.italic = italic
         if size:
             r.font.size = Pt(size)
@@ -77,13 +99,13 @@ def heading(doc, text, size=13, space_before=10):
     p = doc.add_paragraph()
     p.paragraph_format.space_before = Pt(space_before)
     p.paragraph_format.space_after = Pt(4)
-    r = p.add_run(text); r.bold = True; r.font.size = Pt(size)
+    r = p.add_run(zdisp(text)); r.bold = True; r.font.size = Pt(size)
     return p
 
 def legend(doc, text, italic=True, size=9.5):
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(6)
-    r = p.add_run(text); r.italic = italic; r.font.size = Pt(size)
+    r = p.add_run(zdisp(text)); r.italic = italic; r.font.size = Pt(size)
     return p
 
 def cell_text(cell, text, bold=False, italic=False, size=9, align=None):
@@ -92,7 +114,7 @@ def cell_text(cell, text, bold=False, italic=False, size=9, align=None):
     p.paragraph_format.space_after = Pt(1)
     if align is not None:
         p.alignment = align
-    r = p.add_run(str(text))
+    r = p.add_run(zdisp(text))
     r.bold = bold; r.italic = italic; r.font.size = Pt(size)
 
 def mk_table(doc, header, rows, widths=None, bold_rows=None, font=9):
@@ -102,6 +124,9 @@ def mk_table(doc, header, rows, widths=None, bold_rows=None, font=9):
     for i, h in enumerate(header):
         cell_text(t.rows[0].cells[i], h, bold=True, size=font,
                   align=WD_ALIGN_PARAGRAPH.LEFT if i == 0 else WD_ALIGN_PARAGRAPH.CENTER)
+    # 表头跨页重复（长表 S1/S9/S12/S13/S14 在任何拆分页上都保留列名）
+    trPr = t.rows[0]._tr.get_or_add_trPr()
+    th = OxmlElement("w:tblHeader"); th.set(qn("w:val"), "true"); trPr.append(th)
     for ri, row in enumerate(rows):
         cells = t.add_row().cells
         b = bool(bold_rows[ri]) if bold_rows else False
@@ -141,7 +166,7 @@ def build_main_tables(log):
                 "patient) from the MSK-IMPACT 50K cohort. Continuous variables are median (IQR) with Wilcoxon "
                 "rank-sum P values; categorical variables are n (%) over non-missing values with chi-square "
                 "(Fisher when required) P values. New in this revision: the global aneuploidy score rows.")
-    rows = [[r["characteristic"], r["hla_intact"], r["hla_loh"], r["P"] or ""] for r in t1]
+    rows = [[r["characteristic"], r["hla_intact"], r["hla_loh"], p_disp(r["P"])] for r in t1]
     bold = [r["bold"].strip().upper() == "TRUE" for r in t1]
     mk_table(doc, ["Characteristic", "HLA intact (n=22,245)", "HLA LOH (n=7,554)", "P value"],
              rows, widths=[2.9, 1.55, 1.55, 0.9], bold_rows=bold)
@@ -163,11 +188,36 @@ def build_main_tables(log):
     rows = [[r["predictor"], r["model"], r["OR_CI"], r["P_fmt"]] for r in t2]
     mk_table(doc, ["Predictor", "Model", "OR (95% CI)", "P value"], rows,
              widths=[2.45, 2.45, 1.35, 0.75])
+    # --- 表注中的衰减端点一律从 table2_drivers.tsv 取（P3 修正）-------------
+    # 曾在此手写 "log10 TMB (1.45 to 1.24)"，而表体/源表为 1.23（raw 1.23275）：
+    # 手写数字会随任何一次重算悄悄回退，故改为读表取值，缺失即硬失败。
+    def _or_of(pred, model_exact, nd=2):
+        for r in t2:
+            if r["predictor"].startswith(pred) and r["model"].strip() == model_exact:
+                return num(r["OR"], nd)
+        raise SystemExit("table2 caption: OR row not found for %r/%r" % (pred, model_exact))
+    wgd_d = _or_of("Whole-genome doubling", "Distal multivariable")
+    wgd_a = _or_of("Whole-genome doubling", "Distal multivariable + aneuploidy")
+    tmb_d = _or_of("log10 TMB", "Distal multivariable")
+    tmb_a = _or_of("log10 TMB", "Distal multivariable + aneuploidy")
+    log.write("[T2-CAPTION] WGD %s -> %s ; TMB %s -> %s (read from table2_drivers.tsv)\n"
+              % (wgd_d, wgd_a, tmb_d, tmb_a))
     legend(doc, "The proximal 6p arm-loss term is near-definitional: chromosome 6p physically contains the HLA "
                 "class I locus, so a 6p arm loss mechanically removes it. The large proximal OR is reported for "
                 "completeness and is not interpreted as an independent discovery. Note that adjusting the distal "
-                "model for the global aneuploidy score attenuates WGD (2.30 to 0.35) and log10 TMB (1.45 to 1.24) "
-                "because the aneuploidy score absorbs the same genome-wide instability signal.", size=9)
+                f"model for the global aneuploidy score attenuates WGD ({wgd_d} to {wgd_a}) and log10 TMB ({tmb_d} to {tmb_a}) "
+                "because the aneuploidy score absorbs the same genome-wide instability signal. Reading the "
+                "distal-plus-aneuploidy column as an effect decomposition: the global aneuploidy score removes the "
+                "mediator on the whole-genome-doubling-to-HLA-LOH path, namely chromosome 6p arm loss, which is "
+                "near-definitional for HLA LOH; the WGD term therefore changes from a total effect (OR 2.30, 95% CI "
+                "2.16 to 2.43) to a within-model direct effect (OR 0.35, 95% CI 0.31 to 0.38). The matching "
+                "mediation decomposition of the same cohort gives an average causal mediation effect of 0.2626 "
+                "(95% CI 0.2529 to 0.2704) through 6p loss and an average direct effect of -0.0889 (95% CI -0.0944 "
+                "to -0.0810), with proportion mediated 1.5118 (95% CI 1.4313 to 1.5849; Supplementary Table S6). "
+                "The WGD coefficient falling below 1.0 in that specification therefore reflects over-adjustment for "
+                "a mediator, not a protective effect of whole-genome doubling, and MUST NOT be interpreted as one. "
+                "The interpretable reading is that the WGD association with HLA LOH is carried by genome-wide "
+                "arm-level loss rather than being independent of it.", size=9)
     p = os.path.join(TBL, "Table2_drivers.docx"); doc.save(p); log.write(f"[WROTE] {p}\n")
 
     # ---------------- Table 3
@@ -232,12 +282,14 @@ def build_supplement(log, page_map=None):
         ("Supplementary Table S11", "Neoantigen burden and HLA LOH: all models (S-neo1)", "S11"),
         ("Supplementary Table S12", "Allele-paired neoantigen test (S-neo2)", "S12"),
         ("Supplementary Table S13", "Structural-variant class burden and HLA LOH (S-sv1)", "S13"),
+        ("Supplementary Table S14", "Collinearity diagnostics for the survival Cox models (VIF)", "S14"),
     ]
     rows = [[a, b, str(page_map.get(a, ""))] for a, b, _ in toc_rows]
     mk_table(doc, ["Item", "Title", "Page"], rows, widths=[2.0, 4.4, 0.6], font=9)
-    legend(doc, "Supplementary tables are numbered continuously S1 to S13; the short identifiers in "
+    legend(doc, "Supplementary tables are numbered continuously S1 to S14; the short identifiers in "
                 "parentheses (S-aneuploidy1, S-arm1, S-reliability1, S-neo1, S-neo2, S-sv1) are used in the "
-                "point-by-point response letter and map to S8 to S13 respectively.", size=9)
+                "point-by-point response letter and map to S8 to S13 respectively. S14 (variance inflation "
+                "factors and tolerances for the survival Cox models) is new in this revision.", size=9)
     doc.add_page_break()
 
     # 图目录：必须在任何 figure-page 块之前**无条件**赋值——2026-10-15 换号后
@@ -477,8 +529,13 @@ def build_supplement(log, page_map=None):
                 "the TMB association is strongest in the lowest aneuploidy tertile and fails in the highest, "
                 "i.e. the residual TMB signal is concentrated where genome-wide instability is low "
                 "(source: s_aneuploidy1_tertiles.tsv).", size=9)
+    # 区间端点不是 P 值：Q1 的下界是真 0（非整倍体评分的最小值），写成 "<0.001-0.207"
+    # 会把一个区间误读成 P 值上限。故此处把 "0.000-" 端点显式写成 "0-"，语义精确保留，
+    # 同时 DOCX 内不再出现 "0.000" 这个 token（P 值型的 0.000/0.0000 走 zdisp 归一）。
+    def _rng(s):
+        return str(s).replace("0.000–", "0–").replace("0.000-", "0–")
     mk_table(doc, ["Aneuploidy tertile", "N", "LOH n", "Aneuploidy range", "OR per log10 TMB (95% CI)", "P"],
-             [[r["tertile"], r["N"], r["n_LOH"], r["frac_range"], r["OR_CI"], r["P_fmt"]] for r in st],
+             [[r["tertile"], r["N"], r["n_LOH"], _rng(r["frac_range"]), r["OR_CI"], r["P_fmt"]] for r in st],
              widths=[1.3, 0.6, 0.65, 1.4, 1.75, 0.7], font=8.5)
     doc.add_page_break()
 
@@ -540,6 +597,29 @@ def build_supplement(log, page_map=None):
 
     # ---- S-neo1 (S11)
     nm = rd("s_neo1_models.tsv"); nc = rd("s_neo1_cohort.tsv"); ncl = rd("s_neo1_collinearity.tsv")
+    # P3 定案：clonal 限制行与 purity>=50% 行在 s_neo1_models.tsv 内已是 primary 规格
+    # （含 C(GENE_PANEL)，与 A_logistic.tsv / extended_C_sensitivity.tsv 一致）。
+    # 因此渲染层不再覆盖数字，只做一致性断言：任一方向的漂移都会让构建失败，
+    # 而不会像旧版那样"文件里是 legacy 值、DOCX 里是覆盖值"。
+    # legacy 值（03_stats.py，漏 C(GENE_PANEL)）：
+    #   clonal 1.014 (0.974-1.057) P=0.4904 / purity 1.092 (1.020-1.169) P=0.0113
+    S11_DEFINITIVE = {
+        "clonal":      dict(n="22440", n_LOH="5964", OR_CI="1.013 (0.973\u20131.056)", P_fmt="0.5223"),
+        "purity_ge50": dict(n="11259", n_LOH="2776", OR_CI="1.093 (1.021\u20131.170)", P_fmt="0.0104"),
+    }
+    rows = []
+    for r in nm:
+        row = [r["kind"], r["definition"], r["n"], r["n_LOH"], r["OR_CI"], r["P_fmt"]]
+        low = r["definition"].lower()
+        key = "clonal" if "clonal" in low else ("purity_ge50" if "purity_ge50" in low else None)
+        if key:
+            exp = S11_DEFINITIVE[key]
+            for fld, pos in (("n", 2), ("n_LOH", 3), ("OR_CI", 4), ("P_fmt", 5)):
+                got = str(row[pos]).strip()
+                assert got == exp[fld], "S11 %s %s drift: %r != %r" % (key, fld, got, exp[fld])
+            log.write("[S11-ASSERT] %s: %s / P=%s (n=%s, LOH=%s) matches primary spec\n"
+                      % (key, exp["OR_CI"], exp["P_fmt"], exp["n"], exp["n_LOH"]))
+        rows.append(row)
     heading(doc, "Supplementary Table S11. Neoantigen burden and HLA LOH: all models (S-neo1).", 12)
     legend(doc, "NetMHCpan-4.2e predictions for the full primary cohort with HLA genotype (26,092 tumours, "
                 "191 distinct class I alleles, 15,518,931 allele-peptide pairs scored; zero dropped rows). "
@@ -547,9 +627,12 @@ def build_supplement(log, page_map=None):
                 "log10 TMB and the global aneuploidy score unless stated. The primary estimate is OR 1.064 per "
                 "SD of neoantigen burden, but the burden is almost collinear with TMB (Spearman rho 0.705) and "
                 "the association disappears when restricted to clonal mutations - therefore no immune-editing "
-                "mechanism is claimed (source: s_neo1_models.tsv).", size=9)
+                "mechanism is claimed (source: s_neo1_models.tsv; the clonal-restriction row is recomputed in "
+                "QC/P2/clonal_or_definitive.R and the purity>=50% row in QC/P2/s11_purity_finalize.py, both "
+                "reported with the same adjustment set as the primary model: clonal n=22,440, 5,964 HLA-LOH; "
+                "purity>=50% n=11,259, 2,776 HLA-LOH).", size=9)
     mk_table(doc, ["Kind", "Model / definition", "N", "LOH n", "OR (95% CI)", "P"],
-             [[r["kind"], r["definition"], r["n"], r["n_LOH"], r["OR_CI"], r["P_fmt"]] for r in nm],
+             rows,
              widths=[0.75, 3.35, 0.65, 0.6, 1.4, 0.85], font=8)
     para(doc, "", space_after=2)
     legend(doc, "Cohort description and collinearity.", size=9)
@@ -628,6 +711,39 @@ def build_supplement(log, page_map=None):
     legend(doc, "Panel F. Data limitations that preclude signature-level structural-variant analysis.", size=9)
     mk_table(doc, ["Item", "Detail"], [[r["item"], r["detail"]] for r in sv_l],
              widths=[2.0, 4.7], font=8.5)
+
+    # ---- S14 (P2-B, new in this revision): collinearity / VIF diagnostics
+    # 数据取自 QC/P2/vif_diagnostics.tsv（vif_diagnostics.R 产出）的挑选行，
+    # 由 QC/P2/make_s14_vif.py 生成 build/s14_vif.tsv。文件不存在则跳过，
+    # 以免影响 V3（冻结）侧的重生。
+    if os.path.exists(os.path.join(BLD, "s14_vif.tsv")):
+        s14 = rd("s14_vif.tsv")
+        s14k = rd_opt("s14_model_key.tsv")
+        doc.add_page_break()
+        heading(doc, "Supplementary Table S14. Collinearity diagnostics for the pan-cancer overall-survival "
+                     "Cox models: variance inflation factors, tolerances and correlations.", 12)
+        legend(doc, "For one-degree-of-freedom covariates GVIF equals VIF, and the car-adjusted quantity "
+                    "GVIF^(1/(2*Df)) is the square root of VIF; for the 63-degree-of-freedom cancer-type factor "
+                    "only GVIF and its adjusted form are interpretable, so the VIF cell is left blank. HLA LOH "
+                    "versus the global aneuploidy score: Pearson r = 0.328, Spearman rho = 0.332 (n = 27,368). "
+                    "No covariate reached the conventional thresholds of 5 or 10. The largest VIF is that of the "
+                    "global aneuploidy score (3.27 with all 39 arms, 3.11 to 3.25 across the arm-exclusion "
+                    "variants); it falls to 1.27 when the whole-genome-doubling term is removed, which identifies "
+                    "the aneuploidy-score / whole-genome-doubling pair (r = 0.80) as the only strongly correlated "
+                    "pair in the design. HLA LOH itself has VIF 1.08 to 1.16, i.e. it is not collinear with the "
+                    "aneuploidy score: the hazard ratio below 1.0 that appears once the aneuploidy score is added "
+                    "reflects over-adjustment for a mediator (chromosome 6p arm loss), not a protective effect of "
+                    "HLA LOH. A hazard ratio below 1 in these models must NOT be interpreted as protection, and "
+                    "none of the adjusted estimates in Table 3 carries a biological meaning at face value "
+                    "(source: QC/P2/vif_diagnostics.tsv, vif_diagnostics.R).", size=9)
+        mk_table(doc, ["Model", "Covariate", "Df", "VIF", "GVIF", "GVIF^(1/(2*Df))", "Tolerance"],
+                 [[r["model"], r["covariate"], r["df"], r["vif"], r["gvif"], r["gvif_adj"], r["tolerance"]]
+                  for r in s14],
+                 widths=[0.6, 1.95, 0.35, 0.55, 0.55, 0.9, 0.75], font=8)
+        if s14k:
+            para(doc, "Model key. " + " ".join(f"{r['code']} = {r['definition']}" for r in s14k),
+                 size=8, space_after=2)
+        doc.add_page_break()
 
     p = os.path.join(TBL, "Supplementary_Tables.docx"); doc.save(p); log.write(f"[WROTE] {p}\n")
     return p

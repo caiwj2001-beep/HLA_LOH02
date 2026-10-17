@@ -294,3 +294,43 @@ Whole-file sha256 depends on the zip timestamps `python-docx` writes (see §3), 
   `01_manuscript/Change_Summary.md`). Neither the change list nor the rendering touches the
   manuscript text, numbers or figure/table numbers.
 - **Lost figure-QA script and its reconstruction (2026-10-16).** The magick TIFF edge/ink QA script `_p17.R` was accidentally deleted during a repository-mirror cleanup and is unrecoverable; it was never part of any deliverable, archive or gate. Its dangling references now point to `02_figures/scripts/qa_tiff_edges_reconstructed.R` — a **clearly-labelled reconstruction** that is *not* the original — and to the pre-existing PIL equivalent `V3/02_figures/QC_user_adjust_round1/m8_qa_tiff.py`. Both were run against the seven TIFFs: 0 non-white border pixels, pure-white corners, modal colour 255, 300 dpi, PASS. Record: `PINNED_PACK_CORRECTIONS.md` §(xiii.10)–§(xiii.11).
+
+## 9. Addendum — the 2026-10-17 (V4/P3) freeze
+
+Section 7 above is the **V3 freeze snapshot** and is kept as such. The submission package was then
+re-frozen as `iscience投稿版本/V4`; the byte digests of that freeze (manuscript DOCX pair,
+Table1–3, `Supplementary_Tables.docx`, `Supplemental_Information.pdf`, both deposit archives, and
+`FINAL_MANIFEST.md` itself) are recorded in `QC/FINAL_MANIFEST.md` of the submission package, which
+is regenerated and machine-verified in the same round. Digests are deliberately **not** duplicated
+here: `code.zip` contains this file, so a self-referential digest would change the artifact it
+describes.
+
+**Table/PDF generator guards added in this round** (`build_tables/build_tables_docx.py`):
+
+- the Table 2 footnote now reads the four attenuation endpoints (WGD and log10 TMB, before and
+  after aneuploidy adjustment) **from `table2_drivers.tsv`** instead of hard-coding them, and
+  aborts if a row is missing — this is what had let `log10 TMB 1.45 to 1.24` drift away from the
+  table body's `1.23` (raw OR 1.23275);
+- the S11 clonal-restriction and purity>=50% rows are no longer overwritten at render time: the
+  builder **asserts** that `s_neo1_models.tsv` already carries the primary-specification values
+  (both specifications include `C(GENE_PANEL)`), so file and DOCX can no longer disagree.
+
+**Revision-round scripts added to `analysis/revision_r3/`** (they live in the submission package
+under `QC/P2/` and are mirrored here unchanged):
+
+| Script | Purpose | Output |
+|---|---|---|
+| `vif_diagnostics.R` | variance inflation factors / tolerances / correlations for every survival model specification | `QC/P2/vif_diagnostics.tsv` |
+| `make_s14_vif.py` | selects the reporting rows for Supplementary Table S14 | `data/tables_v3/s14_vif.tsv`, `s14_model_key.tsv` |
+| `clonal_or_definitive.R` | clonal-restriction neoantigen OR recomputed with the full adjustment set | `data/tables_v3/clonal_or_definitive.tsv` |
+| `purity_and_panel.R` | purity-decile / coverage / panel-version models behind the purity trend | `data/tables_v3/purity_and_panel.tsv` |
+| `s11_purity_finalize.py` | re-derives the purity>=50% neoantigen row with and without the panel term (numpy IRLS; reproduces the stored primary model to <1e-4) | `QC/P2/s11_purity_finalize.tsv` |
+| `fix_s11_provenance.py` | makes `s_neo1_models.tsv`'s two sensitivity rows carry the values of the file their `source` column names | `data/tables_v3/s_neo1_models.tsv` |
+| `rebuild_deposit_table1.py` | regenerates the deposit copy of `Table1_baseline.tsv` from the Table 1 source TSV (the archived copy had pre-revision percentages) | `data/supplementary_source_data/Table1_baseline.tsv` |
+| `rebuild_tables_v4.py`, `rebuild_supplement_pdf_v4.py`, `run_revision_docx_v4.py` | runners that rebind the frozen-path module constants to the V4 tree without changing any algorithm | the DOCX/PDF deliverables |
+| `verify_supp_v4.py`, `run_gates_v4.py` | post-build verification of the supplement (anchor pages, TOC vs actual, zero-P scan) and the gate battery | `QC/P2/supp_pdf_verify.json` |
+
+`data/tables_v3/` gained `s14_vif.tsv`, `s14_model_key.tsv`, `clonal_or_definitive.tsv` and
+`purity_and_panel.tsv`, and its `s_neo1_models.tsv` was updated (see above). Those four new tables
+are repository-only: they are **not** duplicated into `derived_data.zip`, whose member list is held
+fixed at 91 so that every pre-existing member stays byte-identical.

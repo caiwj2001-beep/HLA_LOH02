@@ -1,0 +1,64 @@
+section	item	group	n	value	extra
+00_cohort	n_analysis_primary	all	29799		""
+00_cohort	n_by_group	No_LOH			""
+00_cohort	n_by_group	Arm_independent			""
+00_cohort	n_by_group	Arm_dependent			""
+00_cohort	n_by_group	LOH_6p_missing			""
+01_purity_by_group	FACETS_purity_pct	No_LOH	22027	46.0	IQR=29.0-66.0; n_total=22245; n_missing=218
+01_purity_by_group	FACETS_purity_pct	Arm_independent	1640	34.0	IQR=24.0-48.0; n_total=1644; n_missing=4
+01_purity_by_group	FACETS_purity_pct	Arm_dependent	4146	48.0	IQR=35.0-64.0; n_total=4161; n_missing=15
+01_purity_by_group	Pathologist_purity_pct	No_LOH	21983	40.0	IQR=30.0-60.0; n_missing=262
+01_purity_by_group	Pathologist_purity_pct	Arm_independent	1623	30.0	IQR=20.0-50.0; n_missing=21
+01_purity_by_group	Pathologist_purity_pct	Arm_dependent	4105	40.0	IQR=30.0-60.0; n_missing=56
+01_purity_by_group	KruskalWallis_FACETS_purity	3-group	28050	3.618e-94	chi2=430.314
+01_purity_by_group	Wilcoxon_Arm_independent_vs_No_LOH	3-group		1.393e-73	""
+01_purity_by_group	Wilcoxon_Arm_dependent_vs_No_LOH	3-group		3.88e-12	""
+01_purity_by_group	pct_WGD_TRUE	No_LOH	22245	23.1	n_wgd=5112
+01_purity_by_group	pct_WGD_TRUE	Arm_dependent	4161	54.4	n_wgd=2257
+01_purity_by_group	pct_WGD_TRUE	Arm_independent	1644	14.1	n_wgd=232
+02_purity_decile_LOH	arm_independent_share_pct	D1	633	60.35	n_armind=382; n_armsupport=251; arm_support_pct=39.65; purity_range=10.0-23.0; med_purity=20.0
+02_purity_decile_LOH	arm_independent_share_pct	D2	590	43.05	n_armind=254; n_armsupport=336; arm_support_pct=56.95; purity_range=24.0-28.0; med_purity=26.0
+02_purity_decile_LOH	arm_independent_share_pct	D3	537	33.71	n_armind=181; n_armsupport=356; arm_support_pct=66.29; purity_range=29.0-33.0; med_purity=31.0
+02_purity_decile_LOH	arm_independent_share_pct	D4	569	30.05	n_armind=171; n_armsupport=398; arm_support_pct=69.95; purity_range=34.0-38.0; med_purity=36.0
+02_purity_decile_LOH	arm_independent_share_pct	D5	644	25.00	n_armind=161; n_armsupport=483; arm_support_pct=75.00; purity_range=39.0-44.0; med_purity=41.0
+02_purity_decile_LOH	arm_independent_share_pct	D6	568	22.36	n_armind=127; n_armsupport=441; arm_support_pct=77.64; purity_range=45.0-50.0; med_purity=47.0
+02_purity_decile_LOH	arm_independent_share_pct	D7	567	17.81	n_armind=101; n_armsupport=466; arm_support_pct=82.19; purity_range=51.0-57.0; med_purity=54.0
+02_purity_decile_LOH	arm_independent_share_pct	D8	547	18.65	n_armind=102; n_armsupport=445; arm_support_pct=81.35; purity_range=58.0-65.0; med_purity=61.0
+02_purity_decile_LOH	arm_independent_share_pct	D9	593	16.86	n_armind=100; n_armsupport=493; arm_support_pct=83.14; purity_range=66.0-76.0; med_purity=71.0
+02_purity_decile_LOH	arm_independent_share_pct	D10	538	11.34	n_armind=61; n_armsupport=477; arm_support_pct=88.66; purity_range=77.0-97.0; med_purity=84.0
+02_purity_decile_LOH	CochranArmitage_trend	D1..D10	5786	1.762e-108	chi2=489.577
+02_purity_decile_LOH_xcheck_ntile	arm_independent_share_pct	neq1	578	60.90	n_armind=352
+02_purity_decile_LOH_xcheck_ntile	arm_independent_share_pct	neq2	579	44.73	n_armind=259
+02_purity_decile_LOH_xcheck_ntile	arm_independent_share_pct	neq3	578	34.78	n_armind=201
+02_purity_decile_LOH_xcheck_ntile	arm_independent_share_pct	neq4	579	29.71	n_armind=172
+02_purity_decile_LOH_xcheck_ntile	arm_independent_share_pct	neq5	579	25.73	n_armind=149
+02_purity_decile_LOH_xcheck_ntile	arm_independent_share_pct	neq6	578	23.18	n_armind=134
+02_purity_decile_LOH_xcheck_ntile	arm_independent_share_pct	neq7	579	17.27	n_armind=100
+02_purity_decile_LOH_xcheck_ntile	arm_independent_share_pct	neq8	578	18.51	n_armind=107
+02_purity_decile_LOH_xcheck_ntile	arm_independent_share_pct	neq9	579	17.27	n_armind=100
+02_purity_decile_LOH_xcheck_ntile	arm_independent_share_pct	neq10	579	11.40	n_armind=66
+02_purity_decile_LOH	D10_arm_support_pct	D10	538	88.66	n_support=477/538; 95%CI=85.67-91.22; = 100 - 11.34% arm-independent
+02_purity_decile_LOH	D1_arm_support_pct	D1	633	39.65	n_support=251/633
+02_purity_decile_ALLCROSS_SECTION	arm_independent_share_of_LOH_pct	D1	429	64.80	n_armind=278/429; n_armdep=151; arm_support_pct=35.20; decile_n=3215
+02_purity_decile_ALLCROSS_SECTION	arm_independent_share_of_LOH_pct	D2	684	46.20	n_armind=316/684; n_armdep=368; arm_support_pct=53.80; decile_n=3117
+02_purity_decile_ALLCROSS_SECTION	arm_independent_share_of_LOH_pct	D3	647	34.47	n_armind=223/647; n_armdep=424; arm_support_pct=65.53; decile_n=2940
+02_purity_decile_ALLCROSS_SECTION	arm_independent_share_of_LOH_pct	D4	695	29.64	n_armind=206/695; n_armdep=489; arm_support_pct=70.36; decile_n=2972
+02_purity_decile_ALLCROSS_SECTION	arm_independent_share_of_LOH_pct	D5	630	25.56	n_armind=161/630; n_armdep=469; arm_support_pct=74.44; decile_n=2618
+02_purity_decile_ALLCROSS_SECTION	arm_independent_share_of_LOH_pct	D6	710	18.87	n_armind=134/710; n_armdep=576; arm_support_pct=81.13; decile_n=3235
+02_purity_decile_ALLCROSS_SECTION	arm_independent_share_of_LOH_pct	D7	534	20.04	n_armind=107/534; n_armdep=427; arm_support_pct=79.96; decile_n=2632
+02_purity_decile_ALLCROSS_SECTION	arm_independent_share_of_LOH_pct	D8	562	18.33	n_armind=103/562; n_armdep=459; arm_support_pct=81.67; decile_n=2983
+02_purity_decile_ALLCROSS_SECTION	arm_independent_share_of_LOH_pct	D9	516	15.12	n_armind=78/516; n_armdep=438; arm_support_pct=84.88; decile_n=3124
+02_purity_decile_ALLCROSS_SECTION	arm_independent_share_of_LOH_pct	D10	379	8.97	n_armind=34/379; n_armdep=345; arm_support_pct=91.03; decile_n=2725
+03_panel_footprint	median_n_mut_coding_per_sample	analysis_frame	26092	5	IQR(unweighted)=raw quantiles 3-7; mean=6.11
+03_panel_footprint	median_implied_panel_Mb	analysis_frame	26092	1.1393	IQR=1.139-1.139; = n_mut_coding / TMB_SCORE
+03_panel_footprint	panel_composition	IMPACT468	17564	1.1393	median_n_mut_coding=5
+03_panel_footprint	panel_composition	IMPACT410	4515	1.0165	median_n_mut_coding=4
+03_panel_footprint	panel_composition	IMPACT505	4013	1.2121	median_n_mut_coding=5
+03_panel_footprint	MAF_recompute_agreement_n_mut_coding	analysis_frame	26092	100.0000	agreeing=26092
+03_panel_footprint	median_n_mut_coding_per_sample	MAF_recompute	26092	5	""
+03_panel_footprint	median_implied_panel_Mb	MAF_recompute	26092	1.1393	""
+03_panel_footprint	panel_Mb_aggregate	IMPACT410		1.0169	n_mut_total=25891; TMB_total=25459.5
+03_panel_footprint	panel_Mb_aggregate	IMPACT468		1.1396	n_mut_total=106155; TMB_total=93147.5
+03_panel_footprint	panel_Mb_aggregate	IMPACT505		1.1830	n_mut_total=27283; TMB_total=23063.2
+03_panel_footprint	panel_Mb_aggregate_ALL	all panels		1.1246	n_mut_total=159329; TMB_total=141670.3
+03_panel_footprint	median_n_mut_coding_per_sample	analysis_primary_with_mutations	28277	4	samples_with_zero_coding_mut=1522 / 29799
