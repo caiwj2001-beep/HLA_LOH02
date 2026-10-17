@@ -44,7 +44,7 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 | `01_manuscript/Change_Summary.md` | 118705 | `cef3cdaf071251de3049868a04f45e3dcf18ddaaceabfe76a640901ea2929f83` | Editor-facing section-by-section change list (copy of 05_response/Change_Summary.md) |
 | `01_manuscript/HLA_LOH02_revision_HIGHLIGHT_SUMMARY.md` | 17596 | `4d0ca8ccf5e4eba3afdff09292efc1f514b652e3a7d0db57958d132dd2fa2a88` | Revision highlight summary (Mode C rule; superseded rules marked obsolete) |
 | `01_manuscript/REF_VERIFICATION.md` | 13042 | `fd96b89e08d6c1147c85a568363cec4ff5662fdeaf2760d0b4ef09a269963c9d` | Reference verification report |
-| `01_manuscript/SENTENCE_STATS.md` | 15070 | `7aa8ad1a53bcaa6de79616df321fc399ce9fce9128317784de0300eeaa42605e` | Sentence-length / readability statistics of the revised manuscript |
+| `01_manuscript/SENTENCE_STATS.md` | 15070 | `7aa8ad1a53bcaa6de79616df321fc399ce9fce9128317784de0300eeaa42605e` | Sentence-length / readability statistics of the revised manuscript (internal QC record; not part of the submission upload) |
 | `01_manuscript/11b_FigS2_addition_note.md` | 7382 | `d9ad070318824d6cfcae7f3456fdc45ad054c9784317194200183a32f191859c` | Working note on how Supplementary Figure S2 entered the reference list |
 | `01_manuscript/_alternative/HLA_LOH02_revision_MARKED_full.docx` | 69654 | `c9ca58e0dd942483928ca51e46d1a22183a94acc5a9e51e9e4726d387b899369` | Alternative (superseded) full-mode build at 62.5% coverage, kept as the rollback pair |
 | `01_manuscript/_alternative/HLA_LOH02_revision_CLEAN_full.docx` | 63998 | `1f24ed712b83a82994cc296c033d2f7c5a2107c602d070c99768d9c6c89fd238` | Clean twin of the alternative full-mode build |
@@ -100,8 +100,8 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `05_response/Response_to_Reviewers.docx` | 61,011 | `8d955d65a074a523d329217df4bd9760e327f0d0bd704ee65628c94c99bb0956` | Point-by-point response to all reviewers (9,477 words incl. the restored compliance table) |
-| `05_response/Response_to_Reviewers.md` | 66,639 | `341e6e9eb18d2eb54373aea72eafd6a00d7a0dfc65f960f23a7fe5495c5b32a0` | Markdown source of the point-by-point response |
+| `05_response/Response_to_Reviewers.docx` | 60,785 | `a65ac5528573307be53c65efdfdb1877255fb25731dec3043e4745c26dfa0189` | Point-by-point response to all reviewers (9,477 words incl. the restored compliance table) |
+| `05_response/Response_to_Reviewers.md` | 66,389 | `746e625657d5d7c881e7ea47802f2c17f88d25ed3bc01a06e8e0f6ce74e65148` | Markdown source of the point-by-point response |
 | `05_response/ANCHOR_MAP.tsv` | 3180 | `9ea2fdeb874d37cfe0f0e886a50d316ddba30ed5cd57a14126a942f78f444ce4` | Machine-readable map of every response point to its manuscript anchor (28 rows) |
 | `05_response/ANCHOR_INVENTORY.tsv` | 86045 | `e8a136214284c760a1da14b9ebb2cef2e3b3fd12a6fd8becb0427743eae364f6` | Inventory of the manuscript sentences the response points cite |
 | `05_response/COVERAGE_CHECK.md` | 37459 | `0b9adb8163f4ce0760f41fa79c8208972f1ddf5ce1b87258d777f3b208c3ccda` | Coverage audit that every reviewer point is answered |
