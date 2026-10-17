@@ -1456,3 +1456,33 @@ legacy 规格 1.0919/P=0.01128、primary 规格 1.0933/P=0.01041，与 stored �
 
 > **自指说明（同 §(xiii.9)）**：本文件的最终 sha256 不能写进本节；其最终字节哈希见 `QC/FINAL_MANIFEST.md`。
 
+
+### (xiv.7) 本轮的两处工具层处置（如实报出，均不涉及任何交付数字）
+
+1. **两个门禁脚本仍指向冻结的 V3，已改指 V4 并重跑。**
+   `QC/g2_independent_crosscheck.py` 与 `QC/verify_highlight_mode_c.py` 的 `V3` 常量是从 V3 目录原样复制来的，
+   于是它们一直在**校验 V3 的稿件/DOCX**（Mode C 门禁报 `68010` 字符 → 28.7%，而 V4 实为 `70459` → 29.3%）。
+   本轮把两个常量改指 `iscience投稿版本/V4` 后重跑：
+   - `g2` 的期望序列由 `S1..S13` 扩到 **`S1..S14`**，重跑得
+     `T1 in-text citations: 24`、`supplementary table first-appearance=[1..14]`、补充 PDF 页序含 `Table S14 -> 21`、
+     `T3 differences: 0`、`PASS - T3 empty`；
+   - Mode C 门禁重跑得 `ASSERT A observed = 0`、`ASSERT B instances = 890 uncovered = 0`、
+     `COVERAGE 4) MODE C : 20653/70459 = 29.3% (101 paras, 626 runs)`、`CLEAN highlight runs = 0`、
+     `paragraphs 174/174/174`、`RESULT: ALL GATES PASS`。
+   **说明**：改动只在门禁脚本的根目录常量与期望序列上，判据、阈值、算法均未改。
+
+2. **`--mode full` 的备选件写进了 V3（已按 V3 清单哈希逐字节还原），并已在 V4 重建当轮备选件。**
+   `run_revision_docx_v4.py` 原先只重绑了 `V3/MS/OUT_*`，而 `ALT_DIR` 是 `make_revision_docx` 在 import 时用
+   **原始 V3 根目录**算出的常量；因此 `HLA_HL_MODE=full` 那次运行把 `V3/01_manuscript/_alternative/` 的三个文件覆盖了。
+   处置：
+   - **立即还原**：以 V4 侧同名副本（其 sha256 与 V3 `FINAL_MANIFEST.md` 记录**完全一致**）回写，
+     还原后 `MARKED_full` = 68,525 B / `16a7fdff…`、`CLEAN_full` = 62,938 B / `dad1a76c…`，与 V3 清单**逐字节相同**；
+     `_docx_decisions_full.json` 亦以未被覆盖的 V4 旧副本恢复。
+   - **根因修复**：runner 现在同时重绑 `ALT_DIR`（附注释说明），并在 V4 内重建本轮的 full-mode 备选件
+     （`MARKED_full` 69,550 B / `b8aab747…`、`CLEAN_full` 63,888 B / `b04f1697…`，62.5% 覆盖率），
+     使 Mode C 门禁的「全口径 vs Mode C 字符集合差」比对有一致的对照件。
+   - **影响边界**：V3 三个文件的最终字节与其清单记录一致（无净变化）；V4 的备选件是**非交付件**（
+     与 §7 同：`_alternative/` 不参与 EM 上传），其更新不改变任何手稿文本、数字或高亮口径。
+   - **教训**（并入同一技能）：给冻结树写 runner 时，凡是从 `import` 时求值的模块级路径常量
+     （`V3 / MS / TBL / COMP / SUPP / ALT_DIR`）**必须逐一重绑**，不能只重绑被直接引用的那几个。
+
