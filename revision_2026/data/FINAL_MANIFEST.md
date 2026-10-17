@@ -100,8 +100,8 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `05_response/Response_to_Reviewers.docx` | 60448 | `f7cad0a866b5f8ad85eda896320a23d59d0600a789b2f0609bede03bfebbfb4a` | Point-by-point response to all reviewers (9,477 words incl. the restored compliance table) |
-| `05_response/Response_to_Reviewers.md` | 65503 | `310271164bd08a428d39348def959bd9389d70ccd01102164d89f949f4ef85dc` | Markdown source of the point-by-point response |
+| `05_response/Response_to_Reviewers.docx` | 60,736 | `477906481743c7c24455c19dc4db004c40a2d88626fa53db951ffb2dabd9a978` | Point-by-point response to all reviewers (9,477 words incl. the restored compliance table) |
+| `05_response/Response_to_Reviewers.md` | 66,484 | `a503610a45132ce630c4206bb4252dc4636e59bdbdb37a8a1eca14a14d717f03` | Markdown source of the point-by-point response |
 | `05_response/ANCHOR_MAP.tsv` | 3180 | `9ea2fdeb874d37cfe0f0e886a50d316ddba30ed5cd57a14126a942f78f444ce4` | Machine-readable map of every response point to its manuscript anchor (28 rows) |
 | `05_response/ANCHOR_INVENTORY.tsv` | 86045 | `e8a136214284c760a1da14b9ebb2cef2e3b3fd12a6fd8becb0427743eae364f6` | Inventory of the manuscript sentences the response points cite |
 | `05_response/COVERAGE_CHECK.md` | 37459 | `0b9adb8163f4ce0760f41fa79c8208972f1ddf5ce1b87258d777f3b208c3ccda` | Coverage audit that every reviewer point is answered |
@@ -133,8 +133,8 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `07_cover/Cover_Letter.docx` | 40790 | `03e2388413b2d2cebd78cc93abcdcc9af8291dbbe522218b4f033e1778d4bba5` | Cover letter to the editor |
-| `07_cover/Cover_Letter.md` | 7869 | `24372ea651b4bcdaaf4e906a5a9c4130e9589c84526d4044d645374a96ef97d2` | Markdown source of the cover letter |
+| `07_cover/Cover_Letter.docx` | 40,843 | `14658c62386014d25d613ac19d7100b2528f3f6a2bf7a98b6ed065885d0a7348` | Cover letter to the editor |
+| `07_cover/Cover_Letter.md` | 8,012 | `ba77892c4be37c0384bfb66acd0d65c7c3fe30322e21fc97790c2faab63dbe73` | Markdown source of the cover letter |
 
 ---
 
