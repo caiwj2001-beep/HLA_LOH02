@@ -25,6 +25,14 @@ SUPP = os.path.join(V3, "04_supplement")
 for d in (TBL, COMP, SUPP):
     os.makedirs(d, exist_ok=True)
 
+# --- 仓库快照 ---------------------------------------------------------------
+# 手稿的 Data and code availability 声明把读者指向某个具体 commit：code.zip /
+# derived_data.zip 的全部成员在该 commit 上逐字节可复现（check_repo_vs_zip 100/100）。
+# 只有一个定义点，KRT 与 Data_and_Code_Availability.md 同源，避免两处拼写不一致。
+REPO_URL = "https://github.com/caiwj2001-beep/HLA_LOH02"
+REPO_COMMIT = "08fe6775ad9548472177a97bf1a9458a743f5fc0"
+REPO_SNAPSHOT = f"{REPO_URL} (analysis code and derived data at commit {REPO_COMMIT})"
+
 # ----------------------------------------------------------------- IO helpers
 def rd(name):
     with open(os.path.join(BLD, name), encoding="utf-8") as f:
@@ -200,24 +208,51 @@ def build_main_tables(log):
     wgd_a = _or_of("Whole-genome doubling", "Distal multivariable + aneuploidy")
     tmb_d = _or_of("log10 TMB", "Distal multivariable")
     tmb_a = _or_of("log10 TMB", "Distal multivariable + aneuploidy")
+
+    # --- 表注里的 OR + CI 一律从 table2_drivers.tsv 取（与上面同一口径，缺失即硬失败）---
+    def _ci_of(pred, model_exact, nd=2):
+        for r in t2:
+            if r["predictor"].startswith(pred) and r["model"].strip() == model_exact:
+                return "%s (%s–%s)" % (num(r["OR"], nd), num(r["lo"], nd), num(r["hi"], nd))
+        raise SystemExit("table2 caption: CI row not found for %r/%r" % (pred, model_exact))
+
+    wgd_ci_d = _ci_of("Whole-genome doubling", "Distal multivariable")
+    wgd_ci_a = _ci_of("Whole-genome doubling", "Distal multivariable + aneuploidy")
+
+    # --- 中介分解（ACME / ADE / 比例中介）一律从 s6_mediation.tsv 取 ---
+    # 表注旧版把 0.35 称作 "within-model direct effect"：0.35 是**加入全局非整倍体评分后**
+    # 的 WGD OR，不是直接效应；直接效应是 ADE，取自 s6_mediation.tsv。
+    _med = {r["Quantity"]: r for r in rd("s6_mediation.tsv")}
+
+    def _sig(x, nd=4):
+        v = float(x)
+        return ("−" if v < 0 else "") + num(abs(v), nd)
+
+    def _mv(key, nd=4):
+        try:
+            r = _med[key]
+        except KeyError:
+            raise SystemExit("table2 caption: mediation row not found for %r" % key)
+        return _sig(r["Estimate"], nd), _sig(r["CI_low"], nd), _sig(r["CI_high"], nd)
+
+    acme, acme_lo, acme_hi = _mv("ACME (indirect, via 6p)")
+    ade, ade_lo, ade_hi = _mv("ADE (direct)")
+    pm, pm_lo, pm_hi = _mv("Proportion mediated")
+    log.write("[T2-CAPTION] WGD CI %s -> %s ; ACME %s ; ADE %s ; PM %s\n"
+              % (wgd_ci_d, wgd_ci_a, acme, ade, pm))
     log.write("[T2-CAPTION] WGD %s -> %s ; TMB %s -> %s (read from table2_drivers.tsv)\n"
               % (wgd_d, wgd_a, tmb_d, tmb_a))
     legend(doc, "The proximal 6p arm-loss term is near-definitional: chromosome 6p physically contains the HLA "
                 "class I locus, so a 6p arm loss mechanically removes it. The large proximal OR is reported for "
                 "completeness and is not interpreted as an independent discovery. Note that adjusting the distal "
                 f"model for the global aneuploidy score attenuates WGD ({wgd_d} to {wgd_a}) and log10 TMB ({tmb_d} to {tmb_a}) "
-                "because the aneuploidy score absorbs the same genome-wide instability signal. Reading the "
-                "distal-plus-aneuploidy column as an effect decomposition: the global aneuploidy score removes the "
-                "mediator on the whole-genome-doubling-to-HLA-LOH path, namely chromosome 6p arm loss, which is "
-                "near-definitional for HLA LOH; the WGD term therefore changes from a total effect (OR 2.30, 95% CI "
-                "2.16 to 2.43) to a within-model direct effect (OR 0.35, 95% CI 0.31 to 0.38). The matching "
-                "mediation decomposition of the same cohort gives an average causal mediation effect of 0.2626 "
-                "(95% CI 0.2529 to 0.2704) through 6p loss and an average direct effect of -0.0889 (95% CI -0.0944 "
-                "to -0.0810), with proportion mediated 1.5118 (95% CI 1.4313 to 1.5849; Supplementary Table S6). "
-                "The WGD coefficient falling below 1.0 in that specification therefore reflects over-adjustment for "
-                "a mediator, not a protective effect of whole-genome doubling, and MUST NOT be interpreted as one. "
-                "The interpretable reading is that the WGD association with HLA LOH is carried by genome-wide "
-                "arm-level loss rather than being independent of it.", size=9)
+                "because the aneuploidy score absorbs the same genome-wide instability signal. "
+                f"The whole-genome-doubling odds ratio of {wgd_ci_d} falls to {wgd_ci_a} once the global "
+                "aneuploidy score enters the model; the mediation decomposition (Table S6) attributes an "
+                f"average causal mediation effect of {acme} ({acme_lo}–{acme_hi}) to the chromosome-6p "
+                f"route, with an average direct effect of {ade} ({ade_lo}–{ade_hi}) and a proportion "
+                f"mediated of {pm} ({pm_lo}–{pm_hi}). Values below 1.0 reflect removal of the mediating "
+                "route, not a protective effect.", size=9)
     p = os.path.join(TBL, "Table2_drivers.docx"); doc.save(p); log.write(f"[WROTE] {p}\n")
 
     # ---------------- Table 3
@@ -783,14 +818,14 @@ def build_krt(log):
          "facets-suite (version recorded by the data source)", "Arm-level calls and purity/ploidy were provided; "
          "FACETS was not re-run"],
         ["Derived data", "This study; public GitHub repository",
-         "https://github.com/caiwj2001-beep/HLA_LOH02",
+         REPO_URL,
          "Licence CC BY-NC-ND 4.0. The repository is public and is the complete and final "
          "availability route for the derived data and the code; no archival identifier is "
-         "required to retrieve them"],
+         f"required to retrieve them. Snapshot: analysis code and derived data at commit {REPO_COMMIT}"],
         ["Code", "This study; the same public GitHub repository",
-         "https://github.com/caiwj2001-beep/HLA_LOH02",
+         REPO_URL,
          "Licence MIT. The same public repository also carries the derived data; no archival "
-         "identifier is required to retrieve either"],
+         f"identifier is required to retrieve either. Snapshot: analysis code and derived data at commit {REPO_COMMIT}"],
     ]
     mk_table(doc, hdr, rows, widths=[1.5, 1.9, 1.85, 1.85], font=8)
     legend(doc, "Antibodies, chemical reagents and other laboratory materials: none used. There is no "
@@ -799,7 +834,7 @@ def build_krt(log):
 
 # =============================================================== markdown docs
 def build_markdown(log):
-    data_md = """# Data and Code Availability
+    data_md = f"""# Data and Code Availability
 
 Manuscript: ISCIENCE-D-26-09416 (revision).
 
@@ -827,7 +862,7 @@ class summaries, the figure source data, and the number dictionary that maps eve
 figure to its source table - are deposited in the public repository that also holds the
 analysis code (Step 3):
 
-- Repository: **GitHub** - `https://github.com/caiwj2001-beep/HLA_LOH02`
+- Repository: **GitHub** - `{REPO_URL}` - analysis code and derived data at commit `{REPO_COMMIT}`
 - Archive: `derived_data.zip` (see `deposit/` in this package)
 - Licence: **CC BY-NC-ND 4.0**
 
@@ -837,15 +872,15 @@ sample identifiers of the source cohort, which is distributed under CC BY-NC-ND 
 are regenerated verbatim from the cBioPortal source files by the deposited code.
 
 The repository URL above is final and the repository is public: the code and the derived data are
-both available from that one address, and every number reported in the manuscript can be
-recomputed from it. No archival identifier is required to retrieve either.
+both available from that one address at commit `{REPO_COMMIT}`, and every number reported in the
+manuscript can be recomputed from it. No archival identifier is required to retrieve either.
 
 ## Step 3 - Code (the same public GitHub repository)
 
 All analysis and table-generation code is deposited as `code.zip` (see `deposit/`) in the same
 public repository:
 
-- Repository: **GitHub** - `https://github.com/caiwj2001-beep/HLA_LOH02`
+- Repository: **GitHub** - `{REPO_URL}` - analysis code and derived data at commit `{REPO_COMMIT}`
 - Contents: the R analysis script that recomputes every reported number from the raw data, the
   Python scripts that render the tables and the supplementary PDF, the environment lock files
   (R package versions and Python requirements), and a step-by-step upload README.
