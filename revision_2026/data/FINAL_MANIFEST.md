@@ -1,6 +1,6 @@
 # FINAL_MANIFEST - frozen submission package (V4, revision round 2)
 
-Manuscript **ISCIENCE-D-26-09416** (iScience revision) . directory `iscience投稿版本/V4` . generated 2026-10-17 12:52:10
+Manuscript **ISCIENCE-D-26-09416** (iScience revision) . directory `iscience投稿版本/V4` . generated 2026-10-17 12:53:46
 
 Every file below is byte-frozen: `sha256` and `bytes` are of the file as it stands on disk at
 generation time. Repository snapshot referenced by the manuscript and by the Key Resources
@@ -10,7 +10,7 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 
 - **files listed: 127**
 - **missing on disk: none**
-- **total bytes: 9996989 (10.0 MB)**
+- **total bytes: 9997209 (10.0 MB)**
 - **this file: 242 lines**
 
 ---
@@ -39,15 +39,15 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 | `01_manuscript/09_BackMatter.md` | 2783 | `318422eed5303a786eefecce95220ea79e35f93f70104be19f917d788374afe4` | Back matter incl. the Data and code availability declaration (carries the repository commit) |
 | `01_manuscript/10_FigureLegends.md` | 8969 | `0a67f0c5593fd9ebc26a493c1234cb566b7b8db6d17f1605dbaa3c3c53d73374` | Figure legends, Figures 1-5 and S1-S2 |
 | `01_manuscript/11_References.md` | 10482 | `e4da6ae142ee07dfbe0151ae95ac335ce768b4801dff93db8e51bdfb703d8b46` | Reference list |
-| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 68792 | `8b8283c0a15981a029e13141fee2bccc0fce9de5166de660c7dec00b95d7eced` | Revised manuscript, changes highlighted in yellow (Mode C substantive-change rule; 29.50% of characters, 101/174 paragraphs) |
-| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 63999 | `76b09e48fa8561af6cf7ad97d328841700bb42813539c70ae25024a0bf5d08ce` | Revised manuscript, clean copy (no markup) - the file the editor typesets from |
+| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 68792 | `61897066a9c048fbcbbd1ab0ce8a8f6a6717529389fba97cb01b5749961fcb39` | Revised manuscript, changes highlighted in yellow (Mode C substantive-change rule; 29.50% of characters, 101/174 paragraphs) |
+| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 63999 | `6377d59733b5ca306cabc692b400f8cfd51a2154213138e93b977b6f94038811` | Revised manuscript, clean copy (no markup) - the file the editor typesets from |
 | `01_manuscript/Change_Summary.md` | 118705 | `cef3cdaf071251de3049868a04f45e3dcf18ddaaceabfe76a640901ea2929f83` | Editor-facing section-by-section change list (copy of 05_response/Change_Summary.md) |
 | `01_manuscript/HLA_LOH02_revision_HIGHLIGHT_SUMMARY.md` | 17596 | `4d0ca8ccf5e4eba3afdff09292efc1f514b652e3a7d0db57958d132dd2fa2a88` | Revision highlight summary (Mode C rule; superseded rules marked obsolete) |
 | `01_manuscript/REF_VERIFICATION.md` | 13042 | `fd96b89e08d6c1147c85a568363cec4ff5662fdeaf2760d0b4ef09a269963c9d` | Reference verification report |
 | `01_manuscript/SENTENCE_STATS.md` | 15070 | `7aa8ad1a53bcaa6de79616df321fc399ce9fce9128317784de0300eeaa42605e` | Sentence-length / readability statistics of the revised manuscript |
 | `01_manuscript/11b_FigS2_addition_note.md` | 7382 | `d9ad070318824d6cfcae7f3456fdc45ad054c9784317194200183a32f191859c` | Working note on how Supplementary Figure S2 entered the reference list |
-| `01_manuscript/_alternative/HLA_LOH02_revision_MARKED_full.docx` | 69549 | `8451d38f22057d01d73d2fa78309840d4ef59d1b46f3cb23cd74bbff440f654e` | Alternative (superseded) full-mode build at 62.5% coverage, kept as the rollback pair |
-| `01_manuscript/_alternative/HLA_LOH02_revision_CLEAN_full.docx` | 63885 | `2c148e99f953aad52a73dbc974959f429c5bfd216b4e2e34aefff42d2ce25d9e` | Clean twin of the alternative full-mode build |
+| `01_manuscript/_alternative/HLA_LOH02_revision_MARKED_full.docx` | 69655 | `2d42cb371c1938828b587cddbf4600150d4d9ea46c9a4bb93dbeeafdf69c8dd0` | Alternative (superseded) full-mode build at 62.5% coverage, kept as the rollback pair |
+| `01_manuscript/_alternative/HLA_LOH02_revision_CLEAN_full.docx` | 63999 | `3042b343c70c95827349c9183044063dc5dfe089ccb43ceb989a3671a0c2eae8` | Clean twin of the alternative full-mode build |
 
 ---
 
@@ -145,7 +145,7 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 | `QC/FINAL_QC_REPORT.md` | 34606 | `8ed6c775f3349046e36bf5f4f483a3f4548daefca23b49fbaaf58f91a9e41d7e` | Final QC report (gate battery, numbers, deviations) |
 | `QC/quality_gates_log.md` | 22529 | `55585f302b8cb9bc82b0092718cac5225d276149cf146c279b2bb3ffccf3e4a0` | Quality-gate log |
 | `QC/SUBMIT_READINESS_REPORT.md` | 46723 | `4d26c1bb596bbc0dc90b93ce42687ca548184b078189c94ddf60c1e2baaf937a` | Submission-readiness report |
-| `QC/HIGHLIGHT_VERIFY_MODE_C.md` | 13137 | `fbd7a8397e10896b875027b799ea60218c89b9cd467895cb8c04900c9d31d5e5` | Mode C highlight verification (ALL GATES PASS) |
+| `QC/HIGHLIGHT_VERIFY_MODE_C.md` | 13137 | `aed929f81df75cd380f20bc4890d13eed217d15798a5c01df4148b2be69c76dc` | Mode C highlight verification (ALL GATES PASS) |
 | `QC/HIGHLIGHT_VERIFY.md` | 7072 | `e1f32a6995ff58647aeda790a78e48c453599b0b5bd31da90969ce4cb83187f1` | Earlier three-tier highlight verification |
 | `QC/docx_build_report.md` | 21897 | `3161f50a599e42d70d68ec60badcbac3a0422787bf61d1db98df4c11629635e7` | DOCX build report |
 | `QC/DOI_FILLIN_CHECKLIST.md` | 7406 | `e9235dfdae97476597c498637a642016496245076de57a34980420f9b7f56679` | DOI fill-in checklist |
