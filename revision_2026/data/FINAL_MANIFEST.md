@@ -100,8 +100,8 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `05_response/Response_to_Reviewers.docx` | 60,741 | `66effaa64adb8c12a7ecf6cac3c4a8a1c7bb9d5ee7374bac3d301d92531841de` | Point-by-point response to all reviewers (9,477 words incl. the restored compliance table) |
-| `05_response/Response_to_Reviewers.md` | 66,278 | `83f81f25754b46d8ed59caf6c91c076c00d3b6530f8a2f1df672fe160bcb1c63` | Markdown source of the point-by-point response |
+| `05_response/Response_to_Reviewers.docx` | 60,775 | `ca1634d4ca007c7662f52f2022645289a86c2ee5a5a32ffbea04d3a7cf89b1b5` | Point-by-point response to all reviewers (9,477 words incl. the restored compliance table) |
+| `05_response/Response_to_Reviewers.md` | 66,336 | `10fdaeb444a1691a14ef2b60d02a96dc4bc7d90e874e08431e3068fb419c1af4` | Markdown source of the point-by-point response |
 | `05_response/ANCHOR_MAP.tsv` | 3180 | `9ea2fdeb874d37cfe0f0e886a50d316ddba30ed5cd57a14126a942f78f444ce4` | Machine-readable map of every response point to its manuscript anchor (28 rows) |
 | `05_response/ANCHOR_INVENTORY.tsv` | 86045 | `e8a136214284c760a1da14b9ebb2cef2e3b3fd12a6fd8becb0427743eae364f6` | Inventory of the manuscript sentences the response points cite |
 | `05_response/COVERAGE_CHECK.md` | 37459 | `0b9adb8163f4ce0760f41fa79c8208972f1ddf5ce1b87258d777f3b208c3ccda` | Coverage audit that every reviewer point is answered |
