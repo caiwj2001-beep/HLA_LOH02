@@ -1486,3 +1486,142 @@ legacy 规格 1.0919/P=0.01128、primary 规格 1.0933/P=0.01041，与 stored �
    - **教训**（并入同一技能）：给冻结树写 runner 时，凡是从 `import` 时求值的模块级路径常量
      （`V3 / MS / TBL / COMP / SUPP / ALT_DIR`）**必须逐一重绑**，不能只重绑被直接引用的那几个。
 
+
+### (xiv.8) 遗留包完整性修补 + 手稿改引 H3（本轮，2026-10-17）
+
+本轮只做两件**修补**，不动任何科学数字、不增删手稿段落、不写 V3：
+
+1. `derived_data.zip` 内 `supplementary_source_data/Table2_drivers.tsv` 的旧快照改为现行 Table 2（10 行）；
+2. 交付根目录的 R 杂项 `Rplots.pdf` 移出（留证，不删）。
+
+以及随之必须完成的引用更新：手稿与合规件的仓库 commit 从 **H1 改为 H3**。
+
+#### 1) Table2 source data 旧快照（§(xiv.6) 第 1 条的正式收口）
+
+| 项 | 修前 | 修后 |
+|---|---|---|
+| 成员 | `derived_data/supplementary_source_data/Table2_drivers.tsv` | 同 |
+| 字节 | 375 | **1,226** |
+| sha256 | `edb0f8c3757eefcd62e6b8ebf59955b9bdcb5e66b7ccdfea9af5c3be92e8ebd2` | **`5f6e4bdfd5ff4e601f3fe4d6f212d60b73bb15320f8cdd7c93c7ef63b13f1616`** |
+| 行 / 列 | 4 行数据 / 6 列（`model`·`term`·`OR`·`lo`·`hi`·`p`） | **10 行数据 / 6 列**（同 schema） |
+| 内容 | 修订前的 distal WGD / 胚系纯合 / log10 TMB + proximal 6p；数值来自**旧拟合**（WGD 2.295032…，log10 TMB 1.454300…） | 现行 Table 2 的 10 行（含 non-aneuploidy 三行、`Distal multivariable + aneuploidy` 三行、`Unadjusted` 与 `TMB + WGD + cancer + panel` 两行、6p 一行）；数值全精度照抄现行表（WGD 2.295388…，log10 TMB 1.449647…） |
+
+**做法**：以 `V4/03_tables/build/table2_drivers.tsv`（Table 2 DOCX 的唯一数据源；与包内
+`derived_data/tables_v3/table2_drivers.tsv` 逐字节相同）为准，按 `README_DATA.md` 为该文件声明的
+schema 重写：`model` ← 表的 model 列，`term` ← 表的 predictor 列，`OR/lo/hi/p` 原值照抄
+（**未做任何重新拟合、四舍五入或换算**）。行序即表的呈现顺序。重建脚本：
+`revision_2026/code/analysis/revision_r3/rebuild_deposit_table2.py`（与 §(xiv.4) 的
+`rebuild_deposit_table1.py` 同构，同目录）。
+
+**包内一致性验收**（两处 Table2 成员不再矛盾）：
+
+| 成员 | 字节 | 数据行 | 列 | sha256（前 16） |
+|---|---:|---:|---:|---|
+| `supplementary_source_data/Table2_drivers.tsv` | 1,226 | **10** | 6 | `5f6e4bdfd5ff4e60` |
+| `tables_v3/table2_drivers.tsv` | 1,506 | **10** | 8 | `3c487b80b46687a0` |
+
+逐行比对 `model / term(=predictor) / OR / lo / hi / p`：**10/10 一致，差异 0**
+（两文件列集合不同，是因为它们各自的 schema 不同：source-data 是 6 列系数表，
+`tables_v3` 是 8 列的排印输入表，多 `OR_CI` 与 `P_fmt`）。
+
+**包完整性**：`derived_data.zip` 成员 **91 → 91**，成员表与顺序不变；
+**其余 90 个成员 raw local record 逐字节不变**（`QC/tools/surgical_zip.py` 的 per-member 报告：
+90 条 `verbatim raw record (byte-identical)`，1 条 `REPLACED`，`testzip()` 干净）；
+`code.zip` **未被触碰**。
+
+#### 2) `Rplots.pdf`（交付根目录杂项）
+
+`V4/Rplots.pdf`（3,667 B，`1f92174a0c663004901a5c0332a96be3949c3bd87f9e755bac65e977a4d7ce5c`）
+→ `V4/QC/_stray/Rplots.pdf`（**移出，不删**，附 `QC/_stray/README_stray.md` 记来源）。
+
+**来源（有证据的推测）**：R 默认图形设备产物 —— `/Producer` = `R 4.6.1`、`/Title` = `R Graphics Output`、
+2 页、`/CreationDate D:20261015003431`；`QC/seed_determinism/` 下有**同字节、同为 2 页**的孪生文件
+（`D:20261015003739`，晚 3 分 08 秒）。`QC/seed_determinism/count_dots.R`/`count_dots2.R`/`dots3.R`
+各构造两个 `ggplot` 却未开设备（无 `pdf()`/`cairo_pdf()`/`tiff()`/`ggsave()`）→ 两页恰好对得上；
+两次运行只差 cwd（先 V4 根目录、后 `QC/seed_determinism/`）。即图 3B/S1A 点计数（ink/overlap QA）
+阶段的副产物，与任何交付数字无关。
+
+**它对清单没有影响**：`QC/FINAL_MANIFEST.md` 是显式白名单（不扫目录），`Rplots.pdf` 从来不是清单成员，
+所以移出前后清单都是 **127** 个文件（本轮没有任何清单成员被删）。**如实说明**：本轮收到的预期是
+"清单 126"，实测**没有**变成 126 —— 原因是移出的文件本就不在清单里，不存在"127 − 1"。
+
+#### 3) 手稿 / 合规件改引 H3
+
+| 文件 | H1 → H3 | 说明 |
+|---|---|---|
+| `01_manuscript/08_StarMethods.md` | 2 处 | Resource availability 的两条 bullet（`Data`/`Code`） |
+| `01_manuscript/09_BackMatter.md` | 1 处 | Data and code availability 段 |
+| `06_compliance/Data_and_Code_Availability.md` | 3 处 | 两处 Repository 行 + 一处正文句 |
+| `06_compliance/Key_Resources_Table.docx` | 2 行 | `Derived data` 行、`Code` 行 |
+
+- 只替换 40 位十六进制串（**长度不变**），未改任何其它字符；三份 md 的字节数**完全不变**
+  （17,020 / 2,691 / 3,782）。
+- 合规两件用**规范模板生成器**重建（`rebuild_compliance_v4.py` 同构，运行时只改 `REPO_COMMIT`；
+  `build_tables_docx.py` 本身一个字节未动——它是 `code.zip` 成员）：KRT 38,961 → **38,958 B**，
+  `Data_and_Code_Availability.md` 模板产物与手工替换**逐字节相同**。
+- 手稿 DOCX 由 `run_revision_docx_v4.py`（= `QC/make_revision_docx.py` 的同算法 runner，基准
+  `投稿版本/HLA_LOH02_manuscript.docx` 不变）重建；`_alternative/` 的全口径备选件同步重建
+  （Mode C 门禁要按段落逐字比对这两份，旧备选件里的 H1 会让断言 `tm == tf` 失败）。
+
+**重跑后的门禁（原始输出见 `QC/_final_round6/`）**：
+
+| 门禁 | 结果 |
+|---|---|
+| 段落数 | **174 / 174**（未增删） |
+| 锚点 | **28 / 28**（md 与两份 DOCX 三方一致，`mismatched: 0`） |
+| 手稿 markdown 残留 | **0**（G5 PASS，`w:lnNumType` 在两份 DOCX 均在） |
+| CLEAN 高亮 run | **0** |
+| MODE C 覆盖率（自报） | **20,653 / 70,459 = 29.30%**（101/174 段，626 runs）——与改引前**逐位相同** |
+| 全口径（备选） | 44,030 / 70,459 = 62.50%（670 runs） |
+| `08fe6775` 残留（交付件） | **0**（手稿源、两份手稿 DOCX、KRT、Data and Code Availability、封面、回复信、表格 DOCX、补充 PDF 全部 0；`_alternative/` 亦 0） |
+| `g2` 独立核对 | `T1=24 / T2=19`、`T3 differences: 0`、`PASS - T3 empty`、补充 PDF 页序 S1→S14 全对（`Table S14 -> 21`） |
+| `verify_response.py` | **EXIT=0**（锚点 28、`**Anchor:**` 28、杜撰行号 0） |
+
+> `08fe6775` 仍出现在**provenance 记录**里（本文件的历史段落、`QC/P2/` 的旧日志、`make_final_manifest_p3.py`
+> 的注释等），那是**记录**而非交付声明，按设计保留。
+
+#### 4) 提交链（本轮）
+
+| 标签 | commit | 性质 | 内容 |
+|---|---|---|---|
+| **H1** | `08fe6775ad9548472177a97bf1a9458a743f5fc0` | 前序（代码+数据） | S11 纯度重导、Table 2 脚注端点、deposit `Table1_baseline.tsv` 重建、S14/VIF 脚本 |
+| **H2** | `629d5d5f4fd78d989194ee8ddfe4a34bfa38c30a` | 前序（**仅文档**） | §(xiv.7) 的两处工具层处置 + 清单重同步 |
+| **H3** | `560df7a1448e736a35db2a840575a53185cff662` | 本轮（代码+数据） | deposit `Table2_drivers.tsv` 重建（10 行）+ 重建脚本 |
+| **H4** | 见 `QC/_final_round6/F_final_report.md` | 本轮（**仅文档**） | 本节 + 重生后的 `QC/FINAL_MANIFEST.md` + 清单生成器的 commit 常量 |
+
+**H3 内部证据**（`git cat-file`，远程已回读 == 本地）：
+
+```
+git rev-parse 560df7a1:revision_2026/data/supplementary_source_data/Table2_drivers.tsv
+  -> blob 6467825882b779aaf2474c9bd4ecdfa926b7edad
+git cat-file -s  6467825 -> 1226 bytes
+sha256(blob)             -> 5f6e4bdfd5ff4e601f3fe4d6f212d60b73bb15320f8cdd7c93c7ef63b13f1616
+wc -l                    -> 11 行 = 表头 + 10 行数据
+```
+
+即：H3 的树里就是修正后的 10 行 Table 2 source data，与包内成员**同字节**。
+
+#### 5) 两个存交包的新旧 sha256
+
+| archive | 旧 | 本轮指定成员替换后 | 本节被嵌入后（最终，见 `QC/FINAL_MANIFEST.md`） |
+|---|---|---|---|
+| `derived_data.zip` | 656,372 B · `743559495df484910f427411a0a3229effde6c63292d8c2823a026273a54e2a3` | **656,741 B · `a21eb58b8c643ed446902ae544bfa24f1e76110eadff78dc4af687cd5af57c1a`** | 见清单同名行 |
+| `code.zip` | 116,148 B · `ddcf9d119fc90b9557b204ea2f7bcbfb916aeeafb2d7b38409829bc26dc7935a` | 未变（A–D 步不触碰） | 见清单同名行 |
+
+> **自指说明（同 §(xiii.9)/(xiv.4)/(xiv.7)）**：本节本身是**两个包的成员**
+> （`derived_data/number_dictionary/PINNED_PACK_CORRECTIONS.md`、`code/PINNED_PACK_CORRECTIONS.md`），
+> 写进本节会让两个包再多变一次（每个包各换 1 个成员、其余不变）。因此上表第三列是**嵌入本节之前**的值；
+> **最终**值只能写在 `QC/FINAL_MANIFEST.md` 里（该文件不在包内）。两次重建都走同一条
+> `QC/tools/surgical_zip.py`，逐成员 `verbatim` 自检通过。
+
+#### 6) 本轮遗留（如实报出）
+
+1. `derived_data/supplementary_source_data/Q3_multivariable_drivers.tsv`（375 B）**仍是旧的 4 行快照**，
+   且与修前的 `Table2_drivers.tsv` **同字节**（`edb0f8c3…`）。它是原始投稿 Q3 问题的作答数据，
+   不是 Table 2 的源数据；本轮授权只允许改 `Table2_drivers.tsv` 一个成员，故**未动**。
+   若编辑要求目录内"同名模型不得并存两套系数"，需另行授权把 Q3 也升到现行 10 行。
+2. `05_response/verify_anchors.py` 与 `QC/scan_markdown_residue.py` 的根目录常量仍硬编码 V3
+   （与 §(xiv.7) 修掉的两个门禁同类）。为不触碰交付件字节，本轮用**重绑副本**
+   （`QC/_final_round6/_run_anchors_v4.py`、`_run_residue_v4.py`，算法一行不改）对 V4 跑门禁；
+   两个脚本本身未改。建议下一轮把常量改指 V4（属交付件变更，需单独授权）。
+3. 本轮追加了 `QC/_stray/`（杂项留证目录）与 `QC/_final_round6/`（本轮全部原始输出），两者都**不在**清单白名单内。
