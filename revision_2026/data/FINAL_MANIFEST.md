@@ -1,16 +1,16 @@
 # FINAL_MANIFEST - frozen submission package (V4, revision round 2)
 
-Manuscript **ISCIENCE-D-26-09416** (iScience revision) . directory `iscience投稿版本/V4` . generated 2026-10-17 11:24:59
+Manuscript **ISCIENCE-D-26-09416** (iScience revision) . directory `iscience投稿版本/V4` . generated 2026-10-17 12:52:10
 
 Every file below is byte-frozen: `sha256` and `bytes` are of the file as it stands on disk at
 generation time. Repository snapshot referenced by the manuscript and by the Key Resources
-Table: `https://github.com/caiwj2001-beep/HLA_LOH02` at commit `560df7a1448e736a35db2a840575a53185cff662`, which carries both the
+Table: `https://github.com/caiwj2001-beep/HLA_LOH02` at commit `40421a9f411318e77b4e1475b77c6d016895bb1b`, which carries both the
 analysis code and the derived data; the two deposit archives are byte-reproducible from it
 (`revision_2026/code/tools/check_repo_vs_zip.py`: 100/100 members byte-identical).
 
 - **files listed: 127**
 - **missing on disk: none**
-- **total bytes: 9993072 (10.0 MB)**
+- **total bytes: 9996989 (10.0 MB)**
 - **this file: 242 lines**
 
 ---
@@ -33,14 +33,14 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 | `01_manuscript/03_Highlights.md` | 339 | `df220e033cbaeb61ce57621c6c334ceeaf8e532a19c2dc902a4c2cf4dad6116a` | Highlights (4 bullets, <=85 characters each) |
 | `01_manuscript/04_eTOC.md` | 460 | `d7014957caf6768dafbe8239918f6a25f7348d703614ab9d6d32ecc51f4703c5` | eTOC blurb (one-sentence teaser) |
 | `01_manuscript/05_Introduction.md` | 4729 | `23ba9e85ac73ccede2f2bb830b91941f1a6fcb6422806185cab2ba15b3b9dbfe` | Introduction |
-| `01_manuscript/06_Results.md` | 15745 | `475fdfedfd670a528235500d81d7ccec4782dc3de0e5e339ea8532b3e079b085` | Results (figure numbers in first-appearance order) |
-| `01_manuscript/07_Discussion.md` | 10821 | `0c7331ef5a3c3678ac29b5513295a89c9db497423ed3124d5d7e64bd65e7d782` | Discussion |
-| `01_manuscript/08_StarMethods.md` | 17020 | `acd6037cfcd24d53d5e5016a1af478ce02f130ee7bf835780a38bd7c7ac3b395` | STAR Methods incl. Data and code availability (carries the repository commit) |
-| `01_manuscript/09_BackMatter.md` | 2691 | `09d138f17ebe2c68ab39cff04858bb0f022bf77b9dd0afc32d172cb4e67e697c` | Back matter incl. the Data and code availability declaration (carries the repository commit) |
-| `01_manuscript/10_FigureLegends.md` | 8818 | `a6d1200f4f8f397a88007623ab4fae3df6491fa4ba3553ab415681b004507d92` | Figure legends, Figures 1-5 and S1-S2 |
+| `01_manuscript/06_Results.md` | 15757 | `5592a58808520c65be1d9fcc85fdc3dadce94de09fb193a264d4b663a3ce9d1b` | Results (figure numbers in first-appearance order) |
+| `01_manuscript/07_Discussion.md` | 10880 | `ba193d85272c083ebcbcffd7438be804c53ac377545791ea803c4aaec675233f` | Discussion |
+| `01_manuscript/08_StarMethods.md` | 17020 | `ef47e6245c81f9e0eb7fab077533f60a962bc846e3d0b445e0726a9092ff8788` | STAR Methods incl. Data and code availability (carries the repository commit) |
+| `01_manuscript/09_BackMatter.md` | 2783 | `318422eed5303a786eefecce95220ea79e35f93f70104be19f917d788374afe4` | Back matter incl. the Data and code availability declaration (carries the repository commit) |
+| `01_manuscript/10_FigureLegends.md` | 8969 | `0a67f0c5593fd9ebc26a493c1234cb566b7b8db6d17f1605dbaa3c3c53d73374` | Figure legends, Figures 1-5 and S1-S2 |
 | `01_manuscript/11_References.md` | 10482 | `e4da6ae142ee07dfbe0151ae95ac335ce768b4801dff93db8e51bdfb703d8b46` | Reference list |
-| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 68686 | `c145bd87ece32706e14d497ab4798f13a3b076cb83477da3f9ea35bea173f36f` | Revised manuscript, changes highlighted in yellow (Mode C substantive-change rule; 29.30% of characters, 101/174 paragraphs) |
-| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 63885 | `a5d212ae864414c791baba3276049ba8268ed2c036ca127250ae2084ae432ce1` | Revised manuscript, clean copy (no markup) - the file the editor typesets from |
+| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 68792 | `8b8283c0a15981a029e13141fee2bccc0fce9de5166de660c7dec00b95d7eced` | Revised manuscript, changes highlighted in yellow (Mode C substantive-change rule; 29.50% of characters, 101/174 paragraphs) |
+| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 63999 | `76b09e48fa8561af6cf7ad97d328841700bb42813539c70ae25024a0bf5d08ce` | Revised manuscript, clean copy (no markup) - the file the editor typesets from |
 | `01_manuscript/Change_Summary.md` | 118705 | `cef3cdaf071251de3049868a04f45e3dcf18ddaaceabfe76a640901ea2929f83` | Editor-facing section-by-section change list (copy of 05_response/Change_Summary.md) |
 | `01_manuscript/HLA_LOH02_revision_HIGHLIGHT_SUMMARY.md` | 17596 | `4d0ca8ccf5e4eba3afdff09292efc1f514b652e3a7d0db57958d132dd2fa2a88` | Revision highlight summary (Mode C rule; superseded rules marked obsolete) |
 | `01_manuscript/REF_VERIFICATION.md` | 13042 | `fd96b89e08d6c1147c85a568363cec4ff5662fdeaf2760d0b4ef09a269963c9d` | Reference verification report |
@@ -78,9 +78,9 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
 | `03_tables/Table1_baseline.docx` | 38750 | `ed04e88c16dcacca52096aec18028aa98bf285b6a269b0216eea215cd8314fb9` | Table 1 - cohort baseline characteristics (incl. the global aneuploidy score rows) |
-| `03_tables/Table2_drivers.docx` | 38796 | `45ebd83322d2b19da9d5f95faf066506fa5e45f232cf9b53892820f97836f890` | Table 2 - multivariable drivers of HLA LOH; footnote attenuation endpoints (WGD 2.30->0.35, log10 TMB 1.45->1.23) are read from table2_drivers.tsv at build time |
+| `03_tables/Table2_drivers.docx` | 38572 | `c9aa4222d2610a7533dbf158cee5a7a3ef1172adc54ae4a62d2b1e7f996fbbab` | Table 2 - multivariable drivers of HLA LOH; footnote attenuation endpoints (WGD 2.30->0.35, log10 TMB 1.45->1.23) are read from table2_drivers.tsv at build time |
 | `03_tables/Table3_survival.docx` | 38495 | `b3eff2458bc055254519613c29799748fac44a75f7450c2a78d347b4c2b88b59` | Table 3 - HLA LOH and overall survival across model specifications |
-| `03_tables/Supplementary_Tables.docx` | 629436 | `13ec2ed3c202c91d92f6c8c30fff728d44f133b10ae203689486081808265bed` | Supplementary Tables S1-S14 as one DOCX, contents table page-mapped to the supplement PDF |
+| `03_tables/Supplementary_Tables.docx` | 629436 | `75e818b6fc04455823f26466ba79aae30ededbfdc7954b37812d060033005541` | Supplementary Tables S1-S14 as one DOCX, contents table page-mapped to the supplement PDF |
 | `03_tables/SV_class_analysis.md` | 4551 | `14b805eef8b444adb125c11f5d8f43648df342e904917ed21b386a4a1878b71c` | Structural-variant class analysis against HLA LOH (source narrative for S13) |
 | `03_tables/build/s14_vif.tsv` | 2161 | `f6dd1f7d7ebd92193e9b437de6387e5874daba8a860f62eec71a0e1988799991` | S14 source data: variance inflation factors, GVIF, adjusted GVIF and tolerances per model and covariate |
 | `03_tables/build/s14_model_key.tsv` | 553 | `244360494a7b7aa658c71d10704aa0d154bd61144d04f3d42e099f9fe747c0a8` | S14 model key: the specification each VIF model corresponds to |
@@ -92,7 +92,7 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `04_supplement/Supplemental_Information.pdf` | 1591181 | `1058220f28c4063eaafede8861370469f79d6dc4427b17bf9b34d3da63a3c9eb` | The single supplementary PDF: Figures S1-S2 then Tables S1-S14; 21 pages, 16/16 contents anchors resolved, S14 on the last page |
+| `04_supplement/Supplemental_Information.pdf` | 1591181 | `7cc30579fde20494e31862d5ba41c5a324cf450023f626050b5be72a7648440a` | The single supplementary PDF: Figures S1-S2 then Tables S1-S14; 21 pages, 16/16 contents anchors resolved, S14 on the last page |
 
 ---
 
@@ -115,9 +115,9 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `06_compliance/Data_and_Code_Availability.md` | 3782 | `83a1dacc9614a9eddd52cb0a535c5c8ba1d4ba2b90dbcb7e143b014b0538a5d7` | Data and Code Availability statement (public GitHub repository at commit 560df7a1448e736a35db2a840575a53185cff662 is the single and complete route) |
-| `06_compliance/Key_Resources_Table.docx` | 38958 | `b3748da9a535cc687288cfe1f16dfac7d02daed72cbaa81303d2b23d878a9d7c` | Key Resources Table; the Derived data / Code rows carry the repository commit 560df7a1448e736a35db2a840575a53185cff662 |
-| `06_compliance/deposit/code.zip` | 123261 | `60e32349574fd917d997d2a5d89f4d5b473cced571f572937db522ea9f3dd83f` | Code deposit (9 members): the R analysis script, the DOCX/PDF rendering scripts with the P3 guards, env lock, requirements, README_CODE.md and the number dictionary |
+| `06_compliance/Data_and_Code_Availability.md` | 3782 | `8990514b4d365f70945092505b88c54b647b4ee43814fccb2034f14a3738c0e3` | Data and Code Availability statement (public GitHub repository at commit 40421a9f411318e77b4e1475b77c6d016895bb1b is the single and complete route) |
+| `06_compliance/Key_Resources_Table.docx` | 38957 | `88d431d07729fa200bcfd38afe2c8d256264aca8d15a66bf21177c8513878e22` | Key Resources Table; the Derived data / Code rows carry the repository commit 40421a9f411318e77b4e1475b77c6d016895bb1b |
+| `06_compliance/deposit/code.zip` | 123958 | `4943b14438f741c0efedc525293bb48992424076144d9f0ee382e1000bbb3ab1` | Code deposit (9 members): the R analysis script, the DOCX/PDF rendering scripts with the P3 guards, env lock, requirements, README_CODE.md and the number dictionary |
 | `06_compliance/deposit/derived_data.zip` | 660619 | `7a1e5a22b223582765d9b5ce0f9204236a2a6fd03abca2489212d3e9d9db7e26` | Derived-data deposit (91 members): figure source data, supplementary source data incl. the rebuilt Table1_baseline.tsv and the rebuilt 10-row Table2_drivers.tsv (matching the current Table 2), the table build inputs and the number dictionary |
 | `06_compliance/deposit/README_upload_steps.md` | 3054 | `aadfce89e849e92b7ba6e2ce7b59f4ef7c7f9c64d56395dff1ee39be7d2985cb` | Author-facing upload runbook (GitHub only; no archival identifier) |
 | `06_compliance/Graphical_Abstract/Graphical_Abstract.tiff` | 463738 | `4ea81270e6ac7ffe737c7d2ceed01c1604991f97357f890cd3f5dca931f41b16` | Graphical abstract, 300 dpi raster (uploaded to EM) |
@@ -133,8 +133,8 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `07_cover/Cover_Letter.docx` | 40750 | `8a1409d937125f0f66d5c94090c4ea45e27eed42c7406ef9cd76e4cb2a4790cd` | Cover letter to the editor |
-| `07_cover/Cover_Letter.md` | 7779 | `96dbd3fb8ffecbd26a771822fcca959c1c873c726afd5e0b1b7bbdbc32c91b90` | Markdown source of the cover letter |
+| `07_cover/Cover_Letter.docx` | 40790 | `03e2388413b2d2cebd78cc93abcdcc9af8291dbbe522218b4f033e1778d4bba5` | Cover letter to the editor |
+| `07_cover/Cover_Letter.md` | 7869 | `24372ea651b4bcdaaf4e906a5a9c4130e9589c84526d4044d645374a96ef97d2` | Markdown source of the cover letter |
 
 ---
 
@@ -193,7 +193,7 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 | `QC/P2/gen_p2_evidence.py` | 3520 | `81f0270c68f08a256d56ab6125d51dbfc325ac322ddb7dc4db5c5ac9f8f96100` | P3 QC script |
 | `QC/P2/gen_response_report.py` | 13612 | `4d57036477013b2bf039a44050aa50ea051d5ee10f41c71e1447738bd31f57da` | P3 QC script |
 | `QC/P2/make_edit_report.py` | 23980 | `844fd98de2f67ff960a50154ee8c8ee9f79f6da21d5452fc63314ae4363af0ad` | P3 QC script |
-| `QC/P2/make_final_manifest_p3.py` | 16198 | `858a182236334900b99b2f2e2d48e81fde301d52fcfe1093a20d74d6a0d00df0` | P3 QC script |
+| `QC/P2/make_final_manifest_p3.py` | 16198 | `4753f84d911fa759259e702164dd8c2b6c22eab4e1a2647616003fb106c00ee6` | P3 QC script |
 | `QC/P2/make_s14_vif.py` | 5449 | `8fb6c50d5f65ebaf40cfc538d86207b96b80228a68c03a61ed9d419d79755e5b` | P3 QC script |
 | `QC/P2/rebuild_compliance_v4.py` | 1711 | `a193b49a7575ce023d91936abbdb353fac21ffccd2c1963723d20b2cad2cc164` | P3 QC script |
 | `QC/P2/rebuild_deposit_table1.py` | 2467 | `02369ac95b410e4dd84c87eb1a3be378d06390229f337d2facba8d8729c24bbf` | P3 QC script |
@@ -231,12 +231,12 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 | 13 | `02_figures/SupplementaryFigureS2_germline.tiff` | Supplementary Figure e - Figure file (TIFF) | 178352 bytes |
 | 14 | `02_figures/SupplementaryFigureS2_germline.pdf` | Supplementary Figure e - Figure file (PDF) | 44301 bytes |
 | 15 | `03_tables/Table1_baseline.docx` | Table - Table1 | 38750 bytes |
-| 16 | `03_tables/Table2_drivers.docx` | Table - Table2 | 38796 bytes |
+| 16 | `03_tables/Table2_drivers.docx` | Table - Table2 | 38572 bytes |
 | 17 | `03_tables/Table3_survival.docx` | Table - Table3 | 38495 bytes |
 | 18 | `03_tables/Supplementary_Tables.docx` | Supplementary Material - supplementary tables | 629436 bytes |
 | 19 | `04_supplement/Supplemental_Information.pdf` | Supplementary Material - single supplement file | 1591181 bytes |
 | 20 | `05_response/Response_to_Reviewers.docx` | Response to Reviewers | 60448 bytes |
-| 21 | `06_compliance/Key_Resources_Table.docx` | Key Resources Table | 38958 bytes |
+| 21 | `06_compliance/Key_Resources_Table.docx` | Key Resources Table | 38957 bytes |
 | 22 | `06_compliance/Graphical_Abstract/Graphical_Abstract.tiff` | Graphical Abstract | 463738 bytes |
-| 23 | `07_cover/Cover_Letter.docx` | Cover Letter | 40750 bytes |
+| 23 | `07_cover/Cover_Letter.docx` | Cover Letter | 40790 bytes |
 
