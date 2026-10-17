@@ -1,120 +1,126 @@
-# FINAL_MANIFEST — frozen submission package
+# FINAL_MANIFEST - frozen submission package (V4, revision round 2)
 
-Manuscript **ISCIENCE-D-26-09416** (iScience revision) · directory `iscience投稿版本/V3` · generated 2026-10-16 22:52:28
+Manuscript **ISCIENCE-D-26-09416** (iScience revision) . directory `iscience投稿版本/V4` . generated 2026-10-17 10:53:41
 
 Every file below is byte-frozen: `sha256` and `bytes` are of the file as it stands on disk at
-generation time. Figure numbers follow the 2026-10-15 renumbering to first-appearance order
-(`00_pinned/PINNED_PACK_CORRECTIONS.md` §(v)): Figure 1 = pan-cancer atlas, Figure 2 = mechanism /
-arm landscape, Figure 3 = TMB × HLA LOH, Figure 4 = neoantigen, Figure 5 = survival,
-Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline zygosity.
+generation time. Repository snapshot referenced by the manuscript and by the Key Resources
+Table: `https://github.com/caiwj2001-beep/HLA_LOH02` at commit `08fe6775ad9548472177a97bf1a9458a743f5fc0`, which carries both the
+analysis code and the derived data; the two deposit archives are byte-reproducible from it
+(`revision_2026/code/tools/check_repo_vs_zip.py`: 100/100 members byte-identical).
 
-- **files listed: 76**
+- **files listed: 127**
 - **missing on disk: none**
-- **total bytes: 8973232 (9.0 MB)**
+- **total bytes: 9958054 (10.0 MB)**
+- **this file: 242 lines**
 
 ---
 
-## 00_pinned/ — locked number dictionary
+## 00_pinned/ - locked number dictionary and correction record
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
 | `00_pinned/PINNED_PACK.md` | 15238 | `39ce8ee318aec44ede4f4dd91086949ec72e1caac102850ee708c19750d7b31c` | The locked number dictionary: the single permitted source of every reported number |
-| `00_pinned/PINNED_PACK_CORRECTIONS.md` | 127738 | `e3f9473fd3c8ffc5313339dacb37e0321a8924bfd04837b105335b2591ffc4d3` | Corrections and audit record for the locked pack; §(v) is the authoritative figure-renumbering record, §(vi) the pre-submission arm-wording / DOI-placeholder / deposit-dictionary fix, §(vii) the closing-round fixes, §(viii) the sentence-split round, §(ix) the sentence-level revision-highlighting round, §(x) the three-tier minimal-unit round, §(xi) the Mode C substantive-change round, §(xii) the integration round (user figure micro-adjustments, the two figure defect fixes, the supplement-PDF rebuild and the freeze/commit), §(xiii) the archival-DOI withdrawal and the Fig1C +1-character-height round |
+| `00_pinned/PINNED_PACK_CORRECTIONS.md` | 139366 | `0a7c997b7893bd7d2024f2fc14bec6bfbbdfebf3f297b4ab887febc0017729c7` | Corrections and audit record; sections (v)-(xiii) as before, plus (xiv) the 2026-10-17 V4/P3 freeze: the 16 manuscript edits, the five systemic corrections, S14, the deposit/commit record, word counts, highlight coverage and the known residuals |
 
 ---
 
-## 01_manuscript/ — manuscript sources and the two manuscript DOCX
+## 01_manuscript/ - manuscript sources and the two manuscript DOCX
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
 | `01_manuscript/01_TitlePage.md` | 974 | `93b912f479996a99281bbbd7b20468cc4c63ff73017b263930f6d6b4e837074a` | Title page (title, authors, affiliations, corresponding author) |
-| `01_manuscript/02_Summary.md` | 1081 | `cbcec1cd85df71d4043aaa205d0be7dffe13a1d814b3581dfbb833a9b62acefa` | Summary / abstract |
+| `01_manuscript/02_Summary.md` | 1122 | `c1ce6c461009fca3a39b0df08612769ce76951156f5605e5591764686457e9e7` | Summary / abstract |
 | `01_manuscript/03_Highlights.md` | 339 | `df220e033cbaeb61ce57621c6c334ceeaf8e532a19c2dc902a4c2cf4dad6116a` | Highlights (4 bullets, <=85 characters each) |
 | `01_manuscript/04_eTOC.md` | 460 | `d7014957caf6768dafbe8239918f6a25f7348d703614ab9d6d32ecc51f4703c5` | eTOC blurb (one-sentence teaser) |
 | `01_manuscript/05_Introduction.md` | 4729 | `23ba9e85ac73ccede2f2bb830b91941f1a6fcb6422806185cab2ba15b3b9dbfe` | Introduction |
-| `01_manuscript/06_Results.md` | 15139 | `06d4dc26c4b6afd9ecb5e55be72bc7f50cdcdd45ef34ef24e960ce3b051919d0` | Results (figure numbers renumbered to first-appearance order) |
-| `01_manuscript/07_Discussion.md` | 9822 | `4ea1cdbfd6c598ab7d7e9978528509bbd0325fc18d2d5055abe1b8af072f5ec1` | Discussion |
-| `01_manuscript/08_StarMethods.md` | 16498 | `f085db8186a96b52a2b264bb2b80906cd43e0019a63a1b06302d929867f23d95` | STAR Methods (incl. Data and code availability) |
-| `01_manuscript/09_BackMatter.md` | 2607 | `accc72ffc861e2342eeec1ba0b39e0ea9a2e910c918a8de5b80dbeb7a92f2431` | Back matter (author contributions, declarations, acknowledgements) |
-| `01_manuscript/10_FigureLegends.md` | 8560 | `80d1c98ef5aa3bdee5a4b2330478eaceba0955d0f71c287062b88c4a3940b713` | Figure legends, Figures 1-5 and S1-S2 (renumbered) |
+| `01_manuscript/06_Results.md` | 15749 | `9045154ef5ab3924af9d87874a96fe14a4071743a15762b10a121db2ff476c9f` | Results (figure numbers in first-appearance order) |
+| `01_manuscript/07_Discussion.md` | 10821 | `0c7331ef5a3c3678ac29b5513295a89c9db497423ed3124d5d7e64bd65e7d782` | Discussion |
+| `01_manuscript/08_StarMethods.md` | 17020 | `760bc77cde8839205c8ef7a2599b8e08e5a44264216cecdc7f65ad58d9c2ebc5` | STAR Methods incl. Data and code availability (carries the repository commit) |
+| `01_manuscript/09_BackMatter.md` | 2691 | `2a2ca99b342427d9ba9940d907cb2782faaa57b84c2ff79ea6ff1639bbbefbbe` | Back matter incl. the Data and code availability declaration (carries the repository commit) |
+| `01_manuscript/10_FigureLegends.md` | 8818 | `a6d1200f4f8f397a88007623ab4fae3df6491fa4ba3553ab415681b004507d92` | Figure legends, Figures 1-5 and S1-S2 |
 | `01_manuscript/11_References.md` | 10482 | `e4da6ae142ee07dfbe0151ae95ac335ce768b4801dff93db8e51bdfb703d8b46` | Reference list |
-| `01_manuscript/11b_FigS2_addition_note.md` | 7382 | `d9ad070318824d6cfcae7f3456fdc45ad054c9784317194200183a32f191859c` | Working note: how Supplementary Figure S2 (now S1, APOBEC) was brought into the reference list; carries a header pointing at CORRECTIONS §(v) |
-| `01_manuscript/REF_VERIFICATION.md` | 13042 | `fd96b89e08d6c1147c85a568363cec4ff5662fdeaf2760d0b4ef09a269963c9d` | Reference verification report (every reference checked against PubMed/Crossref) |
-| `01_manuscript/SENTENCE_STATS.md` | 15070 | `7aa8ad1a53bcaa6de79616df321fc399ce9fce9128317784de0300eeaa42605e` | Sentence-length / readability statistics of the revised manuscript; carries a header pointing at CORRECTIONS §(v) |
-| `01_manuscript/HLA_LOH02_revision_HIGHLIGHT_SUMMARY.md` | 17596 | `4d0ca8ccf5e4eba3afdff09292efc1f514b652e3a7d0db57958d132dd2fa2a88` | Revision highlight summary (three-tier minimal-unit rule: Tier 1 whole blocks only for genuinely new text, Tier 2 never highlighted, Tier 3 only the changed word strings of rewritten text; the superseded paragraph-level and sentence-level rules are marked obsolete at the head); header points at CORRECTIONS §(x) |
-| `01_manuscript/Change_Summary.md` | 118705 | `cef3cdaf071251de3049868a04f45e3dcf18ddaaceabfe76a640901ea2929f83` | Editor-facing section-by-section change list (copy of 05_response/Change_Summary.md, kept next to the two manuscript DOCX) |
-| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 67561 | `76feeac8696aad71f51bf50fe58c82d00217f36f0c80fd37555fc65f0533daa0` | Revised manuscript with line numbering and every change highlighted in yellow (three-tier minimal-unit rule; CORRECTIONS §(x)) |
-| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 62938 | `8fd3cb22cc6ee2c7d1461a9a6c40b19f614594964b72013e452844278c9a97a7` | Revised manuscript, clean copy (no markup) — the file the editor typesets from |
-| `01_manuscript/_alternative/HLA_LOH02_revision_MARKED_full.docx` | 68525 | `16a7fdffce5db367a0fad672767b5abf9ca2523302606d0e1b3377eb76f9bb33` | Alternative (superseded) revision-highlighting build: full-mode markup at 61.2% coverage; kept as the rollback pair for the delivered Mode C build (CORRECTIONS §(xi)/(xii)) |
-| `01_manuscript/_alternative/HLA_LOH02_revision_CLEAN_full.docx` | 62938 | `dad1a76c7973666bddecfc91d37d3be63fe625ba34780cd2d0ccfc7cf976c4d6` | Clean twin of the alternative full-mode build (rollback pair) |
+| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 68685 | `fb6cf97faf7fe0aabba57ba18073906d883e5a9cb11bf1e30fc409804debcace` | Revised manuscript, changes highlighted in yellow (Mode C substantive-change rule; 29.30% of characters, 101/174 paragraphs) |
+| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 63888 | `f18234898cface44e92c2f991a6156c1b41825c13f6604da579eae57dfe1f348` | Revised manuscript, clean copy (no markup) - the file the editor typesets from |
+| `01_manuscript/Change_Summary.md` | 118705 | `cef3cdaf071251de3049868a04f45e3dcf18ddaaceabfe76a640901ea2929f83` | Editor-facing section-by-section change list (copy of 05_response/Change_Summary.md) |
+| `01_manuscript/HLA_LOH02_revision_HIGHLIGHT_SUMMARY.md` | 17596 | `4d0ca8ccf5e4eba3afdff09292efc1f514b652e3a7d0db57958d132dd2fa2a88` | Revision highlight summary (Mode C rule; superseded rules marked obsolete) |
+| `01_manuscript/REF_VERIFICATION.md` | 13042 | `fd96b89e08d6c1147c85a568363cec4ff5662fdeaf2760d0b4ef09a269963c9d` | Reference verification report |
+| `01_manuscript/SENTENCE_STATS.md` | 15070 | `7aa8ad1a53bcaa6de79616df321fc399ce9fce9128317784de0300eeaa42605e` | Sentence-length / readability statistics of the revised manuscript |
+| `01_manuscript/11b_FigS2_addition_note.md` | 7382 | `d9ad070318824d6cfcae7f3456fdc45ad054c9784317194200183a32f191859c` | Working note on how Supplementary Figure S2 entered the reference list |
+| `01_manuscript/_alternative/HLA_LOH02_revision_MARKED_full.docx` | 68525 | `16a7fdffce5db367a0fad672767b5abf9ca2523302606d0e1b3377eb76f9bb33` | Alternative (superseded) full-mode build at 62.5% coverage, kept as the rollback pair |
+| `01_manuscript/_alternative/HLA_LOH02_revision_CLEAN_full.docx` | 62938 | `dad1a76c7973666bddecfc91d37d3be63fe625ba34780cd2d0ccfc7cf976c4d6` | Clean twin of the alternative full-mode build |
 
 ---
 
-## 02_figures/ — the 14 figure files and the figure QA report
+## 02_figures/ - the 14 figure files and the figure QA report
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `02_figures/Figure1_pancancer_and_reliability.tiff` | 605466 | `b5b60038df6dd615d7fb61b6f630398cb0c6500b939c1fe2a7e945ba85f5d470` | Figure 1 — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/Figure1_pancancer_and_reliability.pdf` | 61871 | `5ceb56e4222386803d60768fa01963c45f690100e5879ce33eb524a36c4073af` | Figure 1 — vector PDF twin of the same render |
-| `02_figures/Figure2_mechanism_armlandscape.tiff` | 327454 | `8af788faacc687d26531c4144e3a70d86b9f9740a76996afc2550725fe68d9ec` | Figure 2 — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/Figure2_mechanism_armlandscape.pdf` | 58468 | `70b2b1605b513a0d9339361e0a1d8f9bd9d11ba4e357c6521a8afc89b5a5a0b7` | Figure 2 — vector PDF twin of the same render |
-| `02_figures/Figure3_TMB_aneuploidy.tiff` | 430792 | `60935ae13037d5e00db871e8be482c30521627dfb9af8d0ee5d90c757c4e1e48` | Figure 3 — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/Figure3_TMB_aneuploidy.pdf` | 922047 | `dc508c6d8557cd689e630b5855c6e4f06a841cff4640abcb42f5efba55c6f8b1` | Figure 3 — vector PDF twin of the same render |
-| `02_figures/Figure4_neoantigen.tiff` | 291004 | `17606ab091f0bdae160f6c4223c99a84909bb3e159b8ea3676356ff699d71b79` | Figure 4 — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/Figure4_neoantigen.pdf` | 55416 | `147d58ed83c4f3d732fb7737fda466108b2c9759ff9a843e91376811df0bd5b3` | Figure 4 — vector PDF twin of the same render |
-| `02_figures/Figure5_survival.tiff` | 202070 | `7ece4183dee2de95bac1e494b21fc6fda4aca078e5ae232a1bfc39134ebe6500` | Figure 5 — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/Figure5_survival.pdf` | 46576 | `c7257f42c291b6f0ec9d878a2fcb65a2de5970b8ae03a6b368724a45ac380a40` | Figure 5 — vector PDF twin of the same render |
-| `02_figures/SupplementaryFigureS1_apobec.tiff` | 391582 | `a0b43ab03ddbed09a9ffca4e4d13292997ea74a4a04057bbde121efde5c245b2` | Supplementary Figure c — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/SupplementaryFigureS1_apobec.pdf` | 391411 | `3814e8501c644bc075327e5b85ad3dc3c7bff0c124d6023b3e7bc9d2134d586f` | Supplementary Figure c — vector PDF twin of the same render |
-| `02_figures/SupplementaryFigureS2_germline.tiff` | 178352 | `92f2f27b1238277f90fe3e5e75c84fa4758a8f64187309ede25410002088bf24` | Supplementary Figure e — 300 dpi TIFF, white background, the print-grade figure file |
-| `02_figures/SupplementaryFigureS2_germline.pdf` | 44301 | `297b012d8c2c85ad941fd909392abcd707e576b371a3ad2e8e4a69d908c66130` | Supplementary Figure e — vector PDF twin of the same render |
-| `02_figures/QA_figure_check.md` | 20282 | `0d1e32929b311e00c366681fe0fe1b7aaeecd034cf2d3c0291ddcadfa5e7ca16` | Programmatic figure QA (per-panel text overlap / out-of-frame / axis-label squeeze / raster edge and white-background gates); all gates 0 |
+| `02_figures/Figure1_pancancer_and_reliability.tiff` | 605466 | `b5b60038df6dd615d7fb61b6f630398cb0c6500b939c1fe2a7e945ba85f5d470` | Figure 1 - 300 dpi TIFF, white background |
+| `02_figures/Figure1_pancancer_and_reliability.pdf` | 61871 | `5ceb56e4222386803d60768fa01963c45f690100e5879ce33eb524a36c4073af` | Figure 1 - vector PDF twin |
+| `02_figures/Figure2_mechanism_armlandscape.tiff` | 327454 | `8af788faacc687d26531c4144e3a70d86b9f9740a76996afc2550725fe68d9ec` | Figure 2 - 300 dpi TIFF, white background |
+| `02_figures/Figure2_mechanism_armlandscape.pdf` | 58468 | `70b2b1605b513a0d9339361e0a1d8f9bd9d11ba4e357c6521a8afc89b5a5a0b7` | Figure 2 - vector PDF twin |
+| `02_figures/Figure3_TMB_aneuploidy.tiff` | 430792 | `60935ae13037d5e00db871e8be482c30521627dfb9af8d0ee5d90c757c4e1e48` | Figure 3 - 300 dpi TIFF, white background |
+| `02_figures/Figure3_TMB_aneuploidy.pdf` | 922047 | `dc508c6d8557cd689e630b5855c6e4f06a841cff4640abcb42f5efba55c6f8b1` | Figure 3 - vector PDF twin |
+| `02_figures/Figure4_neoantigen.tiff` | 291004 | `17606ab091f0bdae160f6c4223c99a84909bb3e159b8ea3676356ff699d71b79` | Figure 4 - 300 dpi TIFF, white background |
+| `02_figures/Figure4_neoantigen.pdf` | 55416 | `147d58ed83c4f3d732fb7737fda466108b2c9759ff9a843e91376811df0bd5b3` | Figure 4 - vector PDF twin |
+| `02_figures/Figure5_survival.tiff` | 202070 | `7ece4183dee2de95bac1e494b21fc6fda4aca078e5ae232a1bfc39134ebe6500` | Figure 5 - 300 dpi TIFF, white background |
+| `02_figures/Figure5_survival.pdf` | 46576 | `c7257f42c291b6f0ec9d878a2fcb65a2de5970b8ae03a6b368724a45ac380a40` | Figure 5 - vector PDF twin |
+| `02_figures/SupplementaryFigureS1_apobec.tiff` | 391582 | `a0b43ab03ddbed09a9ffca4e4d13292997ea74a4a04057bbde121efde5c245b2` | Supplementary Figure c - 300 dpi TIFF, white background |
+| `02_figures/SupplementaryFigureS1_apobec.pdf` | 391411 | `3814e8501c644bc075327e5b85ad3dc3c7bff0c124d6023b3e7bc9d2134d586f` | Supplementary Figure c - vector PDF twin |
+| `02_figures/SupplementaryFigureS2_germline.tiff` | 178352 | `92f2f27b1238277f90fe3e5e75c84fa4758a8f64187309ede25410002088bf24` | Supplementary Figure e - 300 dpi TIFF, white background |
+| `02_figures/SupplementaryFigureS2_germline.pdf` | 44301 | `297b012d8c2c85ad941fd909392abcd707e576b371a3ad2e8e4a69d908c66130` | Supplementary Figure e - vector PDF twin |
+| `02_figures/QA_figure_check.md` | 20282 | `0d1e32929b311e00c366681fe0fe1b7aaeecd034cf2d3c0291ddcadfa5e7ca16` | Programmatic figure QA (overlap / out-of-frame / axis-label / raster gates); all gates 0 |
 
 ---
 
-## 03_tables/ — main tables and the supplementary-tables DOCX
+## 03_tables/ - main tables, the supplementary-tables DOCX and the source TSVs cited by S11/S14
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `03_tables/Table1_baseline.docx` | 38735 | `986e292175d875d4e1e7d2f971e39df9f3d5d823e5924030a9f366028e6216b1` | Table 1 — cohort baseline characteristics |
-| `03_tables/Table2_drivers.docx` | 38330 | `04c24650de5e55e12d1cc3792c3f75933d20298263ab297a316f8f8615a1d0bb` | Table 2 — multivariable drivers of HLA LOH (odds ratios) |
-| `03_tables/Table3_survival.docx` | 38478 | `67f325191495e2dd2f82a63786c5e6dcea0c4fa94da98453ae9417612460590e` | Table 3 — HLA LOH and overall survival (hazard ratios) |
-| `03_tables/Supplementary_Tables.docx` | 627324 | `3c0c6400a788879b2d21d98ffa46ace19f1c2636cc0441bd0a3d88b46efcb4d2` | Supplementary Tables S1–S13 as one DOCX, with the contents table page-mapped to the supplement PDF |
-| `03_tables/SV_class_analysis.md` | 4551 | `14b805eef8b444adb125c11f5d8f43648df342e904917ed21b386a4a1878b71c` | Structural-variant class analysis against HLA LOH (source narrative for Supplementary Table S13) |
+| `03_tables/Table1_baseline.docx` | 38750 | `ed04e88c16dcacca52096aec18028aa98bf285b6a269b0216eea215cd8314fb9` | Table 1 - cohort baseline characteristics (incl. the global aneuploidy score rows) |
+| `03_tables/Table2_drivers.docx` | 38796 | `45ebd83322d2b19da9d5f95faf066506fa5e45f232cf9b53892820f97836f890` | Table 2 - multivariable drivers of HLA LOH; footnote attenuation endpoints (WGD 2.30->0.35, log10 TMB 1.45->1.23) are read from table2_drivers.tsv at build time |
+| `03_tables/Table3_survival.docx` | 38495 | `b3eff2458bc055254519613c29799748fac44a75f7450c2a78d347b4c2b88b59` | Table 3 - HLA LOH and overall survival across model specifications |
+| `03_tables/Supplementary_Tables.docx` | 629436 | `13ec2ed3c202c91d92f6c8c30fff728d44f133b10ae203689486081808265bed` | Supplementary Tables S1-S14 as one DOCX, contents table page-mapped to the supplement PDF |
+| `03_tables/SV_class_analysis.md` | 4551 | `14b805eef8b444adb125c11f5d8f43648df342e904917ed21b386a4a1878b71c` | Structural-variant class analysis against HLA LOH (source narrative for S13) |
+| `03_tables/build/s14_vif.tsv` | 2161 | `f6dd1f7d7ebd92193e9b437de6387e5874daba8a860f62eec71a0e1988799991` | S14 source data: variance inflation factors, GVIF, adjusted GVIF and tolerances per model and covariate |
+| `03_tables/build/s14_model_key.tsv` | 553 | `244360494a7b7aa658c71d10704aa0d154bd61144d04f3d42e099f9fe747c0a8` | S14 model key: the specification each VIF model corresponds to |
+| `03_tables/build/s_neo1_models.tsv` | 2144 | `a0ff1ca821cc707545d3755942c6deba0ffebf0858c558da9ec93b2bab73bf4e` | S11 source data: the clonal-restriction and purity>=50% rows carry the primary-specification values and the provenance file that produced them |
 
 ---
 
-## 04_supplement/ — the single supplementary PDF
+## 04_supplement/ - the single supplementary PDF
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `04_supplement/Supplemental_Information.pdf` | 1510708 | `30047d012b6366592906a6489669f690de2ca5065d18fe34b47fc2e9602ce7b3` | The single supplementary PDF: Figures S1–S2 (S1 = APOBEC, S2 = germline) followed by Tables S1–S13; 20 pages, 15/15 contents anchors resolved |
+| `04_supplement/Supplemental_Information.pdf` | 1591181 | `1058220f28c4063eaafede8861370469f79d6dc4427b17bf9b34d3da63a3c9eb` | The single supplementary PDF: Figures S1-S2 then Tables S1-S14; 21 pages, 16/16 contents anchors resolved, S14 on the last page |
 
 ---
 
-## 05_response/ — response to reviewers and its anchor material
+## 05_response/ - response to reviewers, anchors and verifiers
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `05_response/Response_to_Reviewers.docx` | 63708 | `03897421ff656e3941774100fbcffb32ef8212ddf99d5ed0e8893abcb844763b` | Point-by-point response to all reviewers, anchored to the revised manuscript |
-| `05_response/Response_to_Reviewers.md` | 76334 | `650f83cefb1a397baf47e75a52fd3fd56e4f2434c515faf2ad833f5ddcef8254` | Markdown source of the point-by-point response |
-| `05_response/ANCHOR_MAP.tsv` | 3180 | `9ea2fdeb874d37cfe0f0e886a50d316ddba30ed5cd57a14126a942f78f444ce4` | Machine-readable map of every response point to its manuscript anchor |
+| `05_response/Response_to_Reviewers.docx` | 60448 | `f7cad0a866b5f8ad85eda896320a23d59d0600a789b2f0609bede03bfebbfb4a` | Point-by-point response to all reviewers (9,477 words incl. the restored compliance table) |
+| `05_response/Response_to_Reviewers.md` | 65503 | `310271164bd08a428d39348def959bd9389d70ccd01102164d89f949f4ef85dc` | Markdown source of the point-by-point response |
+| `05_response/ANCHOR_MAP.tsv` | 3180 | `9ea2fdeb874d37cfe0f0e886a50d316ddba30ed5cd57a14126a942f78f444ce4` | Machine-readable map of every response point to its manuscript anchor (28 rows) |
 | `05_response/ANCHOR_INVENTORY.tsv` | 86045 | `e8a136214284c760a1da14b9ebb2cef2e3b3fd12a6fd8becb0427743eae364f6` | Inventory of the manuscript sentences the response points cite |
-| `05_response/COVERAGE_CHECK.md` | 37459 | `0b9adb8163f4ce0760f41fa79c8208972f1ddf5ce1b87258d777f3b208c3ccda` | Coverage audit that every reviewer point is answered; header points at CORRECTIONS §(v) |
-| `05_response/Change_Summary.md` | 118705 | `cef3cdaf071251de3049868a04f45e3dcf18ddaaceabfe76a640901ea2929f83` | Editor-facing section-by-section change list for the revised manuscript (newly added this round): per section — new analyses, new figures/tables, numeric changes, counter-claims / re-toned statements, new references; header points at CORRECTIONS §(x) |
+| `05_response/COVERAGE_CHECK.md` | 37459 | `0b9adb8163f4ce0760f41fa79c8208972f1ddf5ce1b87258d777f3b208c3ccda` | Coverage audit that every reviewer point is answered |
+| `05_response/Change_Summary.md` | 118705 | `cef3cdaf071251de3049868a04f45e3dcf18ddaaceabfe76a640901ea2929f83` | Editor-facing section-by-section change list |
+| `05_response/verify_anchors.py` | 4871 | `fe8fd7efd5382f3ae05ca711ea8e5786f93984a9fef9490eb4477c6c8b134227` | Anchor verifier: 28 anchors must match in the markdown and in both manuscript DOCX |
+| `05_response/verify_response.py` | 8731 | `db857bef15ea9d1cd2c228326834dd1287f2e1d64097ea81e307fc35d9e19e7e` | Response-letter verifier (no fabricated line references, anchor rows consistent) |
 
 ---
 
-## 06_compliance/ — compliance, deposits and graphical abstract
+## 06_compliance/ - compliance, deposits and graphical abstract
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `06_compliance/Data_and_Code_Availability.md` | 3557 | `7218742df022f1dfbc602cfd60abcabe27950d81b79cafaae7c888ebe6bfb13b` | Data and Code Availability statement (public GitHub repository is the single and complete availability route; no archival identifier — CORRECTIONS §(xiii)) |
-| `06_compliance/Key_Resources_Table.docx` | 38881 | `a155cb75621d79c5bfa6c1a7ea540317201a575c8fc67049e467d430d25c648e` | Key Resources Table (Cell Press requirement); contains no figure or table number tokens |
-| `06_compliance/deposit/code.zip` | 106311 | `b93f96fd31e291bfa2d9163e9098de82ba0010efd3348ef85c1fffd48971e4a2` | Code deposit: the R analysis script, the DOCX/PDF rendering scripts, the R environment lock, requirements.txt, README_CODE.md and the number dictionary (PINNED_PACK.md + PINNED_PACK_CORRECTIONS.md) |
-| `06_compliance/deposit/derived_data.zip` | 651291 | `88341f93749dfbb60041d745223781db7ee0fb3b7b8ea6abe5e7a9e427865679` | Derived-data deposit: figure source data, supplementary source data, the table build inputs and the number dictionary |
-| `06_compliance/deposit/README_upload_steps.md` | 3054 | `aadfce89e849e92b7ba6e2ce7b59f4ef7c7f9c64d56395dff1ee39be7d2985cb` | Author-facing upload runbook: push to the public GitHub repository only (GitHub-only, no archival identifier) |
-| `06_compliance/Graphical_Abstract/Graphical_Abstract.tiff` | 463738 | `4ea81270e6ac7ffe737c7d2ceed01c1604991f97357f890cd3f5dca931f41b16` | Graphical abstract, 300 dpi raster (the file uploaded to EM) |
+| `06_compliance/Data_and_Code_Availability.md` | 3782 | `ffa06912cf7813c1813763f7aaf39dddec877352c8a5a8ec0763cc0d80fdec17` | Data and Code Availability statement (public GitHub repository at commit 08fe6775ad9548472177a97bf1a9458a743f5fc0 is the single and complete route) |
+| `06_compliance/Key_Resources_Table.docx` | 38961 | `adefae3e2f4fb308b716e0a21c8fc06b0758d8d56f5c696814aa166c095a5e66` | Key Resources Table; the Derived data / Code rows carry the repository commit 08fe6775ad9548472177a97bf1a9458a743f5fc0 |
+| `06_compliance/deposit/code.zip` | 114976 | `c8fab2ad078d4d49622eb6af90d2a08d848e0cbe35731da86ece87010cd2acde` | Code deposit (9 members): the R analysis script, the DOCX/PDF rendering scripts with the P3 guards, env lock, requirements, README_CODE.md and the number dictionary |
+| `06_compliance/deposit/derived_data.zip` | 655200 | `6b7d1d07180fd7bf61c501e208a2acb7771eedf0a98051b7f10f06b739c1a147` | Derived-data deposit (91 members): figure source data, supplementary source data incl. the rebuilt Table1_baseline.tsv, the table build inputs and the number dictionary |
+| `06_compliance/deposit/README_upload_steps.md` | 3054 | `aadfce89e849e92b7ba6e2ce7b59f4ef7c7f9c64d56395dff1ee39be7d2985cb` | Author-facing upload runbook (GitHub only; no archival identifier) |
+| `06_compliance/Graphical_Abstract/Graphical_Abstract.tiff` | 463738 | `4ea81270e6ac7ffe737c7d2ceed01c1604991f97357f890cd3f5dca931f41b16` | Graphical abstract, 300 dpi raster (uploaded to EM) |
 | `06_compliance/Graphical_Abstract/Graphical_Abstract.pdf` | 74540 | `39429eded22087434795a8212e8c7192f2a37fca11002c85fd2c9ee8983e7742` | Graphical abstract, vector PDF |
 | `06_compliance/Graphical_Abstract/Graphical_Abstract.pptx` | 35277 | `09c5e29547229511a432e49355185ee0f58a0910703dc24e31d3b1a841faee4a` | Graphical abstract, editable PPTX |
 | `06_compliance/Graphical_Abstract/Graphical_Abstract.svg` | 65780 | `cc464020fdb92c77aefe6f0f952593277d1cf671c8ea9ff5c0ef5b93e24db1e0` | Graphical abstract, editable SVG |
@@ -123,94 +129,114 @@ Supplementary Figure S1 = high-APOBEC tail, Supplementary Figure S2 = germline z
 
 ---
 
-## 07_cover/ — cover letter
+## 07_cover/ - cover letter
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `07_cover/Cover_Letter.docx` | 40750 | `b36812d0a262f31933d361428bb6e41df8495b51d3ccae2a74e670330954549a` | Cover letter to the editor (lists the figure-number change) |
-| `07_cover/Cover_Letter.md` | 7779 | `7d93a72a84494d931fd0a8749bcb3084d26e4ff5d58b21202f1a64101c8b0490` | Markdown source of the cover letter |
+| `07_cover/Cover_Letter.docx` | 40750 | `8a1409d937125f0f66d5c94090c4ea45e27eed42c7406ef9cd76e4cb2a4790cd` | Cover letter to the editor |
+| `07_cover/Cover_Letter.md` | 7779 | `96dbd3fb8ffecbd26a771822fcca959c1c873c726afd5e0b1b7bbdbc32c91b90` | Markdown source of the cover letter |
 
 ---
 
-## 02_figures/QC_user_adjust_round1/ — figure micro-adjustment, defect-fix and Fig1C +1-character-height evidence (CORRECTIONS §(xii)–§(xiii))
+## QC/ and QC/P2/ - reports and machine-readable evidence for this round
 
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
-| `02_figures/QC_user_adjust_round1/measured_constants.tsv` | 1885 | `cb1cc1a978e03aa51ecf823e15686d3ac9656ee2a912fb35be996ab1f1252589` | The measured constants the figure scripts read (char widths/heights, pt-per-unit, and Fig1C panel width); the scripts stop() without it |
-| `02_figures/QC_user_adjust_round1/REPORT_round1_Fig1_Fig2.md` | 20465 | `e921174f9557cbdc4fae2f8565dc16faf09f05169447e84a2da1b3915166db72` | Round-1 report for Figures 1-2: measurement, unit conversion, application to the real artists, re-measurement, ink QA |
-| `02_figures/QC_user_adjust_round1/REPORT_round1_Fig345.md` | 12597 | `865f9e4a47629b6b51493d67de92431b1d751e6ab48f8f103ea0cb563ec6a812` | Round-1 report for Figures 3-5 (items 5-8 of the user's ten displacement requests) |
-| `02_figures/QC_user_adjust_round1/USER_ADJUST_ROUND1_REPORT_FigS1_FigS2.md` | 23609 | `d0099a8b718d8b516b8cda23bb52603e2b6a30a24280f0dca7db89b76a5c3863` | Round-1 report for Supplementary Figures S1/S2 (items 9-10) |
-| `02_figures/QC_user_adjust_round1/TABLES_index_to_value.md` | 8243 | `3f91b75a1e3cf24e2c2cbd24427503c1afb17f5b39209bbc6681b8f0ee918f16` | Index-to-value table for every displaced label of Figures 3-5, with measured displacement and tolerance verdict |
-| `02_figures/QC_user_adjust_round1/realized_displacement.tsv` | 1813 | `de96700c906c368a3e2314e0eac301083a777aa3a5dd86e8ae08b41d000b10bd` | Machine-readable per-item realised displacement for Figures 1-2 (requested chars, measured pt, residual, within_tol) |
-| `02_figures/QC_user_adjust_round1/QA_ink_round1.md` | 2161 | `4161ed164aec8cbe8bb05f1c19aa64c56bdbe2f5e01aac972739974f09d1bcf8` | Ink connected-component QA after the displacements (fusion/overlap 0, out-of-box 0, non-white edge 0) |
-| `02_figures/QC_user_adjust_round1/shift_offsets_pt.tsv` | 4277 | `7579e07a609aec32d6fe1213448f8c9b2096aea065439c5ff835084d4916260f` | The pt offsets applied to Figures 3-5 |
-| `02_figures/QC_user_adjust_round1/REPORT_round2_defectfix.md` | 9611 | `f8ea2ddba9d27f1eebaa7281ab3f6f021075a85f55acab9643478f2de8b8b082` | Round-2 report: the two figure defect fixes, the supplement-PDF rebuild and the re-render reproducibility proof |
-| `02_figures/QC_user_adjust_round1/m6_verify.py` | 18776 | `19af70f03b9712368bf3516c85f437d07bdaf34b8b7937ba035ca85fe223e55d` | Verifier that re-measures every displacement on the delivered PDF (reference box for item 4 is the snug 2-line base box) |
-| `02_figures/QC_user_adjust_round1/m7_qa_ink2.py` | 12682 | `02b7d2cbe250430c146bad950fb8b7f6f0a5acaeba40beea6b6c0178679f7b9b` | Ink connected-component QA used as the acceptance gate (overlap / out-of-box / four-edge / fusion) |
-| `02_figures/QC_user_adjust_round1/m8_qa_tiff.py` | 1582 | `014b577058bb8b96dfadd0941c901f817a8777866dedd2d76c9dc48525de53b5` | TIFF raster gate (300 dpi, white background, non-white border, corner whiteness, modal colour) |
-| `02_figures/QC_user_adjust_round1/REPORT_round3_fig1c_up1char.md` | 11669 | `a5c9e5d12476f7b2a260d493b87e52aab4077d485682ef1d09f9197564da04ec` | Round-3 report: Fig1C note box moved one further character height up (cumulative 4 line heights), the D6 upper-CI-cap overlap going to 0 pt, and the ink QA |
-| `02_figures/QC_user_adjust_round1/m10_verify_round2.py` | 17022 | `26f5385b5ded85c6bc5933df7d65b71c8b1e2774fb19243a02eb4481c8177d98` | Round-3 verifier: three-PDF re-measurement (this round / round-1 delivery / original baseline), cumulative displacement, D6 overlap, collision and raster new-occlusion checks |
+| `QC/FINAL_QC_REPORT.md` | 34606 | `8ed6c775f3349046e36bf5f4f483a3f4548daefca23b49fbaaf58f91a9e41d7e` | Final QC report (gate battery, numbers, deviations) |
+| `QC/quality_gates_log.md` | 22529 | `55585f302b8cb9bc82b0092718cac5225d276149cf146c279b2bb3ffccf3e4a0` | Quality-gate log |
+| `QC/SUBMIT_READINESS_REPORT.md` | 46723 | `4d26c1bb596bbc0dc90b93ce42687ca548184b078189c94ddf60c1e2baaf937a` | Submission-readiness report |
+| `QC/HIGHLIGHT_VERIFY_MODE_C.md` | 13131 | `46a32455389cbdac6d61a04de332dc823961e25fd52af20443f75fd017055be3` | Mode C highlight verification (ALL GATES PASS) |
+| `QC/HIGHLIGHT_VERIFY.md` | 7072 | `e1f32a6995ff58647aeda790a78e48c453599b0b5bd31da90969ce4cb83187f1` | Earlier three-tier highlight verification |
+| `QC/docx_build_report.md` | 21897 | `3161f50a599e42d70d68ec60badcbac3a0422787bf61d1db98df4c11629635e7` | DOCX build report |
+| `QC/DOI_FILLIN_CHECKLIST.md` | 7406 | `e9235dfdae97476597c498637a642016496245076de57a34980420f9b7f56679` | DOI fill-in checklist |
+| `QC/RENUMBER_TO_FIGURE_ORDER_REPORT.md` | 39718 | `06326eb16e335e6cb16b51a333fb9ca22df1ac11b2ed77f823466c20840c2833` | Figure renumbering report |
+| `QC/P2/VIF_REPORT.md` | 25338 | `7f6589a261c5d17cccf01ff889d7aff5bebb10d9be88af8eccd51646c3aa9441` | VIF / near-collinearity analysis report (S14 basis) |
+| `QC/P2/S14_AND_SUPP_REPORT.md` | 29452 | `5eb663e3ceee0fe224a40f633bf8790057d6321d7dd386c7b94a3751849ad868` | S14 addition and supplement rebuild report |
+| `QC/P2/TABLE_FIX_REPORT.md` | 22176 | `ffbdf35083c62a299ced671f24577bd00171fb505d195344813a6bf135884aaa` | Table defect-fix report (Table 1 rebuild, Table 2 footnote, S11 rows) |
+| `QC/P2/PURITY_PANEL_REPORT.md` | 24784 | `c55a208efb629d2ba2c73b59d00f455991fc36fce40deab5e1fd5f8606b80eca` | Purity / coverage / panel-version analysis report |
+| `QC/P2/MANUSCRIPT_EDIT_REPORT.md` | 43577 | `831e81df5a81e3993c98b07d80242b0ae64a5dad4009de0354ae69282849360a` | The 16 manuscript edits of this round, with location and rationale |
+| `QC/P2/RESPONSE_REVISION_REPORT.md` | 21618 | `6ff96593e7f342f1c35fa38df15e75d772be65aa1e667481152d5afd05aea485` | Response-letter revision report |
+| `QC/P2/RESPONSE_TABLE_RESTORE_REPORT.md` | 27173 | `92e6d1642a19265e7e0f55109c0b3153fd50a56ab043e84534fafbc43257a568` | Compliance-table restoration report (word count back to 9,477) |
+| `QC/P2/supp_pdf_verify.json` | 2039 | `e4fddfccd25e863ce5f42b0d23f80fdbdba3208852028dd4bb083a9eedc69d1a` | Machine-readable supplement verification (anchor pages, TOC vs actual, zero-P scan) |
+| `QC/P2/s11_purity_finalize.tsv` | 578 | `a437dc7aeff23330b03a84b5fb479f53003e8b5f458659de6a636e4e378e5091` | S11 purity>=50% re-derivation: legacy vs primary specification, with the IRLS check against A_logistic.tsv |
+| `QC/P2/clonal_or_definitive.tsv` | 1535 | `6d5765bc1a92be3c8028286c02f5fc3813f8bba60ff1cf0569757b962a27ebd5` | Clonal-restriction neoantigen OR with the full adjustment set |
+| `QC/P2/purity_and_panel.tsv` | 6741 | `4e6ae20e314bb5b1522499bfa64e9b5dc967ed81ee7c591a8b12ecc0c9f1d336` | Purity-decile / coverage / panel models |
+| `QC/P2/vif_diagnostics.tsv` | 174593 | `f657b148358528f665bf1b27b6c90aebcf0d1868c07d57e333d798f206889450` | Full VIF diagnostics table (all specifications, all covariates) |
+| `QC/P2/_p3_zip_surgical.json` | 47556 | `c9c226b0150f1cb219c4e2a1a55435cd0d0b4b4f111ea60494e7672b4f3a1bb0` | Member-by-member record of the surgical deposit rebuild (old/new sha256) |
 
 ---
 
-## Submission package — what is uploaded to Editorial Manager, under which item
+## QC/P2/ - the scripts that produced this round
+
+| file | bytes | sha256 | purpose |
+|---|---:|---|---|
+| `QC/P2/_editengine.py` | 987 | `29d314acb836edbfec7b69b40d88405326d34bd18a43b56e317a9c300906812a` | P3 QC script |
+| `QC/P2/_p3_zip_surgical.py` | 9310 | `dee542bf7ba6c52f2227bc6da66a349e75a2ae6cf61bad93ce782b7e43640360` | P3 QC script |
+| `QC/P2/_scan000.py` | 1012 | `eb27e9b7855a349cb303f82b1505a3a6c2a95173d6b58b9768a7d427abbbca1f` | P3 QC script |
+| `QC/P2/_scan000ctx.py` | 530 | `7aa3b82e31089957306c5a7af1bd77bb184c55110e074ac6abd70d09f26b418b` | P3 QC script |
+| `QC/P2/abbrev_changes.py` | 4067 | `3fe2caf9f147f28556c28362914d43f7b2732f016f87cb966d9d261d0eb08589` | P3 QC script |
+| `QC/P2/apply_edits.py` | 3799 | `1f7b205e6ae0486627fa05bd717303fa2ab6ab61fae1d178405f7863c0895836` | P3 QC script |
+| `QC/P2/apply_final.py` | 3512 | `9bd883a398cfd97722d73bfae49bd883a5f0601f02e2d2d4e0c235740de5e0db` | P3 QC script |
+| `QC/P2/apply_v2.py` | 3259 | `29969ee31fb5d75318d50908631bc6ad1ebf2f43cc6e6be193fb712e01f5a88a` | P3 QC script |
+| `QC/P2/apply_v3.py` | 3591 | `6a5ad1ecc960b9756f7475509ca459c67d1d007b5bf2d31feb124fab431e3900` | P3 QC script |
+| `QC/P2/apply_writer_edits.py` | 10736 | `18f7bcc1d4661e56a1bce2010c8178de1c4e2814968b2551d6721783a5330510` | P3 QC script |
+| `QC/P2/edits_part1.py` | 22056 | `6d480fdd496a352bcbbcd9d5b65c6263f3bb419793d40badf5db94ecc1e54182` | P3 QC script |
+| `QC/P2/edits_part2.py` | 26450 | `8e703b89a601f737ae83dcd63c7437459f772f4c0b058084cf8d7f7a23b23d13` | P3 QC script |
+| `QC/P2/edits_part3a.py` | 22086 | `41f2a6fed7510603eb5b056de00f34b95f2c52c7fc9253b794b9e2aa2e4714ad` | P3 QC script |
+| `QC/P2/edits_part3b.py` | 16806 | `354d6a73e4ca09c1dd2834de482d5bd07113b6213fa8cae003d1d50a8ac017d8` | P3 QC script |
+| `QC/P2/edits_part4.py` | 26420 | `a9a141268771b55dd64cca0beaca349851c532620a82fdc93d749da61cd43022` | P3 QC script |
+| `QC/P2/edits_part5.py` | 25095 | `50aafaf809617179bcfb5dc859f954cbd278b1e8ba155f5f199257d3947832cb` | P3 QC script |
+| `QC/P2/edits_part6.py` | 8013 | `d4eed34a631796f997abd81c08f7c62f3907a02ad16c6908f291bdbb4404d94f` | P3 QC script |
+| `QC/P2/final_polish.py` | 12477 | `b0a6ec27637cc1e7e6a695e9cb46212584aa8a8779fb1964812f234f962c4933` | P3 QC script |
+| `QC/P2/final_polish2.py` | 12066 | `8953050569f07829e86a4d3faa939d72c57f85ea080abaa2794cd601107c86b1` | P3 QC script |
+| `QC/P2/fix_s11_provenance.py` | 4111 | `7b514279241827077c3ce3780a159d3c0b1122a150ac090695dc7e26f1926bf4` | P3 QC script |
+| `QC/P2/gen_p2_evidence.py` | 3520 | `81f0270c68f08a256d56ab6125d51dbfc325ac322ddb7dc4db5c5ac9f8f96100` | P3 QC script |
+| `QC/P2/gen_response_report.py` | 13612 | `4d57036477013b2bf039a44050aa50ea051d5ee10f41c71e1447738bd31f57da` | P3 QC script |
+| `QC/P2/make_edit_report.py` | 23980 | `844fd98de2f67ff960a50154ee8c8ee9f79f6da21d5452fc63314ae4363af0ad` | P3 QC script |
+| `QC/P2/make_final_manifest_p3.py` | 15720 | `c4a60c34c355c3b66daf06a28b0fc299a5ec06aa6f67b91c33ef98e4fb339a1c` | P3 QC script |
+| `QC/P2/make_s14_vif.py` | 5449 | `8fb6c50d5f65ebaf40cfc538d86207b96b80228a68c03a61ed9d419d79755e5b` | P3 QC script |
+| `QC/P2/rebuild_compliance_v4.py` | 1711 | `a193b49a7575ce023d91936abbdb353fac21ffccd2c1963723d20b2cad2cc164` | P3 QC script |
+| `QC/P2/rebuild_deposit_table1.py` | 2467 | `02369ac95b410e4dd84c87eb1a3be378d06390229f337d2facba8d8729c24bbf` | P3 QC script |
+| `QC/P2/rebuild_supplement_pdf_v4.py` | 2582 | `083ec25c30eb2d1086014f7a8e5eb7a1f1de3c006918e4a6d31305cebb04d501` | P3 QC script |
+| `QC/P2/rebuild_tables_v4.py` | 2372 | `52133d3e662a3fa2969b765ab694bc6e5a643d6895955484806793d5df69cebf` | P3 QC script |
+| `QC/P2/run_gates_v4.py` | 6988 | `abd29e28060e3d2af29243be3b26ad5dc6d1dbd3462e0b618def1562e2ef8c62` | P3 QC script |
+| `QC/P2/run_revision_docx_v4.py` | 3602 | `c797a26eca60dabc40fd397695177bc46d0573b289b936ba7a9b54d141c4f2ae` | P3 QC script |
+| `QC/P2/s11_purity_finalize.py` | 6874 | `026d5b41ea13cda73e79de0b6a0ac7da14b1243006c37a8114b30bc33c08f330` | P3 QC script |
+| `QC/P2/table_text_crosscheck.py` | 22983 | `b9764cdc794fafc6454c4cc1a69e0f066ef758c922fef9a8b602644da51c9e2c` | P3 QC script |
+| `QC/P2/verify_docx_residue.py` | 1903 | `156573ce89109bb2573f607a7333908e4ccff443aacbcbafe8ded209c86ded39` | P3 QC script |
+| `QC/P2/verify_numeric_invariant.py` | 4467 | `d136b36e26fa7ee8c28245337052d1f6ca45500abcf922caf5e8e1e85b64aae2` | P3 QC script |
+| `QC/P2/verify_supp_v4.py` | 6112 | `c45769edd8e709e6a0074e24e15228a3664118f4e7e235017ae065998a156522` | P3 QC script |
+| `QC/P2/clonal_or_definitive.R` | 12496 | `b3b2d9f2d6277ef2e80d7cfed5b93cbd5c92286e71eca9a997fe974161b48393` | P3 analysis script (R) |
+| `QC/P2/purity_and_panel.R` | 16881 | `e415e3e9c495d002c1218dd43df0faf122d708f487dfb8a1e6f786b60c0b962a` | P3 analysis script (R) |
+| `QC/P2/vif_diagnostics.R` | 24323 | `c8981809376a9ade224f0ed3d237affd08a27e9538e1bd3c6fba8d316c5c9b41` | P3 analysis script (R) |
+
+---
+
+## Submission package - what is uploaded to Editorial Manager, under which item
 
 | upload order | file | Editorial Manager item | why / note |
 |---:|---|---|---|
-| 1 | `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | Manuscript (clean) | The revised manuscript the editor typesets from; carries the renumbered figures throughout. |
-| 2 | `01_manuscript/HLA_LOH02_revision_MARKED.docx` | Manuscript (with changes marked) or 'Marked-up Manuscript' | Track-changes copy evidencing the revision; uploaded alongside the clean copy. |
-| 3 | `05_response/Response_to_Reviewers.docx` | Response to Reviewers / 'Reviewer Response' | Point-by-point reply to every reviewer comment, each point anchored to the manuscript. |
-| 4 | `05_response/Change_Summary.md` | Supporting document (optional) | Section-by-section change list; attach with the response letter if the editor asks for a plain-language summary of what changed. |
-| 5 | `07_cover/Cover_Letter.docx` | Cover Letter | Declares the figure renumbering, the new Supplementary Figure S2 and the deposit. |
-| 6 | `01_manuscript/03_Highlights.md` | Highlights | Four <=85-character highlights (paste as text if EM has no file slot). |
-| 7 | `01_manuscript/04_eTOC.md` | eTOC blurb | One-sentence teaser (paste as text if EM has no file slot). |
-| 8 | `06_compliance/Graphical_Abstract/Graphical_Abstract.tiff` | Graphical Abstract | 300 dpi TIFF; the PDF/PPTX/SVG twins are editable source, not uploads. |
-| 9 | `06_compliance/Key_Resources_Table.docx` | Key Resources Table | Cell Press requirement, uploaded as a separate item. |
-| 10 | `02_figures/Figure1_pancancer_and_reliability.tiff` | Figure — Figure 1 | Main figures are uploaded one file each; the PDF twin is uploaded as the vector/editable version of the same figure. |
-| 11 | `02_figures/Figure2_mechanism_armlandscape.tiff` | Figure — Figure 2 | Was 'Figure 3' before the renumbering. |
-| 12 | `02_figures/Figure3_TMB_aneuploidy.tiff` | Figure — Figure 3 | Was 'Figure 2' before the renumbering. |
-| 13 | `02_figures/Figure4_neoantigen.tiff` | Figure — Figure 4 | Number unchanged. |
-| 14 | `02_figures/Figure5_survival.tiff` | Figure — Figure 5 | Number unchanged. |
-| 15 | `02_figures/SupplementaryFigureS1_apobec.tiff` | Figure — Supplementary Figure S1 | Was 'Figure S2' before the renumbering. |
-| 16 | `02_figures/SupplementaryFigureS2_germline.tiff` | Figure — Supplementary Figure S2 | Was 'Figure S1' before the renumbering. |
-| 17 | `03_tables/Table1_baseline.docx` | Table — Table 1 | Main tables upload individually. |
-| 18 | `03_tables/Table2_drivers.docx` | Table — Table 2 |  |
-| 19 | `03_tables/Table3_survival.docx` | Table — Table 3 |  |
-| 20 | `04_supplement/Supplemental_Information.pdf` | Supplementary Material | The single supplement: Figures S1–S2 + Tables S1–S13, 20 pages, contents page numbers resolved to 15/15 anchors. |
-| 21 | `03_tables/Supplementary_Tables.docx` | Supplementary Material (optional second file) | Editable DOCX of Tables S1–S13. Upload ONLY if the journal asks for an editable supplement; the PDF above is the citable supplement. |
-| 22 | `06_compliance/Data_and_Code_Availability.md` | not uploaded as an item | The statement itself sits in STAR Methods; this file is the source text kept for the record. |
-| 23 | `06_compliance/deposit/code.zip` | not uploaded to EM | Deposited to the public GitHub repository named in Data and Code Availability; the repository is the complete and final availability route (no archival identifier). |
-| 24 | `06_compliance/deposit/derived_data.zip` | not uploaded to EM | Same deposit as code.zip (one repository covers code and derived data). |
+| 1 | `02_figures/Figure1_pancancer_and_reliability.tiff` | Figure 1 - Figure file (TIFF) | 605466 bytes |
+| 2 | `02_figures/Figure1_pancancer_and_reliability.pdf` | Figure 1 - Figure file (PDF) | 61871 bytes |
+| 3 | `02_figures/Figure2_mechanism_armlandscape.tiff` | Figure 2 - Figure file (TIFF) | 327454 bytes |
+| 4 | `02_figures/Figure2_mechanism_armlandscape.pdf` | Figure 2 - Figure file (PDF) | 58468 bytes |
+| 5 | `02_figures/Figure3_TMB_aneuploidy.tiff` | Figure 3 - Figure file (TIFF) | 430792 bytes |
+| 6 | `02_figures/Figure3_TMB_aneuploidy.pdf` | Figure 3 - Figure file (PDF) | 922047 bytes |
+| 7 | `02_figures/Figure4_neoantigen.tiff` | Figure 4 - Figure file (TIFF) | 291004 bytes |
+| 8 | `02_figures/Figure4_neoantigen.pdf` | Figure 4 - Figure file (PDF) | 55416 bytes |
+| 9 | `02_figures/Figure5_survival.tiff` | Figure 5 - Figure file (TIFF) | 202070 bytes |
+| 10 | `02_figures/Figure5_survival.pdf` | Figure 5 - Figure file (PDF) | 46576 bytes |
+| 11 | `02_figures/SupplementaryFigureS1_apobec.tiff` | Supplementary Figure c - Figure file (TIFF) | 391582 bytes |
+| 12 | `02_figures/SupplementaryFigureS1_apobec.pdf` | Supplementary Figure c - Figure file (PDF) | 391411 bytes |
+| 13 | `02_figures/SupplementaryFigureS2_germline.tiff` | Supplementary Figure e - Figure file (TIFF) | 178352 bytes |
+| 14 | `02_figures/SupplementaryFigureS2_germline.pdf` | Supplementary Figure e - Figure file (PDF) | 44301 bytes |
+| 15 | `03_tables/Table1_baseline.docx` | Table - Table1 | 38750 bytes |
+| 16 | `03_tables/Table2_drivers.docx` | Table - Table2 | 38796 bytes |
+| 17 | `03_tables/Table3_survival.docx` | Table - Table3 | 38495 bytes |
+| 18 | `03_tables/Supplementary_Tables.docx` | Supplementary Material - supplementary tables | 629436 bytes |
+| 19 | `04_supplement/Supplemental_Information.pdf` | Supplementary Material - single supplement file | 1591181 bytes |
+| 20 | `05_response/Response_to_Reviewers.docx` | Response to Reviewers | 60448 bytes |
+| 21 | `06_compliance/Key_Resources_Table.docx` | Key Resources Table | 38961 bytes |
+| 22 | `06_compliance/Graphical_Abstract/Graphical_Abstract.tiff` | Graphical Abstract | 463738 bytes |
+| 23 | `07_cover/Cover_Letter.docx` | Cover Letter | 40750 bytes |
 
-### Uploaded as the vector twin of each figure
-
-`02_figures/Figure1_pancancer_and_reliability.pdf`, `Figure2_mechanism_armlandscape.pdf`,
-`Figure3_TMB_aneuploidy.pdf`, `Figure4_neoantigen.pdf`, `Figure5_survival.pdf`,
-`SupplementaryFigureS1_apobec.pdf`, `SupplementaryFigureS2_germline.pdf` — attach each as the
-editable/vector version of the matching TIFF (EM item 'Figure — Figure N', file type PDF).
-
----
-
-### Deliberately NOT part of the upload (internal / QC / build)
-
-`02_figures/scripts/`, `02_figures/intermediate/`, `03_tables/build/`, `01_manuscript/*.py`,
-`01_manuscript/ref_verify_raw.json`, `01_manuscript/_sentstats_*.json`, `01_manuscript/_verify_out.txt`,
-`05_response/*.py`, `05_response/_*` logs, `06_compliance/Graphical_Abstract/*.py`,
-`06_compliance/Graphical_Abstract/build_ga.log`, `06_compliance/Graphical_Abstract/qa/`,
-`07_cover/build_cover_docx.py`, `QC/` (all quality-control evidence), `07_misc/`.
-They stay in the repository as the reproduction trail but are not submission content.
-
-### Related evidence files (not deliverables, referenced by the manifest)
-
-`QC/RENUMBER_TO_FIGURE_ORDER_REPORT.md` (renumbering change + evidence),
-`QC/seed_determinism/` (jitter-seed determinism proof, old-vs-new figure comparison, ink
-connected-component QA, supplement verification, code.zip reproduction test),
-`QC/FINAL_QC_REPORT.md`, `QC/quality_gates_log.md` (historical, each carrying a header noting
-that its figure numbering was superseded by §(v)),
-`QC/HIGHLIGHT_VERIFY.md` (three-tier highlight verification: three-way coverage table, the
-"verbatim-identical sentence carrying any highlight = 0" assertion, per-section coverage and
-the 10-paragraph spotcheck), `QC/verify_highlight_three_tier.py` (the independent verifier that
-produced it), `QC/gen_change_summary.py` (generator of the two `Change_Summary.md` copies),
-`QC/_docx_decisions.json` + `QC/_highlight_verify.json` (machine-readable evidence),
-`QC/_highlight_round/` (archives of the superseded paragraph-level and sentence-level builds,
-kept for the three-way comparison in HIGHLIGHT_VERIFY.md §1).

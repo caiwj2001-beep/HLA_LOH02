@@ -1345,3 +1345,114 @@ CC BY-NC-ND 不可再分发声明、逐样本中间文件不分发声明、MIT/C
 - **影响边界**：不涉及任何图件字节、数字或结论；`02_figures/scripts/` 属「Deliberately NOT part of the upload」，重建件与等价物**均不入**任何交付件、zip、冻结清单或门禁。
 - **教训**（已并入技能 `computational-manuscript-integrity` §8）：清理 / 同步镜像副本时，**禁止删除任何未入冻结清单的脚本或中间件**——先移入 `07_misc/_quarantine/` 再评估；本次误删 QA 脚本即反面案例（引用悬空、原文不可恢复）。
 
+
+## (xiv) 第四轮（V4 / P3）：16 处手稿修改 + 5 处系统修正 + 新增 S14 + 存交包与仓库冻结 —— 2026-10-17
+
+本轮是修回稿的**最后一轮冻结**。所有数字改动都在 §(xiv.2) 的五处系统修正里有依据；
+手稿只改动了既有句子/既有段落内部，**没有增删任何段落**（174 段不变，`QC/scan_markdown_residue.py`
+自报 `MARKED 174 / CLEAN 174`），也未改动任何未经授权的数字。
+
+### (xiv.1) 本轮 16 处手稿修改清单
+
+| # | ID | 文件（行） | 改什么 | 依据 / 交叉核对 |
+|---:|---|---|---|---|
+| 1 | A1-results | `06_Results.md:43` | 把「HR<1 是 HLA LOH 与**非整倍体评分共线**的后果」整句改写为**实测 VIF 口径**：HLA LOH 的 VIF 无评分为 1.08、加入评分为 1.16（容差 0.86；Pearson r=0.33，Spearman ρ=0.33），评分自身 VIF 为 3.27，去掉 WGD 项后降到 1.27，无协变量超过 5 | `QC/P2/VIF_REPORT.md` §3.1 逐字；`QC/P2/vif_diagnostics.tsv`；S14 |
+| 2 | A2-fig5legend | `10_FigureLegends.md:39` | Figure 5B 图注同口径重写：下移不是共线、而是**对因果路径上强预后协变量（非整倍体评分 HR 2.686/单位）的过调整** | 同上（VIF_REPORT §3.2） |
+| 3 | A3-discussion | `07_Discussion.md:15` | Discussion 局限段同口径改写：「共线伪影」→「过调整伪影，非共线效应」 | VIF_REPORT §3.3 |
+| 4 | A4-starmethods | `08_StarMethods.md:70` | STAR Methods 统计段插入 VIF 句（Fox–Monette 广义 VIF；单自由度项 VIF=1/(1−R²)） | VIF_REPORT §4 逐字 |
+| 5 | B1-s14index | `06_Results.md:5` | S 表索引句追加「生存模型共线性诊断（Table S14）」 | 新增 S14 |
+| 6 | C1-citation | `06_Results.md:45` | 分癌种引用错配修正：把 (Table S4) 改为 **(Figure 5A；未调整的分癌种估计在 Table S4)** | `S14_AND_SUPP_REPORT.md` §4.2 |
+| 7 | D1-clonalCI | `06_Results.md:31` | 限克隆 OR 的 CI 端点由 HC3 改为 **model-based**：**0.972–1.057 → 0.973–1.056** | `QC/P2/clonal_or_definitive.tsv`（extended，含 `C(GENE_PANEL)`）；与 S11 表体一致 |
+| 8 | E1-puritydecile | `06_Results.md:11` | 纯度十分位补一句：可判读 6p 的肿瘤中，臂印证缺失占最高纯度十分位 **88.7%（477/538）**、最低 **39.7%（251/633）** | `QC/P2/PURITY_PANEL_REPORT.md` §4.1 逐字 |
+| 9 | F1-panelinsert | `07_Discussion.md:15` | 插入 panel 足迹句（IMPACT410≈1.0 Mb / IMPACT468≈1.14 Mb / IMPACT505≈1.2 Mb；中位 5 个编码突变） | PURITY_PANEL_REPORT §4.2 逐字 |
+| 10 | F2-panelfix | `07_Discussion.md:13` | 修正错句「**A 505-gene footprint ≈ 1.14 Mb**」（1.14 Mb 属 IMPACT468，非 505 基因）→「覆盖约 1.0–1.2 Mb 编码序列的靶向 panel」 | 见 §(xiv.2)-② |
+| 11 | G1-withdraw | `07_Discussion.md:3` | Discussion ¶1 加**明确撤回声明**（APOBEC 机制 / 独立预后与剂量依赖 / 胚系合子性约束 / 免疫编辑；与回复信开头 5 条一致） | `05_response/Response_to_Reviewers.md` 开头 5 条 |
+| 12 | H1-germline | `06_Results.md:51` | 胚系措辞：删去「tautological」的断言式表述，改为「按 LOH 定义代数地必然，故**不可作为胚系约束的证据**，我们不主张」 | `QC/P2/MANUSCRIPT_EDIT_REPORT.md` |
+| 13 | H2-germline-legend | `10_FigureLegends.md:53` | Figure S2B 图注同口径改写 | 同上 |
+| 14 | I1-summary-denom | `02_Summary.md:3` | 14.0% 补分子/分母：**14.0%（4,161/29,799；可判读 6p 者 5,805）** | Table 1 的 6p 行（4,161；5,805） |
+| 15 | J1-fig4c | `10_FigureLegends.md:33` | Figure 4C 明确「**ties 从分母剔除**」口径 | `s_neo2_fractions.tsv` |
+| 16 | J2-figs1 | `10_FigureLegends.md:43` | Figure S1A 零值说明精确化（「plotted at the **axis floor** as crosses」） | `02_figures/scripts/60_figS1.R` |
+
+机器可读清单：`QC/P2/MANUSCRIPT_EDITS.json`（含每处的 before/after 全文）；人读版：`QC/P2/MANUSCRIPT_EDIT_REPORT.md`。
+
+### (xiv.2) 五处系统修正（不止改字面，改的是产出链）
+
+1. **VIF / near-collinearity（A 组，4 处）**：原稿把「HR 掉到 1 以下」归因于 HLA LOH 与非整倍体评分的共线。
+   实测 VIF 说明**共线性不成立**（HLA LOH 自身 1.08/1.16），真正的机制是**对因果路径上强预后协变量的过调整**。
+   诊断表见 `QC/P2/vif_diagnostics.tsv`（脚本 `vif_diagnostics.R`，报告 `VIF_REPORT.md`），并作为**新增 S14** 公开。
+2. **`505-gene ≈ 1.14 Mb` 的归因错句**：1.14 Mb 是 **IMPACT468** 的足迹，505 基因 panel 是 ≈1.2 Mb。改成区间表述
+   （IMPACT410≈1.0 / IMPACT468≈1.14 / IMPACT505≈1.2 Mb），不再把某个 panel 的足迹安到另一个 panel 上。
+3. **限克隆 OR 的 CI（HC3 → model-based）**：`03_stats.py` 的 clonal 块既漏了 `C(GENE_PANEL)` 项、又给了 HC3 区间，
+   与 S11 表注声明的协变量集不符。按 primary 规格重算（`QC/P2/clonal_or_definitive.R`）：OR 1.013、95% CI 0.973–1.056、P=0.5223。
+4. **Table S4 引用错配**：分癌种 HR 的正文引用原指 S4（S4 是**未调整**的分癌种估计），改为正文引 Figure 5A + 指明 S4 为未调整估计。
+5. **Table 2 表注 1.24 → 1.23**：表注写 `log10 TMB (1.45 to 1.24)`，表体/源表为 **1.23**（raw OR **1.23275**）。
+   本轮**改生成脚本而非改 DOCX**：`build_tables_docx.py` 现在从 `table2_drivers.tsv` 读取四个衰减端点
+   （WGD 2.30→0.35、log10 TMB 1.45→**1.23**），缺行即硬失败——不会再回退（构建日志 `[T2-CAPTION] WGD 2.30 -> 0.35 ; TMB 1.45 -> 1.23`）。
+
+**同一轮里 S11 两行的定案**（`s_neo1_models.tsv`）：`sens_purity_ge50` 由 legacy **1.092 (1.020–1.169), P=0.0113**
+（`03_stats.py`，漏 `C(GENE_PANEL)`）定案为 **1.093 (1.021–1.170), P=0.0104**（与 primary 同规格）；
+`sens_clonal_only` 的数值也改为其 `source` 列真正指向的文件（`extended_C_sensitivity.tsv`）中的值
+**1.013 (0.973–1.056), P=0.5223**。两者均经独立重算确认（`QC/P2/s11_purity_finalize.py`：
+legacy 规格 1.0919/P=0.01128、primary 规格 1.0933/P=0.01041，与 stored 表逐位一致；
+该 IRLS 实现同时复算 primary 模型 n=25,954 → OR 1.06395 vs 存储 1.06385，差 <1e-4）。渲染层不再覆盖数字，
+只做断言（`[S11-ASSERT] … matches primary spec`），文件与 DOCX 不可能再互相矛盾。
+
+### (xiv.3) 新增 Supplementary Table S14（共线性诊断）
+
+- 内容：每个生存模型规格 × 每个协变量的 **VIF / GVIF / GVIF^(1/(2·Df)) / 容差**；癌种因子（Df=63）只报 GVIF 与其调整形式。
+- 锚点：补充 PDF 由 20 页 → **21 页**，S1–S13 的起始页**一页未变**（5/7/9/10/11/12/13/14/15/16/17/18/19），**S14 在末页 21**，
+  目录与实际页码 **16/16 全匹配**（`QC/P2/supp_pdf_verify.json`）。
+- 源数据：`03_tables/build/s14_vif.tsv`、`s14_model_key.tsv`（由 `QC/P2/make_s14_vif.py` 从 `vif_diagnostics.tsv` 选行生成）。
+
+### (xiv.4) 存交包与仓库：commit **H1**、以及「H1 之后的提交只是文档」
+
+- **H1 = `08fe6775ad9548472177a97bf1a9458a743f5fc0`**（仓库 `https://github.com/caiwj2001-beep/HLA_LOH02`，`main`）。
+  该提交**真的含代码与数据**：`revision_2026/code/build_tables/build_tables_docx.py` 与
+  `revision_2026/data/tables_v3/s14_vif.tsv` 在该提交上的 blob sha256 与本机交付树**逐字节相同**
+  （`b8b7d52a…` / `f6dd1f7d…`），`revision_2026/code/analysis/revision_r3/` 下 29 个文件在册。
+- 本文件所在的 §(xiv) 与 `QC/FINAL_MANIFEST.md` 属**文档型更新**，在 H1 **之后**单独提交（H2）。
+  **手稿所引 H1 已含代码与数据；后续提交仅为文档 / manifest 更新**，不影响可复现性。
+- **两个存交包用外科式重建**（逐成员复制 raw local record，未替换成员字节不变，成员表与顺序不变）：
+
+  | 包 | 成员 | 旧 sha256 | 新 sha256 | 变更成员 |
+  |---|---:|---|---|---|
+  | `code.zip` | 9 → 9 | `b93f96fd31e291bfa2d9163e9098de82ba0010efd3348ef85c1fffd48971e4a2` | `3c7d598924acbc82dcb4a875a2d66d8f9b685955e53ca8a72862e2776be3d2fb` | `code/build_tables_docx.py`（新守卫版）、`code/README_CODE.md`（§9 addendum） |
+  | `derived_data.zip` | 91 → 91 | `88341f93749dfbb60041d745223781db7ee0fb3b7b8ea6abe5e7a9e427865679` | `4b9fed9f0851116188175e6330852e9335af6a1d29b400679c368af4d704c9bd` | `supplementary_source_data/Table1_baseline.tsv`（重建：旧 54.4%/55.2%、P=0.279、缺三行非整倍体）、`tables_v3/s_neo1_models.tsv`（S11 两行定案值 + 真实 provenance） |
+
+  > 上表是**第一次**重建（§(xiv) 尚未写入时）的哈希。§(xiv) 落地后 `PINNED_PACK_CORRECTIONS.md` 改变了字节，
+  > 因此两个包的 `PINNED_PACK_CORRECTIONS.md` 成员随之再替换一次；**最终**哈希记录在 `QC/FINAL_MANIFEST.md`。
+- `check_repo_vs_zip.py`：**members 100 / byte-identical 100 / mismatches 0**（`.git` 排除，工作树与两包同字节）。
+- `PINNED_PACK_CORRECTIONS.md` 的四处副本（`V4/00_pinned/`、仓库 `code/`、仓库 `data/number_dictionary/`、两包内各一）保持同字节。
+
+### (xiv.5) 字数与高亮覆盖率
+
+| 指标 | 值 |
+|---|---|
+| 手稿段落 | **174**（未增删） |
+| 手稿正文字符 | 70,459 |
+| 高亮字符（Mode C 实质改动口径） | **20,653 = 29.30%** |
+| 高亮段落 | **101 / 174 = 58.00%** |
+| 高亮 run | 626（substantive span 972） |
+| CLEAN 高亮 run | **0**（干净稿零高亮） |
+| 回复信字数 | **9,477**（`Response_to_Reviewers.md`；渲染 DOCX 正文+表格计数 9,374） |
+
+本轮把 commit hash 写入 Data availability 后，高亮字符从 20,612 → **20,653**（+41），
+字符总数 70,375 → 70,459；百分比 29.29% → **29.30%**（该段本已是实质改动段，故段落数不变）。
+
+### (xiv.6) 已知遗留（如实报出，不掩饰）
+
+1. `derived_data.zip` 的 `derived_data/supplementary_source_data/Table2_drivers.tsv` 仍是修订前的 4 行快照
+   （WGD/log_TMB/胚系/6p；与现表 2 的 10 行不同，但四舍五入后的 OR 与现表一致）。**当前完整的 Table 2 源数据在同一包内的
+   `derived_data/tables_v3/table2_drivers.tsv`**（10 行，含非整倍体评分与非整倍体调整行）。本轮按授权范围只重建了
+   `Table1_baseline.tsv`，未擅自改写 `Table2_drivers.tsv`；如需一致化应另行授权。
+2. S14 的源数据（`s14_vif.tsv`、`s14_model_key.tsv`）与 `clonal_or_definitive.tsv`、`purity_and_panel.tsv` 只进**仓库**
+   `revision_2026/data/tables_v3/`，**不进** `derived_data.zip`——为的是把成员表固定在 91，保证其余成员逐字节不变。
+3. `s_neo1_models.tsv` 的 `source` 列在修正后写的是 `extended_C_sensitivity.tsv`（两行数值确实取自该文件）。
+   被替换的 legacy 值（1.092/P=0.0113、1.014/P=0.4904）来自 `C_sensitivity.tsv`，其上源是 `neoantigen/scripts/03_stats.py`
+   的 (C) 块；该 legacy 值与出处已记入 `QC/P2/_backup_before/P3_s_neo1_models.tsv` 与本条说明。
+4. 补充 PDF 的目录页码由两遍法回写；本轮两遍即收敛，S1–S13 页码未变、S14 落末页。若后续再插表，必须重跑
+   `QC/P2/rebuild_supplement_pdf_v4.py` 并复核 16/16 锚点。
+5. 未打 git tag（与前轮一致）；H1 以完整 hash 形式写入手稿与 KRT，可长期定位。
+
+> **自指说明（同 §(xiii.9)）**：本文件的最终 sha256 不能写进本节；其最终字节哈希见 `QC/FINAL_MANIFEST.md`。
+
