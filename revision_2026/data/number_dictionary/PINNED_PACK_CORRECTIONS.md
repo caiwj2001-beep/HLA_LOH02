@@ -1625,3 +1625,119 @@ wc -l                    -> 11 行 = 表头 + 10 行数据
    （`QC/_final_round6/_run_anchors_v4.py`、`_run_residue_v4.py`，算法一行不改）对 V4 跑门禁；
    两个脚本本身未改。建议下一轮把常量改指 V4（属交付件变更，需单独授权）。
 3. 本轮追加了 `QC/_stray/`（杂项留证目录）与 `QC/_final_round6/`（本轮全部原始输出），两者都**不在**清单白名单内。
+
+### (xiv.9) 收尾三项：一处英文瑕疵、两个门禁脚本改为自定位、手稿重建与清单重生（本轮，2026-10-17）
+
+本轮只做三件事：改一处英文瑕疵、把两个门禁脚本的根目录改为自定位、按改动重建手稿并重生清单。
+不动任何科学数字、不增删手稿段落、不写 V3、**不做任何 zip 重建**。
+
+#### 1) 英文瑕疵：索引句出现双重 `and`（已改）
+
+| 项 | 内容 |
+|---|---|
+| 位置 | `01_manuscript/06_Results.md` **第 5 段**（Results 首段的补充表索引句） |
+| 修前 | `…(Table S12); and the structural-variant class burden (Table S13); and the collinearity diagnostics for the survival models (Table S14).` |
+| 修后 | `…(Table S12); the structural-variant class burden (Table S13); and the collinearity diagnostics for the survival models (Table S14).` |
+| 改动量 | **只删 4 个字符**：二进制逐字节 diff 只有一条 `delete`，`removed=b' and'`，起点 byte 1436 |
+| 字节 / sha256 | 15,749 → **15,745**；`9045154ef5ab3924af9d87874a96fe14a4071743a15762b10a121db2ff476c9f` → **`475fdfedfd670a528235500d81d7ccec4782dc3de0e5e339ea8532b3e079b085`** |
+
+**守恒证据（脚本化）**：
+- 数字 token 多重集 **410 → 410**（完全一致：未改任何数字、CI、P 值或表号）；
+- 词多重集差集 = 只少 1 个 `and`，无新增词；段首 8 词 `We analysed allele-specific HLA class I loss of` 不变（锚点安全）；
+- 段落数不变：markdown 空行分段 **26 → 26**；DOCX **174 → 174**；
+- **DOCX 侧的独立证明**：用同一算法（`QC/make_revision_docx.py` 经 `run_revision_docx_v4.py` 同一重绑）以**修前 md**
+  重建"修前件"，与交付件逐段比对 —— **只有 ¶33 相差 `removed='and '`**，其余 173 段逐字节相同；
+  两份的黄色高亮 run 数均为 **626**。
+
+#### 2) 两个门禁脚本不再硬编码 V3（改为自定位）
+
+`05_response/verify_anchors.py` 与 `QC/scan_markdown_residue.py` 的根目录常量原先都写死
+`…/iscience投稿版本/V3`；此前两轮靠**重绑副本**绕过，任何人直接重跑都会**静默校验旧树**（假门禁）。
+本轮改为自定位，并保留 `--root <dir>` 覆盖：
+
+| 文件 | 根 = | `--root` | 字节 / sha256 |
+|---|---|---|---|
+| `05_response/verify_anchors.py` | `pathlib.Path(__file__).resolve().parents[1]`（脚本在 `05_response/`） | 支持 | 4,871 → **5,339**；`fe8fd7ef…` → **`092fa104e3fc15b9…`** |
+| `QC/scan_markdown_residue.py` | `os.path.dirname(os.path.dirname(os.path.abspath(__file__)))`（脚本在 `QC/`） | 支持 | → **5,680** / `c9e8ed0a…`（**非清单成员**） |
+
+判据、阈值、算法、输出格式**一行未改**；只在入口新增一行 `root = …` 打印，便于确认解析到哪棵树。
+**在 V4 内直接运行脚本本身（无参数、无重绑副本）**：
+
+```
+05_response/verify_anchors.py
+  root = C:\Users\Administrator\科研文件\HLA_LOH02\iscience投稿版本\V4
+  md items total: 174
+  HLA_LOH02_revision_MARKED.docx: 174 paragraphs
+  HLA_LOH02_revision_CLEAN.docx: 174 paragraphs
+  anchors: 28   matched in md AND both DOCX: 28   mismatched: 0
+  EXIT=0
+
+QC/scan_markdown_residue.py
+  root = …\iscience投稿版本\V4
+    MS = …\V4\01_manuscript
+  MARKED 174 paras  TOTAL_residue 0      CLEAN 174 paras  TOTAL_residue 0
+  line-number field (w:lnNumType) present in both: True
+  GATE G5 (0 residual markdown markers + line numbers present): PASS
+  EXIT=0
+```
+
+> 这两个脚本都**不是**两个 zip 的成员（已核对成员表），所以本轮改它们不影响任何交付字节。
+
+#### 3) 手稿重建链与门禁重跑
+
+重建仍走 `QC/P2/run_revision_docx_v4.py`（= `QC/make_revision_docx.py` 的**同算法** runner），
+**高亮基准不变** = `iscience投稿版本/投稿版本/HLA_LOH02_manuscript.docx`（115 非空段 / 6,163 实词 / 28 篇编号文献）。
+全口径备选件同步重建（Mode C 门禁要按段落逐字比对这两份）。
+
+| 门禁 | 结果（原始输出：`QC/_final_round7/I1`–`I5`） |
+|---|---|
+| 段落数 | **174 / 174 / 174**（MARKED / CLEAN / 期望，未增删） |
+| 锚点 | **28 / 28**，`mismatched: 0`（md 与两份 DOCX 三方一致） |
+| 手稿 markdown 残留 | **0 / 0**（G5 PASS；`w:lnNumType` 两份都在） |
+| CLEAN 高亮 run | **0** |
+| MARKED 高亮 run | **626**（修前同为 626） |
+| MODE C 覆盖率（自报） | **20,653 / 70,455 = 29.30%**（101 段，626 runs） |
+| 全口径（备选） | 44,026 / 70,455 = 62.50%（670 runs） |
+| 断言 A（未改句带高亮须为 0） | `observed = 0` → PASS |
+| 断言 B（数字/图表号/文献号覆盖） | `instances = 890`，`uncovered = 0` → PASS |
+| `MARKED vs CLEAN` 逐段文本 | PASS（0 diffs） |
+| `g2` 独立核对 | `T1=24 / T2=19`、`T3 differences: 0`、`PASS - T3 empty`、补充 PDF 页序 S1→S14 全对（`Table S14 -> 21`） |
+| `verify_response.py` | EXIT=0（30 项；锚点 49/49；未标注主张 0；`ANCHOR_MAP` 28；`**Anchor:**` 28） |
+
+**分母为何是 70,455 而非上一轮的 70,459**：删掉的 4 个字符（` and`）**本就在 Tier-2 未染色区**，
+故高亮字符数 20,653 **一位未变**，分母随文本 −4，覆盖率仍为 29.30%。这是"改一个词"的唯一数字后果。
+
+**字节确定性（如实报出）**：同一 md 连续构建两次，DOCX 的 **17 个 zip 成员内容完全相同**，但 **ZIP 条目时间戳取当前时钟**，
+于是文档**文件级 sha256 每次重建都会变**（python-docx 行为，不是内容漂移）。本轮只认最后一次构建的字节：
+MARKED **68,686 B / `c145bd87…`**、CLEAN **63,885 B / `a5d212ae…`**。
+
+#### 4) 清单重生与两个包的不变性
+
+- `QC/FINAL_MANIFEST.md` 重生：**127 文件**、`missing: none`、242 行；逐行差异见 `QC/_final_round7/H8_manifest_rowdiff.txt`
+  （只落在本轮真正变动的那几行）。本节所在文件的最终字节哈希仍只能看 `QC/FINAL_MANIFEST.md`（自指，同 §(xiii.9)/(xiv.7)/(xiv.8)）。
+- **两个存交包的 sha256 逐位未变**（本轮拒绝任何包重建）：
+
+| archive | 字节 | sha256（修前 = 修后） |
+|---|---:|---|
+| `06_compliance/deposit/code.zip` | 120,253 | `f50a03422fd5f6dee06fb4b7c5f7f62850d5415127cb9a194301adf56f5c1d90` |
+| `06_compliance/deposit/derived_data.zip` | 660,846 | `d3049d91109102fca1d43b831255c8a88879f0dc8d9dc4f3322ead4946b7b0e8` |
+
+#### 5) 提交链（本轮）
+
+| 标签 | commit | 性质 | 内容 |
+|---|---|---|---|
+| **H5** | 见 `QC/_final_round7/G_final_report.md` | 本轮（**仅文档**） | 本节 + 重生后的 `QC/FINAL_MANIFEST.md`（仓库侧 3 个文件：`code/PINNED_PACK_CORRECTIONS.md`、`data/number_dictionary/PINNED_PACK_CORRECTIONS.md`、`data/FINAL_MANIFEST.md`）；远程提交与本地 HEAD 逐位相同 |
+
+手稿与合规件里被引用的仍是 **H3**（代码+数据提交）：H5 是纯文档提交，不承载任何代码或数据，故该引用**不改**。
+
+#### 6) 本轮遗留（如实报出）
+
+1. **两个包内的 PPC 落后一个版本**：`code/PINNED_PACK_CORRECTIONS.md` 与
+   `derived_data/number_dictionary/PINNED_PACK_CORRECTIONS.md` 仍是 §(xiv.8) 版本的字节——因为本轮把
+   "两个 zip 的 sha256 不变"当作验收条件，明确禁止重建。工作副本与仓库副本已含 §(xiv.9)。
+   若要包内也带 §(xiv.9)，需下一轮授权做一次 surgical 重建，那会**改变两个 zip 的 sha256**。
+2. **`Change_Summary.md`（两份副本）与本节 §(x) 记录的"修回稿 11,177 个实词"现应读作 11,176**（删掉的正是 1 个实词）。
+   按"不改任何数字"的授权边界，本轮**未动**这两个文件。用本轮同一口径从 md 非标题行重算，PRE = 11,677、NOW = 11,676，
+   差值恰为 **−1**（与记录的 11,177 相差 500，属统计口径差异：那一次由 `gen_change_summary.py` 从 `_docx_decisions`
+   的段落集合统计）；两种口径下**差值都是 −1**，句子数 574 不变、+81% 不变。
+3. `08fe6775`（H1）仍出现在 provenance 记录里（本文件历史段落、`QC/P2/` 旧日志等），那是**记录**而非交付声明，按设计保留。

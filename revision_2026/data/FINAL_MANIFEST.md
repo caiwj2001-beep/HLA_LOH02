@@ -1,6 +1,6 @@
 # FINAL_MANIFEST - frozen submission package (V4, revision round 2)
 
-Manuscript **ISCIENCE-D-26-09416** (iScience revision) . directory `iscience投稿版本/V4` . generated 2026-10-17 11:12:50
+Manuscript **ISCIENCE-D-26-09416** (iScience revision) . directory `iscience投稿版本/V4` . generated 2026-10-17 11:24:59
 
 Every file below is byte-frozen: `sha256` and `bytes` are of the file as it stands on disk at
 generation time. Repository snapshot referenced by the manuscript and by the Key Resources
@@ -10,7 +10,7 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 
 - **files listed: 127**
 - **missing on disk: none**
-- **total bytes: 9984149 (10.0 MB)**
+- **total bytes: 9993072 (10.0 MB)**
 - **this file: 242 lines**
 
 ---
@@ -20,7 +20,7 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 | file | bytes | sha256 | purpose |
 |---|---:|---|---|
 | `00_pinned/PINNED_PACK.md` | 15238 | `39ce8ee318aec44ede4f4dd91086949ec72e1caac102850ee708c19750d7b31c` | The locked number dictionary: the single permitted source of every reported number |
-| `00_pinned/PINNED_PACK_CORRECTIONS.md` | 152052 | `168aa2cfb5e82778e61dfca88ddcf73a84e0d99bda8b784bb1b62d786bea5129` | Corrections and audit record; sections (v)-(xiii) as before, (xiv) the 2026-10-17 V4/P3 freeze: the 16 manuscript edits, the five systemic corrections, S14, the deposit/commit record, word counts, highlight coverage and the known residuals; (xiv.8) the leftover package-integrity fixes (Table2 source data rebuilt to the 10-row table, the stray Rplots.pdf moved to QC/_stray/) and the switch of the cited commit to H3 |
+| `00_pinned/PINNED_PACK_CORRECTIONS.md` | 160280 | `5766b4520918d3254385a57f692d31d522471941665cedce067bfca3c5ad1cde` | Corrections and audit record; sections (v)-(xiii) as before, (xiv) the 2026-10-17 V4/P3 freeze: the 16 manuscript edits, the five systemic corrections, S14, the deposit/commit record, word counts, highlight coverage and the known residuals; (xiv.8) the leftover package-integrity fixes (Table2 source data rebuilt to the 10-row table, the stray Rplots.pdf moved to QC/_stray/) and the switch of the cited commit to H3; (xiv.9) the closing round: the double-'and' fix in the Results table-index sentence, the two gate scripts made self-locating, the rebuild/gate rerun and the regenerated manifest (both deposit zips deliberately left byte-identical) |
 
 ---
 
@@ -33,21 +33,21 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 | `01_manuscript/03_Highlights.md` | 339 | `df220e033cbaeb61ce57621c6c334ceeaf8e532a19c2dc902a4c2cf4dad6116a` | Highlights (4 bullets, <=85 characters each) |
 | `01_manuscript/04_eTOC.md` | 460 | `d7014957caf6768dafbe8239918f6a25f7348d703614ab9d6d32ecc51f4703c5` | eTOC blurb (one-sentence teaser) |
 | `01_manuscript/05_Introduction.md` | 4729 | `23ba9e85ac73ccede2f2bb830b91941f1a6fcb6422806185cab2ba15b3b9dbfe` | Introduction |
-| `01_manuscript/06_Results.md` | 15749 | `9045154ef5ab3924af9d87874a96fe14a4071743a15762b10a121db2ff476c9f` | Results (figure numbers in first-appearance order) |
+| `01_manuscript/06_Results.md` | 15745 | `475fdfedfd670a528235500d81d7ccec4782dc3de0e5e339ea8532b3e079b085` | Results (figure numbers in first-appearance order) |
 | `01_manuscript/07_Discussion.md` | 10821 | `0c7331ef5a3c3678ac29b5513295a89c9db497423ed3124d5d7e64bd65e7d782` | Discussion |
 | `01_manuscript/08_StarMethods.md` | 17020 | `acd6037cfcd24d53d5e5016a1af478ce02f130ee7bf835780a38bd7c7ac3b395` | STAR Methods incl. Data and code availability (carries the repository commit) |
 | `01_manuscript/09_BackMatter.md` | 2691 | `09d138f17ebe2c68ab39cff04858bb0f022bf77b9dd0afc32d172cb4e67e697c` | Back matter incl. the Data and code availability declaration (carries the repository commit) |
 | `01_manuscript/10_FigureLegends.md` | 8818 | `a6d1200f4f8f397a88007623ab4fae3df6491fa4ba3553ab415681b004507d92` | Figure legends, Figures 1-5 and S1-S2 |
 | `01_manuscript/11_References.md` | 10482 | `e4da6ae142ee07dfbe0151ae95ac335ce768b4801dff93db8e51bdfb703d8b46` | Reference list |
-| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 68683 | `19efaeccd25ec3f917b5df0cbb7e045b6a6e6afa9e15299bf3ae076e53931bed` | Revised manuscript, changes highlighted in yellow (Mode C substantive-change rule; 29.30% of characters, 101/174 paragraphs) |
-| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 63887 | `3306bdfca601f1ee06bba8e918cd20d001fa750079bdb4564f9aafeeb673c8a9` | Revised manuscript, clean copy (no markup) - the file the editor typesets from |
+| `01_manuscript/HLA_LOH02_revision_MARKED.docx` | 68686 | `c145bd87ece32706e14d497ab4798f13a3b076cb83477da3f9ea35bea173f36f` | Revised manuscript, changes highlighted in yellow (Mode C substantive-change rule; 29.30% of characters, 101/174 paragraphs) |
+| `01_manuscript/HLA_LOH02_revision_CLEAN.docx` | 63885 | `a5d212ae864414c791baba3276049ba8268ed2c036ca127250ae2084ae432ce1` | Revised manuscript, clean copy (no markup) - the file the editor typesets from |
 | `01_manuscript/Change_Summary.md` | 118705 | `cef3cdaf071251de3049868a04f45e3dcf18ddaaceabfe76a640901ea2929f83` | Editor-facing section-by-section change list (copy of 05_response/Change_Summary.md) |
 | `01_manuscript/HLA_LOH02_revision_HIGHLIGHT_SUMMARY.md` | 17596 | `4d0ca8ccf5e4eba3afdff09292efc1f514b652e3a7d0db57958d132dd2fa2a88` | Revision highlight summary (Mode C rule; superseded rules marked obsolete) |
 | `01_manuscript/REF_VERIFICATION.md` | 13042 | `fd96b89e08d6c1147c85a568363cec4ff5662fdeaf2760d0b4ef09a269963c9d` | Reference verification report |
 | `01_manuscript/SENTENCE_STATS.md` | 15070 | `7aa8ad1a53bcaa6de79616df321fc399ce9fce9128317784de0300eeaa42605e` | Sentence-length / readability statistics of the revised manuscript |
 | `01_manuscript/11b_FigS2_addition_note.md` | 7382 | `d9ad070318824d6cfcae7f3456fdc45ad054c9784317194200183a32f191859c` | Working note on how Supplementary Figure S2 entered the reference list |
-| `01_manuscript/_alternative/HLA_LOH02_revision_MARKED_full.docx` | 69549 | `4e59d6dc2fe9db24385c3fc8eb4f6b3e704ea1a5233d01e92668d54e611a9a85` | Alternative (superseded) full-mode build at 62.5% coverage, kept as the rollback pair |
-| `01_manuscript/_alternative/HLA_LOH02_revision_CLEAN_full.docx` | 63887 | `1e23df3add5b387cd6e7957e6db35741d0999155a61c4e5b75598474cb815260` | Clean twin of the alternative full-mode build |
+| `01_manuscript/_alternative/HLA_LOH02_revision_MARKED_full.docx` | 69549 | `8451d38f22057d01d73d2fa78309840d4ef59d1b46f3cb23cd74bbff440f654e` | Alternative (superseded) full-mode build at 62.5% coverage, kept as the rollback pair |
+| `01_manuscript/_alternative/HLA_LOH02_revision_CLEAN_full.docx` | 63885 | `2c148e99f953aad52a73dbc974959f429c5bfd216b4e2e34aefff42d2ce25d9e` | Clean twin of the alternative full-mode build |
 
 ---
 
@@ -106,7 +106,7 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 | `05_response/ANCHOR_INVENTORY.tsv` | 86045 | `e8a136214284c760a1da14b9ebb2cef2e3b3fd12a6fd8becb0427743eae364f6` | Inventory of the manuscript sentences the response points cite |
 | `05_response/COVERAGE_CHECK.md` | 37459 | `0b9adb8163f4ce0760f41fa79c8208972f1ddf5ce1b87258d777f3b208c3ccda` | Coverage audit that every reviewer point is answered |
 | `05_response/Change_Summary.md` | 118705 | `cef3cdaf071251de3049868a04f45e3dcf18ddaaceabfe76a640901ea2929f83` | Editor-facing section-by-section change list |
-| `05_response/verify_anchors.py` | 4871 | `fe8fd7efd5382f3ae05ca711ea8e5786f93984a9fef9490eb4477c6c8b134227` | Anchor verifier: 28 anchors must match in the markdown and in both manuscript DOCX |
+| `05_response/verify_anchors.py` | 5339 | `092fa104e3fc15b9de8e81b21d9ece5b45e2a688267368c871fe0142f87a268a` | Anchor verifier: 28 anchors must match in the markdown and in both manuscript DOCX |
 | `05_response/verify_response.py` | 8731 | `db857bef15ea9d1cd2c228326834dd1287f2e1d64097ea81e307fc35d9e19e7e` | Response-letter verifier (no fabricated line references, anchor rows consistent) |
 
 ---
@@ -145,7 +145,7 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 | `QC/FINAL_QC_REPORT.md` | 34606 | `8ed6c775f3349046e36bf5f4f483a3f4548daefca23b49fbaaf58f91a9e41d7e` | Final QC report (gate battery, numbers, deviations) |
 | `QC/quality_gates_log.md` | 22529 | `55585f302b8cb9bc82b0092718cac5225d276149cf146c279b2bb3ffccf3e4a0` | Quality-gate log |
 | `QC/SUBMIT_READINESS_REPORT.md` | 46723 | `4d26c1bb596bbc0dc90b93ce42687ca548184b078189c94ddf60c1e2baaf937a` | Submission-readiness report |
-| `QC/HIGHLIGHT_VERIFY_MODE_C.md` | 13137 | `054f0ea096f39917d74a87006347ef78ded60e803fa5d768b893dde36ee22f1a` | Mode C highlight verification (ALL GATES PASS) |
+| `QC/HIGHLIGHT_VERIFY_MODE_C.md` | 13137 | `fbd7a8397e10896b875027b799ea60218c89b9cd467895cb8c04900c9d31d5e5` | Mode C highlight verification (ALL GATES PASS) |
 | `QC/HIGHLIGHT_VERIFY.md` | 7072 | `e1f32a6995ff58647aeda790a78e48c453599b0b5bd31da90969ce4cb83187f1` | Earlier three-tier highlight verification |
 | `QC/docx_build_report.md` | 21897 | `3161f50a599e42d70d68ec60badcbac3a0422787bf61d1db98df4c11629635e7` | DOCX build report |
 | `QC/DOI_FILLIN_CHECKLIST.md` | 7406 | `e9235dfdae97476597c498637a642016496245076de57a34980420f9b7f56679` | DOI fill-in checklist |
@@ -193,7 +193,7 @@ analysis code and the derived data; the two deposit archives are byte-reproducib
 | `QC/P2/gen_p2_evidence.py` | 3520 | `81f0270c68f08a256d56ab6125d51dbfc325ac322ddb7dc4db5c5ac9f8f96100` | P3 QC script |
 | `QC/P2/gen_response_report.py` | 13612 | `4d57036477013b2bf039a44050aa50ea051d5ee10f41c71e1447738bd31f57da` | P3 QC script |
 | `QC/P2/make_edit_report.py` | 23980 | `844fd98de2f67ff960a50154ee8c8ee9f79f6da21d5452fc63314ae4363af0ad` | P3 QC script |
-| `QC/P2/make_final_manifest_p3.py` | 15966 | `c40b6e4a0a1767e5d5ddea818ac399fe2c15a3905235303e1948f95f7670eaff` | P3 QC script |
+| `QC/P2/make_final_manifest_p3.py` | 16198 | `858a182236334900b99b2f2e2d48e81fde301d52fcfe1093a20d74d6a0d00df0` | P3 QC script |
 | `QC/P2/make_s14_vif.py` | 5449 | `8fb6c50d5f65ebaf40cfc538d86207b96b80228a68c03a61ed9d419d79755e5b` | P3 QC script |
 | `QC/P2/rebuild_compliance_v4.py` | 1711 | `a193b49a7575ce023d91936abbdb353fac21ffccd2c1963723d20b2cad2cc164` | P3 QC script |
 | `QC/P2/rebuild_deposit_table1.py` | 2467 | `02369ac95b410e4dd84c87eb1a3be378d06390229f337d2facba8d8729c24bbf` | P3 QC script |
