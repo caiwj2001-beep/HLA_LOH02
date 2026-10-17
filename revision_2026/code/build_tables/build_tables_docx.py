@@ -242,17 +242,40 @@ def build_main_tables(log):
               % (wgd_ci_d, wgd_ci_a, acme, ade, pm))
     log.write("[T2-CAPTION] WGD %s -> %s ; TMB %s -> %s (read from table2_drivers.tsv)\n"
               % (wgd_d, wgd_a, tmb_d, tmb_a))
-    legend(doc, "The proximal 6p arm-loss term is near-definitional: chromosome 6p physically contains the HLA "
-                "class I locus, so a 6p arm loss mechanically removes it. The large proximal OR is reported for "
-                "completeness and is not interpreted as an independent discovery. Note that adjusting the distal "
-                f"model for the global aneuploidy score attenuates WGD ({wgd_d} to {wgd_a}) and log10 TMB ({tmb_d} to {tmb_a}) "
-                "because the aneuploidy score absorbs the same genome-wide instability signal. "
-                f"The whole-genome-doubling odds ratio of {wgd_ci_d} falls to {wgd_ci_a} once the global "
-                "aneuploidy score enters the model; the mediation decomposition (Table S6) attributes an "
-                f"average causal mediation effect of {acme} ({acme_lo}–{acme_hi}) to the chromosome-6p "
-                f"route, with an average direct effect of {ade} ({ade_lo}–{ade_hi}) and a proportion "
-                f"mediated of {pm} ({pm_lo}–{pm_hi}). Values below 1.0 reflect removal of the mediating "
-                "route, not a protective effect.", size=9)
+    # --- 表注：OR + CI 与 TMB 端点同样逐项读 tsv（第十轮起 WGD 的 OR 与 CI 一并读出）---
+    def _orci_of(pred, model_exact, nd=2):
+        for r in t2:
+            if r["predictor"].startswith(pred) and r["model"].strip() == model_exact:
+                return (num(r["OR"], nd), num(r["lo"], nd), num(r["hi"], nd))
+        raise SystemExit("table2 caption: OR/CI row not found for %r/%r" % (pred, model_exact))
+
+    wgd_o, wgd_lo, wgd_hi = _orci_of("Whole-genome doubling", "Distal multivariable")
+    wgd_ao, wgd_alo, wgd_ahi = _orci_of("Whole-genome doubling", "Distal multivariable + aneuploidy")
+    cap = (
+        "The proximal 6p arm-loss term is near-definitional: chromosome 6p physically contains the HLA "
+        "class I locus, so a 6p arm loss mechanically removes it. The large proximal OR is reported for "
+        "completeness and is not interpreted as an independent discovery. "
+        "Note that adjusting the distal model for the global aneuploidy score attenuates WGD "
+        f"({wgd_o}, 95% CI {wgd_lo}–{wgd_hi}, to {wgd_ao}, {wgd_alo}–{wgd_ahi}) "
+        f"and log10 TMB ({tmb_d} to {tmb_a}) because the aneuploidy score absorbs the same genome-wide "
+        "instability signal. The mediation decomposition (Table S6) attributes an average causal "
+        f"mediation effect of {acme} ({acme_lo}–{acme_hi}) to the chromosome-6p route, with an average "
+        f"direct effect of {ade} ({ade_lo}–{ade_hi}) and a proportion mediated of {pm} ({pm_lo}–{pm_hi}); "
+        "values below 1.0 therefore reflect removal of the mediating route and must not be read as "
+        "evidence of a protective effect.")
+    # 第十轮硬校验：2.30 / 0.35 各只出现一次（去重），强语气保留，0.28 不得回流。
+    _must = ["(2.30, 95% CI 2.16–2.43, to 0.35, 0.31–0.38)",
+             "log10 TMB (1.45 to 1.23)",
+             "0.2626 (0.2529–0.2704)", "−0.0889 (−0.0944–−0.0810)", "1.5118 (1.4313–1.5849)",
+             "must not be read as evidence of a protective effect"]
+    for _s in _must:
+        if _s not in cap:
+            raise SystemExit("table2 caption: required fragment missing -> %r" % _s)
+    assert cap.count("2.30") == 1, "table2 caption: 2.30 repeated (%d)" % cap.count("2.30")
+    assert cap.count("0.35") == 1, "table2 caption: 0.35 repeated (%d)" % cap.count("0.35")
+    assert "0.28" not in cap, "table2 caption: 0.28 must not appear"
+    log.write("[T2-CAPTION] dedup OK: 2.30 x1, 0.35 x1, must-not x1, 0.28 x0\n")
+    legend(doc, cap, size=9)
     p = os.path.join(TBL, "Table2_drivers.docx"); doc.save(p); log.write(f"[WROTE] {p}\n")
 
     # ---------------- Table 3
